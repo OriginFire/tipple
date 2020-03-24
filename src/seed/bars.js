@@ -37,13 +37,17 @@ export default [
       },
     },
     alcohol_license: {
-      issuing_agency: 'ABRA',  /** Should standardize entries with a dropdown menu */
-      license_number: '555555-555555',  /** Format restrictions based on issuing agency */
-      license_expiration: '04/03/2020',  /** Format restrictions based on issuing agency */
+      issuing_agency:
+        'ABRA' /** Should standardize entries with a dropdown menu */,
+      license_number:
+        '555555-555555' /** Format restrictions based on issuing agency */,
+      license_expiration:
+        '04/03/2020' /** Format restrictions based on issuing agency */,
     },
-    delivery_settings: {   /** Delivery settings input on backend / by submitting non-public form */
+    delivery_settings: {
+      /** Delivery settings input on backend / by submitting non-public form */
       makes_deliveries: 'yes',
       distance_from_bar: '1 mile',
-    }
+    },
   },
 ];

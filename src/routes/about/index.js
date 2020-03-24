@@ -9,16 +9,15 @@
 
 import React from 'react';
 import Layout from '../../components/Layout';
-import Page from '../../components/Page';
-import about from './about.md';
+import Finder from './About';
 
 function action() {
   return {
     chunks: ['about'],
-    title: about.title,
+    title: '',
     component: (
       <Layout>
-        <Page {...about} />
+        <Finder />
       </Layout>
     ),
   };

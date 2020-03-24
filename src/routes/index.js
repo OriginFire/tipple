@@ -21,7 +21,7 @@ const routes = {
     },
     {
       path: '/finder',
-      load: () => import('./finder'),
+      load: () => import(/* webpackChunkName: 'finder' */ './finder'),
     },
     {
       path: '/contact',

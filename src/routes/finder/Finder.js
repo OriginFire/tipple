@@ -7,19 +7,28 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import useStyles from 'isomorphic-style-loader/useStyles';
+import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Finder.scss';
 
-export default function Admin() {
-  useStyles(s);
-  return (
-    <div className={s.root}>
-      <div className={s.container}>
-        <h1>This will be the finder content</h1>
-        <p>...</p>
+class Finder extends React.Component {
+  render() {
+    return (
+      <div className={s.finder_content}>
+        <h1 className={s.finder_text}>Where are you ordering from?</h1>
+        <div className={s.finder_form}>
+          <div className={s.finder_form_fields}>
+            <input className={s.input_field} placeholder="Street Address" />
+            <input className={s.input_field} placeholder="City" />
+            <input className={s.input_field} placeholder="State" />
+          </div>
+          {/* eslint-disable-next-line react/button-has-type */}
+          <button className={s.form_button}>Submit</button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+export default withStyles(s)(Finder);
