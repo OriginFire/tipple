@@ -52,6 +52,7 @@
     local('Avenir Next Regular'),
     url(./fonts/avenir-next-regular.woff) format('woff');
 }
+
 /** Smartphone */
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .app {

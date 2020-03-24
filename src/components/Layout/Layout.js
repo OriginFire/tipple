@@ -25,9 +25,7 @@ class Layout extends React.Component {
   render() {
     return (
       <div className={s.app}>
-        <img className={s.logo}
-          src={logoUrl}
-          />
+        <img className={s.logo} src={logoUrl} />
         <div className={s.mainBody}>{this.props.children}</div>
       </div>
     );

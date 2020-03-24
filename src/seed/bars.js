@@ -24,7 +24,7 @@ export default [
         name: 'Fox Mulder',
         email: 'email@gmail.com',
         phone: '(207) 555-5555',
-      }
+      },
       billing_contact: {
         name: 'Dana Scully',
         email: 'xfiles@gmail.com',

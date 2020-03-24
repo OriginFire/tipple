@@ -2,9 +2,8 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Home.scss';
-import LandingText from "../../components/textComponents/landingText/LandingText";
-import LandingButtons from "../../components/buttonComponents/landingButtons/LandingButtons";
-
+import LandingText from '../../components/textComponents/landingText/LandingText';
+import LandingButtons from '../../components/buttonComponents/landingButtons/LandingButtons';
 
 class Home extends React.Component {
   render() {
@@ -13,12 +12,11 @@ class Home extends React.Component {
         <LandingText />
         <LandingButtons />
       </div>
-    )
+    );
   }
 }
 
 export default withStyles(s)(Home);
-
 
 /**  ORIGINAL RSK Home Component -- Refer to code below for PropTypes functionality
 

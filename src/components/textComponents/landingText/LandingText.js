@@ -6,7 +6,9 @@ class LandingText extends React.Component {
   render() {
     return (
       <div className={s.explainer}>
-        <h2 className={s.explainer_text}>Tipple sends pre-made craft cocktails to you.</h2>
+        <h2 className={s.explainer_text}>
+          Tipple sends pre-made craft cocktails to you.
+        </h2>
       </div>
     );
   }
