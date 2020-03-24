@@ -7,29 +7,31 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import useStyles from 'isomorphic-style-loader/useStyles';
+import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
 import PropTypes from 'prop-types';
 
 // external-global styles must be imported in your JS.
 import normalizeCss from 'normalize.css';
-import s from './Layout.css';
-import Header from '../Header';
-import Feedback from '../Feedback';
+import s from './Layout.scss';
+import logoUrl from '../../../public/Tipple White+Clear Full.png';
 import Footer from '../Footer';
 
-export default function Layout({ children }) {
-  useStyles(s, normalizeCss);
-  return (
-    <>
-      <Header />
-      {children}
-      <Feedback />
-      <Footer />
-    </>
-  );
+class Layout extends React.Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+  };
+
+  render() {
+    return (
+      <div className={s.app}>
+        <img className={s.logo}
+          src={logoUrl}
+          />
+        <div className={s.mainBody}>{this.props.children}</div>
+      </div>
+    );
+  }
 }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+export default withStyles(normalizeCss, s)(Layout);

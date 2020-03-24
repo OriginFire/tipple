@@ -20,6 +20,10 @@ const routes = {
       load: () => import(/* webpackChunkName: 'home' */ './home'),
     },
     {
+      path: '/finder',
+      load: () => import('./finder'),
+    },
+    {
       path: '/contact',
       load: () => import(/* webpackChunkName: 'contact' */ './contact'),
     },
@@ -56,7 +60,7 @@ const routes = {
     const route = await next();
 
     // Provide default values for title, description etc.
-    route.title = `${route.title || 'Untitled Page'} - www.reactstarterkit.com`;
+    route.title = 'Tipple Supply Co. | Mixology In A Bottle';
     route.description = route.description || '';
 
     return route;

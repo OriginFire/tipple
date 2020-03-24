@@ -1,0 +1,79 @@
+.buttons {
+  display: flex;
+  position: static;
+  margin: auto;
+}
+
+.landing_button {
+  font-family: "Merriweather Light";
+  border-radius: 4px;
+  transition: 0.3s;
+  border: none;
+  margin: 3vh;
+  padding: 1vh 2vh;
+  font-size: 2.35vh;
+}
+
+.browse_button {
+  background-color: #b80000;
+  color: #fcfcfc;
+}
+
+.browse_button:hover {
+  background-color: #660000;
+}
+
+.partner_button {
+  background-color: #616161;
+  color: #fcfcfc;
+}
+
+.partner_button:hover {
+  background-color: #251e1f;
+}
+
+@media only screen and (orientation: portrait) and (min-width: 320px) {
+  .buttons {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 320px) {
+  .buttons {
+    margin-right: 4vw;
+  }
+
+  .landing_button {
+    margin: 3vw;
+    padding: 2vh 2vw;
+    font-size: 2vw;
+  }
+}
+
+@media only screen and (min-height: 500px) and (min-width: 768px) {
+  .buttons {
+    margin-top: 15vh;
+    margin-right: 3%;
+    margin-bottom: 15vh;
+  }
+
+  .landing_button {
+    font-size: 1.4em;
+    padding: 15px 20px;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .buttons {
+    margin-top: 9vh;
+    margin-right: 8%;
+    margin-bottom: 15vh;
+  }
+
+  .landing_button {
+    font-size: 1.5em;
+    padding: 15px 20px;
+    margin: 30px;
+  }
+}

@@ -1,23 +1,33 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
-import useStyles from 'isomorphic-style-loader/useStyles';
+import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './Home.css';
+import s from './Home.scss';
+import LandingText from "../../components/textComponents/landingText/LandingText";
+import LandingButtons from "../../components/buttonComponents/landingButtons/LandingButtons";
 
-export default function Home({ news }) {
-  useStyles(s);
+
+class Home extends React.Component {
+  render() {
+    return (
+      <div className={s.landing_content}>
+        <LandingText />
+        <LandingButtons />
+      </div>
+    )
+  }
+}
+
+export default withStyles(s)(Home);
+
+
+/**  ORIGINAL RSK Home Component -- Refer to code below for PropTypes functionality
+
+ export default function Home({ news }) {
+  withStyles(s);
   return (
     <div className={s.root}>
       <div className={s.container}>
-        <h1>React.js News</h1>
+        <h1>Hi Mollie!</h1>
         {news.map(item => (
           <article key={item.link} className={s.newsItem}>
             <h1 className={s.newsTitle}>
@@ -35,7 +45,7 @@ export default function Home({ news }) {
   );
 }
 
-Home.propTypes = {
+ Home.propTypes = {
   news: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
@@ -44,3 +54,5 @@ Home.propTypes = {
     }),
   ).isRequired,
 };
+
+ */

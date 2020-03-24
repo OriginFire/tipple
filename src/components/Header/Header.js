@@ -7,7 +7,7 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import useStyles from 'isomorphic-style-loader/useStyles';
+import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
 import s from './Header.css';
 import Link from '../Link';
@@ -16,7 +16,7 @@ import logoUrl from './logo-small.png';
 import logoUrl2x from './logo-small@2x.png';
 
 export default function Header() {
-  useStyles(s);
+  withStyles(s);
   return (
     <div className={s.root}>
       <div className={s.container}>
