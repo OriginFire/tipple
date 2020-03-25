@@ -16,7 +16,7 @@ import normalizeCss from 'normalize.css';
 import s from './Layout.scss';
 import logoUrl from '../../../../public/Tipple White+Clear Full.png';
 import Footer from '../Footer';
-import Link from '../../utilityComponents/link';
+import Link from '../../utilityComponents/link/Link';
 
 class Layout extends React.Component {
   static propTypes = {

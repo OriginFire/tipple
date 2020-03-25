@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import s from './FinderForm.scss';
 import FormField from '../formField/FormField';
 import FormPrompt from '../formPrompt/FormPrompt';
-import SubmitButton from '../../buttonComponents/submitButton/SubmitButton';
-import GoBackButton from '../../buttonComponents/goBackButton/GoBackButton';
-import Link from '../../utilityComponents/link';
+import SubmitButton from '../../displayComponents/buttonComponents/submitButton/SubmitButton';
+import GoBackButton from '../../displayComponents/buttonComponents/goBackButton/GoBackButton';
+import Link from '../../utilityComponents/link/Link';
 
 class FinderForm extends React.Component {
   render() {

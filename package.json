@@ -33,6 +33,7 @@
     "query-string": "^6.9.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-leaflet": "^2.6.3",
     "sequelize": "^5.21.2",
     "serialize-javascript": "^2.1.1",
     "source-map-support": "^0.5.9",

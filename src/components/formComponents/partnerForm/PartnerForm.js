@@ -2,9 +2,9 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
 import s from './PartnerForm.scss';
 import FormField from '../formField/FormField';
-import SubmitButton from '../../buttonComponents/submitButton/SubmitButton';
-import Link from '../../utilityComponents/link';
-import GoBackButton from '../../buttonComponents/goBackButton/GoBackButton';
+import SubmitButton from '../../displayComponents/buttonComponents/submitButton/SubmitButton';
+import Link from '../../utilityComponents/link/Link';
+import GoBackButton from '../../displayComponents/buttonComponents/goBackButton/GoBackButton';
 
 class PartnerForm extends React.Component {
   render() {

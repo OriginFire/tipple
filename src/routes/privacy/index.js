@@ -9,7 +9,7 @@
 
 import React from 'react';
 import Layout from '../../components/sitewideDisplayComponents/Layout';
-import Page from '../../components/utilityComponents/page';
+import Page from '../../components/utilityComponents/page/Page';
 import privacy from './privacy.md';
 
 function action() {

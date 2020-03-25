@@ -2,7 +2,7 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import cx from 'classnames';
 import s from './LandingButtons.scss';
-import Link from '../../utilityComponents/link';
+import Link from '../../../utilityComponents/link/Link';
 
 class LandingButtons extends React.Component {
   render() {
