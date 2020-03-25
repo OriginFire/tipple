@@ -36,6 +36,10 @@ const routes = {
       load: () => import(/* webpackChunkName: 'register' */ './register'),
     },
     {
+      path: '/partner',
+      load: () => import(/* webpackChunkName: 'register' */ './partner'),
+    },
+    {
       path: '/about',
       load: () => import(/* webpackChunkName: 'about' */ './about'),
     },

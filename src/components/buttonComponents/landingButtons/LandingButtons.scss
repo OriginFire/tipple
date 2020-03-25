@@ -21,6 +21,7 @@
 
 .browse_button:hover {
   background-color: #600;
+  cursor: pointer;
 }
 
 .partner_button {
@@ -30,6 +31,7 @@
 
 .partner_button:hover {
   background-color: #251e1f;
+  cursor: pointer;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
