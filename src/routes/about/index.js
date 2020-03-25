@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import Layout from '../../components/Layout';
+import Layout from '../../components/sitewideDisplayComponents/Layout';
 import Finder from './About';
 
 function action() {

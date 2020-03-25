@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import Layout from '../../components/Layout';
+import Layout from '../../components/sitewideDisplayComponents/Layout';
 import Login from './Login';
 
 const title = 'Log In';

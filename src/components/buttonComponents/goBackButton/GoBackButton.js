@@ -5,9 +5,7 @@ import s from './GoBackButton.scss';
 
 class GoBackButton extends React.Component {
   render() {
-    return (
-      <button className={s.go_back_button}>Go Back</button>
-    )
+    return <button className={s.go_back_button}>Go Back</button>;
   }
 }
 

@@ -8,10 +8,10 @@
  */
 
 import React from 'react';
-import Layout from '../../components/Layout';
+import Layout from '../../components/sitewideDisplayComponents/Layout';
 import NotFound from './NotFound';
 
-const title = 'Page Not Found';
+const title = 'page Not Found';
 
 function action() {
   return {

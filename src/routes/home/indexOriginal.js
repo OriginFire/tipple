@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './Home';
-import Layout from '../../components/Layout';
+import Layout from '../../components/sitewideDisplayComponents/Layout';
 
 async function action({ fetch }) {
   const resp = await fetch('/graphql', {

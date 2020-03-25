@@ -1,0 +1,44 @@
+.input_field {
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+.small_field {
+
+}
+
+@media only screen and (orientation: portrait) and (min-width: 320px) {
+  .input_field {
+    margin: 8px;
+    padding: 6px 0 6px 8px;
+    width: 35%;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 320px) {
+  .input_field {
+    margin: 8px;
+    padding: 4px 0 4px 6px;
+    width: 25%;
+  }
+}
+
+@media only screen and (min-height: 500px) and (min-width: 768px) {
+  .input_field {
+    margin: 8px;
+    padding: 6px 0 6px 8px;
+    width: 30%;
+  }
+
+  .small {
+    width: 15%;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .input_field {
+    margin: 10px 20px;
+    padding: 8px 0 8px 10px;
+    width: 250px;
+  }
+}

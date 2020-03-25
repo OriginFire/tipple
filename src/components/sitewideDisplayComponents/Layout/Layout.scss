@@ -1,0 +1,99 @@
+/* Test */
+
+.mainBody {
+  flex: 1 0 auto; /* Height of the footer */
+  color: white;
+}
+
+.app {
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  overflow: auto;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.logo {
+  max-width: 60%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@font-face {
+  font-family: 'Merriweather Regular';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local('Merriwweather Regular'),
+    url(fonts/Merriweather-Regular.otf) format('otf');
+}
+
+@font-face {
+  font-family: 'Merriweather Light';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local('Merriwweather Light'),
+    url(fonts/Merriweather-Light.otf) format('otf');
+}
+
+@font-face {
+  font-family: 'Avenir Next Regular';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local('Avenir Next Regular'),
+    url(fonts/avenir-next-regular.woff) format('woff');
+}
+
+/** Smartphone */
+@media only screen and (orientation: portrait) and (min-width: 320px) {
+  .app {
+    background-image: url('../../../../public/GoldenDark.jpg');
+    background-position: center;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 320px) {
+  .app {
+    background-image: url('../../../../public/LevitationAspecgt.JPG');
+    background-position: center;
+  }
+
+  .logo {
+    position: absolute;
+    max-width: 180px;
+    margin-left: 4%;
+  }
+}
+
+@media only screen and (min-height: 500px) and (min-width: 768px) {
+  .app {
+    background-image: url('../../../../public/LevitationAspecgt.JPG');
+  }
+
+  .logo {
+    position: relative;
+    width: 70%;
+    max-width: 290px;
+    margin-left: auto;
+    margin-right: 8%;
+    margin-top: 2%;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .logo {
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: 50px;
+    margin-top: 20px;
+  }
+}

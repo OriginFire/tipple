@@ -8,10 +8,10 @@
  */
 
 import React from 'react';
-import Layout from '../../components/Layout';
+import Layout from '../../components/sitewideDisplayComponents/Layout';
 import Admin from './Admin';
 
-const title = 'Admin Page';
+const title = 'Admin page';
 const isAdmin = false;
 
 function action() {
