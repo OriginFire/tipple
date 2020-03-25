@@ -16,6 +16,7 @@ import normalizeCss from 'normalize.css';
 import s from './Layout.scss';
 import logoUrl from '../../../public/Tipple White+Clear Full.png';
 import Footer from '../Footer';
+import Link from '../Link';
 
 class Layout extends React.Component {
   static propTypes = {
@@ -25,7 +26,9 @@ class Layout extends React.Component {
   render() {
     return (
       <div className={s.app}>
-        <img className={s.logo} src={logoUrl} />
+        <Link to="/">
+          <img className={s.logo} src={logoUrl} />
+        </Link>
         <div className={s.mainBody}>{this.props.children}</div>
       </div>
     );
