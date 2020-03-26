@@ -1,11 +1,11 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React, {useState} from 'react';
+import { useMutation } from 'graphql-hooks';
 import s from './PartnerForm.scss';
 import FormField from '../formField/FormField';
 import SubmitButton from '../../displayComponents/buttonComponents/submitButton/SubmitButton';
 import Link from '../../utilityComponents/link/Link';
 import GoBackButton from '../../displayComponents/buttonComponents/goBackButton/GoBackButton';
-import { useMutation } from 'graphql-hooks'
 
 const CREATE_BAR_MUTATION = `
   mutation CreateBar($dbaName: String!) {
@@ -21,7 +21,7 @@ function PartnerForm () {
   const [createBar] = useMutation(CREATE_BAR_MUTATION)
 
   async function createNewBar() {
-    await createBar({ variables: { dbaName } })
+    await createBar({ variables: { dbaName } });
   }
   return (
     <div className={s.partner_content}>
@@ -36,11 +36,11 @@ function PartnerForm () {
           <FormField placeholder="Phone Number" />
           <FormField placeholder="Street Address" />
           <FormField placeholder="City" />
-          <FormField placeholder="State" />
-          <FormField placeholder="Zip Code" />
-          <FormField placeholder="Alcohol License Number" />
-          <FormField placeholder="Expiration Date" />
+          <FormField placeholder="State" size="Small" />
+          <FormField placeholder="Zip Code" size="Medium" />
+          <FormField placeholder="Alcohol License #" />
           <FormField placeholder="Issuing Agency" />
+          <FormField placeholder="Expires" size="Medium" />
         </div>
         <div>
           <SubmitButton onClick={createNewBar} />

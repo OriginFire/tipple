@@ -19,8 +19,9 @@ class FinderForm extends React.Component {
           <FormPrompt prompt="Where are you browsing from?" />
           <div className={s.finder_form_fields}>
             <FormField placeholder="Street Address" />
-            <FormField placeholder="City" />
-            <FormField placeholder="State" size="small" />
+            <FormField placeholder="City" size="Large" />
+            <FormField placeholder="State" size="Small" />
+            <FormField placeholder="Zip Code" size="Medium" />
           </div>
           <div>
             <SubmitButton />

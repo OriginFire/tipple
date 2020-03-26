@@ -6,12 +6,23 @@ import s from './FormField.scss';
 
 class FormField extends React.Component {
   render() {
-    const { placeholder } = this.props;
-    const { size } = this.props;
     const { onChange } = this.props;
+    const { placeholder } = this.props;
+    let { size } = this.props;
+    if (size === 'Small') {
+      size = s.small_field;
+    } else if (size === 'Medium') {
+      size = s.medium_field;
+    } else if (size === 'Large') {
+      size = s.large_field;
+    };
 
     return (
-      <input className={cx(s.input_field, size)} placeholder={placeholder} onChange={onChange} />
+      <input
+        className={cx(s.input_field, size)}
+        placeholder={placeholder}
+        onChange={onChange}
+      />
     );
   }
 }

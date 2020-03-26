@@ -12,6 +12,7 @@
 .partner_form {
   position: static;
   margin: auto;
+  width: 95%;
 }
 
 .partner_form_fields {
@@ -24,7 +25,7 @@
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .partner_content {
     position: static;
-    margin: 40px 0 0 0;
+    margin: 2vh 0 0 0;
   }
 
   .partner_text {
@@ -33,18 +34,18 @@
   }
 
   .partner_form {
-    margin-top: 8vh;
+    margin-top: 6vh;
   }
 
   .partner_form_fields {
-    margin-bottom: 8vh;
+    margin-bottom: 4vh;
   }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
   .partner_content {
     position: static;
-    margin: 0 0 0 0;
+    margin: -8vh 0 0 0;
   }
 
   .partner_text {
@@ -83,6 +84,7 @@
 
   .partner_form_fields {
     margin-bottom: 50px;
+    justify-content: center;
   }
 }
 
