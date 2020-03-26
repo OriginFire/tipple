@@ -12,16 +12,14 @@ import {
   GraphQLObjectType as ObjectType,
 } from 'graphql';
 
-import me from './queries/me';
-import news from './queries/news';
 import newBar from './mutators/newBar'
+import listBars from './queries/listBars'
 
 const schema = new Schema({
   query: new ObjectType({
     name: 'Query',
     fields: {
-      me,
-      news,
+      listBars,
     },
   }),
   mutation: new ObjectType({
