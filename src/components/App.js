@@ -12,6 +12,8 @@ import PropTypes from 'prop-types';
 
 import StyleContext from 'isomorphic-style-loader/StyleContext';
 import ApplicationContext from './ApplicationContext';
+import { ClientContext, GraphQLClient } from 'graphql-hooks'
+
 
 /**
  * The top-level React component setting context (global) variables
@@ -37,12 +39,15 @@ import ApplicationContext from './ApplicationContext';
  */
 
 export default function App({ context, insertCss, children }) {
+  const client = new GraphQLClient({ url: '/graphql', fetch: context.fetch })
   // NOTE: If you need to add or modify header, footer etc. of the app,
   // please do that inside the Layout component.
   return (
     <StyleContext.Provider value={{ insertCss }}>
       <ApplicationContext.Provider value={{ context }}>
-        {React.Children.only(children)}
+        <ClientContext.Provider value={client}>
+          {React.Children.only(children)}
+        </ClientContext.Provider>
       </ApplicationContext.Provider>
     </StyleContext.Provider>
   );

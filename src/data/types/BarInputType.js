@@ -9,8 +9,8 @@ import {
 const BarInputType = new ObjectType({
   name: 'BarInput',
   fields: {
-    bar_id: { type: StringType },
-    dba_name: { type: StringType },
+    barId: { type: StringType },
+    dbaName: { type: StringType },
   },
 });
 

@@ -18,8 +18,8 @@ const newBar = {
   },
   resolve(value, { bar} ) {
     let b = Bar.create({
-      bar_id: bar.bar_id,
-      dba_name: bar.dba_name,
+      barId: bar.barId,
+      dbaName: bar.dbaName,
     });
     return (
       b

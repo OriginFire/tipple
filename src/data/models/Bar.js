@@ -18,21 +18,21 @@ const Bar = Model.define(
       defaultValue: DataType.UUIDV1,
       primaryKey: true,
     },
-    bar_id: {
+    barId: {
       type: DataType.STRING(255),
     },
 
-    legal_entity: {
+    legalEntity: {
       type: DataType.STRING(255),
       // validate: { isEmail: true },
     },
 
-    dba_name: {
+    dbaName: {
       type: DataType.STRING(255),
     },
   },
   {
-    indexes: [{ fields: ['bar_id'] }],
+    indexes: [{ fields: ['barId'] }],
   },
 );
 

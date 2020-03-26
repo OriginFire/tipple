@@ -3,7 +3,7 @@ import DataType from 'sequelize';
 import Model from '../sequelize';
 
 const Address = Model.define('Address', {
-  street_adress: {
+  streetAddress: {
     type: DataType.STRING,
   },
 
@@ -15,7 +15,7 @@ const Address = Model.define('Address', {
     type: DataType.STRING,
   },
 
-  zip_code: {
+  zipCode: {
     type: DataType.STRING,
   },
 });
