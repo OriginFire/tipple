@@ -10,28 +10,30 @@
 import DataType from 'sequelize';
 import Model from '../sequelize';
 
-const User = Model.define(
-  'User',
+const Bar = Model.define(
+  'Bar',
   {
     id: {
       type: DataType.UUID,
       defaultValue: DataType.UUIDV1,
       primaryKey: true,
     },
-
-    email: {
+    barId: {
       type: DataType.STRING(255),
-      validate: { isEmail: true },
     },
 
-    emailConfirmed: {
-      type: DataType.BOOLEAN,
-      defaultValue: false,
+    legalEntity: {
+      type: DataType.STRING(255),
+      // validate: { isEmail: true },
+    },
+
+    dbaName: {
+      type: DataType.STRING(255),
     },
   },
   {
-    indexes: [{ fields: ['email'] }],
+    indexes: [{ fields: ['barId'] }],
   },
 );
 
-export default User;
+export default Bar;

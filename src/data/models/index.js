@@ -8,28 +8,27 @@
  */
 
 import sequelize from '../sequelize';
-import User from './User';
-import UserLogin from './UserLogin';
-import UserClaim from './UserClaim';
-import UserProfile from './UserProfile';
+import Bar from './Bar';
+import Address from './Address'
+import PointOfContact from "./PointOfContact";
 
-User.hasMany(UserLogin, {
-  foreignKey: 'userId',
-  as: 'logins',
+Bar.hasOne(Address, {
+  foreignKey: 'physicalAddressId',
+  as: 'physicalAddress',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
 
-User.hasMany(UserClaim, {
-  foreignKey: 'userId',
-  as: 'claims',
+Bar.hasOne(Address, {
+  foreignKey: 'billingAddressId',
+  as: 'billingAddress',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
 
-User.hasOne(UserProfile, {
-  foreignKey: 'userId',
-  as: 'profile',
+Bar.hasOne(PointOfContact, {
+  foreignKey: 'billingContactId',
+  as: 'billingContact',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
@@ -39,4 +38,4 @@ function sync(...args) {
 }
 
 export default { sync };
-export { User, UserLogin, UserClaim, UserProfile };
+export { Bar, Address, PointOfContact };

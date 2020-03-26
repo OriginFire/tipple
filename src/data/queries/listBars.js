@@ -7,17 +7,17 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import DataType from 'sequelize';
-import Model from '../sequelize';
+import { GraphQLList as List } from 'graphql';
+import BarType from '../types/BarType';
+import Bar from '../models/Bar'
 
-const UserClaim = Model.define('UserClaim', {
-  type: {
-    type: DataType.STRING,
+const newBar = {
+  type: List(BarType),
+  resolve() {
+    return (
+      Bar.findAll()
+    );
   },
+};
 
-  value: {
-    type: DataType.STRING,
-  },
-});
-
-export default UserClaim;
+export default newBar;
