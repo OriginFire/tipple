@@ -8,6 +8,33 @@
  */
 
 import sequelize from '../sequelize';
+import Bar from './Bar';
+import Address from './Address'
+import PointOfContact from "./PointOfContact";
+
+Bar.hasOne(Address, {
+  foreignKey: 'physicalAddressId',
+  as: 'physicalAddress',
+  onUpdate: 'cascade',
+  onDelete: 'cascade',
+});
+
+Bar.hasOne(Address, {
+  foreignKey: 'billingAddressId',
+  as: 'billingAddress',
+  onUpdate: 'cascade',
+  onDelete: 'cascade',
+});
+
+Bar.hasOne(PointOfContact, {
+  foreignKey: 'billingContactId',
+  as: 'billingContact',
+  onUpdate: 'cascade',
+  onDelete: 'cascade',
+});
+
+
+// import sequelize from '../sequelize';
 import User from './User';
 import UserLogin from './UserLogin';
 import UserClaim from './UserClaim';
@@ -39,4 +66,12 @@ function sync(...args) {
 }
 
 export default { sync };
-export { User, UserLogin, UserClaim, UserProfile };
+export { Bar, Address, PointOfContact,  User, UserLogin, UserClaim, UserProfile };
+
+//
+// function sync(...args) {
+//   return sequelize.sync(...args);
+// }
+//
+// export default { sync };
+// export { User, UserLogin, UserClaim, UserProfile };
