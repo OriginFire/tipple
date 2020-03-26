@@ -1,22 +1,18 @@
 import DataType from 'sequelize';
 import Model from '../sequelize';
 
-const Address = Model.define('Address', {
-  streetAddress: {
+const License = Model.define('License', {
+  license_number: {
     type: DataType.STRING,
   },
 
-  city: {
+  issuing_agency: {
     type: DataType.STRING,
   },
 
-  state: {
-    type: DataType.STRING,
-  },
-
-  zipCode: {
+  expiration: {
     type: DataType.STRING,
   },
 });
 
-export default Address;
+export default License;

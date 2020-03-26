@@ -8,22 +8,23 @@
  */
 
 import BarType from '../types/BarType';
-import Bar from '../models/Bar'
+import Bar from '../models/Bar';
+import PointOfContact from "../models/PointOfContact";
+import Address from "../models/Address";
+import License from '../models/License';
 import BarInputType from "../types/BarInputType";
 
 const newBar = {
   type: BarType,
   args: {
-    bar: {type: BarInputType}
+    bar: { type: BarInputType }
   },
-  resolve(value, { bar} ) {
+  resolve(value, { bar }) {
     let b = Bar.create({
       barId: bar.barId,
       dbaName: bar.dbaName,
     });
-    return (
-      b
-    );
+    return b;
   },
 };
 

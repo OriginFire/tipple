@@ -1,5 +1,5 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useMutation } from 'graphql-hooks';
 import s from './PartnerForm.scss';
 import FormField from '../formField/FormField';
@@ -13,12 +13,13 @@ const CREATE_BAR_MUTATION = `
       id
     }
   }
-`
+`;
 
-function PartnerForm () {
-  const [dbaName, setDbaName] = useState('')
+function PartnerForm() {
+  const [dbaName, setDbaName] = useState('');
+  const [contact, setContact] = useState('');
 
-  const [createBar] = useMutation(CREATE_BAR_MUTATION)
+  const [createBar] = useMutation(CREATE_BAR_MUTATION);
 
   async function createNewBar() {
     await createBar({ variables: { dbaName } });
@@ -26,12 +27,18 @@ function PartnerForm () {
   return (
     <div className={s.partner_content}>
       <h1 className={s.partner_text}>
-        We need some information about your business to proceed.
+        List your cocktail delivery or takeout business on Tipple.
       </h1>
       <div className={s.partner_form}>
         <div className={s.partner_form_fields}>
-          <FormField placeholder="Business Name" onChange={e => setDbaName(e.target.value)} />
-          <FormField placeholder="Point of Contact" />
+          <FormField
+            placeholder="Business Name"
+            onChange={e => setDbaName(e.target.value)}
+          />
+          <FormField
+            placeholder="Point of Contact"
+            onChange={e => setContact(e.target.value)}
+          />
           <FormField placeholder="Email Address" />
           <FormField placeholder="Phone Number" />
           <FormField placeholder="Street Address" />
@@ -50,7 +57,7 @@ function PartnerForm () {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default withStyles(s)(PartnerForm);

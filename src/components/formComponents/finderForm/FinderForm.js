@@ -16,7 +16,7 @@ class FinderForm extends React.Component {
           We'll find cocktail takeout and delivery options in your area.
         </h1>
         <div className={s.finder_form}>
-          <FormPrompt prompt="Where are you browsing from?" />
+          <FormPrompt prompt="Enter Your Address" />
           <div className={s.finder_form_fields}>
             <FormField placeholder="Street Address" />
             <FormField placeholder="City" size="Large" />

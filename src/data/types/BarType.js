@@ -1,4 +1,3 @@
-
 import {
   GraphQLObjectType as ObjectType,
   GraphQLID as ID,

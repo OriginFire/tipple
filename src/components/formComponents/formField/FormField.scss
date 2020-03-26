@@ -3,6 +3,15 @@
   border-radius: 3px;
 }
 
+::placeholder {
+  color: #979797;
+}
+
+.input_field:focus::placeholder {
+  color: #b1b1b1;
+  font-size: 0.95em;
+}
+
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .input_field {
     margin: 6px;
@@ -47,7 +56,7 @@
   }
 
   .medium_field {
-    width: 12%
+    width: 12%;
   }
 
   .large_field {

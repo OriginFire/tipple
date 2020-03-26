@@ -1,6 +1,5 @@
-
 import {
-  GraphQLInputObjectType  as ObjectType,
+  GraphQLInputObjectType as ObjectType,
   GraphQLID as ID,
   GraphQLString as StringType,
   GraphQLNonNull as NonNull,

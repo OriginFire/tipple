@@ -1,5 +1,5 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './FormField.scss';
@@ -15,7 +15,7 @@ class FormField extends React.Component {
       size = s.medium_field;
     } else if (size === 'Large') {
       size = s.large_field;
-    };
+    }
 
     return (
       <input
