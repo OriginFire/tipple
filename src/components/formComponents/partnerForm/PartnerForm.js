@@ -3,17 +3,23 @@ import React, { useState } from 'react';
 import { useMutation } from 'graphql-hooks';
 import s from './PartnerForm.scss';
 import FormField from '../formField/FormField';
-import SubmitButton from '../../displayComponents/buttonComponents/submitButton/SubmitButton';
+import PrimaryButton from "../../displayComponents/buttonComponents/primaryButton/PrimaryButton";
+import SecondaryButton from "../../displayComponents/buttonComponents/secondaryButton/SecondaryButton";
 import Link from '../../utilityComponents/link/Link';
-import GoBackButton from '../../displayComponents/buttonComponents/goBackButton/GoBackButton';
 
 const CREATE_BAR_MUTATION = `
-  mutation CreateBar($dbaName: String!) {
-    newBar(bar:{dbaName: $dbaName}) {
+  mutation CreateBar($dbaName: String!, $contact: String!) {
+    newBar(bar:{dbaName: $dbaName, contact: $contact}) {
       id
+      dbaName
+      contact
     }
   }
 `;
+
+/** "CreateBar could be anything
+ * "newbar calls newBar.js mutator, which is also identified in the schema.js
+ * */
 
 function PartnerForm() {
   const [dbaName, setDbaName] = useState('');
@@ -22,7 +28,7 @@ function PartnerForm() {
   const [createBar] = useMutation(CREATE_BAR_MUTATION);
 
   async function createNewBar() {
-    await createBar({ variables: { dbaName } });
+    await createBar({ variables: { dbaName, contact } });
   }
   return (
     <div className={s.partner_content}>
@@ -50,9 +56,9 @@ function PartnerForm() {
           <FormField placeholder="Expires" size="Medium" />
         </div>
         <div>
-          <SubmitButton onClick={createNewBar} />
+          <PrimaryButton onClick={createNewBar} text={"Add My Bar"} />
           <Link to="/">
-            <GoBackButton />
+            <SecondaryButton text={"Return Home"}/>
           </Link>
         </div>
       </div>

@@ -11,6 +11,7 @@ const BarType = new ObjectType({
     id: { type: new NonNull(ID) },
     barId: { type: StringType },
     dbaName: { type: StringType },
+    contact: {type: StringType },
   },
 });
 

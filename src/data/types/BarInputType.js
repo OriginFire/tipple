@@ -10,7 +10,10 @@ const BarInputType = new ObjectType({
   fields: {
     barId: { type: StringType },
     dbaName: { type: StringType },
+    contact: { type: StringType },
   },
 });
+
+/** Generally keep this const equal to the BarType constant from BarType.js, with the exception of the ID (Line 11) */
 
 export default BarInputType;

@@ -1,0 +1,131 @@
+.list_item_meta {
+  padding: 20px 0px;
+}
+
+.search_result_list_item {
+  color: white;
+  font-family: "Merriweather Light";
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.sale_options {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.order_link {
+  width: 100%;
+  text-align: right;
+  margin-left: auto;
+  margin-right: auto;
+  position: static;
+}
+
+.bar_name {
+  font-family: "Merriweather Regular";
+}
+
+@media only screen and (orientation: portrait) and (min-width: 320px) {
+  .search_result_list_item {
+  }
+
+  .bar_name {
+    font-size: 1.1em;
+    width: 25%;
+  }
+
+  .distance {
+    font-size: .6em;
+  }
+
+  .sale_options {
+    height: 50%;
+    width: 30%;
+  }
+
+  .availability {
+    font-size: .6em;
+    text-align: center;
+  }
+
+  .order_link {
+    font-size: .7em;
+    text-align: center;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 320px) {
+  .list_item_meta {
+    padding: 10px 0;
+  }
+
+  .search_result_list_item {
+
+  }
+
+  .bar_name {
+    font-size: 1em;
+    width: 25%;
+  }
+
+  .distance {
+    font-size: 0.6em;
+  }
+
+  .sale_options {
+    width: 30%;
+  }
+
+  .order_link {
+    font-size: 0.7em;
+    text-align: center;
+  }
+
+  .availability {
+    font-size: 0.6em;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-height: 500px) and (min-width: 768px) {
+  .list_item_meta {
+    padding: 20px 0;
+  }
+
+  .search_result_list_item {
+    color: #eeeeee;
+    height: 30px;
+  }
+
+  .bar_name {
+    font-size: 1.05em;
+    width: 30%;
+  }
+
+  .distance {
+    font-size: 0.75em;
+    text-align: center;
+  }
+
+  .sale_options {
+    width: 30%;
+    height: 30px;
+    justify-content: center;
+  }
+
+  .order_link {
+    font-size: 0.8em;
+    text-align: center;
+  }
+
+  .availability {
+    font-size: 0.7em;
+    text-align: center;
+  }
+}

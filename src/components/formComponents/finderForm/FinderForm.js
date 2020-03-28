@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import s from './FinderForm.scss';
 import FormField from '../formField/FormField';
 import FormPrompt from '../formPrompt/FormPrompt';
-import SubmitButton from '../../displayComponents/buttonComponents/submitButton/SubmitButton';
-import GoBackButton from '../../displayComponents/buttonComponents/goBackButton/GoBackButton';
+import PrimaryButton from "../../displayComponents/buttonComponents/primaryButton/PrimaryButton";
+import SecondaryButton from "../../displayComponents/buttonComponents/secondaryButton/SecondaryButton";
 import Link from '../../utilityComponents/link/Link';
 
 class FinderForm extends React.Component {
@@ -24,9 +24,11 @@ class FinderForm extends React.Component {
             <FormField placeholder="Zip Code" size="Medium" />
           </div>
           <div>
-            <SubmitButton />
+            <Link to="search-results">
+              <PrimaryButton text={"Find Cocktail Bars"} />
+            </Link>
             <Link to="/">
-              <GoBackButton />
+              <SecondaryButton text={"Return Home"}/>
             </Link>
           </div>
         </div>
