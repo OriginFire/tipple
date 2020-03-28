@@ -7,23 +7,16 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
+import { GraphQLList as List } from 'graphql';
 import BarType from '../types/BarType';
-import Bar from '../models/Bar';
-import BarInputType from '../types/BarInputType';
+import Bar from '../../data/models/Bar'
 
 const newBar = {
-  type: BarType,
-  args: {
-    bar: { type: BarInputType },
-  },
-  resolve(value, { bar }) {
-   /** console.log('im here'); */
-    const b = Bar.create({
-      barId: bar.barId,
-      dbaName: bar.dbaName,
-      contact: bar.contact,
-    });
-    return b;
+  type: List(BarType),
+  resolve() {
+    return (
+      Bar.findAll()
+    );
   },
 };
 
