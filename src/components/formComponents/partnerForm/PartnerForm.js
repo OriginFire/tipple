@@ -6,6 +6,7 @@ import FormField from '../formField/FormField';
 import PrimaryButton from "../../displayComponents/buttonComponents/primaryButton/PrimaryButton";
 import SecondaryButton from "../../displayComponents/buttonComponents/secondaryButton/SecondaryButton";
 import Link from '../../utilityComponents/link/Link';
+import cx from 'classnames';
 
 const CREATE_BAR_MUTATION = `
   mutation CreateBar($dbaName: String!,
@@ -144,6 +145,26 @@ function PartnerForm() {
             />
           </div>
         </div>
+
+        <div className={s.form_status}>
+          <div className={s.status_item}>
+            <div className={s.status_indicator}>Account Information</div>
+            <div className={s.status_bar}></div>
+          </div>
+          <div className={s.status_item}>
+            <div className={s.status_indicator}>Business Details</div>
+            <div className={s.status_bar}></div>
+          </div>
+          <div className={s.status_item}>
+            <div className={s.status_indicator}>Alcohol License</div>
+            <div className={s.status_bar}></div>
+          </div>
+          <div className={s.status_item}>
+            <div className={s.status_indicator}>Delivery/Pickup Settings</div>
+            <div className={s.status_bar}></div>
+          </div>
+        </div>
+
         <div>
           <PrimaryButton onClick={createNewBar} text={"Add My Bar"} />
           <Link to="/">
