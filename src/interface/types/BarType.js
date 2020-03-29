@@ -2,6 +2,7 @@ import {
   GraphQLObjectType as ObjectType,
   GraphQLID as ID,
   GraphQLString as StringType,
+  GraphQLBoolean as BooleanType,
   GraphQLNonNull as NonNull,
 } from 'graphql';
 
@@ -18,6 +19,12 @@ const BarType = new ObjectType({
     physicalCity: { type: StringType },
     physicalState: { type: StringType },
     physicalZipCode: { type: StringType },
+    alcoholLicenseNumber: { type: StringType },
+    alcoholLicenseIssuingAgency: { type: StringType },
+    alcoholLicenseExpiration: { type: StringType },
+    doesDelivery: { type: StringType },
+    deliveryRadius: { type: StringType },
+    onlineOrdering: { type: StringType },
   },
 });
 

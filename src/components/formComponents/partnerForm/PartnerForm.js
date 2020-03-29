@@ -8,8 +8,36 @@ import SecondaryButton from "../../displayComponents/buttonComponents/secondaryB
 import Link from '../../utilityComponents/link/Link';
 
 const CREATE_BAR_MUTATION = `
-  mutation CreateBar($dbaName: String!, $pointOfContact: String!, $emailAddress: String!, $phoneNumber: String!, $physicalStreetAddress: String!, $physicalCity: String!, $physicalState: String!, $physicalZipCode: String!) {
-    newBar(bar:{dbaName: $dbaName, pointOfContact: $pointOfContact, emailAddress: $emailAddress, phoneNumber: $phoneNumber, physicalStreetAddress: $physicalStreetAddress, physicalCity: $physicalCity, physicalState: $physicalState, physicalZipCode: $physicalZipCode}) {
+  mutation CreateBar($dbaName: String!,
+  $pointOfContact: String!,
+  $emailAddress: String!,
+  $phoneNumber: String!,
+  $physicalStreetAddress: String!,
+  $physicalCity: String!,
+  $physicalState: String!,
+  $physicalZipCode: String!,
+  $alcoholLicenseNumber: String!,
+  $alcoholLicenseIssuingAgency: String!,
+  $alcoholLicenseExpiration: String!,
+  $doesDelivery: String!
+  $deliveryRadius: String!
+  $onlineOrdering: String!)
+  {
+    newBar(bar:{
+    dbaName: $dbaName,
+    pointOfContact: $pointOfContact,
+    emailAddress: $emailAddress,
+    phoneNumber: $phoneNumber,
+    physicalStreetAddress: $physicalStreetAddress,
+    physicalCity: $physicalCity,
+    physicalState: $physicalState,
+    physicalZipCode: $physicalZipCode,
+    alcoholLicenseNumber: $alcoholLicenseNumber,
+    alcoholLicenseIssuingAgency: $alcoholLicenseIssuingAgency,
+    alcoholLicenseExpiration: $alcoholLicenseExpiration,
+    doesDelivery: $doesDelivery
+    deliveryRadius: $deliveryRadius
+    onlineOrdering: $onlineOrdering}) {
       id
       dbaName
       pointOfContact
@@ -19,7 +47,12 @@ const CREATE_BAR_MUTATION = `
       physicalCity
       physicalState
       physicalZipCode
-
+      alcoholLicenseNumber
+      alcoholLicenseIssuingAgency
+      alcoholLicenseExpiration
+      doesDelivery
+      deliveryRadius
+      onlineOrdering
     }
   }
 `;
@@ -37,11 +70,17 @@ function PartnerForm() {
   const [physicalCity, setPhysicalCity] = useState('');
   const [physicalState, setPhysicalState] = useState('');
   const [physicalZipCode, setPhysicalZipCode] = useState('');
+  const [alcoholLicenseNumber, setAlcoholLicenseNumber] = useState('');
+  const [alcoholLicenseIssuingAgency, setAlcoholLicenseIssuingAgency] = useState('');
+  const [alcoholLicenseExpiration, setAlcoholLicenseExpiration] = useState('');
+  const [doesDelivery, setDoesDelivery] = useState('');
+  const [deliveryRadius, setDeliveryRadius] = useState('');
+  const [onlineOrdering, setOnlineOrdering] = useState('');
 
   const [createBar] = useMutation(CREATE_BAR_MUTATION);
 
   async function createNewBar() {
-    await createBar({ variables: { dbaName, pointOfContact, emailAddress, phoneNumber, physicalStreetAddress, physicalCity, physicalState, physicalZipCode } });
+    await createBar({ variables: { dbaName, pointOfContact, emailAddress, phoneNumber, physicalStreetAddress, physicalCity, physicalState, physicalZipCode, alcoholLicenseNumber, alcoholLicenseIssuingAgency, alcoholLicenseExpiration, doesDelivery, deliveryRadius, onlineOrdering } });
   }
   return (
     <div className={s.partner_content}>
@@ -50,42 +89,60 @@ function PartnerForm() {
       </h1>
       <div className={s.partner_form}>
         <div className={s.partner_form_fields}>
-          <FormField
-            placeholder="Business Name"
-            onChange={e => setDbaName(e.target.value)}
-          />
-          <FormField
-            placeholder="Point of Contact"
-            onChange={e => setPointOfContact(e.target.value)}
-          />
-          <FormField
-            placeholder="Email Address"
-            onChange={e => setEmailAddress(e.target.value)}
-          />
-          <FormField
-            placeholder="Phone Number"
-            onChange={e => setPhoneNumber(e.target.value)}
-          />
-          <FormField
-            placeholder="Street Address"
-            onChange={e => setPhysicalStreetAddress(e.target.value)}
-          />
-          <FormField
-            placeholder="City"
-            onChange={e => setPhysicalCity(e.target.value)}
-          />
-          <FormField
-            placeholder="State"
-            onChange={e => setPhysicalState(e.target.value)}
-            size="Small"
-          />
-          <FormField
-            placeholder="Zip Code"
-            onChange={e => setPhysicalZipCode(e.target.value)}
-            size="Medium" />
-          <FormField placeholder="Alcohol License #" />
-          <FormField placeholder="Issuing Agency" />
-          <FormField placeholder="Expires" size="Medium" />
+          <div>
+            <FormField
+              placeholder="Business Name"
+              onChange={e => setDbaName(e.target.value)}
+            />
+            <FormField
+              placeholder="Point of Contact"
+              onChange={e => setPointOfContact(e.target.value)}
+            />
+            <FormField
+              placeholder="Email Address"
+              onChange={e => setEmailAddress(e.target.value)}
+            />
+            <FormField
+              placeholder="Phone Number"
+              onChange={e => setPhoneNumber(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <FormField
+              placeholder="Street Address"
+              onChange={e => setPhysicalStreetAddress(e.target.value)}
+            />
+            <FormField
+              placeholder="City"
+              onChange={e => setPhysicalCity(e.target.value)}
+            />
+            <FormField
+              placeholder="State"
+              onChange={e => setPhysicalState(e.target.value)}
+              size="Small"
+            />
+            <FormField
+              placeholder="Zip Code"
+              onChange={e => setPhysicalZipCode(e.target.value)}
+              size="Medium" />
+          </div>
+
+          <div>
+            <FormField
+              placeholder="Alcohol License #"
+              onChange={e => setAlcoholLicenseNumber(e.target.value)}
+            />
+            <FormField
+              placeholder="Issuing Agency"
+              onChange={e => setAlcoholLicenseIssuingAgency(e.target.value)}
+            />
+            <FormField
+              placeholder="Expires"
+              onChange={e => setAlcoholLicenseExpiration(e.target.value)}
+              size="Medium"
+            />
+          </div>
         </div>
         <div>
           <PrimaryButton onClick={createNewBar} text={"Add My Bar"} />

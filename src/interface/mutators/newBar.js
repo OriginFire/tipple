@@ -29,6 +29,13 @@ const newBar = {
       physicalCity: bar.physicalCity,
       physicalState: bar.physicalState,
       physicalZipCode: bar.physicalZipCode,
+      alcoholLicenseNumber: bar.alcoholLicenseNumber,
+      alcoholLicenseIssuingAgency: bar.alcoholLicenseIssuingAgency,
+      alcoholLicenseExpiration: bar.alcoholLicenseExpiration,
+      doesDelivery: bar.doesDelivery,
+      deliveryRadius: bar.deliveryRadius,
+      onlineOrdering: bar.onlineOrdering,
+
     });
     return b;
   },

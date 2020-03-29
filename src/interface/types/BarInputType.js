@@ -4,6 +4,7 @@ import {
   GraphQLString as StringType,
   GraphQLNonNull as NonNull,
 } from 'graphql';
+import {GraphQLBoolean as BooleanType} from "graphql/type/scalars";
 
 const BarInputType = new ObjectType({
   name: 'BarInput',
@@ -17,6 +18,13 @@ const BarInputType = new ObjectType({
     physicalCity: { type: StringType },
     physicalState: { type: StringType },
     physicalZipCode: { type: StringType },
+    alcoholLicenseNumber: { type: StringType },
+    alcoholLicenseIssuingAgency: { type: StringType },
+    alcoholLicenseExpiration: { type: StringType },
+    doesDelivery: { type: StringType },
+    deliveryRadius: { type: StringType },
+    onlineOrdering: { type: StringType },
+
   },
 });
 

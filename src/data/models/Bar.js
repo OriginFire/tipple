@@ -7,7 +7,7 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import DataType from 'sequelize';
+import DataType, {STRING, BOOLEAN, NUMBER} from 'sequelize';
 import Model from '../sequelize';
 
 const Bar = Model.define(
@@ -48,6 +48,30 @@ const Bar = Model.define(
     },
 
     physicalZipCode: {
+      type: DataType.STRING(255),
+    },
+
+    alcoholLicenseNumber: {
+      type: DataType.STRING(255),
+    },
+
+    alcoholLicenseIssuingAgency: {
+      type: DataType.STRING(255),
+    },
+
+    alcoholLicenseExpiration: {
+      type: DataType.STRING(255),
+    },
+
+    doesDelivery: {
+      type: DataType.STRING,
+    },
+
+    deliveryRadius: {
+      type: DataType.STRING(255),
+    },
+
+    onlineOrdering: {
       type: DataType.STRING(255),
     },
 

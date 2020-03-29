@@ -95,12 +95,16 @@
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .list_item_meta {
-    padding: 20px 0;
+    padding: 20px 10px;
+    margin: 25px 15px;
+    background-color: #1e1e1e;
+    border-radius: 3px;
   }
 
   .search_result_list_item {
     color: #eeeeee;
     height: 30px;
+    font-size: 0.9em;
   }
 
   .bar_name {

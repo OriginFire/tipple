@@ -77,9 +77,9 @@
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .search_result_content {
-    width: 45%;
+    width: 55%;
     position: static;
-    margin: 10% 0 0 50%;
+    margin: 10% 4% 0 auto;
     height: 35vh;
     border-radius: 8px;
     opacity: 0.95;
@@ -90,12 +90,41 @@
     margin: 0 0 0 0;
     padding-top: 3%;
     padding-bottom: 0;
-    font-size: .98em;
+    font-size: .94em;
     color: #777777;
   }
 
   .list {
-    margin: 3% 2% 0 6%;
+    margin: 3% 2% 0 2%;
+    padding-bottom: 5%;
+    font-size: 1.3em;
+  }
+
+  .buttons {
+    position: static;
+    margin: 5% auto 0 45%;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .search_result_content {
+    width: 48%;
+    position: static;
+    margin: 80px 3% 0 auto;
+    height: 35vh;
+  }
+
+  .result_explainer {
+    position: relative;
+    margin: 0 0 0 0;
+    padding-top: 3%;
+    padding-bottom: 0;
+    font-size: .96em;
+    color: #777777;
+  }
+
+  .list {
+    margin: 3% 3% 0 3%;
     padding-bottom: 5%;
     font-size: 1.3em;
   }
