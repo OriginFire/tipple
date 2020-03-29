@@ -14,7 +14,7 @@ import Finder from './Finder';
 function action() {
   return {
     chunks: ['finder'],
-    title: [''],
+    title: '',
     component: (
       <Layout>
         <Finder />

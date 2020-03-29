@@ -18,11 +18,36 @@ const Bar = Model.define(
       defaultValue: DataType.UUIDV1,
       primaryKey: true,
     },
-    barId: {
+
+    dbaName: {
       type: DataType.STRING(255),
     },
 
-    contact: {
+    pointOfContact: {
+      type: DataType.STRING(255),
+    },
+
+    emailAddress: {
+      type: DataType.STRING(255),
+    },
+
+    phoneNumber: {
+      type: DataType.STRING(255),
+    },
+
+    physicalStreetAddress: {
+      type: DataType.STRING(255),
+    },
+
+    physicalCity: {
+      type: DataType.STRING(255),
+    },
+
+    physicalState: {
+      type: DataType.STRING(255),
+    },
+
+    physicalZipCode: {
       type: DataType.STRING(255),
     },
 
@@ -31,12 +56,12 @@ const Bar = Model.define(
       // validate: { isEmail: true },
     },
 
-    dbaName: {
+    barId: {
       type: DataType.STRING(255),
     },
   },
   {
-    indexes: [{ fields: ['barId'] }],
+    indexes: [{ fields: ['id'] }],
   },
 );
 

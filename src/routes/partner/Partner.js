@@ -9,9 +9,7 @@
 
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
-import PropTypes from 'prop-types';
 import s from './Partner.scss';
-import FinderForm from '../../components/formComponents/finderForm/FinderForm';
 import PartnerForm from '../../components/formComponents/partnerForm/PartnerForm';
 
 class Partner extends React.Component {

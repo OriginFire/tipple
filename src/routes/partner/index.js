@@ -14,7 +14,7 @@ import Partner from './Partner';
 function action() {
   return {
     chunks: ['partner'],
-    title: [''],
+    title: '',
     component: (
       <Layout>
         <Partner />

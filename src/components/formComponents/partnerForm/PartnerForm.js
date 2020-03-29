@@ -8,11 +8,18 @@ import SecondaryButton from "../../displayComponents/buttonComponents/secondaryB
 import Link from '../../utilityComponents/link/Link';
 
 const CREATE_BAR_MUTATION = `
-  mutation CreateBar($dbaName: String!, $contact: String!) {
-    newBar(bar:{dbaName: $dbaName, contact: $contact}) {
+  mutation CreateBar($dbaName: String!, $pointOfContact: String!, $emailAddress: String!, $phoneNumber: String!, $physicalStreetAddress: String!, $physicalCity: String!, $physicalState: String!, $physicalZipCode: String!) {
+    newBar(bar:{dbaName: $dbaName, pointOfContact: $pointOfContact, emailAddress: $emailAddress, phoneNumber: $phoneNumber, physicalStreetAddress: $physicalStreetAddress, physicalCity: $physicalCity, physicalState: $physicalState, physicalZipCode: $physicalZipCode}) {
       id
       dbaName
-      contact
+      pointOfContact
+      emailAddress
+      phoneNumber
+      physicalStreetAddress
+      physicalCity
+      physicalState
+      physicalZipCode
+
     }
   }
 `;
@@ -23,12 +30,18 @@ const CREATE_BAR_MUTATION = `
 
 function PartnerForm() {
   const [dbaName, setDbaName] = useState('');
-  const [contact, setContact] = useState('');
+  const [pointOfContact, setPointOfContact] = useState('');
+  const [emailAddress, setEmailAddress] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [physicalStreetAddress, setPhysicalStreetAddress] = useState('');
+  const [physicalCity, setPhysicalCity] = useState('');
+  const [physicalState, setPhysicalState] = useState('');
+  const [physicalZipCode, setPhysicalZipCode] = useState('');
 
   const [createBar] = useMutation(CREATE_BAR_MUTATION);
 
   async function createNewBar() {
-    await createBar({ variables: { dbaName, contact } });
+    await createBar({ variables: { dbaName, pointOfContact, emailAddress, phoneNumber, physicalStreetAddress, physicalCity, physicalState, physicalZipCode } });
   }
   return (
     <div className={s.partner_content}>
@@ -43,14 +56,33 @@ function PartnerForm() {
           />
           <FormField
             placeholder="Point of Contact"
-            onChange={e => setContact(e.target.value)}
+            onChange={e => setPointOfContact(e.target.value)}
           />
-          <FormField placeholder="Email Address" />
-          <FormField placeholder="Phone Number" />
-          <FormField placeholder="Street Address" />
-          <FormField placeholder="City" />
-          <FormField placeholder="State" size="Small" />
-          <FormField placeholder="Zip Code" size="Medium" />
+          <FormField
+            placeholder="Email Address"
+            onChange={e => setEmailAddress(e.target.value)}
+          />
+          <FormField
+            placeholder="Phone Number"
+            onChange={e => setPhoneNumber(e.target.value)}
+          />
+          <FormField
+            placeholder="Street Address"
+            onChange={e => setPhysicalStreetAddress(e.target.value)}
+          />
+          <FormField
+            placeholder="City"
+            onChange={e => setPhysicalCity(e.target.value)}
+          />
+          <FormField
+            placeholder="State"
+            onChange={e => setPhysicalState(e.target.value)}
+            size="Small"
+          />
+          <FormField
+            placeholder="Zip Code"
+            onChange={e => setPhysicalZipCode(e.target.value)}
+            size="Medium" />
           <FormField placeholder="Alcohol License #" />
           <FormField placeholder="Issuing Agency" />
           <FormField placeholder="Expires" size="Medium" />

@@ -10,7 +10,13 @@ const BarInputType = new ObjectType({
   fields: {
     barId: { type: StringType },
     dbaName: { type: StringType },
-    contact: { type: StringType },
+    pointOfContact: { type: StringType },
+    emailAddress: { type: StringType },
+    phoneNumber: { type: StringType },
+    physicalStreetAddress: { type: StringType },
+    physicalCity: { type: StringType },
+    physicalState: { type: StringType },
+    physicalZipCode: { type: StringType },
   },
 });
 
