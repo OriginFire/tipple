@@ -9,7 +9,7 @@
 
 import { GraphQLList as List } from 'graphql';
 import BarType from '../types/BarType';
-import Bar from '../models/Bar'
+import Bar from '../../data/models/Bar'
 
 const newBar = {
   type: List(BarType),

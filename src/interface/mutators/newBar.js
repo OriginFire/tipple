@@ -8,7 +8,7 @@
  */
 
 import BarType from '../types/BarType';
-import Bar from '../models/Bar';
+import Bar from '../../data/models/Bar';
 import BarInputType from '../types/BarInputType';
 import {GraphQLString as StringType} from "graphql/type/scalars";
 
