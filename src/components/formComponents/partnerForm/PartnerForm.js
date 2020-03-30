@@ -78,6 +78,8 @@ function PartnerForm() {
   const [deliveryRadius, setDeliveryRadius] = useState('');
   const [onlineOrdering, setOnlineOrdering] = useState('');
 
+  const formStage = 1;
+
   const [createBar] = useMutation(CREATE_BAR_MUTATION);
 
   async function createNewBar() {
@@ -90,60 +92,86 @@ function PartnerForm() {
       </h1>
       <div className={s.partner_form}>
         <div className={s.partner_form_fields}>
-          <div>
-            <FormField
-              placeholder="Business Name"
-              onChange={e => setDbaName(e.target.value)}
-            />
-            <FormField
-              placeholder="Point of Contact"
-              onChange={e => setPointOfContact(e.target.value)}
-            />
-            <FormField
-              placeholder="Email Address"
-              onChange={e => setEmailAddress(e.target.value)}
-            />
-            <FormField
-              placeholder="Phone Number"
-              onChange={e => setPhoneNumber(e.target.value)}
-            />
-          </div>
+          {(() => {
+            switch (formStage) {
+              case 1:
+              <div>
+                 <FormField
+                   placeholder="Business Name"
+                   onChange={e => setDbaName(e.target.value)}
+                 />
+                 <FormField
+                   placeholder="Point of Contact"
+                   onChange={e => setPointOfContact(e.target.value)}
+                 />
+                 <FormField
+                   placeholder="Email Address"
+                   onChange={e => setEmailAddress(e.target.value)}
+                 />
+                 <FormField
+                   placeholder="Phone Number"
+                   onChange={e => setPhoneNumber(e.target.value)}
+                 />
+               </div>;
 
-          <div>
-            <FormField
-              placeholder="Street Address"
-              onChange={e => setPhysicalStreetAddress(e.target.value)}
-            />
-            <FormField
-              placeholder="City"
-              onChange={e => setPhysicalCity(e.target.value)}
-            />
-            <FormField
-              placeholder="State"
-              onChange={e => setPhysicalState(e.target.value)}
-              size="Small"
-            />
-            <FormField
-              placeholder="Zip Code"
-              onChange={e => setPhysicalZipCode(e.target.value)}
-              size="Medium" />
-          </div>
+               case 2: <div>
+                 <FormField
+                   placeholder="Business Name"
+                   onChange={e => setDbaName(e.target.value)}
+                 />
+                 <FormField
+                   placeholder="Point of Contact"
+                   onChange={e => setPointOfContact(e.target.value)}
+                 />
+                 <FormField
+                   placeholder="Email Address"
+                   onChange={e => setEmailAddress(e.target.value)}
+                 />
+                 <FormField
+                   placeholder="Phone Number"
+                   onChange={e => setPhoneNumber(e.target.value)}
+                 />
+               </div>;
 
-          <div>
-            <FormField
-              placeholder="Alcohol License #"
-              onChange={e => setAlcoholLicenseNumber(e.target.value)}
-            />
-            <FormField
-              placeholder="Issuing Agency"
-              onChange={e => setAlcoholLicenseIssuingAgency(e.target.value)}
-            />
-            <FormField
-              placeholder="Expires"
-              onChange={e => setAlcoholLicenseExpiration(e.target.value)}
-              size="Medium"
-            />
-          </div>
+               case 3: <div>
+                 <FormField
+                   placeholder="Street Address"
+                   onChange={e => setPhysicalStreetAddress(e.target.value)}
+                 />
+                 <FormField
+                   placeholder="City"
+                   onChange={e => setPhysicalCity(e.target.value)}
+                 />
+                 <FormField
+                   placeholder="State"
+                   onChange={e => setPhysicalState(e.target.value)}
+                   size="Small"
+                 />
+                 <FormField
+                   placeholder="Zip Code"
+                   onChange={e => setPhysicalZipCode(e.target.value)}
+                   size="Medium"
+                 />
+               </div>;
+
+               case 4:           <div>
+                 <FormField
+                   placeholder="Alcohol License #"
+                   onChange={e => setAlcoholLicenseNumber(e.target.value)}
+                 />
+                 <FormField
+                   placeholder="Issuing Agency"
+                   onChange={e => setAlcoholLicenseIssuingAgency(e.target.value)}
+                 />
+                 <FormField
+                   placeholder="Expires"
+                   onChange={e => setAlcoholLicenseExpiration(e.target.value)}
+                   size="Medium"
+                 />
+               </div>;
+            }
+            })()};
+
         </div>
 
         <div className={s.form_status}>
