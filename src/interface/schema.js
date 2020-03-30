@@ -14,12 +14,14 @@ import {
 
 import newBar from './mutators/newBar'
 import listBars from './queries/listBars'
+import searchBars from './queries/searchBars'
 
 const schema = new Schema({
   query: new ObjectType({
     name: 'Query',
     fields: {
       listBars,
+      searchBars,
     },
   }),
   mutation: new ObjectType({
