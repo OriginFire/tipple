@@ -77,16 +77,18 @@ function PartnerForm() {
   const [doesDelivery, setDoesDelivery] = useState('');
   const [deliveryRadius, setDeliveryRadius] = useState('');
   const [onlineOrdering, setOnlineOrdering] = useState('');
+  const [formStage, setFormStage] = useState(1)
 
-  const formStage = 1;
 
   const [createBar] = useMutation(CREATE_BAR_MUTATION);
 
   async function createNewBar() {
     await createBar({ variables: { dbaName, pointOfContact, emailAddress, phoneNumber, physicalStreetAddress, physicalCity, physicalState, physicalZipCode, alcoholLicenseNumber, alcoholLicenseIssuingAgency, alcoholLicenseExpiration, doesDelivery, deliveryRadius, onlineOrdering } });
   }
+
   return (
-    <div className={s.partner_content}>
+
+  <div className={s.partner_content}>
       <h1 className={s.partner_text}>
         List your cocktail delivery or takeout business on Tipple.
       </h1>
@@ -95,7 +97,7 @@ function PartnerForm() {
           {(() => {
             switch (formStage) {
               case 1:
-              <div>
+              return (<div>
                  <FormField
                    placeholder="Business Name"
                    onChange={e => setDbaName(e.target.value)}
@@ -112,11 +114,13 @@ function PartnerForm() {
                    placeholder="Phone Number"
                    onChange={e => setPhoneNumber(e.target.value)}
                  />
-               </div>;
 
-               case 2: <div>
+              </div>);
+
+               case 2:
+                 return (<div>
                  <FormField
-                   placeholder="Business Name"
+                   placeholder="Don't Confuse me Business Name"
                    onChange={e => setDbaName(e.target.value)}
                  />
                  <FormField
@@ -131,9 +135,10 @@ function PartnerForm() {
                    placeholder="Phone Number"
                    onChange={e => setPhoneNumber(e.target.value)}
                  />
-               </div>;
+               </div>);
 
-               case 3: <div>
+               case 3:
+                 return (<div>
                  <FormField
                    placeholder="Street Address"
                    onChange={e => setPhysicalStreetAddress(e.target.value)}
@@ -152,9 +157,10 @@ function PartnerForm() {
                    onChange={e => setPhysicalZipCode(e.target.value)}
                    size="Medium"
                  />
-               </div>;
+               </div>);
 
-               case 4:           <div>
+               case 4:
+                 return (<div>
                  <FormField
                    placeholder="Alcohol License #"
                    onChange={e => setAlcoholLicenseNumber(e.target.value)}
@@ -168,10 +174,9 @@ function PartnerForm() {
                    onChange={e => setAlcoholLicenseExpiration(e.target.value)}
                    size="Medium"
                  />
-               </div>;
+               </div>);
             }
-            })()};
-
+            })()}
         </div>
 
         <div className={s.form_status}>
@@ -194,7 +199,27 @@ function PartnerForm() {
         </div>
 
         <div>
-          <PrimaryButton onClick={createNewBar} text={"Add My Bar"} />
+          {(() => {
+            switch (formStage) {
+              case 1:
+                return (
+                  <PrimaryButton onClick={e => setFormStage(2)} text={"Next"} />
+          );
+              case 2:
+                return (
+                  <PrimaryButton onClick={e => setFormStage(3)} text={"Next"} />
+                );
+              case 3:
+                return (
+                  <PrimaryButton onClick={e => setFormStage(4)} text={"Next"} />
+                );
+              case 4:
+                return (
+                  <PrimaryButton onClick={e => createNewBar} text={"Add My Bar"} />
+                );
+            }
+          })()}
+          {/*<PrimaryButton onClick={createNewBar} text={"Add My Bar"} />*/}
           <Link to="/">
             <SecondaryButton text={"Return Home"}/>
           </Link>
