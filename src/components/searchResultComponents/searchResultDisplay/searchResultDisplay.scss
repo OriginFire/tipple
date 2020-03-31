@@ -1,4 +1,4 @@
-.search_result_content {
+.search_result_list_display {
   background-color: #121212;
   height: 45vh;
   opacity: 0.98;
@@ -18,6 +18,13 @@
   x-index: 10;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .result_explainer {
     margin: 0 8% 0 2%;
@@ -32,20 +39,22 @@
   }
 
   .buttons {
+    margin-top: 10%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin-top: 10%;
-    font-size: .9em;
-    justify-content: center;
+    justify-content: space-evenly;
   }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
   .search_result_content {
     width: 50%;
+    margin: 12% 0 0 48%;
+  }
+
+  .search_result_list_display {
     position: static;
-    margin: 25vh 0 0 48%;
     height: 55vh;
     border-radius: 6px;
   }
@@ -66,18 +75,21 @@
   }
 
   .buttons {
+    margin-top: 5%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin-top: 0;
-    font-size: .9em;
-    justify-content: flex-end;
+    justify-content: space-evenly;
   }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .search_result_content {
     width: 55%;
+    margin: 12% 0 0 45%;
+  }
+
+  .search_result_list_display {
     position: static;
     margin: 10% 4% 0 auto;
     height: 35vh;
@@ -102,16 +114,25 @@
 
   .buttons {
     position: static;
-    margin: 5% auto 0 45%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
   }
 }
 
 @media only screen and (min-width: 1224px) {
   .search_result_content {
-    width: 48%;
+    width: 55%;
+    margin: 6% 0 0 45%;
+  }
+
+  .search_result_list_display {
     position: static;
-    margin: 80px 3% 0 auto;
+    margin: 0 4% 0 auto;
     height: 35vh;
+    border-radius: 8px;
+    opacity: 0.95;
   }
 
   .result_explainer {
@@ -131,6 +152,9 @@
 
   .buttons {
     position: static;
-    margin: 5% 5% 0 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
   }
 }

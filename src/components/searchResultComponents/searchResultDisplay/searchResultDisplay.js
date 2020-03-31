@@ -9,8 +9,8 @@ import Link from '../../utilityComponents/link/Link';
 class SearchResultDisplay extends React.Component {
   render() {
     return (
-      <div>
-        <div className={s.search_result_content}>
+      <div className={s.search_result_content}>
+        <div className={s.search_result_list_display}>
           <h2 className={s.result_explainer}>
             These bars in your area sell cocktails for delivery or pickup
           </h2>
@@ -19,11 +19,12 @@ class SearchResultDisplay extends React.Component {
           </div>
         </div>
         <div className={s.buttons}>
-          <Link to="/partner" >
-            <PrimaryButton text={"Add A Bar"} />
-          </Link>
           <Link to="/finder" >
             <SecondaryButton text={"Return To Search"}/>
+          </Link>
+
+          <Link to="/partner" >
+            <PrimaryButton text={"Add A Bar"} />
           </Link>
         </div>
       </div>

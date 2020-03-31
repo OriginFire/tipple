@@ -1,6 +1,7 @@
 .explainer {
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 
 .explainer_text {
@@ -28,23 +29,31 @@
 
   .explainer_text {
     position: static;
-    margin: 14% 0 0 45%;
+    margin: 0 0 0 0;
     font-size: 2em;
   }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
+  .explainer {
+    position: static;
+    margin: 0 0 0 0;
+  }
+
   .explainer_text {
     position: static;
-    margin: 10% 5% 0 45%;
     text-align: center;
-    font-size: 2.4em;
+    font-size: 3em;
   }
 }
 
 @media only screen and (min-width: 1224px) {
+  .explainer {
+    position: static;
+    margin: 0 0 0 0;
+  }
+
   .explainer_text {
-    margin: 10% 5% 0 55%;
-    font-size: 3.3em;
+    font-size: 3.8vw;
   }
 }

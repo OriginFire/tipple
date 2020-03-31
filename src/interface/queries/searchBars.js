@@ -23,4 +23,4 @@ const searchBars = {
   },
 };
 
-export default newBar;
+export default searchBars;

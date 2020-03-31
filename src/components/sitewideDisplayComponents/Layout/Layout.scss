@@ -13,6 +13,7 @@
   flex-direction: column;
   position: absolute;
   overflow: auto;
+  background-color: gray;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -69,7 +70,8 @@
   .logo {
     position: absolute;
     max-width: 27vw;
-    margin-left: 4%;
+    margin-left: 2%;
+    margin-top: 2%;
   }
 }
 
@@ -80,11 +82,9 @@
 
   .logo {
     position: relative;
-    width: 70%;
+    width: 30vw;
     max-width: 290px;
-    margin-left: auto;
-    margin-right: 8%;
-    margin-top: 2%;
+    margin: 2% 2% 0 auto;
   }
 }
 

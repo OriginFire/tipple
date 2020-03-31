@@ -8,6 +8,8 @@ class FormField extends React.Component {
   render() {
     const { onChange } = this.props;
     const { placeholder } = this.props;
+    const { type } = this.props;
+    const { pattern } = this.props;
     let { size } = this.props;
     if (size === 'Small') {
       size = s.small_field;
@@ -22,6 +24,9 @@ class FormField extends React.Component {
         className={cx(s.input_field, size)}
         placeholder={placeholder}
         onChange={onChange}
+        type={type}
+        pattern={pattern}
+
       />
     );
   }

@@ -3,6 +3,14 @@
   font-size: 0.9em;
 }
 
-@media only screen and (min-width: 1224px) {
+@media only screen and (min-height: 500px) and (min-width: 768px) {
+  .prompt {
   font-size: 1.1em;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .prompt {
+    font-size: 1.3em;
+  }
 }

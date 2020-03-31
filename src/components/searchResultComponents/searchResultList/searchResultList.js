@@ -26,7 +26,9 @@ const SearchBarsQuery = `
   }
 `
 function SearchResultList() {
-  const { loading, error, data } = useQuery(const SearchBarsQuery)
+
+/**
+  const { loading, error, data } = useQuery(SearchBarsQuery)
 if (loading) return 'Loading...'
 if (error) return 'Something Bad Happened'
 
@@ -46,8 +48,9 @@ if (error) return 'Something Bad Happened'
           </div>
         </div>
 
-
-
+    */
+      return (
+        <div>
         <div className={s.list_item_meta}>
           <div className={s.search_result_list_item}>
             <div className={s.bar_name}>Urbana</div>
@@ -114,7 +117,8 @@ if (error) return 'Something Bad Happened'
         </div>
 
       </div>
-        )}
+        )
+  /** } */
 }
 
 export default withStyles(s)(SearchResultList);

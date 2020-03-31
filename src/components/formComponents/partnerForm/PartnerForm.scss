@@ -9,17 +9,11 @@
   font-family: 'Merriweather Regular';
 }
 
-.partner_form {
-  position: static;
-  margin: auto;
-  width: 95%;
-}
-
 .partner_form_fields {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .form_status {
@@ -37,10 +31,14 @@
   flex-direction: column;
   max-width: 23%;
   height: auto;
+  cursor: pointer;
 }
 
-.status_indicator {
-  font-size: 0.7em;
+.active_status_item {
+  display: flex;
+  flex-direction: column;
+  max-width: 23%;
+  height: auto;
 }
 
 .status_bar {
@@ -50,6 +48,13 @@
   background-color: white;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+  position: static;
+  justify-content: space-evenly;
+}
+
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .partner_content {
     position: static;
@@ -57,84 +62,118 @@
   }
 
   .partner_text {
-    margin: 0% 10% 0 10%;
+    margin: 10% 8% 0 8%;
     font-size: 1.5em;
   }
 
   .partner_form {
-    margin-top: 6vh;
+    margin-top: 4vh;
+  }
+
+  .form_area {
+    height: 110px;
   }
 
   .partner_form_fields {
-    margin-bottom: 4vh;
+    margin: 0 auto 0 auto;
+    width: 90%;
   }
+
+  .form_status {
+    margin: 10vh auto 3vh auto;
+  }
+  .status_indicator {
+    font-size: 0.75em;
+  }
+
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
   .partner_content {
+    width: 55%;
+    margin: 8% 0 0 45%;
     position: static;
-    margin: -8vh 0 0 0;
   }
 
   .partner_text {
-    margin: 12% 10% 0 45%;
     font-size: 1.4em;
   }
 
   .partner_form {
-    width: 60%;
     margin-top: 4vh;
-    margin-right: 2vw;
+  }
+
+  .form_area {
+    height: 160px;
   }
 
   .partner_form_fields {
-    margin-bottom: 0;
+    margin-bottom: 3vh;
+  }
+
+  .form_status {
+    margin-bottom: 1.5vh
+  }
+
+  .status_indicator {
+    font-size: 0.75em;
   }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .partner_content {
+    width: 60%;
     position: static;
-    margin: 0 0 0 0;
+    margin: 14% 0 0 40%;
   }
 
   .partner_text {
     position: static;
-    margin: 10% 5% 0 45%;
-    font-size: 2em;
+    width: 85%;
+    margin: auto;
+    font-size: 2.3em;
   }
 
   .partner_form {
-    width: 55%;
-    margin-top: 7vh;
-    margin-right: 3%;
+    margin: 8vh auto 0 auto;
   }
 
-  .partner_form_fields {
-    margin-bottom: 50px;
-    justify-content: center;
+  .form_status {
+    margin-bottom: 1.5vh
   }
+
+  .status_indicator {
+    font-size: 1em;
+  }
+
 }
 
 @media only screen and (min-width: 1224px) {
   .partner_content {
+    width: 60%;
     position: static;
-    margin: 0 0 0 0;
+    margin: 5% 0 0 40%;
   }
 
   .partner_text {
     position: static;
-    margin: 5% 5% 0 45%;
-    font-size: 2.2em;
+    margin: auto;
+    width: 85%;
+    font-size: 2.3em;
   }
 
   .partner_form {
-    width: 45%;
     margin-top: 7vh;
     margin-right: 3%;
   }
 
   .partner_form_fields {
     margin-bottom: 50px;
+  }
+
+  .buttons {
+    justify-content: space-evenly;
+    margin: auto auto;
+    width: 60%;
   }
 }

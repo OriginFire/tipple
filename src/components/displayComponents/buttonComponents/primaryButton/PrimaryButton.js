@@ -5,7 +5,7 @@ import s from './PrimaryButton.scss';
 
 class PrimaryButton extends React.Component {
   render() {
-    return <button className={s.submit_button} onClick={this.props.onClick}>{this.props.text}</button>;
+    return <button className={s.primary_button} onClick={this.props.onClick}>{this.props.text}</button>;
   }
 }
 

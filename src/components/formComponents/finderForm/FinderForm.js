@@ -23,12 +23,13 @@ class FinderForm extends React.Component {
             <FormField placeholder="State" size="Small" />
             <FormField placeholder="Zip Code" size="Medium" />
           </div>
-          <div>
-            <Link to="search-results">
-              <PrimaryButton text={"Find Cocktail Bars"} />
-            </Link>
+          <div className={s.buttons}>
             <Link to="/">
               <SecondaryButton text={"Return Home"}/>
+            </Link>
+
+            <Link to="search-results">
+              <PrimaryButton text={"Find Cocktail Bars"} />
             </Link>
           </div>
         </div>
