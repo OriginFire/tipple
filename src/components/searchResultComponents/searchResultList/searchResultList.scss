@@ -133,3 +133,44 @@
     text-align: center;
   }
 }
+
+@media only screen and (min-height: 500px) and (min-width: 1224px) {
+  .list_item_meta {
+    padding: 20px 10px;
+    margin: 25px 15px;
+    background-color: #1e1e1e;
+    border-radius: 3px;
+  }
+
+  .search_result_list_item {
+    color: #eeeeee;
+    height: 30px;
+    font-size: 0.9em;
+  }
+
+  .bar_name {
+    font-size: 1.05em;
+    width: 30%;
+  }
+
+  .distance {
+    font-size: 0.75em;
+    text-align: center;
+  }
+
+  .sale_options {
+    width: 30%;
+    height: 30px;
+    justify-content: center;
+  }
+
+  .order_link {
+    font-size: 0.8em;
+    text-align: center;
+  }
+
+  .availability {
+    font-size: 0.7em;
+    text-align: center;
+  }
+}

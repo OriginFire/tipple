@@ -14,6 +14,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .form_status {
@@ -29,16 +30,16 @@
 .status_item {
   display: flex;
   flex-direction: column;
-  max-width: 23%;
   height: auto;
   cursor: pointer;
+  max-width: 23%;
 }
 
 .active_status_item {
   display: flex;
   flex-direction: column;
-  max-width: 23%;
   height: auto;
+  max-width: 23%;
 }
 
 .status_bar {
@@ -136,44 +137,49 @@
 
   .partner_form {
     margin: 8vh auto 0 auto;
+    height: 200px;
+  }
+
+  .form_area {
+    height: 200px;
   }
 
   .form_status {
-    margin-bottom: 1.5vh
+    margin: 2vh auto 3vh auto;
   }
 
   .status_indicator {
-    font-size: 1em;
+    font-size: 1.1em;
   }
 
 }
 
 @media only screen and (min-width: 1224px) {
   .partner_content {
-    width: 60%;
+    width: 625px;
     position: static;
-    margin: 5% 0 0 40%;
+    margin: 100px auto 0 50%;
   }
 
   .partner_text {
     position: static;
-    margin: auto;
-    width: 85%;
-    font-size: 2.3em;
+    font-size: 2.6em;
   }
 
   .partner_form {
-    margin-top: 7vh;
-    margin-right: 3%;
+    margin: 7vh auto 0 auto;
   }
 
   .partner_form_fields {
     margin-bottom: 50px;
   }
 
+  .status_indicator {
+    font-size: 1.2em;
+  }
+
   .buttons {
     justify-content: space-evenly;
     margin: auto auto;
-    width: 60%;
   }
 }
