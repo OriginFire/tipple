@@ -23,25 +23,50 @@
 .logo {
   max-width: 50%;
   display: block;
-  margin-right: auto;
 }
 
 @font-face {
-  font-family: 'Merriweather Regular';
+  font-family: 'Freight Sans Light';
   font-style: normal;
   font-weight: normal;
   src:
-    local('Merriwweather Regular'),
-    url(fonts/Merriweather-Regular.otf) format('otf');
+    local('Freight Sans Light'),
+    url(fonts/freight-sans-light.woff) format('woff');
 }
 
 @font-face {
-  font-family: 'Merriweather Light';
+  font-family: 'Freight Sans Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Freight Sans Medium'),
+  url(fonts/freight-sans-medium.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Freight Sans Black';
   font-style: normal;
   font-weight: normal;
   src:
-    local('Merriwweather Light'),
-    url(fonts/Merriweather-Light.otf) format('otf');
+    local('Freight Sans Black'),
+    url(fonts/freight-sans-black.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Freight Sans Bold';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local('Freight Sans Bold'),
+    url(fonts/freight-sans-bold.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Guardian Regular Sans';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local('Guardian Regular Sans'),
+    url(fonts/guardian-reg-sans.woff) format('woff');
 }
 
 @font-face {
@@ -53,11 +78,59 @@
     url(fonts/avenir-next-regular.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'Avenir Book';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local('Avenir Book'),
+    url(fonts/avenir-book.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Avenir Medium';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local('Avenir Medium'),
+    url(fonts/avenir-medium.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Avenir Black';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local('Avenir Black'),
+    url(fonts/avenir-black.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Plantin Bold';
+  font-style: normal;
+  font-weight: 700;
+  src:
+    local('Plantin-Bold'),
+    url(./fonts/Plantin-Bold.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: 'Lato Regular';
+  font-style: normal;
+  src:
+    local('Lato-Regular'),
+    url(./fonts/Lato-Regular.woff) format('woff');
+}
+
 /** Smartphone */
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .app {
-    background-image: url('../../../../public/GoldenDark.jpg');
+    background-image: url('../../../../public/LevitationSmall.png');
     background-position: center;
+  }
+
+  .logo {
+    margin: 35% 2% 0 auto;
   }
 }
 

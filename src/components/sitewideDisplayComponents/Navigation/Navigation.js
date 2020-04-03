@@ -11,7 +11,7 @@ import useStyles from 'isomorphic-style-loader/useStyles';
 import React from 'react';
 import cx from 'classnames';
 import s from './Navigation.css';
-import Link from '../../utilityComponents/link';
+import Link from '../../utilityComponents/link/Link';
 
 export default function Navigation() {
   useStyles(s);

@@ -1,37 +1,37 @@
 .primary_button {
-  font-family: 'Merriweather Light';
-  border-radius: 4px;
+  font-family: 'Lato Regular';
   transition: 0.3s;
+  word-spacing: 2px;
+  border-radius: 3px;
   border: none;
-  padding: 1vh 2vh;
   font-size: 2.35vh;
-  background-color: #b80000;
-  color: #fcfcfc;
+  background-color: #600;
+  color: #e5e5e5;
 }
 
 .primary_button:hover {
-  background-color: #600;
+  background-color: #b80000;
   cursor: pointer;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .primary_button {
-    font-size: 1em;
-    padding: 10px 15px;
+    font-size: 0.9em;
+    padding: 1.5vh 2.5vh;
   }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
   .primary_button {
-    font-size: 1.1em;
+    font-size: 0.9em;
     padding: 10px 15px;
   }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .primary_button {
-    font-size: 1.4em;
-    padding: 12px 18px;
+    font-size: 1.2em;
+    padding: 1.5vh 2.5vh;
   }
 }
 

@@ -64,7 +64,7 @@ const routes = {
   ],
 
   async action({ next }) {
-    // Execute each child route until one of them return the result
+    // Execute each child route until one of them returns the result
     const route = await next();
 
     // Provide default values for title, description etc.
