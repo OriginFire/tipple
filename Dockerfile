@@ -1,16 +1,16 @@
-FROM node:8.16.2-alpine
+FROM node:12.16.1-alpine3.9
 
 # Set a working directory
 WORKDIR /usr/src/app
 
-COPY ./build/package.json .
-COPY ./build/yarn.lock .
+COPY ./package.json .
+COPY ./yarn.lock .
 
 # Install Node.js dependencies
-RUN yarn install --production --no-progress
-
+RUN yarn 
+COPY . .
 # Copy application files
-COPY ./build .
+RUN yarn run build --release --verbose 
 
 # Set permissions for "node" user
 RUN chown -R node:node /usr/src/app
@@ -22,4 +22,4 @@ USER node
 # Set NODE_ENV env variable to "production" for faster expressjs
 ENV NODE_ENV production
 
-CMD [ "node", "server.js" ]
+CMD [ "node", "build/server.js" ]
