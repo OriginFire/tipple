@@ -8,12 +8,11 @@
  */
 
 import React from 'react';
-import Layout from '../../components/sitewideDisplayComponents/Layout';
 import Partner from './Partner';
+import Layout from '../../components/sitewideDisplayComponents/Layout';
 
 function action() {
   return {
-    chunks: ['partner'],
     title: '',
     component: (
       <Layout>

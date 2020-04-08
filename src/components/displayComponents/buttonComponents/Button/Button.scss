@@ -1,10 +1,13 @@
-.primary_button {
+.button {
   font-family: 'Lato Regular';
   transition: 0.3s;
   word-spacing: 2px;
   border-radius: 3px;
   border: none;
   font-size: 2.35vh;
+}
+
+.primary_button {
   background-color: #600;
   color: #e5e5e5;
 }
@@ -14,30 +17,44 @@
   cursor: pointer;
 }
 
+.secondary_button {
+background-color: #251e1f;
+color: #e5e5e5;
+}
+
+.secondary_button:hover {
+  background-color: #616161;
+  cursor: pointer;
+}
+
 @media only screen and (orientation: portrait) and (min-width: 320px) {
-  .primary_button {
-    font-size: 0.9em;
-    padding: 1.5vh 2.5vh;
+  .button {
+    font-size: 1em;
+    padding: 1.5vh 0;
+    width: 85%;
+    margin: 4px auto;
   }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
-  .primary_button {
+  .button {
     font-size: 0.9em;
     padding: 10px 15px;
   }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .primary_button {
-    font-size: 1.2em;
-    padding: 1.5vh 2.5vh;
+  .button {
+    font-size: 1.1em;
+    padding: 1.2vh 2vh;
+    margin: 4px auto;
+    width: 85%;
   }
 }
 
 @media only screen and (min-width: 1224px) {
-  .primary_button {
-    font-size: 1.4em;
+  .button {
+    font-size: 1.1em;
     padding: 15px 20px;
   }
 }

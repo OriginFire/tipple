@@ -4,7 +4,7 @@
 
 .search_result_list_item {
   color: white;
-  font-family: "Merriweather Light";
+  font-family: "Lato Regular";
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -28,7 +28,8 @@
 }
 
 .bar_name {
-  font-family: "Merriweather Regular";
+  font-family: "Plantin Bold";
+  text-align: center;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {

@@ -1,16 +1,20 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
-import PropTypes from 'prop-types';
 import s from './Home.scss';
-import LandingText from '../../components/displayComponents/landingText/LandingText';
-import LandingButtons from '../../components/displayComponents/buttonComponents/landingButtons/LandingButtons';
+import SplashComponent from "../../components/displayComponents/splashComponents/allSizeSplash/allSizeSplash";
+import HomepageImage from '../../../public/LevitationAspecgt.JPG';
+import HomepageContent from '../../components/displayComponents/buttonComponents/homepageContent/HomepageContent';
 
 class Home extends React.Component {
   render() {
     return (
       <div className={s.landing_content}>
-        <LandingText />
-        <LandingButtons />
+        <SplashComponent
+          image={HomepageImage}
+          first_line={"Mixology in a bottle."}
+          second_line={"Crafted by local bars."}
+        />
+        <HomepageContent />
       </div>
     );
   }

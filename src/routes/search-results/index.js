@@ -4,7 +4,6 @@ import SearchResults from './SearchResults';
 
 function action() {
   return {
-    chunks: ['search-results'],
     title: [''],
     component: (
       <Layout>

@@ -14,9 +14,7 @@ import PropTypes from 'prop-types';
 // external-global styles must be imported in your JS.
 import normalizeCss from 'normalize.css';
 import s from './Layout.scss';
-import logoUrl from '../../../../public/Tipple White+Clear Full.png';
-import Footer from '../Footer';
-import Link from '../../utilityComponents/link/Link';
+import Header from '../Header/Header';
 
 class Layout extends React.Component {
   static propTypes = {
@@ -26,9 +24,7 @@ class Layout extends React.Component {
   render() {
     return (
       <div className={s.app}>
-        <Link to="/">
-          <img className={s.logo} src={logoUrl} />
-        </Link>
+        <Header />
         <div className={s.mainBody}>{this.props.children}</div>
       </div>
     );

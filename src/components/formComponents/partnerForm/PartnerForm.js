@@ -4,9 +4,7 @@ import { useMutation } from 'graphql-hooks';
 import cx from 'classnames';
 import s from './PartnerForm.scss';
 import FormField from '../formField/FormField';
-import PrimaryButton from '../../displayComponents/buttonComponents/primaryButton/PrimaryButton';
-import SecondaryButton from '../../displayComponents/buttonComponents/secondaryButton/SecondaryButton';
-import TertiaryButton from '../../displayComponents/buttonComponents/tertiaryButton/TertiaryButton';
+import Button from '../../displayComponents/buttonComponents/Button/Button';
 import Link from '../../utilityComponents/link/Link';
 
 const CREATE_BAR_MUTATION = `
@@ -67,7 +65,10 @@ function PartnerForm() {
   const [dbaName, setDbaName] = useState('');
   const [pointOfContact, setPointOfContact] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
+  const [password, setPassword] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [entityName, setEntityName] = useState('');
+  const [physicalAddress, setPhysicalAddress] = useState('');
   const [physicalStreetAddress, setPhysicalStreetAddress] = useState('');
   const [physicalCity, setPhysicalCity] = useState('');
   const [physicalState, setPhysicalState] = useState('');
@@ -119,62 +120,62 @@ function PartnerForm() {
             switch (formStage) {
               case 1:
                 return (
-                  <div className={s.partner_form_fields}>
+                  <form className={s.partner_form_fields}>
                     <FormField
                       placeholder="Full Name"
                       onChange={e => setPointOfContact(e.target.value)}
+                      type="text"
+                      value={pointOfContact}
                     />
                     <FormField
                       placeholder="Email Address"
                       onChange={e => setEmailAddress(e.target.value)}
+                      type="email"
+                      value={emailAddress}
                     />
                     <FormField
                       placeholder="Password"
-                      onChange={e => setEmailAddress(e.target.value)}
+                      onChange={e => setPassword(e.target.value)}
                       type="password"
+                      value={password}
                     />
                     <FormField
                       placeholder="Phone Number"
                       onChange={e => setPhoneNumber(e.target.value)}
                       type="tel"
+                      value={phoneNumber}
                       pattern="([0-9]{3})-[0-9]{3}-[0-9]{4}"
                     />
-                  </div>
+                  </form>
                 );
 
               case 2:
                 return (
-                  <div className={s.partner_form_fields}>
+                  <form className={s.partner_form_fields}>
                     <FormField
                       placeholder="Bar Name (D.B.A.)"
                       onChange={e => setDbaName(e.target.value)}
+                      type="text"
+                      value={dbaName}
                     />
                     <FormField
                       placeholder="Entity Name"
-                      onChange={e => setDbaName(e.target.value)}
+                      onChange={e => setEntityName(e.target.value)}
+                      type="text"
+                      value={entityName}
                     />
                     <FormField
-                      placeholder="Street Address"
-                      onChange={e => setPointOfContact(e.target.value)}
+                      placeholder="Address of Venue"
+                      onChange={e => setPhysicalAddress(e.target.value)}
+                      type="text"
+                      value={physicalAddress}
                     />
-                    <FormField
-                      placeholder="City"
-                      onChange={e => setEmailAddress(e.target.value)}
-                    />
-                    <FormField
-                      placeholder="State"
-                      onChange={e => setPhoneNumber(e.target.value)}
-                    />
-                    <FormField
-                      placeholder="Zip Code"
-                      onChange={e => setPhoneNumber(e.target.value)}
-                    />
-                  </div>
+                  </form>
                 );
 
               case 3:
                 return (
-                  <div className={s.partner_form_fields}>
+                  <form className={s.partner_form_fields}>
                     <FormField
                       placeholder="Alcohol License #"
                       onChange={e => setAlcoholLicenseNumber(e.target.value)}
@@ -191,12 +192,12 @@ function PartnerForm() {
                         setAlcoholLicenseExpiration(e.target.value)
                       }
                     />
-                  </div>
+                  </form>
                 );
 
               case 4:
                 return (
-                  <div className={s.partner_form_fields}>
+                  <form className={s.partner_form_fields}>
                     <FormField
                       placeholder="Delivery"
                       onChange={e => setAlcoholLicenseNumber(e.target.value)}
@@ -208,12 +209,12 @@ function PartnerForm() {
                       }
                     />
                     <FormField
-                      placeholder="Online Ordering Site (if any)"
+                      placeholder="Online Store (if any)"
                       onChange={e =>
                         setAlcoholLicenseExpiration(e.target.value)
                       }
                     />
-                  </div>
+                  </form>
                 );
             }
           })()}
@@ -305,26 +306,26 @@ function PartnerForm() {
               case 1:
                 return (
                   <Link to="/">
-                    <SecondaryButton text="Return Home" />
+                    <Button type={"Secondary"} text="Return Home" />
                   </Link>
                 );
               case 2:
                 return (
-                  <SecondaryButton
+                  <Button type={"Secondary"}
                     onClick={e => setFormStage(1)}
                     text="Go Back"
                   />
                 );
               case 3:
                 return (
-                  <SecondaryButton
+                  <Button type={"Secondary"}
                     onClick={e => setFormStage(2)}
                     text="Go Back"
                   />
                 );
               case 4:
                 return (
-                  <SecondaryButton onClick={e => setFormStage(3)} text="Go Back"/>
+                  <Button type={"Secondary"} onClick={e => setFormStage(3)} text="Go Back"/>
                 );
             }
           })()}
@@ -333,19 +334,19 @@ function PartnerForm() {
             switch (formStage) {
               case 1:
                 return (
-                  <PrimaryButton onClick={e => setFormStage(2)} text="Next" />
+                  <Button type={"Primary"} onClick={e => setFormStage(2)} text="Next" />
                 );
               case 2:
                 return (
-                  <PrimaryButton onClick={e => setFormStage(3)} text="Next" />
+                  <Button type={"Primary"} onClick={e => setFormStage(3)} text="Next" />
                 );
               case 3:
                 return (
-                  <PrimaryButton onClick={e => setFormStage(4)} text="Next" />
+                  <Button type={"Primary"} onClick={e => setFormStage(4)} text="Next" />
                 );
               case 4:
                 return (
-                  <PrimaryButton
+                  <Button type={"Primary"}
                     onClick={e => createNewBar}
                     text="Add My Bar"
                   />

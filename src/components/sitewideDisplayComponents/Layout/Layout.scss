@@ -13,16 +13,11 @@
   flex-direction: column;
   position: absolute;
   overflow: auto;
-  background-color: gray;
+  background-color: #0b0b0b;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-
-.logo {
-  max-width: 50%;
-  display: block;
 }
 
 @font-face {
@@ -44,48 +39,13 @@
 
 /** Smartphone */
 @media only screen and (orientation: portrait) and (min-width: 320px) {
-  .app {
-    background-image: url('../../../../public/LevitationSmall.png');
-    background-position: center;
-  }
-
-  .logo {
-    margin: 35% 2% 0 auto;
-  }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
-  .app {
-    background-image: url('../../../../public/LevitationAspecgt.JPG');
-    background-position: center;
-  }
-
-  .logo {
-    position: absolute;
-    max-width: 27vw;
-    margin-left: 2%;
-    margin-top: 2%;
-  }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .app {
-    background-image: url('../../../../public/LevitationAspecgt.JPG');
-  }
-
-  .logo {
-    position: relative;
-    width: 30vw;
-    max-width: 290px;
-    margin: 2% 2% 0 auto;
-  }
 }
 
 @media only screen and (min-width: 1224px) {
-  .logo {
-    max-width: 380px;
-    margin-left: auto;
-    margin-right: 50px;
-    margin-top: 20px;
-  }
 }

@@ -51,7 +51,7 @@
 
 .buttons {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: static;
   justify-content: space-evenly;
 }
@@ -59,20 +59,20 @@
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .partner_content {
     position: static;
-    margin: 2vh 0 0 0;
+    margin: 0 0 0 0;
   }
 
   .partner_text {
-    margin: 10% 8% 0 8%;
-    font-size: 1.5em;
+    margin: 3% 8% 0 8%;
+    font-size: 1.3em;
   }
 
   .partner_form {
-    margin-top: 4vh;
+    margin-top: 2vh;
   }
 
   .form_area {
-    height: 110px;
+    min-height: 32vh;
   }
 
   .partner_form_fields {
@@ -91,21 +91,22 @@
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
   .partner_content {
-    width: 55%;
-    margin: 8% 0 0 45%;
     position: static;
+    margin: 3% auto 0 auto;
+    width: 90%;
   }
 
   .partner_text {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
 
   .partner_form {
     margin-top: 4vh;
+    padding: 0 10%;
   }
 
   .form_area {
-    height: 160px;
+    height: 100px;
   }
 
   .partner_form_fields {
@@ -113,35 +114,56 @@
   }
 
   .form_status {
-    margin-bottom: 1.5vh
+    margin-bottom: 5vh
   }
 
   .status_indicator {
     font-size: 0.75em;
   }
+
+  .buttons {
+    flex-direction: row;
+  }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .partner_content {
-    width: 60%;
     position: static;
-    margin: 14% 0 0 40%;
+    width: 100%;
+    height: 100%;
+    margin: 0 0 0 0;
+    padding: 0;
+    background-image: url("../../../../public/LevitationAspecgt.JPG");
+    background-size: cover;
+    background-position: 50%, 0%;
   }
 
   .partner_text {
-    position: static;
-    width: 85%;
-    margin: auto;
-    font-size: 2.3em;
+    position: absolute;
+    width: 57%;
+    margin: 0;
+    top: 32vh;
+    right: 1vw;
+    font-size: 2em;
   }
 
   .partner_form {
-    margin: 8vh auto 0 auto;
-    height: 200px;
+    position: absolute;
+    width: 60%;
+    margin: 0 0 0 0;
+    padding: 0;
+    min-height: 200px;
+    top: 40vh;
+    right: .1vw
   }
 
   .form_area {
-    height: 200px;
+    min-height: 32vh;
+  }
+
+  .partner_form_fields {
+    margin-bottom: 3vh;
+    width: 100%;
   }
 
   .form_status {
@@ -152,34 +174,50 @@
     font-size: 1.1em;
   }
 
+  .buttons {
+    flex-direction: column;
+  }
+
 }
 
 @media only screen and (min-width: 1224px) {
   .partner_content {
-    width: 625px;
+    width: 100%;
+    height: 100%;
     position: static;
-    margin: 100px auto 0 50%;
+    margin: 0 0 0 0;
+    background-image: url("../../../../public/LevitationAspecgt.JPG");
+    background-size: cover;
+    background-position: 50%, 0%;
   }
 
   .partner_text {
-    position: static;
-    font-size: 2.6em;
+    position: absolute;
+    width: 57%;
+    margin: 0;
+    top: 32vh;
+    right: 1vw;
+    font-size: 2em;
   }
 
-  .partner_form {
-    margin: 7vh auto 0 auto;
+  .form_area {
+    min-height: 32vh;
   }
 
   .partner_form_fields {
-    margin-bottom: 50px;
+    margin-bottom: 3vh;
+    width: 100%;
+  }
+
+  .form_status {
+    margin: 2vh auto 3vh auto;
   }
 
   .status_indicator {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 
   .buttons {
-    justify-content: space-evenly;
-    margin: auto auto;
+    flex-direction: column;
   }
 }

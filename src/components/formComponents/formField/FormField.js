@@ -9,7 +9,10 @@ class FormField extends React.Component {
     const { onChange } = this.props;
     const { placeholder } = this.props;
     const { type } = this.props;
+    const { value } = this.props;
+    const { id } = this.props;
     const { pattern } = this.props;
+    const { icon } = this.props;
     let { size } = this.props;
     if (size === 'Small') {
       size = s.small_field;
@@ -17,17 +20,20 @@ class FormField extends React.Component {
       size = s.medium_field;
     } else if (size === 'Large') {
       size = s.large_field;
-    }
+    };
 
     return (
-      <input
-        className={cx(s.input_field, size)}
-        placeholder={placeholder}
-        onChange={onChange}
-        type={type}
-        pattern={pattern}
-
-      />
+      <div className={s.field} >
+        <input
+          className={cx(s.input_field, size)}
+          onChange={onChange}
+          type={type}
+          value={value}
+          required
+          pattern={pattern}
+        />
+        <span className={s.placeholder}>{placeholder}</span>
+      </div>
     );
   }
 }

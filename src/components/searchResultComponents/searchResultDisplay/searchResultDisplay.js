@@ -2,8 +2,7 @@ import React from 'react';
 import withStyles from "isomorphic-style-loader/withStyles";
 import s from './searchResultDisplay.scss';
 import SearchResultList from "../searchResultList/searchResultList";
-import PrimaryButton from "../../displayComponents/buttonComponents/primaryButton/PrimaryButton";
-import SecondaryButton from "../../displayComponents/buttonComponents/secondaryButton/SecondaryButton";
+import Button from "../../displayComponents/buttonComponents/Button/Button";
 import Link from '../../utilityComponents/link/Link';
 
 class SearchResultDisplay extends React.Component {
@@ -19,12 +18,12 @@ class SearchResultDisplay extends React.Component {
           </div>
         </div>
         <div className={s.buttons}>
-          <Link to="/finder" >
-            <SecondaryButton text={"Return To Search"}/>
+          <Link to="/" >
+            <Button type={"Secondary"} text={"Return Home"}/>
           </Link>
 
           <Link to="/partner" >
-            <PrimaryButton text={"Add A Bar"} />
+            <Button type={"Primary"} text={"Add A Bar"} />
           </Link>
         </div>
       </div>
