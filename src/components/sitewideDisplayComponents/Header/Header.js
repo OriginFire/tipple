@@ -9,33 +9,21 @@
 
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
-import s from './Header.css';
-import Link from '../../utilityComponents/link';
-import Navigation from '../Navigation';
-import logoUrl from './logo-small.png';
-import logoUrl2x from './logo-small@2x.png';
+import PropTypes from 'prop-types';
+import s from './Header.scss';
+import Link from '../../utilityComponents/link/Link';
+import Logo from '../../../../public/Tipple_WoC_Reduced.png';
 
-export default function Header() {
-  withStyles(s);
-  return (
-    <div className={s.root}>
+class Header extends React.Component {
+  render() {
+    return (
       <div className={s.container}>
-        <Navigation />
         <Link className={s.brand} to="/">
-          <img
-            src={logoUrl}
-            srcSet={`${logoUrl2x} 2x`}
-            width="38"
-            height="38"
-            alt="React"
-          />
-          <span className={s.brandTxt}>Your Company</span>
+          <img src={Logo} className={s.logo} alt="Tipple Supply Co" />
         </Link>
-        <div className={s.banner}>
-          <h1 className={s.bannerTitle}>React</h1>
-          <p className={s.bannerDesc}>Complex web apps made easy</p>
-        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+export default withStyles(s)(Header);

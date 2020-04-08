@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import s from './FinderForm.scss';
 import FormField from '../formField/FormField';
 import FormPrompt from '../formPrompt/FormPrompt';
-import PrimaryButton from "../../displayComponents/buttonComponents/primaryButton/PrimaryButton";
-import SecondaryButton from "../../displayComponents/buttonComponents/secondaryButton/SecondaryButton";
+import Button from "../../displayComponents/buttonComponents/Button/Button";
 import Link from '../../utilityComponents/link/Link';
 
 class FinderForm extends React.Component {
@@ -25,11 +24,11 @@ class FinderForm extends React.Component {
           </div>
           <div className={s.buttons}>
             <Link to="/">
-              <SecondaryButton text={"Return Home"}/>
+              <Button type={"Secondary"} text={"Return Home"}/>
             </Link>
 
             <Link to="search-results">
-              <PrimaryButton text={"Find Cocktail Bars"} />
+              <Button type={"Primary"} text={"Find Cocktail Bars"} />
             </Link>
           </div>
         </div>

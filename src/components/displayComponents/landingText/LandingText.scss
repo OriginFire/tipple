@@ -11,13 +11,14 @@
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .explainer {
-    position: static;
-    margin: 4vh 20px 0 auto;
-    width: 50%;
+    position: absolute;
+    margin: 0 auto 0 auto;
+    width: 100%;
   }
 
   .explainer_text {
-    font-size: 3.6vh;
+    font-size: 35px;
+    padding: 0 10px;
   }
 }
 

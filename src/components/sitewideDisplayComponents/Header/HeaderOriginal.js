@@ -9,7 +9,7 @@
 
 import useStyles from 'isomorphic-style-loader/useStyles';
 import React from 'react';
-import s from './Header.css';
+import s from './Header.scss';
 import Link from '../../utilityComponents/link';
 import Navigation from '../Navigation';
 import logoUrl from './logo-small.png';
