@@ -129,13 +129,13 @@
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .partner_content {
     position: static;
-    width: 100%;
-    height: 100%;
+    height: 91vh;
     margin: 0 0 0 0;
     padding: 0;
-    background-image: url("../../../../public/LevitationAspecgt.JPG");
+    background-image: url('../../../../public/OldFashioned.png');
+    background-repeat: no-repeat;
     background-size: cover;
-    background-position: 50%, 0%;
+    background-position: 50%, 0;
   }
 
   .partner_text {
@@ -154,7 +154,7 @@
     padding: 0;
     min-height: 200px;
     top: 40vh;
-    right: .1vw
+    right: .1vw;
   }
 
   .form_area {
@@ -182,13 +182,13 @@
 
 @media only screen and (min-width: 1224px) {
   .partner_content {
-    width: 100%;
-    height: 100%;
+    height: 91vh;
     position: static;
     margin: 0 0 0 0;
-    background-image: url("../../../../public/LevitationAspecgt.JPG");
+    background-image: url("../../../../public/LevitationAspect.JPG");
     background-size: cover;
-    background-position: 50%, 0%;
+    -webkit-background-size: cover;
+    background-position: 50%, 0;
   }
 
   .partner_text {

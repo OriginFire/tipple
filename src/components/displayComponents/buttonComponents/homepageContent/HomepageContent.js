@@ -5,6 +5,7 @@ import s from './HomepageContent.scss';
 import Link from '../../../utilityComponents/link';
 import Button from '../Button';
 import FormField from "../../../formComponents/formField";
+import AddressFormField from "../../../formComponents/addressFormField/AddressFormField";
 
 class HomepageContent extends React.Component {
   render() {
@@ -13,6 +14,7 @@ class HomepageContent extends React.Component {
         <div className={s.finder_content}>
           <h2 className={s.explainer}>Looking for craft cocktails from nearby bars?</h2>
           <FormField type={"text"} className={s.user_address} placeholder="Your Current Address" />
+          <AddressFormField />
           <Link to="/search-results">
             <Button type={"Primary"} text={"Browse Cocktails"} />
           </Link>
