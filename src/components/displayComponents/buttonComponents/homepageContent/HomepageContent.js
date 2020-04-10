@@ -13,8 +13,9 @@ class HomepageContent extends React.Component {
       <div className={s.homepage_content}>
         <div className={s.finder_content}>
           <h2 className={s.explainer}>Looking for craft cocktails from nearby bars?</h2>
-          <FormField type={"text"} className={s.user_address} placeholder="Your Current Address" />
-          <AddressFormField />
+          <AddressFormField
+            placeholder="Your Current Address"
+          />
           <Link to="/search-results">
             <Button type={"Primary"} text={"Browse Cocktails"} />
           </Link>

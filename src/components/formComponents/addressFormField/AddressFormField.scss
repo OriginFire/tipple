@@ -28,6 +28,22 @@
   transition: 0.2s ease all;
 }
 
+.suggestion_container {
+  background-color: white;
+  position: absolute;
+  width: 90%;
+}
+
+.suggestion {
+  color: black;
+  text-align: left;
+  padding: 10px 0 10px 15px;
+}
+
+.active_suggestion {
+  background-color: #ffe3df;
+}
+
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .field {
     width: 100%;
