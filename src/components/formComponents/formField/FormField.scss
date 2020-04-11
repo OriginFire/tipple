@@ -2,14 +2,6 @@
   position: relative;
 }
 
-.input_field:focus ~ .placeholder,
-.input_field:valid ~ .placeholder {
-  top: 15%;
-  left: 10%;
-  font-size: 10px;
-  opacity: 1;
-}
-
 .input_field {
   border: 1px solid white;
   border-radius: 1px;
@@ -26,6 +18,21 @@
   left: 10%;
   top: 33%;
   transition: 0.2s ease all;
+}
+
+.input_field:focus ~ .placeholder {
+  top: 15%;
+  left: 10%;
+  font-size: 10px;
+  opacity: 1;
+}
+
+.input_field:not([value=""]):not(:focus):invalid ~ .placeholder {
+  top: 15%;
+  left: 10%;
+  font-size: 10px;
+  color: red;
+  opacity: 1;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {

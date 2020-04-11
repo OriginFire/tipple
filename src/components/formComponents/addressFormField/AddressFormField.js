@@ -1,10 +1,13 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import cx from 'classnames';
 import s from './AddressFormField.scss';
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import { geocodeByAddress, getLatLng} from "react-google-places-autocomplete";
 
 class AddressFormField extends React.Component {
+
+
   render() {
     const { placeholder } = this.props;
     const activeSuggestion = this.state;
