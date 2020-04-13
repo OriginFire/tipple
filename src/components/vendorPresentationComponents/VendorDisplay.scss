@@ -1,3 +1,5 @@
+@import '../../components/variables.css';
+
 .search_result_list_display {
   background-color: #121212;
   opacity: 0.98;
@@ -170,7 +172,7 @@
     height: 100%;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    background-image: url("../../../../public/LevitationAspecgt.JPG");
+    background-image: url("../../../public/LevitationAspecgt.JPG");
     background-size: cover;
     background-position: 50%, 0%;
   }
@@ -233,7 +235,7 @@
     height: 100%;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    background-image: url("../../../../public/LevitationAspecgt.JPG");
+    background-image: url("../../../public/LevitationAspecgt.JPG");
     background-size: cover;
     background-position: 60%, 0%;
   }

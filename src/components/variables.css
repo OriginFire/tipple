@@ -30,6 +30,10 @@
   --screen-lg-min: 1200px; /* Large screen / wide desktop */
 }
 
+a {
+  text-decoration: none;
+}
+
 input {
   font-family: 'Plantin Bold';
 }

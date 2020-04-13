@@ -44,6 +44,10 @@ const routes = {
       load: () => import(/* webpackChunkName: 'register' */ './partner'),
     },
     {
+      path: '/vendor/:id',
+      load: () => import(/* webpackChunkName: 'register' */ './vendor'),
+    },
+    {
       path: '/about',
       load: () => import(/* webpackChunkName: 'about' */ './about'),
     },

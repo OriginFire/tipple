@@ -35,7 +35,6 @@ const newBar = {
       doesDelivery: bar.doesDelivery,
       deliveryRadius: bar.deliveryRadius,
       onlineOrdering: bar.onlineOrdering,
-
     });
     return b;
   },

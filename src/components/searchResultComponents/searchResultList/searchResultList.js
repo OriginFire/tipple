@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useMutation, useQuery } from 'graphql-hooks';
 import s from './searchResultList.scss';
+import Link from '../../utilityComponents/link';
 
 const SearchBarsQuery = `
   mutation SearchBars(
@@ -24,6 +25,7 @@ const SearchBarsQuery = `
     }
   }
 `;
+
 function SearchResultList() {
   /**
   const { loading, error, data } = useQuery(SearchBarsQuery)
@@ -34,7 +36,7 @@ if (error) return 'Something Bad Happened'
       {data.bars.map(({ name, distance, opt }) => (
       <div>
         <div className={s.list_item_meta}>
-          <div className={s.search_result_list_item}>
+          <div className={s.list_item}>
             <div className={s.bar_name}>{name}</div>
             <div className={s.distance}>{distance}</div>
             <div className={s.sale_options}>
@@ -48,21 +50,25 @@ if (error) return 'Something Bad Happened'
 
     */
   return (
-    <div>
-      <div className={s.list_item_meta}>
-        <div className={s.search_result_list_item}>
+    <div className={s.result_list}>
+      <Link className={s.list_item} to="/vendor/test">
+        <img className={s.bar_image} src="../../../Urbana.jpg" />
+        <div className={s.result_text}>
           <div className={s.bar_name}>Urbana</div>
-          <div className={s.distance}>.25 miles away</div>
+          <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
+          <div className={s.distance}>(.25 miles away)</div>
           <div className={s.sale_options}>
             <div className={s.order_link}>Order Online</div>
             <div className={s.availability}>Delivery or Pickup</div>
           </div>
         </div>
-      </div>
+      </Link>
 
-      <div className={s.list_item_meta}>
-        <div className={s.search_result_list_item}>
-          <div className={s.bar_name}>Reveller's Hour</div>
+      <div className={s.list_item}>
+        <img className={s.bar_image} src="../../../SL.jpeg" />
+        <div className={s.result_text}>
+          <div className={s.bar_name}>Reveler's Hour</div>
+          <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
           <div className={s.distance}>.5 miles away</div>
           <div className={s.sale_options}>
             <div className={s.order_link}>Order Online</div>
@@ -70,10 +76,11 @@ if (error) return 'Something Bad Happened'
           </div>
         </div>
       </div>
-
-      <div className={s.list_item_meta}>
-        <div className={s.search_result_list_item}>
+      <div className={s.list_item}>
+        <img className={s.bar_image} src="../../../Columbia.jpg" />
+        <div className={s.result_text}>
           <div className={s.bar_name}>Columbia Room</div>
+          <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
           <div className={s.distance}>1 miles away</div>
           <div className={s.sale_options}>
             <div className={s.availability}>Pick-up</div>
@@ -81,9 +88,11 @@ if (error) return 'Something Bad Happened'
         </div>
       </div>
 
-      <div className={s.list_item_meta}>
-        <div className={s.search_result_list_item}>
+      <div className={s.list_item}>
+        <img className={s.bar_image} src="../../../Urbana.jpg" />
+        <div className={s.result_text}>
           <div className={s.bar_name}>Chez Billy Sud</div>
+          <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
           <div className={s.distance}>.25 miles away</div>
           <div className={s.sale_options}>
             <div className={s.order_link}>Order Online</div>
@@ -91,10 +100,11 @@ if (error) return 'Something Bad Happened'
           </div>
         </div>
       </div>
-
-      <div className={s.list_item_meta}>
-        <div className={s.search_result_list_item}>
+      <div className={s.list_item}>
+        <img className={s.bar_image} src="../../../SL.jpeg" />
+        <div className={s.result_text}>
           <div className={s.bar_name}>Urbana</div>
+          <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
           <div className={s.distance}>.25 miles away</div>
           <div className={s.sale_options}>
             <div className={s.order_link}>Order Online</div>
@@ -102,10 +112,11 @@ if (error) return 'Something Bad Happened'
           </div>
         </div>
       </div>
-
-      <div className={s.list_item_meta}>
-        <div className={s.search_result_list_item}>
+      <div className={s.list_item}>
+        <img className={s.bar_image} src="../../../Columbia.jpg" />
+        <div className={s.result_text}>
           <div className={s.bar_name}>Urbana</div>
+          <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
           <div className={s.distance}>.25 miles away</div>
           <div className={s.sale_options}>
             <div className={s.order_link}>Order Online</div>
