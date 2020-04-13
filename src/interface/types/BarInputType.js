@@ -24,7 +24,6 @@ const BarInputType = new ObjectType({
     doesDelivery: { type: StringType },
     deliveryRadius: { type: StringType },
     onlineOrdering: { type: StringType },
-
   },
 });
 
