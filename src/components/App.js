@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 
 import StyleContext from 'isomorphic-style-loader/StyleContext';
 import ApplicationContext from './ApplicationContext';
-import { ClientContext, GraphQLClient } from 'graphql-hooks'
+import { ClientContext, GraphQLClient } from 'graphql-hooks';
 
 
 /**

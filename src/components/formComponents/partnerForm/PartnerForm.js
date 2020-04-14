@@ -74,10 +74,7 @@ function PartnerForm() {
   const [physicalState, setPhysicalState] = useState('');
   const [physicalZipCode, setPhysicalZipCode] = useState('');
   const [alcoholLicenseNumber, setAlcoholLicenseNumber] = useState('');
-  const [
-    alcoholLicenseIssuingAgency,
-    setAlcoholLicenseIssuingAgency,
-  ] = useState('');
+  const [alcoholLicenseIssuingAgency, setAlcoholLicenseIssuingAgency] = useState('');
   const [alcoholLicenseExpiration, setAlcoholLicenseExpiration] = useState('');
   const [doesDelivery, setDoesDelivery] = useState('');
   const [deliveryRadius, setDeliveryRadius] = useState('');
@@ -179,18 +176,17 @@ function PartnerForm() {
                     <FormField
                       placeholder="Alcohol License #"
                       onChange={e => setAlcoholLicenseNumber(e.target.value)}
+                      value={alcoholLicenseNumber}
                     />
                     <FormField
                       placeholder="Issuing Agency"
-                      onChange={e =>
-                        setAlcoholLicenseIssuingAgency(e.target.value)
-                      }
+                      onChange={e => setAlcoholLicenseIssuingAgency(e.target.value)}
+                      value={alcoholLicenseIssuingAgency}
                     />
                     <FormField
                       placeholder="Expiration Date"
-                      onChange={e =>
-                        setAlcoholLicenseExpiration(e.target.value)
-                      }
+                      onChange={e => setAlcoholLicenseExpiration(e.target.value)}
+                      value={alcoholLicenseExpiration}
                     />
                   </form>
                 );
@@ -200,19 +196,18 @@ function PartnerForm() {
                   <form className={s.partner_form_fields}>
                     <FormField
                       placeholder="Delivery"
-                      onChange={e => setAlcoholLicenseNumber(e.target.value)}
+                      onChange={e => setDoesDelivery(e.target.value)}
+                      value={doesDelivery}
                     />
                     <FormField
                       placeholder="Delivery Distance"
-                      onChange={e =>
-                        setAlcoholLicenseIssuingAgency(e.target.value)
-                      }
+                      onChange={e => setDeliveryRadius(e.target.value)}
+                      value={deliveryRadius}
                     />
                     <FormField
                       placeholder="Online Store (if any)"
-                      onChange={e =>
-                        setAlcoholLicenseExpiration(e.target.value)
-                      }
+                      onChange={e => setOnlineOrdering(e.target.value)}
+                      value={onlineOrdering}
                     />
                   </form>
                 );

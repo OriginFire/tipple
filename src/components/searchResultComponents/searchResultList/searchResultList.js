@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useMutation, useQuery } from 'graphql-hooks';
 import s from './searchResultList.scss';
-import Link from '../../utilityComponents/link';
+import history from "../../../history";
+import db from '../../../data/dbSimulator/bars';
 
 const SearchBarsQuery = `
   mutation SearchBars(
@@ -26,107 +27,62 @@ const SearchBarsQuery = `
   }
 `;
 
-function SearchResultList() {
-  /**
-  const { loading, error, data } = useQuery(SearchBarsQuery)
-if (loading) return 'Loading...'
-if (error) return 'Something Bad Happened'
+class SearchResultList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.onVendorClick = this.onVendorClick.bind(this);
+  }
 
+  onVendorClick(vendor) {
+    if (!vendor) {
+      return;
+    }
+    history.push(`/vendor/${vendor.id}`);
+  }
+
+  render() {
+    let availability;
+
+    if (db[0].doesPickup === true && db[0].doesDelivery === true) {
+      availability = 'Delivery or Pickup';
+    } else if (db[0].doesPickup === false && db[0].doesDelivery === true) {
+      availability = 'Delivery Only';
+    } else {
+      availability = 'Pickup Only';
+    }
+    /**
+     const { loading, error, data } = useQuery(SearchBarsQuery)
+
+     if (loading) return 'Loading...'
+     if (error) return 'Something Bad Happened'
+     */
     return (
-      {data.bars.map(({ name, distance, opt }) => (
-      <div>
-        <div className={s.list_item_meta}>
-          <div className={s.list_item}>
-            <div className={s.bar_name}>{name}</div>
-            <div className={s.distance}>{distance}</div>
-            <div className={s.sale_options}>
-              {if(opts.order)}
-              <div className={s.order_link}>Order Online</div>
-              {end}
-              <div className={s.availability}>Delivery or Pickup</div>
+      <div className={s.result_list}>
+        {db.map((vendor, index) => {
+          return (
+            <div
+              className={s.list_item}
+              onClick={e => this.onVendorClick(vendor)}
+            >
+              <img className={s.bar_image} src="../../../Urbana.jpg" />
+              <div className={s.result_text}>
+                <div className={s.bar_name}>{vendor.dbaName}</div>
+                <div className={s.distance}>
+                  {`${vendor.physicalStreetAddress}, ${vendor.physicalCity}`}
+                </div>
+                <div className={s.distance}>(.25 miles away)</div>
+                <div className={s.sale_options}>
+                  <div className={s.order_link}>Order Online</div>
+                  <div className={s.availability}>{availability}</div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-
-    */
-  return (
-    <div className={s.result_list}>
-      <Link className={s.list_item} to="/vendor/test">
-        <img className={s.bar_image} src="../../../Urbana.jpg" />
-        <div className={s.result_text}>
-          <div className={s.bar_name}>Urbana</div>
-          <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
-          <div className={s.distance}>(.25 miles away)</div>
-          <div className={s.sale_options}>
-            <div className={s.order_link}>Order Online</div>
-            <div className={s.availability}>Delivery or Pickup</div>
-          </div>
-        </div>
-      </Link>
-
-      <div className={s.list_item}>
-        <img className={s.bar_image} src="../../../SL.jpeg" />
-        <div className={s.result_text}>
-          <div className={s.bar_name}>Reveler's Hour</div>
-          <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
-          <div className={s.distance}>.5 miles away</div>
-          <div className={s.sale_options}>
-            <div className={s.order_link}>Order Online</div>
-            <div className={s.availability}>Delivery or Pick-up</div>
-          </div>
-        </div>
+          );
+        })}
       </div>
-      <div className={s.list_item}>
-        <img className={s.bar_image} src="../../../Columbia.jpg" />
-        <div className={s.result_text}>
-          <div className={s.bar_name}>Columbia Room</div>
-          <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
-          <div className={s.distance}>1 miles away</div>
-          <div className={s.sale_options}>
-            <div className={s.availability}>Pick-up</div>
-          </div>
-        </div>
-      </div>
-
-      <div className={s.list_item}>
-        <img className={s.bar_image} src="../../../Urbana.jpg" />
-        <div className={s.result_text}>
-          <div className={s.bar_name}>Chez Billy Sud</div>
-          <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
-          <div className={s.distance}>.25 miles away</div>
-          <div className={s.sale_options}>
-            <div className={s.order_link}>Order Online</div>
-            <div className={s.availability}>Delivery | Pick-up</div>
-          </div>
-        </div>
-      </div>
-      <div className={s.list_item}>
-        <img className={s.bar_image} src="../../../SL.jpeg" />
-        <div className={s.result_text}>
-          <div className={s.bar_name}>Urbana</div>
-          <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
-          <div className={s.distance}>.25 miles away</div>
-          <div className={s.sale_options}>
-            <div className={s.order_link}>Order Online</div>
-            <div className={s.availability}>Delivery | Pick-up</div>
-          </div>
-        </div>
-      </div>
-      <div className={s.list_item}>
-        <img className={s.bar_image} src="../../../Columbia.jpg" />
-        <div className={s.result_text}>
-          <div className={s.bar_name}>Urbana</div>
-          <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
-          <div className={s.distance}>.25 miles away</div>
-          <div className={s.sale_options}>
-            <div className={s.order_link}>Order Online</div>
-            <div className={s.availability}>Delivery | Pick-up</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-  /** } */
+    );
+  }
 }
 
 export default withStyles(s)(SearchResultList);
