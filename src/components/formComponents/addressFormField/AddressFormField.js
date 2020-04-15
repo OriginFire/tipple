@@ -1,47 +1,61 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
-import cx from 'classnames';
-import s from './AddressFormField.scss';
+import { geocodeByAddress, getLatLng} from 'react-google-places-autocomplete';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
-import { geocodeByAddress, getLatLng} from "react-google-places-autocomplete";
+
+import s from './AddressFormField.scss';
 
 class AddressFormField extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      address: 'test',
+    };
+  }
 
   render() {
     const { placeholder } = this.props;
-    const activeSuggestion = this.state;
-    console.log(activeSuggestion);
+    console.log(this.state.address);
 
     return (
       <GooglePlacesAutocomplete
-        /*       renderInput={(props) => (
+        onSelect={({ description }) => this.setState({ address: description })}
+        renderInput={(props) => (
           <div className={s.field}>
-            <input className={cx(s.input_field)} required />
+            <input
+              className={s.input_field}
+              {...props}
+              required
+              placeholder={''}
+            />
             <span className={s.placeholder}>{placeholder}</span>
           </div>
         )}
 
-*/
         renderSuggestions={(
           activeSuggestion,
           suggestions,
           onSelectSuggestion,
         ) => (
           <div className={s.suggestion_container}>
-            {suggestions.map(suggestion => (
-              <div
-                className={
-                  suggestion.id == suggestions.activeSuggestion
-                    ? s.active_suggestion
-                    : s.suggestion
-                }
-                key={suggestion.id}
-                onClick={event => onSelectSuggestion(suggestion, event)}
-              >
-                {suggestion.description}
-              </div>
-            ))}
+            {suggestions.map((suggestion, index, suggestions) => {
+              let suggestionClass;
+              if (index === activeSuggestion) {
+                suggestionClass = s.active_suggestion;
+              } else {
+                suggestionClass = s.suggestion;
+              }
+
+              return (
+                <div
+                  className={suggestionClass}
+                  key={index}
+                  onClick={event => onSelectSuggestion(suggestion, event)}
+                >
+                  {suggestion.description}
+                </div>
+              );
+            })}
           </div>
         )}
       />

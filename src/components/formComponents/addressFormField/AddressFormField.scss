@@ -31,6 +31,7 @@
 .suggestion_container {
   background-color: white;
   position: absolute;
+  margin: 0 auto;
   width: 90%;
 }
 
@@ -41,7 +42,10 @@
 }
 
 .active_suggestion {
-  background-color: #ffe3df;
+  background-color: #ffcbbc;
+  color: black;
+  text-align: left;
+  padding: 10px 0 10px 15px;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
