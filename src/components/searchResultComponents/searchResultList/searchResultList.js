@@ -51,6 +51,8 @@ class SearchResultList extends React.Component {
     } else {
       availability = 'Pickup Only';
     }
+
+    let onlineOrdering;
     /**
      const { loading, error, data } = useQuery(SearchBarsQuery)
 
@@ -60,12 +62,18 @@ class SearchResultList extends React.Component {
     return (
       <div className={s.result_list}>
         {db.map((vendor, index) => {
+          if (vendor.onlineStore === '') {
+            onlineOrdering = 'No Online Store';
+          } else {
+            onlineOrdering = 'Order Online';
+          }
+
           return (
             <div
               className={s.list_item}
               onClick={e => this.onVendorClick(vendor)}
             >
-              <img className={s.bar_image} src="../../../Urbana.jpg" />
+              <img className={s.bar_image} src={vendor.image} />
               <div className={s.result_text}>
                 <div className={s.bar_name}>{vendor.dbaName}</div>
                 <div className={s.distance}>
@@ -73,7 +81,7 @@ class SearchResultList extends React.Component {
                 </div>
                 <div className={s.distance}>(.25 miles away)</div>
                 <div className={s.sale_options}>
-                  <div className={s.order_link}>Order Online</div>
+                  <div className={s.order_link}>{onlineOrdering}</div>
                   <div className={s.availability}>{availability}</div>
                 </div>
               </div>

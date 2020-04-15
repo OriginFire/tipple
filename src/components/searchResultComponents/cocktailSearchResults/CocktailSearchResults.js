@@ -1,84 +1,59 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './CocktailSearchResults.scss';
-import Link from "../../utilityComponents/link";
+import Link from '../../utilityComponents/link';
+import db from '../../../data/dbSimulator/bars';
+import history from "../../../history";
 
 class CocktailSearchResults extends React.Component {
+  constructor(props) {
+    super(props);
+    this.storeLinkClick = this.storeLinkClick.bind(this);
+  }
+
+  storeLinkClick(vendor) {
+    if (!vendor) {
+      return;
+    }
+    history.push(`/vendor/${vendor.id}`);
+  }
+
   render() {
+    const availableVendors = db; /** This needs to be set to bars matching the user search */
+    let onlineOrdering;
+
     return (
       <div className={s.result_list}>
-        <div className={s.list_item}>
-          <img className={s.bar_image} src="../../../Urbana.jpg" />
-          <div className={s.result_text}>
-            <div className={s.bar_name}>Urbana</div>
-            <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
-            <div className={s.distance}>(.25 miles away)</div>
-            <div className={s.sale_options}>
-              <div className={s.order_link}>Order Online</div>
-              <div className={s.availability}>Delivery or Pickup</div>
-            </div>
-          </div>
-        </div>
-        <div className={s.list_item}>
-          <img className={s.bar_image} src="../../../SL.jpeg" />
-          <div className={s.result_text}>
-            <div className={s.bar_name}>Reveler's Hour</div>
-            <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
-            <div className={s.distance}>.5 miles away</div>
-            <div className={s.sale_options}>
-              <div className={s.order_link}>Order Online</div>
-              <div className={s.availability}>Delivery or Pick-up</div>
-            </div>
-          </div>
-        </div>
-        <div className={s.list_item}>
-          <img className={s.bar_image} src="../../../Columbia.jpg" />
-          <div className={s.result_text}>
-            <div className={s.bar_name}>Columbia Room</div>
-            <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
-            <div className={s.distance}>1 miles away</div>
-            <div className={s.sale_options}>
-              <div className={s.availability}>Pick-up</div>
-            </div>
-          </div>
-        </div>
-
-        <div className={s.list_item}>
-          <img className={s.bar_image} src="../../../Urbana.jpg" />
-          <div className={s.result_text}>
-            <div className={s.bar_name}>Chez Billy Sud</div>
-            <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
-            <div className={s.distance}>.25 miles away</div>
-            <div className={s.sale_options}>
-              <div className={s.order_link}>Order Online</div>
-              <div className={s.availability}>Delivery | Pick-up</div>
-            </div>
-          </div>
-        </div>
-        <div className={s.list_item}>
-          <img className={s.bar_image} src="../../../SL.jpeg" />
-          <div className={s.result_text}>
-            <div className={s.bar_name}>Urbana</div>
-            <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
-            <div className={s.distance}>.25 miles away</div>
-            <div className={s.sale_options}>
-              <div className={s.order_link}>Order Online</div>
-              <div className={s.availability}>Delivery | Pick-up</div>
-            </div>
-          </div>
-        </div>
-        <div className={s.list_item}>
-          <img className={s.bar_image} src="../../../Columbia.jpg" />
-          <div className={s.result_text}>
-            <div className={s.bar_name}>Urbana</div>
-            <div className={s.distance}>2000 21st St. NW, Washington, DC</div>
-            <div className={s.distance}>.25 miles away</div>
-            <div className={s.sale_options}>
-              <div className={s.order_link}>Order Online</div>
-              <div className={s.availability}>Delivery | Pick-up</div>
-            </div>
-          </div>
-        </div>
+        {availableVendors.map((vendor, index, matchingVendors) => {
+          return vendor.cocktails.map((cocktail, index, cocktails) => {
+            if (vendor.onlineStore === '') {
+              onlineOrdering = 'No Online Store';
+            } else {
+              onlineOrdering = 'Order Online';
+            }
+            return (
+              <div className={s.list_item} onClick={e => this.storeLinkClick(vendor)}>
+                <img className={s.bar_image} src={cocktail.image} />
+                <div className={s.result_text}>
+                  <div className={s.bar_name}>{cocktail.name}</div>
+                  <div className={s.distance}>
+                    {cocktail.ingredients.map((ingredient, index, cocktail) => {
+                      if ((index + 1) === cocktail.length) {
+                        return `${ingredient}`;
+                      } else {
+                        return `${ingredient}, `;
+                      }
+                    })}
+                  </div>
+                  <div className={s.sale_options}>
+                    <div className={s.order_link}>{onlineOrdering}</div>
+                    <div className={s.availability}>Delivery or Pickup</div>
+                  </div>
+                </div>
+              </div>
+            );
+          });
+        })}
       </div>
     );
   }
