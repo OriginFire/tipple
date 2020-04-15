@@ -5,7 +5,7 @@ import SearchResultDisplay from "../../components/searchResultComponents/searchR
 
 class SearchResults extends React.Component {
   render() {
-    return <SearchResultDisplay />;
+    return <SearchResultDisplay className={s.results_page}/>;
   }
 }
 

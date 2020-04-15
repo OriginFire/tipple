@@ -67,6 +67,7 @@ export default function Html({
             defer
           />
         )}
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeggKU2mGqd-mrVEYdsoL9GclNaanQTo4&libraries=places"></script>
       </body>
     </html>
   );
