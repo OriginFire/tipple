@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './VendorDisplay.scss';
-import Button from '../displayComponents/buttonComponents/Button/Button';
+import Button from '../sitewideDisplayComponents/Button/Button';
 import Link from '../utilityComponents/link/Link';
 import db from '../../data/dbSimulator/bars';
 

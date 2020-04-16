@@ -1,8 +1,8 @@
 import withStyles from "isomorphic-style-loader/withStyles";
 import React from 'react';
-import s from './allSizeSplash.scss';
+import s from './Splash.scss';
 
-class AllSizeSplash extends React.Component {
+class Splash extends React.Component {
   render() {
     const first_line = this.props.first_line;
     const second_line = this.props.second_line;
@@ -21,4 +21,4 @@ class AllSizeSplash extends React.Component {
   }
 }
 
-export default withStyles(s)(AllSizeSplash);
+export default withStyles(s)(Splash);

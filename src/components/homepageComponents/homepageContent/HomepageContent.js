@@ -2,10 +2,10 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import cx from 'classnames';
 import s from './HomepageContent.scss';
-import Link from '../../../utilityComponents/link';
-import Button from '../Button';
-import FormField from "../../../formComponents/formField";
-import AddressFormField from "../../../formComponents/addressFormField/AddressFormField";
+import Link from '../../utilityComponents/link';
+import Button from '../../sitewideDisplayComponents/Button';
+import FormField from "../../sitewideDisplayComponents/formField";
+import AddressFormField from "../../utilityComponents/addressFormField/AddressFormField";
 
 class HomepageContent extends React.Component {
   render() {

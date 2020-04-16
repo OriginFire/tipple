@@ -1,4 +1,4 @@
-@import '../../components/variables.css';
+@import '../../variables.css';
 
 .search_result_content {
   position: static;
@@ -17,6 +17,44 @@
 .vendor_name {
   text-align: center;
   font-family: "Plantin Bold";
+}
+
+.display_selectors {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  font-family: "Lato Regular";
+}
+
+.active, .inactive {
+  border: solid #434343 1px;
+  border-radius: 4px;
+  padding: 20px 15px;
+  width: 170px;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.active {
+  background-color: #251e1f;
+}
+
+.inactive {
+  cursor: pointer;
+}
+
+.inactive:hover {
+  background-color: #616161;
+  color: white;
+}
+
+.result_explainer {
+  font-family: "Lato Regular";
+  text-align: center;
+  color: #505050;
+  background-color: #121212;
+  width: 100%;
+  x-index: 10;
 }
 
 .address {
@@ -179,7 +217,7 @@
     height: 100%;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    background-image: url("../../../public/LevitationAspecgt.JPG");
+    background-image: url("../../../../public/LevitationAspect.JPG");
     background-size: cover;
     background-position: 50%, 0%;
   }
@@ -242,7 +280,7 @@
     height: 100%;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    background-image: url("../../../public/LevitationAspecgt.JPG");
+    background-image: url("../../../../public/LevitationAspect.JPG");
     background-size: cover;
     background-position: 60%, 0%;
   }

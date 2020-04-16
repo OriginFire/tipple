@@ -1,9 +1,9 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
 import s from './Home.scss';
-import SplashComponent from "../../components/displayComponents/splashComponents/allSizeSplash/allSizeSplash";
+import SplashComponent from "../../components/sitewideDisplayComponents/Splash/Splash";
 import HomepageImage from '../../../public/LevitationAspect.JPG';
-import HomepageContent from '../../components/displayComponents/buttonComponents/homepageContent/HomepageContent';
+import HomepageContent from '../../components/homepageComponents/homepageContent/HomepageContent';
 
 class Home extends React.Component {
   render() {

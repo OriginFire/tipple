@@ -2,7 +2,7 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Vendor.scss';
-import VendorDisplay from '../../components/vendorPresentationComponents/VendorDisplay';
+import VendorDisplay from "../../components/vendorDisplay/VendorDisplay";
 
 
 class Vendor extends React.Component {

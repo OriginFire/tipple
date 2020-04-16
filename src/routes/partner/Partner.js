@@ -11,7 +11,7 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Partner.scss';
-import PartnerForm from '../../components/formComponents/partnerForm/PartnerForm';
+import PartnerForm from '../../components/formComponents/vendorSignup/VendorSignupForm';
 
 class Partner extends React.Component {
   render() {

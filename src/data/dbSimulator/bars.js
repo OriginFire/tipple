@@ -39,7 +39,7 @@ export default [
           'Simple Syrup',
           'Old Fashioned Bitters'
         ],
-        image: '../../../LevitationAspecgt.JPG',
+        image: '../../../LevitationAspect.JPG',
       },
       {
         id: 'gibson_vieux_carre',
@@ -85,7 +85,7 @@ export default [
           'Simple Syrup',
           'Old Fashioned Bitters'
         ],
-        image: '../../../LevitationAspecgt.JPG',
+        image: '../../../LevitationAspect.JPG',
       },
       {
         id: 'gibson_vieux_carre',

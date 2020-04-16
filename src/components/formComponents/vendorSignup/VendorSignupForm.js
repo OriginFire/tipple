@@ -1,10 +1,9 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React, { useState } from 'react';
 import { useMutation } from 'graphql-hooks';
-import cx from 'classnames';
-import s from './PartnerForm.scss';
-import FormField from '../formField/FormField';
-import Button from '../../displayComponents/buttonComponents/Button/Button';
+import s from './VendorSignupForm.scss';
+import FormField from '../../sitewideDisplayComponents/formField/FormField';
+import Button from '../../sitewideDisplayComponents/Button/Button';
 import Link from '../../utilityComponents/link/Link';
 
 const CREATE_BAR_MUTATION = `
@@ -61,7 +60,7 @@ const CREATE_BAR_MUTATION = `
  * "newbar calls newBar.js mutator, which is also identified in the schema.js
  * */
 
-function PartnerForm() {
+function VendorSignupForm() {
   const [dbaName, setDbaName] = useState('');
   const [pointOfContact, setPointOfContact] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
@@ -354,4 +353,4 @@ function PartnerForm() {
   );
 }
 
-export default withStyles(s)(PartnerForm);
+export default withStyles(s)(VendorSignupForm);

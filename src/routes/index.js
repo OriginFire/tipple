@@ -24,10 +24,6 @@ const routes = {
       load: () => import(/* webpackChunkName: 'contact' */ './contact'),
     },
     {
-      path: '/finder',
-      load: () => import(/* webpackChunkName: 'finder' */ './finder'),
-    },
-    {
       path: '/login',
       load: () => import(/* webpackChunkName: 'login' */ './login'),
     },
@@ -46,6 +42,10 @@ const routes = {
     {
       path: '/vendor/:id',
       load: () => import(/* webpackChunkName: 'register' */ './vendor'),
+    },
+    {
+      path: '/vendor-admin/:id',
+      load: () => import('./vendor-admin'),
     },
     {
       path: '/about',

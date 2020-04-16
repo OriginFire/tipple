@@ -3,7 +3,7 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './searchResultDisplay.scss';
 import SearchResultList from '../searchResultList/searchResultList';
 import CocktailSearchResults from '../cocktailSearchResults/CocktailSearchResults';
-import Button from '../../displayComponents/buttonComponents/Button/Button';
+import Button from '../../sitewideDisplayComponents/Button/Button';
 import Link from '../../utilityComponents/link/Link';
 
 class SearchResultDisplay extends React.Component {
@@ -34,7 +34,7 @@ class SearchResultDisplay extends React.Component {
     let vendorStyle;
     let cocktailStyle;
     let vendorContent;
-    let cocktailConent;
+    let cocktailContent;
     let explainerContent;
     let resultsDisplay;
 
@@ -50,12 +50,12 @@ class SearchResultDisplay extends React.Component {
 
     if (this.state.displaySetting === 'cocktails') {
       cocktailStyle = s.active;
-      cocktailConent = 'Showing Cocktails';
+      cocktailContent = 'Showing Cocktails';
       explainerContent = 'These are cocktails that vendors in your area are selling for delivery or pickup';
       resultsDisplay = <CocktailSearchResults />
     } else {
       cocktailStyle = s.inactive;
-      cocktailConent = 'Show Cocktails';
+      cocktailContent = 'Show Cocktails';
     }
 
     return (
@@ -66,7 +66,7 @@ class SearchResultDisplay extends React.Component {
               {vendorContent}
             </div>
             <div className={cocktailStyle} onClick={this.changeDisplayToCocktails}>
-              {cocktailConent}
+              {cocktailContent}
             </div>
           </div>
 
