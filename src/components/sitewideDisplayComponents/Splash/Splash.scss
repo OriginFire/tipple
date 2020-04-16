@@ -6,6 +6,8 @@
 
 .homepage_image {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .explainer_text {
@@ -23,19 +25,23 @@
     transform: translate(-50%, -70%);
     font-size: 30px;
   }
-
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
   .splash_box {
     position: absolute;
-    text-align: center;
-    height: 100%;
+    height: auto;
+    width: auto;
+    top: 70px;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
   }
 
   .explainer_text {
     position: absolute;
-    top: 22vh;
+    top: 20vh;
     left: 20px;
     width: auto;
     transform: translate(0, 0);
@@ -46,40 +52,33 @@
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .splash_box {
     position: absolute;
-    text-align: center;
-    height: 91vh;
-    width: 100vw;
+    top: 116px;
+    bottom: 0;
+    right: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-  }
-
-  .homepage_image {
-    object-fit: cover;
-    overflow: hidden;
-    width: auto;
-
   }
 
   .explainer_text {
     position: absolute;
-    min-height: 100px;
     top: 16vh;
     left: auto;
     right: 20px;
-    width: auto;
+    width: 60%;
     transform: translate(0, 0);
-    font-size: 6.5vh;
+    font-size: 5vh;
   }
 }
 
 @media only screen and (min-width: 1224px) {
   .splash_box {
     position: absolute;
-    text-align: center;
-    height: 91vh;
-    width: 100vw;
+    top: 116px;
+    bottom: 0;
+    right: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,15 +87,15 @@
 
   .homepage_image {
     object-fit: cover;
-    width: fill;
-    height: fill;
+    width: 100%;
+    height: 100%;
   }
 
   .explainer_text {
     position: absolute;
     top: 12vh;
     left: auto;
-    right: 20px;
+    right: 4vw;
     width: 800px;
     font-size: 6.5vh;
   }

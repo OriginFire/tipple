@@ -8,7 +8,7 @@ import VendorDisplay from "../../components/vendorDisplay/VendorDisplay";
 class Vendor extends React.Component {
   render() {
     return (
-      <VendorDisplay id={this.props.id} />
+      <VendorDisplay className={s.vendor_page} id={this.props.id} />
     );
   }
 }

@@ -36,7 +36,7 @@ class CocktailSearchResults extends React.Component {
                 <img className={s.bar_image} src={cocktail.image} />
                 <div className={s.result_text}>
                   <div className={s.bar_name}>{cocktail.name}</div>
-                  <div className={s.distance}>
+                  <div className={s.ingredients}>
                     {cocktail.ingredients.map((ingredient, index, cocktail) => {
                       if ((index + 1) === cocktail.length) {
                         return `${ingredient}`;

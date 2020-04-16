@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useMutation, useQuery } from 'graphql-hooks';
-import s from './searchResultList.scss';
+import s from './vendorSearchResults.scss';
 import history from "../../../history";
 import db from '../../../data/dbSimulator/bars';
 
@@ -27,7 +27,7 @@ const SearchBarsQuery = `
   }
 `;
 
-class SearchResultList extends React.Component {
+class VendorSearchResults extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -93,4 +93,4 @@ class SearchResultList extends React.Component {
   }
 }
 
-export default withStyles(s)(SearchResultList);
+export default withStyles(s)(VendorSearchResults);

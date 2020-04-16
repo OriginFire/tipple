@@ -1,14 +1,19 @@
 .homepage_content {
+  position: static;
+  width: 100%;
+  height: 100%;
+}
+
+.action_content {
   display: flex;
   flex-direction: column;
   position: absolute;
-  justify-content: space-around;
   align-items: center;
   z-index: 10;
-  height: 50vh;
+  text-align: center;
 }
 
-.finder_content {
+.action_item {
   width: 100%;
   position: static;
   text-align: center;
@@ -19,31 +24,25 @@
   font-family: "Lato Regular";
 }
 
-.partner_content {
-  position: static;
-  text-align: center;
-  width: 100%;
-}
-
 @media only screen and (orientation: portrait) and (min-width: 320px) {
-  .homepage_content {
+  .action_content {
     width: 100%;
+    height: auto;
+    top: 45vh;
+    bottom: 10vh;
+    justify-content: space-around;
   }
 
   .explainer {
     font-size: 12px;
   }
-
-  .partner_content {
-    margin: 0 0 0 0;
-  }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
-  .homepage_content {
-    flex-direction: column-reverse;
+  .action_content {
     justify-content: space-between;
     height: 62vh;
+    width: 40vw;
     margin: 10vh 0 0 55vw;
   }
 
@@ -53,12 +52,13 @@
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .homepage_content {
-    flex-direction: column-reverse;
+  .action_content {
     justify-content: space-between;
-    height: 26vh;
+    height: 30vh;
     width: 55%;
-    margin: 48vh 0 0 45vw;
+    top: 52vh;
+    right: 20px;
+    margin: 0 0 0 0;
   }
 
   .explainer {
@@ -67,16 +67,15 @@
 }
 
 @media only screen and (min-width: 1224px) {
-  .homepage_content {
-    flex-direction: column-reverse;
+  .action_content {
     justify-content: space-between;
     height: 30vh;
     width: 800px;
-    margin: 45vh 0 0 0;
-    right: 10px;
+    right: 4vw;
   }
 
   .explainer {
-    font-size: 15px;
+    font-size: 22px;
+    color: #e2e2e2;
   }
 }
