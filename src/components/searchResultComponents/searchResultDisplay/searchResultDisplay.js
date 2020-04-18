@@ -77,6 +77,7 @@ class SearchResultDisplay extends React.Component {
           <div className={s.list}>
             {resultsDisplay}
           </div>
+
           <div className={s.buttons}>
             <Link to="/">
               <Button type="Secondary" text="Return Home" />

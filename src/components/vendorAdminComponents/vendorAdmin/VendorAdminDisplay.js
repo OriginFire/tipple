@@ -4,9 +4,8 @@ import s from './VendorAdminDisplay.scss';
 import Button from '../../sitewideDisplayComponents/Button';
 import Link from '../../utilityComponents/link';
 import db from '../../../data/dbSimulator/bars';
-import VendorAccountSettings from "../vendorAccountSettings/VendorAccountSettings";
-import VendorCocktailSettings from "../vendorCocktailSettings/VendorCocktailSettings";
-
+import VendorAccountSettings from '../vendorAccountSettings/VendorAccountSettings';
+import VendorCocktailSettings from '../vendorCocktailSettings/VendorCocktailSettings';
 
 class VendorAdminDisplay extends React.Component {
   constructor(props) {
@@ -20,29 +19,28 @@ class VendorAdminDisplay extends React.Component {
 
   changeDisplayToAccount() {
     if (this.state.displaySetting === 'cocktails') {
-      this.setState( {
+      this.setState({
         displaySetting: 'account',
       });
     }
-}
+  }
 
   changeDisplayToCocktails() {
     if (this.state.displaySetting === 'account') {
-      this.setState( {
+      this.setState({
         displaySetting: 'cocktails',
       });
     }
   }
 
-
   render() {
     let vendor;
     let vendorStyle;
     let vendorButton;
-    let explainerText;
     let cocktailStyle;
-    let cocktailContent;
+    let cocktailButton;
     let contentDisplay;
+    let primaryButtonText;
 
     db.map(vendorEntry => {
       if (vendorEntry.id === this.props.id) {
@@ -53,8 +51,8 @@ class VendorAdminDisplay extends React.Component {
     if (this.state.displaySetting == 'account') {
       vendorStyle = s.active;
       vendorButton = 'Account Settings';
-      explainerText = 'These are vendors in your area selling cocktails for delivery or pickup';
-      contentDisplay = <VendorAccountSettings />
+      contentDisplay = <VendorAccountSettings vendorAccount={vendor} />;
+      primaryButtonText = 'Edit Account Settings';
     } else {
       vendorStyle = s.inactive;
       vendorButton = 'Account Settings';
@@ -62,43 +60,45 @@ class VendorAdminDisplay extends React.Component {
 
     if (this.state.displaySetting === 'cocktails') {
       cocktailStyle = s.active;
-      cocktailContent = 'Cocktail Settings';
-      explainerText = 'These are cocktails that vendors in your area are selling for delivery or pickup';
-      contentDisplay = <VendorCocktailSettings />
+      cocktailButton = 'Cocktail Settings';
+      contentDisplay = <VendorCocktailSettings vendorAccount={vendor} />;
+      primaryButtonText = 'Add A Cocktail';
     } else {
       cocktailStyle = s.inactive;
-      cocktailContent = 'Cocktail Settings';
+      cocktailButton = 'Cocktail Settings';
     }
 
     return (
-      <div className={s.search_result_content}>
-        <div className={s.vendor_display}>
+      <div className={s.container}>
+        <div className={s.vendor_admin_display}>
           <div className={s.vendor_name}>{vendor.dbaName}</div>
+
+          <h2 className={s.result_explainer}>
+            Here you can manage {vendor.dbaName}'s account details (user info,
+            online service settings, cocktails, etc.)
+          </h2>
 
           <div className={s.display_selectors}>
             <div className={vendorStyle} onClick={this.changeDisplayToAccount}>
               {vendorButton}
             </div>
-            <div className={cocktailStyle} onClick={this.changeDisplayToCocktails}>
-              {cocktailContent}
+            <div
+              className={cocktailStyle}
+              onClick={this.changeDisplayToCocktails}
+            >
+              {cocktailButton}
             </div>
           </div>
 
-          <h2 className={s.result_explainer}>
-            {explainerText}
-          </h2>
-
-          <div className={s.vendor_setting_content}>
-            {contentDisplay}
-          </div>
+          <div className={s.vendor_setting_content}>{contentDisplay}</div>
 
           <div className={s.buttons}>
-            <Link to="/search-results">
-              <Button type="Secondary" text="Back To Search Results" />
-            </Link>
-
             <Link to="">
-              <Button type="Primary" text="Order Cocktails" />
+              <Button
+                type="Primary"
+                onClick={this.handlePrimaryClick}
+                text={primaryButtonText}
+              />
             </Link>
           </div>
         </div>

@@ -1,12 +1,6 @@
 @import '../../variables.css';
 
-.search_result_content {
-  position: static;
-  width: 100%;
-  height: 100%;
-}
-
-.vendor_display {
+.vendor_admin_display {
   background-color: #121212;
   opacity: 0.98;
   z-index: 5;
@@ -17,6 +11,14 @@
 .vendor_name {
   text-align: center;
   font-family: "Plantin Bold";
+}
+
+.result_explainer {
+  font-family: "Lato Regular";
+  text-align: center;
+  color: #505050;
+  width: 100%;
+  x-index: 10;
 }
 
 .display_selectors {
@@ -32,7 +34,7 @@
   padding: 20px 15px;
   width: 170px;
   text-align: center;
-  transition: 0.2s;
+  transition: 0.25s;
 }
 
 .active {
@@ -48,59 +50,12 @@
   color: white;
 }
 
-.result_explainer {
-  font-family: "Lato Regular";
-  text-align: center;
-  color: #505050;
-  background-color: #121212;
-  width: 100%;
-  x-index: 10;
-}
-
-.address {
-  font-family: "Lato Regular";
-  text-align: center;
-  font-size: 12px;
-  color: #595959;
-}
-
-.availability {
-  font-family: "Lato Regular";
-  text-align: center;
-  color: #505050;
-  background-color: #121212;
-  width: 100%;
-  x-index: 10;
-}
-
-.cocktails {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  overflow: scroll;
+.vendor_setting_content {
   position: absolute;
   margin: 0 0 0 0;
   width: 100%;
   height: auto;
-}
-
-.cocktail {
-  position: relative;
-  height: auto;
-}
-
-.cocktail_image {
-  position: relative;
-  width: 100%;
-  height: 110px;
-  object-fit: cover;
-}
-
-.cocktail_text {
-  position: relative;
-  text-align: center;
-  z-index: 5;
+  overflow: scroll;
 }
 
 .buttons {
@@ -111,41 +66,48 @@
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
-  .search_result_content {
-    position: static;
+  .container {
+    position: absolute;
     width: 100%;
-    height: 100%;
+    height: auto;
+    top: 66px;
+    bottom: 0;
   }
 
-  .vendor_display {
+  .vendor_admin_display {
     position: relative;
     width: 100%;
     height: 100%;
     display: block;
     float: right;
     margin: 0;
-    padding: 0;
     opacity: 0.95;
   }
 
   .vendor_name {
-    font-size: 28px;
-    margin: 5px 0 8px 0;
+    font-size: 30px;
+    margin: 10px 0 8px 0;
   }
 
-  .cocktails {
-    top: 85px;
-    bottom: 115px;
-    font-size: 0.75em;
+  .result_explainer {
+    font-size: 12px;
   }
 
-  .cocktail {
-    width: 180px;
-    margin: 10px 0;
+  .display_selectors {
+    font-size: 12px;
+    justify-content: space-evenly;
+    margin: 3vh 0 0 0;
   }
 
-  .availability {
-    font-size: 10px;
+  .active, .inactive {
+    padding: 12px 8px;
+    width: 100px;
+  }
+
+  .vendor_setting_content {
+    top: 160px;
+    bottom: 65px;
+    font-size: 0.6em;
   }
 
   .buttons {
@@ -157,13 +119,13 @@
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
-  .search_result_content {
+  .container {
     position: static;
     width: 100%;
     height: 100%;
   }
 
-  .vendor_display {
+  .vendor_admin_display {
     position: relative;
     width: 100%;
     height: 100%;
@@ -172,6 +134,14 @@
     margin: 0;
     padding: 0;
     opacity: 0.95;
+  }
+
+  .vendor_name {
+    display: none;
+  }
+
+  .result_explainer {
+    font-size: 12px;
   }
 
   .display_selectors {
@@ -186,20 +156,6 @@
     width: 100px;
   }
 
-  .result_explainer {
-    position: relative;
-    margin: 0;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    font-size: .63em;
-  }
-
-  .list {
-    top: 80px;
-    bottom: 60px;
-    font-size: 0.6em;
-  }
-
   .buttons {
     position: absolute;
     flex-direction: row;
@@ -211,7 +167,7 @@
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .search_result_content {
+  .container {
     position: absolute;
     width: 100%;
     height: auto;
@@ -224,7 +180,7 @@
     background-position: 50%, 0%;
   }
 
-  .vendor_display {
+  .vendor_admin_display {
     position: absolute;
     width: 55%;
     height: auto;
@@ -234,6 +190,12 @@
     margin: 0;
     padding: 0;
     opacity: 0.95;
+  }
+
+  .vendor_name {
+    display: block;
+    font-size: 60px;
+    margin: 10px 0 8px 0;
   }
 
   .display_selectors {
@@ -257,12 +219,6 @@
     color: #777777;
   }
 
-  .list {
-    top: 110px;
-    bottom: 130px;
-    height: auto;
-  }
-
   .buttons {
     position: absolute;
     margin: 0 0 0 0;
@@ -276,7 +232,7 @@
 }
 
 @media only screen and (min-width: 1224px) {
-  .search_result_content {
+  .container {
     position: absolute;
     width: 100%;
     height: auto;
@@ -289,7 +245,7 @@
     background-position: 50%, 0%;
   }
 
-  .vendor_display {
+  .vendor_admin_display {
     position: absolute;
     width: 55%;
     height: auto;
@@ -320,12 +276,6 @@
     padding-bottom: 30px;
     font-size: .94em;
     color: #777777;
-  }
-
-  .list {
-    top: 150px;
-    bottom: 130px;
-    height: auto;
   }
 
   .buttons {

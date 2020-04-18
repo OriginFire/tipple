@@ -21,6 +21,13 @@
 }
 
 .input_field:focus ~ .placeholder {
+   top: 15%;
+   left: 10%;
+   font-size: 10px;
+   opacity: 1;
+ }
+
+.input_field:not([value=""]) ~ .placeholder {
   top: 15%;
   left: 10%;
   font-size: 10px;

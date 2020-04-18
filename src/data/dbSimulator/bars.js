@@ -3,6 +3,7 @@ export default [
     id: 'thegibson',
     dbaName: 'the Gibson',
     legalEntityName: 'Soul Haven LLC',
+    userPassword: 'testpassword',
 
     pointOfContact: 'Fox Mulder',
     contactPhoneNumber: '555 555 5555',
@@ -34,70 +35,37 @@ export default [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '../../../LevitationAspect.JPG',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '../../../GoldenDark.jpg',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '../../../Tipple Bottles.jpg',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '../../../Urbana.jpg',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '../../../LevitationAspect.JPG',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
     ],
@@ -107,6 +75,7 @@ export default [
     id: 'urbana',
     dbaName: 'Urbana',
     legalEntityName: 'Soul Haven LLC',
+    userPassword: 'testpassword',
 
     pointOfContact: 'Fox Mulder',
     contactPhoneNumber: '555 555 5555',
@@ -138,70 +107,37 @@ export default [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
     ],
@@ -211,6 +147,7 @@ export default [
     id: 'revelershour',
     dbaName: 'Revelers Hour',
     legalEntityName: 'Soul Haven LLC',
+    userPassword: 'testpassword',
 
     pointOfContact: 'Fox Mulder',
     contactPhoneNumber: '555 555 5555',
@@ -242,70 +179,37 @@ export default [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
     ],
@@ -315,6 +219,7 @@ export default [
     id: 'columbiaroom',
     dbaName: 'Columbia Room',
     legalEntityName: 'Soul Haven LLC',
+    userPassword: 'testpassword',
 
     pointOfContact: 'Fox Mulder',
     contactPhoneNumber: '555 555 5555',
@@ -346,70 +251,37 @@ export default [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
     ],
@@ -419,6 +291,7 @@ export default [
     id: 'chezbillysud',
     dbaName: 'Chez Billy Sud',
     legalEntityName: 'Soul Haven LLC',
+    userPassword: 'testpassword',
 
     pointOfContact: 'Fox Mulder',
     contactPhoneNumber: '555 555 5555',
@@ -450,70 +323,37 @@ export default [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
     ],
@@ -523,6 +363,7 @@ export default [
     id: 'silverlyan',
     dbaName: 'Silver Lyan',
     legalEntityName: 'Soul Haven LLC',
+    userPassword: 'testpassword',
 
     pointOfContact: 'Fox Mulder',
     contactPhoneNumber: '555 555 5555',
@@ -554,70 +395,37 @@ export default [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
     ],
@@ -627,6 +435,7 @@ export default [
     id: 'lediplomat',
     dbaName: 'Le Diplomat',
     legalEntityName: 'Soul Haven LLC',
+    userPassword: 'testpassword',
 
     pointOfContact: 'Fox Mulder',
     contactPhoneNumber: '555 555 5555',
@@ -658,70 +467,37 @@ export default [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
-        ingredients: [
-          'Rye Whiskey',
-          'Simple Syrup',
-          'Old Fashioned Bitters'
-        ],
+        ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '',
       },
       {
         id: 'gibson_vieux_carre',
         name: 'Vieux Carre',
-        ingredients: [
-          'Rye Whiskey',
-          'Brandy',
-          'Benedictine',
-          'Sweet Vermouth',
-          'Angostura Bitters',
-          'Peychauds Bitters',
-        ],
+        ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '',
       },
     ],

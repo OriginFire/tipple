@@ -1,0 +1,215 @@
+@import '../../../components/variables.css';
+
+.settings_content {
+  display: flex;
+  overflow: scroll;
+}
+
+.item_box, .item_box_active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.item_box_active {
+  background-color: black;
+}
+
+.cocktail {
+  font-family: "Lato Regular";
+  display: flex;
+  flex: none;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.cocktail_image {
+  object-fit: cover;
+}
+
+.cocktail_text {
+  width: 45%;
+}
+
+.cocktail_name {
+  font-family: "Lato Regular";
+  text-align: center;
+  color: white;
+}
+
+.ingredients {
+  color: #595959;
+  text-align: center;
+}
+
+.cocktail_edit_fields {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media only screen and (orientation: portrait) and (min-width: 320px) {
+  .settings_content {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .cocktail, .cocktail_active {
+    margin: 8px 0;
+    justify-content: space-around;
+    width: 100%;
+    height: 16vh;
+  }
+
+  .cocktail_image {
+    width: 35%;
+    height: auto;
+  }
+
+  .cocktail_name {
+    font-size: 1.5em;
+    width: 100%;
+    padding: 0 0 3px 0;
+  }
+
+  .ingredients {
+    font-size: 10px;
+  }
+
+  .cocktail_edit_fields {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 320px) {
+  .settings_content {
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+
+  .cocktail, .cocktail_active {
+    justify-content: space-evenly;
+    margin: 10px 0;
+    width: 45%;
+  }
+
+  .cocktail_image {
+    width: 15vw;
+    height: 17vh;
+  }
+
+  .cocktail_name {
+    font-size: 1.5em;
+    width: 100%;
+    padding: 0 0 3px 0;
+  }
+
+  .ingredients {
+    font-size: 8px;
+  }
+
+  .sale_options {
+    height: 50%;
+  }
+
+  .order_link {
+    font-size: 10px;
+  }
+
+  .availability {
+    font-size: 8px;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-height: 500px) and (min-width: 768px) {
+  .settings_content {
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    height: 100%;
+  }
+
+  .cocktail, .cocktail_active {
+    justify-content: space-around;
+    align-items: center;
+    font-size: 0.9em;
+    width: 100%;
+    margin: 14px 0;
+  }
+
+  .cocktail_image {
+    width: 225px;
+    height: 150px;
+  }
+
+  .cocktail_name {
+    font-size: 18px;
+    width: 100%;
+    padding: 0 0 8px 0;
+  }
+
+  .ingredients {
+    font-size: 10px;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .settings_content {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 100%;
+  }
+
+  .cocktail, .cocktail_active {
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+    width: 450px;
+    margin: 14px 0;
+  }
+
+  .cocktail_image {
+    width: 250px;
+    height: 150px;
+  }
+
+  .cocktail_name {
+    font-size: 18px;
+    width: 100%;
+    padding: 0 0 8px 0;
+  }
+
+  .ingredients {
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .sale_options {
+    margin: 10px 0;
+    font-size: 14px;
+  }
+
+  .order_link {
+    font-size: 0.8em;
+    text-align: center;
+  }
+
+  .availability {
+    font-size: 0.7em;
+    text-align: center;
+  }
+}
