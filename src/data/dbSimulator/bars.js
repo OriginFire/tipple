@@ -29,7 +29,7 @@ export default [
     doesDelivery: true,
     doesPickup: true,
     deliveryRadius: '1 mile',
-    onlineStore: '',
+    onlineStore: 'www.nipplesupply.com',
     image: '../../../Urbana.jpg',
     cocktails: [
       {

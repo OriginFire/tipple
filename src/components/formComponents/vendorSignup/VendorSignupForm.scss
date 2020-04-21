@@ -1,30 +1,34 @@
 @import '../../variables.css';
 
 .partner_content {
+  position: absolute;
+  height: auto;
+  width: 100%;
   text-align: center;
+  top: 70px;
+  bottom: 0;
 }
 
 .partner_text {
   text-align: center;
-  font-family: 'Merriweather Regular';
+  font-family: 'Plantin Bold';
 }
 
-.partner_form_fields {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+.partner_form {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: auto;
+  width: 100%;
 }
 
 .form_status {
-  width: 90%;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
   align-items: flex-end;
-  position: static;
-  margin: 0 auto;
+  justify-items: flex-end;
+  position: absolute;
 }
 
 .status_item {
@@ -49,44 +53,45 @@
   background-color: white;
 }
 
+.partner_form_fields {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
   position: static;
   justify-content: space-evenly;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
-  .partner_content {
-    position: static;
-    margin: 0 0 0 0;
-  }
-
   .partner_text {
     margin: 3% 8% 0 8%;
     font-size: 1.3em;
   }
 
   .partner_form {
-    margin-top: 2vh;
-  }
-
-  .form_area {
-    min-height: 32vh;
-  }
-
-  .partner_form_fields {
-    margin: 0 auto 0 auto;
-    width: 90%;
+    top: 70px;
   }
 
   .form_status {
-    margin: 10vh auto 3vh auto;
+    top: 4vh;
+    right: 5vw;
+    left: 5vw;
   }
   .status_indicator {
     font-size: 0.75em;
   }
 
+  .partner_form_fields {
+    top: 70px;
+  }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {

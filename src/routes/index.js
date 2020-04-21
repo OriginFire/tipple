@@ -36,16 +36,20 @@ const routes = {
       load: () => import(/* webpackChunkName: 'contact' */ './search-results'),
     },
     {
-      path: '/partner',
-      load: () => import(/* webpackChunkName: 'register' */ './partner'),
-    },
-    {
       path: '/vendor/:id',
       load: () => import(/* webpackChunkName: 'register' */ './vendor'),
     },
     {
       path: '/vendor-admin/:id',
       load: () => import('./vendor-admin'),
+    },
+    {
+      path: '/vendor-create',
+      load: () => import(/* webpackChunkName: 'register' */ './vendor-create'),
+    },
+    {
+      path: '/vendor-login',
+      load: () => import(/* webpackChunkName: 'register' */ './vendor-login'),
     },
     {
       path: '/about',

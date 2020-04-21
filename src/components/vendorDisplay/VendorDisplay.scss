@@ -52,6 +52,12 @@
   height: auto;
 }
 
+.cocktail_name {
+  text-align: center;
+  font-family: "Lato Regular";
+  color: #e9e9e9;
+}
+
 .cocktail_image {
   position: relative;
   width: 100%;
@@ -59,10 +65,12 @@
   object-fit: cover;
 }
 
-.cocktail_text {
+.cocktail_ingredients {
   position: relative;
   text-align: center;
   z-index: 5;
+  font-family: "Lato Regular";
+  color: #bcbcbc;
 }
 
 .buttons {
@@ -102,8 +110,17 @@
   }
 
   .cocktail {
-    width: 180px;
+    width: 200px;
     margin: 10px 0;
+  }
+
+  .cocktail_name {
+    font-size: 16px;
+    padding-bottom: 8px;
+  }
+
+  .cocktail_ingredients {
+    font-size: 11px;
   }
 
   .availability {

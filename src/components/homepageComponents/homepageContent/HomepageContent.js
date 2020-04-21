@@ -31,7 +31,7 @@ class HomepageContent extends React.Component {
             <h2 className={s.explainer}>
               Selling cocktails for pickup or delivery?
             </h2>
-            <Link to="/partner">
+            <Link to="/vendor-create">
               <Button type="Secondary" text="Become A Vendor" />
             </Link>
           </div>

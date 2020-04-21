@@ -14,7 +14,6 @@ import StyleContext from 'isomorphic-style-loader/StyleContext';
 import ApplicationContext from './ApplicationContext';
 import { ClientContext, GraphQLClient } from 'graphql-hooks';
 
-
 /**
  * The top-level React component setting context (global) variables
  * that can be accessed from all the child components.

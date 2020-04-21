@@ -9,14 +9,13 @@
 
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
-import PropTypes from 'prop-types';
-import s from './Partner.scss';
+import s from './VendorCreate.scss';
 import PartnerForm from '../../components/formComponents/vendorSignup/VendorSignupForm';
 
-class Partner extends React.Component {
+class VendorCreate extends React.Component {
   render() {
     return <PartnerForm />;
   }
 }
 
-export default withStyles(s)(Partner);
+export default withStyles(s)(VendorCreate);

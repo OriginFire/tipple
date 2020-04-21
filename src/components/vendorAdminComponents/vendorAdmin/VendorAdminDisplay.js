@@ -2,7 +2,6 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './VendorAdminDisplay.scss';
 import Button from '../../sitewideDisplayComponents/Button';
-import Link from '../../utilityComponents/link';
 import db from '../../../data/dbSimulator/bars';
 import VendorAccountSettings from '../vendorAccountSettings/VendorAccountSettings';
 import VendorCocktailSettings from '../vendorCocktailSettings/VendorCocktailSettings';
@@ -12,9 +11,11 @@ class VendorAdminDisplay extends React.Component {
     super(props);
     this.state = {
       displaySetting: 'account',
+      accountSettingsContent: 'display',
     };
     this.changeDisplayToAccount = this.changeDisplayToAccount.bind(this);
     this.changeDisplayToCocktails = this.changeDisplayToCocktails.bind(this);
+    this.handlePrimaryClick = this.handlePrimaryClick.bind(this);
   }
 
   changeDisplayToAccount() {
@@ -33,6 +34,18 @@ class VendorAdminDisplay extends React.Component {
     }
   }
 
+  handlePrimaryClick() {
+    if (this.state.displaySetting === 'account') {
+      if (this.state.accountSettingsContent === 'display') {
+        this.setState({accountSettingsContent: 'edit'});
+      } else if (this.state.accountSettingsContent === 'edit') {
+        this.setState( {accountSettingsContent: 'display'});
+      }
+    } else {
+      /* Activate VendorCocktailSettings GraphQL mutator + scroll event */
+    }
+  }
+
   render() {
     let vendor;
     let vendorStyle;
@@ -40,6 +53,7 @@ class VendorAdminDisplay extends React.Component {
     let cocktailStyle;
     let cocktailButton;
     let contentDisplay;
+    let accountSettingsContent = 'display';
     let primaryButtonText;
 
     db.map(vendorEntry => {
@@ -51,8 +65,12 @@ class VendorAdminDisplay extends React.Component {
     if (this.state.displaySetting == 'account') {
       vendorStyle = s.active;
       vendorButton = 'Account Settings';
-      contentDisplay = <VendorAccountSettings vendorAccount={vendor} />;
-      primaryButtonText = 'Edit Account Settings';
+      contentDisplay = <VendorAccountSettings vendorAccount={vendor} accountSettingsContent={this.state.accountSettingsContent} />;
+      if (this.state.accountSettingsContent === 'display') {
+        primaryButtonText = 'Edit Account Settings';
+      } else if (this.state.accountSettingsContent === 'edit') {
+        primaryButtonText = 'Save Changes';
+      }
     } else {
       vendorStyle = s.inactive;
       vendorButton = 'Account Settings';
@@ -67,6 +85,8 @@ class VendorAdminDisplay extends React.Component {
       cocktailStyle = s.inactive;
       cocktailButton = 'Cocktail Settings';
     }
+
+    console.log(this.state.accountSettingsContent);
 
     return (
       <div className={s.container}>
@@ -93,13 +113,11 @@ class VendorAdminDisplay extends React.Component {
           <div className={s.vendor_setting_content}>{contentDisplay}</div>
 
           <div className={s.buttons}>
-            <Link to="">
-              <Button
-                type="Primary"
-                onClick={this.handlePrimaryClick}
-                text={primaryButtonText}
-              />
-            </Link>
+            <Button
+              type="Primary"
+              onClick={e => this.handlePrimaryClick()}
+              text={primaryButtonText}
+            />
           </div>
         </div>
       </div>

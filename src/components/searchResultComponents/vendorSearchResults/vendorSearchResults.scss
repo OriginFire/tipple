@@ -2,6 +2,8 @@
 
 .result_list {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow: scroll;
 }
 
@@ -18,7 +20,8 @@
 }
 
 .result_text {
-  width: 30%;
+  display: flex;
+  flex-direction: column;
 }
 
 .bar_name {
@@ -44,6 +47,14 @@
   text-align: center;
 }
 
+.results_message {
+  width: 90%;
+  font-size: 12px;
+  font-family: "Lato Regular";
+  color: #858585;
+  text-align: center;
+}
+
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .result_list {
     flex-direction: column;
@@ -53,19 +64,24 @@
 
   .list_item {
     margin: 8px 0;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
     width: 100%;
   }
 
   .bar_image {
-    width: 40vw;
-    height: 12vh;
+    width: 45vw;
+    height: 15vh;
+  }
+
+  .result_text {
+    width: 40%;
   }
 
   .bar_name {
     font-size: 1.5em;
     width: 100%;
-    padding: 0 0 3px 0;
+    padding-bottom: 3px;
   }
 
   .distance {
@@ -73,7 +89,8 @@
   }
 
   .sale_options {
-    height: 50%;
+    padding-top: 12px;
+    padding-bottom: 5px;
   }
 
   .order_link {

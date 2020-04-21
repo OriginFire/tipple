@@ -13,6 +13,7 @@ class FormField extends React.Component {
     const { id } = this.props;
     const { pattern } = this.props;
     const { icon } = this.props;
+    const { maxlength } = this.props;
     let { size } = this.props;
     if (size === 'Small') {
       size = s.small_field;
@@ -31,6 +32,7 @@ class FormField extends React.Component {
           value={value}
           required
           pattern={pattern}
+          maxLength={maxlength}
         />
         <span className={s.placeholder}>{placeholder}</span>
       </div>

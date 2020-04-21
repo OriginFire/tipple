@@ -11,7 +11,6 @@ class VendorCocktailSettings extends React.Component {
       activeCocktailEdit: null,
       cocktails: this.props.vendorAccount.cocktails,
     };
-    this.myDivToFocus = React.createRef();
     this.handleOnClick = this.handleOnClick.bind(this);
   }
 
@@ -20,48 +19,54 @@ class VendorCocktailSettings extends React.Component {
       this.setState({
         activeCocktailEdit: null,
       });
-    } else
+    } else {
       this.setState({
         activeCocktailEdit: index,
       });
+    }
   }
 
-  handleButtonClick = event => {
-    if (this.myDivToFocus.current) {
-      this.myDivToFocus.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-      });
-    }
-  };
-
-  cocktailInputs(index, cocktailState) {
-    if (index === this.state.activeCocktailEdit)
+  cocktailInputs(index, cocktail) {
+    if (index === this.state.activeCocktailEdit) {
       return (
         <form className={s.cocktail_edit_fields}>
+          <div className={s.image_upload_line}>
+            <img className={s.upload_image} src="../../../../Urbana.jpg" />
+            <div className={s.upload_image_filename}>Test</div>
+            <div></div>
+          </div>
           <FormField
             placeholder="Cocktail Name"
             onChange={e =>
-              this.setState({ cocktailState: { name: e.target.value } })
+              this.setState({cocktailState: {name: e.target.value}})
             }
             type="text"
-            value={cocktailState.name}
+            value={this.state.cocktails[index].name}
           />
           <FormField
             placeholder="Ingredients"
             onChange={e =>
-              this.setState({ cocktailState: { name: e.target.value } })
+              this.setState({cocktailState: {name: e.target.value}})
             }
             type="text"
-            value={cocktailState.ingredients}
+            value={this.state.cocktails[index].ingredients}
           />
-          <Button type="Secondary" text="Save Changes"/>
+          <Button type="Secondary" text="Save Changes" onClick={e => this.handleOnClick(index)}/>
+          <Button type="Primary" text="Delete Cocktail"/>
         </form>
       );
+    }
   }
 
   render() {
     const vendor = this.props.vendorAccount;
+    let explainer;
+
+    if (vendor.cocktails.length === 0) {
+      explainer = "You haven't uploaded any cocktails yet. Click the 'Add A Cocktail' button below to get started."
+    } else {
+      explainer = "That's all the cocktails you've uploaded so far. To edit or remove a cocktail, click or tap on it in the list above."
+    }
 
     return (
       <div className={s.settings_content}>
@@ -74,11 +79,11 @@ class VendorCocktailSettings extends React.Component {
             cocktailItemStatus = s.item_box;
           }
 
-          const cocktailState = this.state.cocktails[index];
-          console.log(cocktailState.name);
-
           return (
-            <div className={cocktailItemStatus}>
+            <div
+              key={index}
+              className={cocktailItemStatus}
+            >
               <div
                 className={s.cocktail}
                 onClick={e => this.handleOnClick(index)}
@@ -93,13 +98,14 @@ class VendorCocktailSettings extends React.Component {
                     {cocktail.ingredients}
                   </div>
                 </div>
+
               </div>
-              {this.cocktailInputs(index, cocktailState)}
+              {this.cocktailInputs(index, cocktail)}
             </div>
           );
         })}
 
-        <div ref={this.myDivToFocus}>Test.</div>
+        <div className={s.end_explainer}>{explainer}</div>
       </div>
     );
   }

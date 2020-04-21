@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import Partner from './Partner';
+import VendorCreate from './VendorCreate';
 import Layout from '../../components/sitewideDisplayComponents/Layout';
 
 function action() {
@@ -16,7 +16,7 @@ function action() {
     title: '',
     component: (
       <Layout>
-        <Partner />
+        <VendorCreate />
       </Layout>
     ),
   };

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useMutation } from 'graphql-hooks';
 import s from './VendorSignupForm.scss';
 import FormField from '../../sitewideDisplayComponents/formField/FormField';
+import AddressFormField from '../../utilityComponents/addressFormField/AddressFormField';
 import Button from '../../sitewideDisplayComponents/Button/Button';
 import Link from '../../utilityComponents/link/Link';
 
@@ -73,7 +74,10 @@ function VendorSignupForm() {
   const [physicalState, setPhysicalState] = useState('');
   const [physicalZipCode, setPhysicalZipCode] = useState('');
   const [alcoholLicenseNumber, setAlcoholLicenseNumber] = useState('');
-  const [alcoholLicenseIssuingAgency, setAlcoholLicenseIssuingAgency] = useState('');
+  const [
+    alcoholLicenseIssuingAgency,
+    setAlcoholLicenseIssuingAgency,
+  ] = useState('');
   const [alcoholLicenseExpiration, setAlcoholLicenseExpiration] = useState('');
   const [doesDelivery, setDoesDelivery] = useState('');
   const [deliveryRadius, setDeliveryRadius] = useState('');
@@ -109,111 +113,7 @@ function VendorSignupForm() {
         List your cocktail delivery or takeout business on Tipple.
       </h1>
       <div className={s.partner_form}>
-        <div className={s.form_area}>
-          {/* eslint-disable-next-line consistent-return */}
-          {(() => {
-            // eslint-disable-next-line default-case
-            switch (formStage) {
-              case 1:
-                return (
-                  <form className={s.partner_form_fields}>
-                    <FormField
-                      placeholder="Full Name"
-                      onChange={e => setPointOfContact(e.target.value)}
-                      type="text"
-                      value={pointOfContact}
-                    />
-                    <FormField
-                      placeholder="Email Address"
-                      onChange={e => setEmailAddress(e.target.value)}
-                      type="email"
-                      value={emailAddress}
-                    />
-                    <FormField
-                      placeholder="Password"
-                      onChange={e => setPassword(e.target.value)}
-                      type="password"
-                      value={password}
-                    />
-                    <FormField
-                      placeholder="Phone Number"
-                      onChange={e => setPhoneNumber(e.target.value)}
-                      type="tel"
-                      value={phoneNumber}
-                      pattern="([0-9]{3})-[0-9]{3}-[0-9]{4}"
-                    />
-                  </form>
-                );
-
-              case 2:
-                return (
-                  <form className={s.partner_form_fields}>
-                    <FormField
-                      placeholder="Bar Name (D.B.A.)"
-                      onChange={e => setDbaName(e.target.value)}
-                      type="text"
-                      value={dbaName}
-                    />
-                    <FormField
-                      placeholder="Entity Name"
-                      onChange={e => setEntityName(e.target.value)}
-                      type="text"
-                      value={entityName}
-                    />
-                    <FormField
-                      placeholder="Address of Venue"
-                      onChange={e => setPhysicalAddress(e.target.value)}
-                      type="text"
-                      value={physicalAddress}
-                    />
-                  </form>
-                );
-
-              case 3:
-                return (
-                  <form className={s.partner_form_fields}>
-                    <FormField
-                      placeholder="Alcohol License #"
-                      onChange={e => setAlcoholLicenseNumber(e.target.value)}
-                      value={alcoholLicenseNumber}
-                    />
-                    <FormField
-                      placeholder="Issuing Agency"
-                      onChange={e => setAlcoholLicenseIssuingAgency(e.target.value)}
-                      value={alcoholLicenseIssuingAgency}
-                    />
-                    <FormField
-                      placeholder="Expiration Date"
-                      onChange={e => setAlcoholLicenseExpiration(e.target.value)}
-                      value={alcoholLicenseExpiration}
-                    />
-                  </form>
-                );
-
-              case 4:
-                return (
-                  <form className={s.partner_form_fields}>
-                    <FormField
-                      placeholder="Delivery"
-                      onChange={e => setDoesDelivery(e.target.value)}
-                      value={doesDelivery}
-                    />
-                    <FormField
-                      placeholder="Delivery Distance"
-                      onChange={e => setDeliveryRadius(e.target.value)}
-                      value={deliveryRadius}
-                    />
-                    <FormField
-                      placeholder="Online Store (if any)"
-                      onChange={e => setOnlineOrdering(e.target.value)}
-                      value={onlineOrdering}
-                    />
-                  </form>
-                );
-            }
-          })()}
-        </div>
-
+        {/* eslint-disable-next-line consistent-return */}
         {(() => {
           switch (formStage) {
             case 1:
@@ -294,32 +194,141 @@ function VendorSignupForm() {
           }
         })()}
 
+        {(() => {
+          // eslint-disable-next-line default-case
+          switch (formStage) {
+            case 1:
+              return (
+                <form className={s.partner_form_fields}>
+                  <FormField
+                    placeholder="Full Name"
+                    onChange={e => setPointOfContact(e.target.value)}
+                    type="text"
+                    value={pointOfContact}
+                  />
+                  <FormField
+                    placeholder="Email Address"
+                    onChange={e => setEmailAddress(e.target.value)}
+                    type="email"
+                    value={emailAddress}
+                  />
+                  <FormField
+                    placeholder="Password"
+                    onChange={e => setPassword(e.target.value)}
+                    type="password"
+                    value={password}
+                  />
+                  <FormField
+                    placeholder="Phone Number"
+                    onChange={e => setPhoneNumber(e.target.value)}
+                    type="tel"
+                    value={phoneNumber}
+                    pattern="([0-9]{3})-[0-9]{3}-[0-9]{4}"
+                    maxlength="10"
+                  />
+                </form>
+              );
+
+            case 2:
+              return (
+                <form className={s.partner_form_fields}>
+                  <FormField
+                    placeholder="Bar Name (D.B.A.)"
+                    onChange={e => setDbaName(e.target.value)}
+                    type="text"
+                    value={dbaName}
+                  />
+                  <FormField
+                    placeholder="Entity Name"
+                    onChange={e => setEntityName(e.target.value)}
+                    type="text"
+                    value={entityName}
+                  />
+                  <AddressFormField
+                    placeholder="Venue Street Address"
+                    value={physicalAddress}
+                  />
+                </form>
+              );
+
+            case 3:
+              return (
+                <form className={s.partner_form_fields}>
+                  <FormField
+                    placeholder="Alcohol License #"
+                    onChange={e => setAlcoholLicenseNumber(e.target.value)}
+                    value={alcoholLicenseNumber}
+                  />
+                  <FormField
+                    placeholder="Issuing Agency"
+                    onChange={e =>
+                      setAlcoholLicenseIssuingAgency(e.target.value)
+                    }
+                    value={alcoholLicenseIssuingAgency}
+                  />
+                  <FormField
+                    placeholder="Expiration Date"
+                    onChange={e => setAlcoholLicenseExpiration(e.target.value)}
+                    value={alcoholLicenseExpiration}
+                  />
+                </form>
+              );
+
+            case 4:
+              return (
+                <form className={s.partner_form_fields}>
+                  <FormField
+                    placeholder="Delivery"
+                    onChange={e => setDoesDelivery(e.target.value)}
+                    value={doesDelivery}
+                  />
+                  <FormField
+                    placeholder="Delivery Distance"
+                    onChange={e => setDeliveryRadius(e.target.value)}
+                    value={deliveryRadius}
+                  />
+                  <FormField
+                    placeholder="Online Store (if any)"
+                    onChange={e => setOnlineOrdering(e.target.value)}
+                    value={onlineOrdering}
+                  />
+                </form>
+              );
+          }
+        })()}
+
         <div className={s.buttons}>
           {(() => {
             switch (formStage) {
               case 1:
                 return (
                   <Link to="/">
-                    <Button type={"Secondary"} text="Return Home" />
+                    <Button type="Secondary" text="Return Home" />
                   </Link>
                 );
               case 2:
                 return (
-                  <Button type={"Secondary"}
+                  <Button
+                    type="Secondary"
                     onClick={e => setFormStage(1)}
                     text="Go Back"
                   />
                 );
               case 3:
                 return (
-                  <Button type={"Secondary"}
+                  <Button
+                    type="Secondary"
                     onClick={e => setFormStage(2)}
                     text="Go Back"
                   />
                 );
               case 4:
                 return (
-                  <Button type={"Secondary"} onClick={e => setFormStage(3)} text="Go Back"/>
+                  <Button
+                    type="Secondary"
+                    onClick={e => setFormStage(3)}
+                    text="Go Back"
+                  />
                 );
             }
           })()}
@@ -328,19 +337,32 @@ function VendorSignupForm() {
             switch (formStage) {
               case 1:
                 return (
-                  <Button type={"Primary"} onClick={e => setFormStage(2)} text="Next" />
+                  <Button
+                    type="Primary"
+                    onClick={e => setFormStage(2)}
+                    text="Next"
+                  />
                 );
               case 2:
                 return (
-                  <Button type={"Primary"} onClick={e => setFormStage(3)} text="Next" />
+                  <Button
+                    type="Primary"
+                    onClick={e => setFormStage(3)}
+                    text="Next"
+                  />
                 );
               case 3:
                 return (
-                  <Button type={"Primary"} onClick={e => setFormStage(4)} text="Next" />
+                  <Button
+                    type="Primary"
+                    onClick={e => setFormStage(4)}
+                    text="Next"
+                  />
                 );
               case 4:
                 return (
-                  <Button type={"Primary"}
+                  <Button
+                    type="Primary"
                     onClick={e => createNewBar}
                     text="Add My Bar"
                   />

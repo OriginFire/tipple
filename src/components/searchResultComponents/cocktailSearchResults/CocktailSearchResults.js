@@ -8,7 +8,41 @@ import history from "../../../history";
 class CocktailSearchResults extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchFilter: {
+        pickupRadius: 1,
+        doesDelivery: true,
+        doesPickup: true,
+      },
+    };
     this.storeLinkClick = this.storeLinkClick.bind(this);
+  }
+
+  resultsMessage(resultsArray) {
+    let miles;
+    if (this.state.searchFilter.pickupRadius === 1) {
+      miles = 'mile';
+    } else {
+      miles = 'miles';
+    }
+
+    if (resultsArray.length === 0) {
+      return (
+        <div className={s.results_message}>
+          <div>There are no cocktails available for delivery to your current address, however nearby vendors may sell cocktails for pickup.</div>
+          <br />
+          <div>We checked for cocktails available for pickup within {this.state.searchFilter.pickupRadius.toString()} {miles} and found none, but you can adjust that distance by clicking the filter settings button below.</div>
+        </div>
+      )
+    } else {
+      return (
+        <div className={s.results_message}>
+          <div>
+            Cocktails available for delivery to your current address or pickup within {this.state.searchFilter.pickupRadius.toString()} {miles}
+          </div>
+        </div>
+      )
+    }
   }
 
   storeLinkClick(vendor) {
@@ -24,6 +58,7 @@ class CocktailSearchResults extends React.Component {
 
     return (
       <div className={s.result_list}>
+        {this.resultsMessage(availableVendors)}
         {availableVendors.map((vendor, index, matchingVendors) => {
           return vendor.cocktails.map((cocktail, index, cocktails) => {
             if (vendor.onlineStore === '') {
@@ -37,13 +72,7 @@ class CocktailSearchResults extends React.Component {
                 <div className={s.result_text}>
                   <div className={s.bar_name}>{cocktail.name}</div>
                   <div className={s.ingredients}>
-                    {cocktail.ingredients.map((ingredient, index, cocktail) => {
-                      if ((index + 1) === cocktail.length) {
-                        return `${ingredient}`;
-                      } else {
-                        return `${ingredient}, `;
-                      }
-                    })}
+                    {cocktail.ingredients}
                   </div>
                   <div className={s.sale_options}>
                     <div className={s.order_link}>{onlineOrdering}</div>

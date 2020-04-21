@@ -35,13 +35,11 @@ class SearchResultDisplay extends React.Component {
     let cocktailStyle;
     let vendorContent;
     let cocktailContent;
-    let explainerContent;
     let resultsDisplay;
 
     if (this.state.displaySetting == 'vendors') {
       vendorStyle = s.active;
       vendorContent = 'Showing Vendors';
-      explainerContent = 'These are vendors in your area selling cocktails for delivery or pickup';
       resultsDisplay = <SearchResultList />
     } else {
       vendorStyle = s.inactive;
@@ -51,7 +49,6 @@ class SearchResultDisplay extends React.Component {
     if (this.state.displaySetting === 'cocktails') {
       cocktailStyle = s.active;
       cocktailContent = 'Showing Cocktails';
-      explainerContent = 'These are cocktails that vendors in your area are selling for delivery or pickup';
       resultsDisplay = <CocktailSearchResults />
     } else {
       cocktailStyle = s.inactive;
@@ -70,10 +67,6 @@ class SearchResultDisplay extends React.Component {
             </div>
           </div>
 
-          <h2 className={s.result_explainer}>
-            {explainerContent}
-          </h2>
-
           <div className={s.list}>
             {resultsDisplay}
           </div>
@@ -83,9 +76,7 @@ class SearchResultDisplay extends React.Component {
               <Button type="Secondary" text="Return Home" />
             </Link>
 
-            <Link to="/partner">
-              <Button type="Primary" text="Add A Bar" />
-            </Link>
+            <Button type="Primary" text="Adjust Filter Settings" />
           </div>
         </div>
       </div>

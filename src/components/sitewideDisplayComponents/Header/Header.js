@@ -9,18 +9,76 @@
 
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
-import PropTypes from 'prop-types';
 import s from './Header.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faCocktail } from '@fortawesome/free-solid-svg-icons';
 import Link from '../../utilityComponents/link/Link';
 import Logo from '../../../../public/Tipple_WoC_Reduced.png';
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      menuOpen: false,
+    };
+    this.menuClick = this.menuClick.bind(this);
+  }
+
+  menuClick() {
+    if (!this.state.menuOpen) {
+      this.setState({ menuOpen: true})
+    } else {
+      this.setState({menuOpen: false })
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.menuOpen) {
+      this.setState( {menuOpen: false});
+    }
+  }
+
+  menuVisibility() {
+    if (this.state.menuOpen) {
+      return (
+      <div className={s.dropdown_menu}>
+        <Link className={s.menu_link} to="/vendor-login">
+          <div className={s.menu_link_text}>
+            Vendor Login
+          </div>
+        </Link>
+
+        <Link className={s.menu_link} to="/vendor-create">
+        <div className={s.menu_link_text}>
+          Create Vendor Account
+        </div>
+      </Link>
+
+        <Link className={s.menu_link} to="/about">
+          <div className={s.menu_link_text}>
+            About Tipple
+          </div>
+        </Link>
+      </div>
+      )
+    } else {
+      return (
+        <div className={s.dropdown_menu_inactive}>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div className={s.container}>
         <Link className={s.brand} to="/">
           <img src={Logo} className={s.logo} alt="Tipple Supply Co" />
         </Link>
+        <div className={s.menu_icon} onClick={this.menuClick}>
+          <FontAwesomeIcon icon={faBars} size="lg" color="white" pull="right" />
+        </div>
+            {this.menuVisibility()}
       </div>
     );
   }
