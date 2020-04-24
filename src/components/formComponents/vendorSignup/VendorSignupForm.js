@@ -7,102 +7,111 @@ import AddressFormField from '../../utilityComponents/addressFormField/AddressFo
 import Button from '../../sitewideDisplayComponents/Button/Button';
 import Link from '../../utilityComponents/link/Link';
 
-const CREATE_BAR_MUTATION = `
-  mutation CreateBar($dbaName: String!,
-  $pointOfContact: String!,
-  $emailAddress: String!,
-  $phoneNumber: String!,
+const CREATE_VENDOR_MUTATION = `
+  mutation CreateVendor($dbaName: String!,
+  $adminName: String!,
+  $adminEmail: String!,
+  $adminPhone: String!,
   $physicalStreetAddress: String!,
   $physicalCity: String!,
   $physicalState: String!,
   $physicalZipCode: String!,
+  $latitude: Integer!,
+  $longitude: Integer!,
   $alcoholLicenseNumber: String!,
   $alcoholLicenseIssuingAgency: String!,
   $alcoholLicenseExpiration: String!,
-  $doesDelivery: String!
-  $deliveryRadius: String!
-  $onlineOrdering: String!)
+  $doesDelivery: Boolean!
+  $doesPickup: Boolean!
+  $deliveryRadius: Integer!
+  $onlineStore: String!)
   {
-    newBar(bar:{
+    newVendor(vendor:{
     dbaName: $dbaName,
-    pointOfContact: $pointOfContact,
-    emailAddress: $emailAddress,
-    phoneNumber: $phoneNumber,
+    adminName: $adminName,
+    adminEmail: $adminEmail,
+    adminPhone: $adminPhone,
     physicalStreetAddress: $physicalStreetAddress,
     physicalCity: $physicalCity,
     physicalState: $physicalState,
     physicalZipCode: $physicalZipCode,
+    latitude: $latitude,
+    longitude: $longitude,
     alcoholLicenseNumber: $alcoholLicenseNumber,
     alcoholLicenseIssuingAgency: $alcoholLicenseIssuingAgency,
     alcoholLicenseExpiration: $alcoholLicenseExpiration,
-    doesDelivery: $doesDelivery
-    deliveryRadius: $deliveryRadius
-    onlineOrdering: $onlineOrdering}) {
+    doesDelivery: $doesDelivery,
+    doesPickup: $doesPickup,
+    deliveryRadius: $deliveryRadius,
+    onlineStore: $onlineStore}) {
       id
       dbaName
-      pointOfContact
-      emailAddress
-      phoneNumber
+      adminName
+      adminEmail
+      adminPhone
       physicalStreetAddress
       physicalCity
       physicalState
       physicalZipCode
+      latitude
+      longitude
       alcoholLicenseNumber
       alcoholLicenseIssuingAgency
       alcoholLicenseExpiration
       doesDelivery
       deliveryRadius
-      onlineOrdering
+      onlineStore
     }
   }
 `;
 
 /** "CreateBar could be anything
- * "newbar calls newBar.js mutator, which is also identified in the schema.js
+ * "newbar calls newVendor.js mutator, which is also identified in the schema.js
  * */
 
 function VendorSignupForm() {
   const [dbaName, setDbaName] = useState('');
-  const [pointOfContact, setPointOfContact] = useState('');
-  const [emailAddress, setEmailAddress] = useState('');
+  const [adminName, setAdminName] = useState('');
+  const [adminEmail, setAdminEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [adminPhone, setAdminPhone] = useState('');
   const [entityName, setEntityName] = useState('');
   const [physicalAddress, setPhysicalAddress] = useState('');
   const [physicalStreetAddress, setPhysicalStreetAddress] = useState('');
   const [physicalCity, setPhysicalCity] = useState('');
   const [physicalState, setPhysicalState] = useState('');
   const [physicalZipCode, setPhysicalZipCode] = useState('');
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
   const [alcoholLicenseNumber, setAlcoholLicenseNumber] = useState('');
-  const [
-    alcoholLicenseIssuingAgency,
-    setAlcoholLicenseIssuingAgency,
-  ] = useState('');
+  const [alcoholLicenseIssuingAgency, setAlcoholLicenseIssuingAgency] = useState('');
   const [alcoholLicenseExpiration, setAlcoholLicenseExpiration] = useState('');
   const [doesDelivery, setDoesDelivery] = useState('');
   const [deliveryRadius, setDeliveryRadius] = useState('');
-  const [onlineOrdering, setOnlineOrdering] = useState('');
+  const [onlineStore, setOnlineStore] = useState('');
   const [formStage, setFormStage] = useState(1);
 
-  const [createBar] = useMutation(CREATE_BAR_MUTATION);
+  const [createVendor] = useMutation(CREATE_BAR_MUTATION);
 
-  async function createNewBar() {
-    await createBar({
+  async function createNewVendor() {
+    await createVendor({
       variables: {
         dbaName,
-        pointOfContact,
-        emailAddress,
-        phoneNumber,
+        adminName,
+        adminEmail,
+        adminPhone,
         physicalStreetAddress,
         physicalCity,
         physicalState,
         physicalZipCode,
+        latitude,
+        longitude,
         alcoholLicenseNumber,
         alcoholLicenseIssuingAgency,
         alcoholLicenseExpiration,
         doesDelivery,
         deliveryRadius,
-        onlineOrdering,
+        onlineStore,
       },
     });
   }
@@ -202,15 +211,15 @@ function VendorSignupForm() {
                 <form className={s.partner_form_fields}>
                   <FormField
                     placeholder="Full Name"
-                    onChange={e => setPointOfContact(e.target.value)}
+                    onChange={e => setAdminName(e.target.value)}
                     type="text"
-                    value={pointOfContact}
+                    value={adminName}
                   />
                   <FormField
                     placeholder="Email Address"
-                    onChange={e => setEmailAddress(e.target.value)}
+                    onChange={e => setAdminEmail(e.target.value)}
                     type="email"
-                    value={emailAddress}
+                    value={adminEmail}
                   />
                   <FormField
                     placeholder="Password"
@@ -220,9 +229,9 @@ function VendorSignupForm() {
                   />
                   <FormField
                     placeholder="Phone Number"
-                    onChange={e => setPhoneNumber(e.target.value)}
+                    onChange={e => setAdminPhone(e.target.value)}
                     type="tel"
-                    value={phoneNumber}
+                    value={adminPhone}
                     pattern="([0-9]{3})-[0-9]{3}-[0-9]{4}"
                     maxlength="10"
                   />
@@ -289,8 +298,8 @@ function VendorSignupForm() {
                   />
                   <FormField
                     placeholder="Online Store (if any)"
-                    onChange={e => setOnlineOrdering(e.target.value)}
-                    value={onlineOrdering}
+                    onChange={e => setOnlineStore(e.target.value)}
+                    value={onlineStore}
                   />
                 </form>
               );
@@ -363,7 +372,7 @@ function VendorSignupForm() {
                 return (
                   <Button
                     type="Primary"
-                    onClick={e => createNewBar}
+                    onClick={e => createNewVendor}
                     text="Add My Bar"
                   />
                 );

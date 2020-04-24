@@ -1,13 +1,13 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import s from './VendorAdminDisplay.scss';
+import s from './VendorAdminCocktails.scss';
 import Button from '../../sitewideDisplayComponents/Button';
-import db from '../../../data/dbSimulator/Vendors';
-import VendorAccountDetails from '../vendorAccountDetails/VendorAccountDetails';
+import db from '../../../data/dbSimulator/Vendors';;
+import VendorCocktailSettings from '../vendorCocktailSettings/VendorCocktailSettings';
 import ApplicationContext from "../../ApplicationContext";
 import history from "../../../history";
 
-class VendorAdminDisplay extends React.Component {
+class VendorAdminCocktails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -15,7 +15,7 @@ class VendorAdminDisplay extends React.Component {
   }
 
   handlePrimaryClick() {
-
+    /* Activate VendorCocktailSettings GraphQL mutator + scroll event */
   }
 
   static contextType = ApplicationContext;
@@ -30,6 +30,8 @@ class VendorAdminDisplay extends React.Component {
       }
     });
 
+    console.log(this.context);
+
     return (
       <div className={s.container}>
         <div className={s.vendor_admin_display}>
@@ -42,20 +44,18 @@ class VendorAdminDisplay extends React.Component {
             </h2>
 
             <div className={s.display_selectors}>
-              <div className={s.active}>Account Details</div>
-              <div className={s.inactive} onClick={e => history.push(`/vendor-admin-cocktails/${vendor.id}`)}>Cocktail Settings</div>
+              <div className={s.inactive} onClick={e => history.push(`/vendor-admin/${vendor.id}`)}>Account Details</div>
+              <div className={s.active}>Cocktail Settings</div>
             </div>
           </div>
           <div className={s.vendor_setting_content}>
-            <VendorAccountDetails vendorAccount={vendor}/>
+            <VendorCocktailSettings vendor={vendor} />
           </div>
-
-
           <div className={s.buttons}>
             <Button
               type="Primary"
               onClick={e => this.handlePrimaryClick()}
-              text="Edit Account Details"
+              text="Add A Cocktail"
             />
           </div>
         </div>
@@ -64,4 +64,4 @@ class VendorAdminDisplay extends React.Component {
   }
 }
 
-export default withStyles(s)(VendorAdminDisplay);
+export default withStyles(s)(VendorAdminCocktails);

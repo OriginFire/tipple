@@ -36,6 +36,7 @@ const context = {
   fetch: createFetch(fetch, {
     baseUrl: window.App.apiUrl,
   }),
+  authenticatedUser: "Ninja",
 };
 
 const container = document.getElementById('app');

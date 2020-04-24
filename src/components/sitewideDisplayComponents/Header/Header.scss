@@ -22,8 +22,6 @@
 
 .dropdown_menu, .dropdown_menu_inactive {
   position: fixed;
-  top: 68px;
-  bottom: 0;
   height: auto;
   width: 50%;
   box-shadow: #0b0b0b 1px 1px;
@@ -43,10 +41,6 @@
   right: -50%;
 }
 
-.vendor_icon {
-  display: inline-block;
-}
-
 .menu_link {
   position: relative;
   margin: 20px;
@@ -59,9 +53,26 @@
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
+  .dropdown_menu, .dropdown_menu_inactive {
+    width: 50%;
+    top: 68px;
+    bottom: 0;
+  }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
+  .dropdown_menu, .dropdown_menu_inactive {
+    width: 25%;
+    top: 68px;
+    bottom: 0;
+  }
+
+  .menu_link {
+    position: relative;
+    margin: 20px;
+    display: block;
+    font-size: 12px;
+  }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
@@ -72,6 +83,24 @@
 
   .logo {
     height: 90px;
+  }
+
+  .menu_icon {
+    position: absolute;
+    right: 40px;
+    top: 45px;
+  }
+
+  .dropdown_menu, .dropdown_menu_inactive {
+    width: 25%;
+    top: 114px;
+  }
+
+  .menu_link {
+    position: relative;
+    margin: 20px;
+    display: block;
+    font-size: 16px;
   }
 }
 

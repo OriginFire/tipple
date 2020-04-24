@@ -3,7 +3,7 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './VendorDisplay.scss';
 import Button from '../sitewideDisplayComponents/Button/Button';
 import Link from '../utilityComponents/link/Link';
-import db from '../../data/dbSimulator/bars';
+import db from '../../data/dbSimulator/Vendors';
 
 class VendorDisplay extends React.Component {
   constructor(props) {
@@ -34,29 +34,25 @@ class VendorDisplay extends React.Component {
     }
 
     return (
-      <div className={s.search_result_content}>
+      <div className={s.vendor_display_content}>
         <div className={s.vendor_display}>
-          <div className={s.vendor_name}>{vendor.dbaName}</div>
+          <div className={s.text}>
+            <div className={s.vendor_name}>{vendor.dbaName}</div>
 
-          <div className={s.address}>
-            {`${vendor.physicalStreetAddress}, ${vendor.physicalCity}`}
-          </div>
-
-          <div className={s.details}>
-            <div className={s.availability}>
-              {vendor.dbaName + availability}
+            <div className={s.address}>
+              {`${vendor.physicalStreetAddress}, ${vendor.physicalCity}`}
             </div>
+
+            <div className={s.availability}>{vendor.dbaName + availability}</div>
           </div>
+
 
           <div className={s.cocktails}>
             {vendor.cocktails.map((cocktail, index) => {
               return (
                 <div key={index} className={s.cocktail}>
                   <div className={s.cocktail_name}>{cocktail.name}</div>
-                  <img
-                    className={s.cocktail_image}
-                    src={cocktail.image}
-                  />
+                  <img className={s.cocktail_image} src={cocktail.image} />
                   <div className={s.cocktail_ingredients}>
                     {cocktail.ingredients}
                   </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './CocktailSearchResults.scss';
 import Link from '../../utilityComponents/link';
-import db from '../../../data/dbSimulator/bars';
+import db from '../../../data/dbSimulator/Vendors';
 import history from "../../../history";
 
 class CocktailSearchResults extends React.Component {

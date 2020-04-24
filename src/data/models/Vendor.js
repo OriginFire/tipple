@@ -7,11 +7,11 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import DataType, {STRING, BOOLEAN, NUMBER} from 'sequelize';
+import DataType, { STRING, BOOLEAN, INTEGER } from 'sequelize';
 import Model from '../sequelize';
 
-const Bar = Model.define(
-  'Bar',
+const Vendor = Model.define(
+  'Vendor',
   {
     id: {
       type: DataType.UUID,
@@ -23,15 +23,15 @@ const Bar = Model.define(
       type: DataType.STRING(255),
     },
 
-    pointOfContact: {
+    adminName: {
       type: DataType.STRING(255),
     },
 
-    emailAddress: {
+    adminEmail: {
       type: DataType.STRING(255),
     },
 
-    phoneNumber: {
+    adminPhone: {
       type: DataType.STRING(255),
     },
 
@@ -51,6 +51,14 @@ const Bar = Model.define(
       type: DataType.STRING(255),
     },
 
+    latitude: {
+      type: DataType.INTEGER,
+    },
+
+    longitude: {
+      type: DataType.INTEGER,
+    },
+
     alcoholLicenseNumber: {
       type: DataType.STRING(255),
     },
@@ -64,14 +72,22 @@ const Bar = Model.define(
     },
 
     doesDelivery: {
-      type: DataType.STRING,
+      type: DataType.BOOLEAN,
+    },
+
+    doesPickup: {
+      type: DataType.BOOLEAN,
     },
 
     deliveryRadius: {
+      type: DataType.INTEGER,
+    },
+
+    onlineStore: {
       type: DataType.STRING(255),
     },
 
-    onlineOrdering: {
+    vendorImage: {
       type: DataType.STRING(255),
     },
 
@@ -80,7 +96,7 @@ const Bar = Model.define(
       // validate: { isEmail: true },
     },
 
-    barId: {
+    vendorId: {
       type: DataType.STRING(255),
     },
   },
@@ -89,4 +105,4 @@ const Bar = Model.define(
   },
 );
 
-export default Bar;
+export default Vendor;

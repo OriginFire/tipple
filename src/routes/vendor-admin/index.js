@@ -3,12 +3,19 @@ import VendorAdmin from './VendorAdmin';
 import Layout from '../../components/sitewideDisplayComponents/Layout';
 
 async function action(route) {
-  const id = route.params.id;
+  const pathId = route.params.id;
+  const authenticatedUser = route.authenticatedUser;
+  console.log(authenticatedUser);
+
+  if (authenticatedUser !== pathId) {
+    return { redirect: '/vendor-login' }
+  };
+
   return {
     title: '',
     component: (
       <Layout>
-        <VendorAdmin id={id}/>
+        <VendorAdmin id={pathId}/>
       </Layout>
     ),
   };

@@ -3,29 +3,34 @@ import {
   GraphQLID as ID,
   GraphQLString as StringType,
   GraphQLBoolean as BooleanType,
+  GraphQLInt as IntegerType,
   GraphQLNonNull as NonNull,
 } from 'graphql';
 
-const BarType = new ObjectType({
-  name: 'Bar',
+const VendorType = new ObjectType({
+  name: 'Vendor',
   fields: {
     id: { type: new NonNull(ID) },
     barId: { type: StringType },
     dbaName: { type: StringType },
-    pointOfContact: { type: StringType },
-    emailAddress: { type: StringType },
-    phoneNumber: { type: StringType },
+    adminName: { type: StringType },
+    adminEmail: { type: StringType },
+    adminPhone: { type: StringType },
     physicalStreetAddress: { type: StringType },
     physicalCity: { type: StringType },
     physicalState: { type: StringType },
     physicalZipCode: { type: StringType },
+    latitude: { type: IntegerType },
+    longitude: { type: IntegerType },
     alcoholLicenseNumber: { type: StringType },
     alcoholLicenseIssuingAgency: { type: StringType },
     alcoholLicenseExpiration: { type: StringType },
-    doesDelivery: { type: StringType },
-    deliveryRadius: { type: StringType },
-    onlineOrdering: { type: StringType },
+    doesDelivery: { type: BooleanType },
+    doesPickup: { type: BooleanType },
+    deliveryRadius: { type: IntegerType },
+    onlineStore: { type: StringType },
+    vendorImage: { type: StringType },
   },
 });
 
-export default BarType;
+export default VendorType;

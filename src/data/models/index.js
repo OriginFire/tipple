@@ -8,27 +8,19 @@
  */
 
 import sequelize from '../sequelize';
-import Bar from './Bar';
-import Address from './Address'
-import PointOfContact from "./PointOfContact";
+import Vendor from './Vendor';
+import Address from './Address';
 
-Bar.hasOne(Address, {
+Vendor.hasOne(Address, {
   foreignKey: 'physicalAddressId',
   as: 'physicalAddress',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
 
-Bar.hasOne(Address, {
+Vendor.hasOne(Address, {
   foreignKey: 'billingAddressId',
   as: 'billingAddress',
-  onUpdate: 'cascade',
-  onDelete: 'cascade',
-});
-
-Bar.hasOne(PointOfContact, {
-  foreignKey: 'billingContactId',
-  as: 'billingContact',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
@@ -38,4 +30,4 @@ function sync(...args) {
 }
 
 export default { sync };
-export { Bar, Address, PointOfContact };
+export { Vendor, Address };

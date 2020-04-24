@@ -3,7 +3,7 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import { useMutation, useQuery } from 'graphql-hooks';
 import s from './vendorSearchResults.scss';
 import history from '../../../history';
-import db from '../../../data/dbSimulator/bars';
+import db from '../../../data/dbSimulator/Vendors';
 
 const SearchBarsQuery = `
   mutation SearchBars(
@@ -112,7 +112,7 @@ class VendorSearchResults extends React.Component {
               className={s.list_item}
               onClick={e => this.onVendorClick(vendor)}
             >
-              <img className={s.bar_image} src={vendor.image} />
+              <img className={s.bar_image} src={vendor.vendorImage} />
               <div className={s.result_text}>
                 <div className={s.bar_name}>{vendor.dbaName}</div>
                 <div className={s.distance}>

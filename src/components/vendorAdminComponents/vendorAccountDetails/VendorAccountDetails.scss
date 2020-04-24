@@ -8,8 +8,6 @@
 }
 
 .vendor_image {
-  width: 60vw;
-  height: 20vh;
   display: block;
   margin: auto;
 }
@@ -18,7 +16,6 @@
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  width: 80%;
   color: #e4e4e4;
 }
 
@@ -38,8 +35,6 @@
 
 .partner_form {
   position: absolute;
-  top: 0;
-  bottom: 0;
   height: auto;
   width: 100%;
   text-align: center;
@@ -84,9 +79,15 @@
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
+  .vendor_image {
+    width: 60vw;
+    height: 20vh;
+  }
+
   .section_wrapper {
     margin-top: 20px;
     margin-left: 20px;
+    width: 80%;
   }
 
   .settings_section {
@@ -101,7 +102,8 @@
   }
 
   .partner_form {
-    top: 0;
+    top: 130px;
+    bottom: 0;
   }
 
   .form_status {
@@ -119,10 +121,40 @@
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
-  .partner_content {
-    position: static;
-    margin: 3% auto 0 auto;
-    width: 90%;
+  .settings_content {
+    position: absolute;
+    height: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    align-content: flex-end;
+    align-items: flex-start;
+    justify-content: flex-end;
+    overflow: scroll;
+    width: auto;
+    z-index: 0;
+  }
+
+  .vendor_image {
+    width: 200px;
+    margin: 30px 20px 0 20px;
+  }
+
+  .section_wrapper {
+    display: block;
+    padding-bottom: 20px;
+    margin-left: 20px;
+  }
+
+  .settings_section {
+    margin: 30px 10px;
+    font-size: 14px;
+  }
+
+  .setting_type {
+    font-size: 13px;
+    margin-top: 6px;
+    margin-left: 5px;
   }
 
   .partner_text {
@@ -130,24 +162,23 @@
   }
 
   .partner_form {
-    margin-top: 4vh;
-    padding: 0 10%;
-  }
-
-  .form_area {
-    height: 100px;
-  }
-
-  .partner_form_fields {
-    margin-bottom: 3vh;
+    width: 70%;
+    right: 0;
   }
 
   .form_status {
-    margin-bottom: 5vh
+    top: 4vh;
+    right: 5vw;
+    left: 5vw;
+  }
+  .status_indicator {
+    font-size: 12px;
   }
 
-  .status_indicator {
-    font-size: 0.75em;
+  .partner_form_fields {
+    top: 60px;
+    left: 20vw;
+    width: 50%;
   }
 }
 

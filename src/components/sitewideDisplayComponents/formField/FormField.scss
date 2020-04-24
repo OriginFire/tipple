@@ -55,6 +55,11 @@
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
+  .field {
+    width: 100%;
+    margin: 0 auto 2px auto;
+  }
+
   .input_field:focus ~ .placeholder,
   .input_field:valid ~ .placeholder {
     top: 7px;

@@ -1,12 +1,12 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import s from './VendorAccountSettings.scss';
-import FormField from "../../sitewideDisplayComponents/formField";
-import AddressFormField from "../../utilityComponents/addressFormField/AddressFormField";
-import Link from "../../utilityComponents/link";
-import Button from "../../sitewideDisplayComponents/Button";
+import s from './VendorAccountDetails.scss';
+import FormField from '../../sitewideDisplayComponents/formField';
+import AddressFormField from '../../utilityComponents/addressFormField/AddressFormField';
+import Link from '../../utilityComponents/link';
+import Button from '../../sitewideDisplayComponents/Button';
 
-class VendorAccountSettings extends React.Component {
+class VendorAccountDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +16,69 @@ class VendorAccountSettings extends React.Component {
 
   render() {
     const vendor = this.props.vendorAccount;
-    let formStage = this.state.formStage;
+
+    return (
+      <div className={s.settings_content}>
+        <img
+          src={vendor.vendorImage}
+          alt={vendor.dbaName}
+          className={s.vendor_image}
+        />
+
+        <div className={s.section_wrapper}>
+          <div className={s.settings_section}>
+            Account User
+            <div className={s.setting_type}>Name: {vendor.adminName}</div>
+            <div className={s.setting_type}>
+              Telephone Number: {vendor.adminPhone}
+            </div>
+            <div className={s.setting_type}>
+              Email Address: {vendor.adminEmail}
+            </div>
+            <div className={s.setting_type}>
+              Password: {vendor.userPassword}
+            </div>
+          </div>
+
+          <div className={s.settings_section}>
+            Business Information
+            <div className={s.setting_type}>{vendor.physicalStreetAddress}</div>
+            <div className={s.setting_type}>{vendor.physicalCity}</div>
+            <div className={s.setting_type}>{vendor.physicalState}</div>
+            <div className={s.setting_type}>{vendor.physicalZipCode}</div>
+            <div className={s.setting_type}>
+              Alcohol License Number: {vendor.alcoholLicenseNumber}
+            </div>
+            <div className={s.setting_type}>
+              Issuing Agency: {vendor.alcoholLicenseIssuingAgency}
+            </div>
+            <div className={s.setting_type}>
+              Expiration Date: {vendor.alcoholLicenseExpiration}
+            </div>
+          </div>
+
+          <div className={s.settings_section}>
+            Service Settings
+            <div className={s.setting_type}>
+              Does Deliveries? {vendor.doesDelivery}
+            </div>
+            <div className={s.setting_type}>
+              Does Pickups? {vendor.doesPickup}
+            </div>
+            <div className={s.setting_type}>
+              Delivery Radius: {vendor.deliveryRadius}
+            </div>
+            <div className={s.setting_type}>
+              Online Store: {vendor.onlineStore}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      /*
+    if (this.props.accountSettingsContent === 'edit') {
+
+        const { formStage } = this.state;
     let pointOfContact;
     let dbaName;
     let emailAddress;
@@ -31,65 +93,8 @@ class VendorAccountSettings extends React.Component {
     let deliveryRadius;
     let onlineOrdering;
 
-    if (this.props.accountSettingsContent === 'display') {
-      return (
-        <div className={s.settings_content}>
-          <img
-            src={vendor.image}
-            alt={vendor.dbaName}
-            className={s.vendor_image}
-          />
-
-          <div className={s.section_wrapper}>
-            <div className={s.settings_section}>
-              Account User
-              <div className={s.setting_type}>Name: {vendor.pointOfContact}</div>
-
-              <div className={s.setting_type}>Telephone Number: {vendor.contactPhoneNumber}</div>
-
-              <div className={s.setting_type}>Email Address: {vendor.contactEmailAddress}</div>
-
-              <div className={s.setting_type}>Password: {vendor.userPassword}</div>
-            </div>
-
-
-            <div className={s.settings_section}>
-              Business Information
-              <div className={s.setting_type}>{vendor.physicalStreetAddress}</div>
-
-              <div className={s.setting_type}>{vendor.physicalCity}</div>
-
-              <div className={s.setting_type}>{vendor.physicalState}</div>
-
-              <div className={s.setting_type}>{vendor.physicalZipCode}</div>
-
-              <div className={s.setting_type}>Alcohol License Number: {vendor.alcoholLicenseNumber}</div>
-
-              <div className={s.setting_type}>
-                Issuing Agency: {vendor.alcoholLicenseIssuingAgency}
-              </div>
-
-              <div className={s.setting_type}>Expiration Date: {vendor.alcoholLicenseExpiration}</div>
-            </div>
-
-            <div className={s.settings_section}>
-              Service Settings
-              <div className={s.setting_type}>Does Deliveries? {vendor.doesDelivery}</div>
-
-              <div className={s.setting_type}>Does Pickups? {vendor.doesPickup}</div>
-
-              <div className={s.setting_type}>Delivery Radius: {vendor.deliveryRadius}</div>
-
-              <div className={s.setting_type}>Online Store: {vendor.onlineStore}</div>
-            </div>
-          </div>
-        </div>
-        );
-    }
-    if (this.props.accountSettingsContent === 'edit') {
       return (
         <div className={s.partner_form}>
-          {/* eslint-disable-next-line consistent-return */}
           {(() => {
             switch (formStage) {
               case 1:
@@ -272,10 +277,10 @@ class VendorAccountSettings extends React.Component {
                 );
             }
           })()}
-        </div>
-      )
-    };
+
+          */
+    );
   }
 }
 
-export default withStyles(s)(VendorAccountSettings);
+export default withStyles(s)(VendorAccountDetails);

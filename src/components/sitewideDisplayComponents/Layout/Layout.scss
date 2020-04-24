@@ -37,6 +37,14 @@
     url(./fonts/Lato-Regular.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'Lato Light';
+  font-style: normal;
+  src:
+    local('Lato-Light'),
+    url(./fonts/Lato-Light.woff) format('woff');
+}
+
 /** Smartphone */
 @media only screen and (orientation: portrait) and (min-width: 320px) {
 }

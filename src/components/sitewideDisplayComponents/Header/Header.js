@@ -41,8 +41,14 @@ class Header extends React.Component {
   menuVisibility() {
     if (this.state.menuOpen) {
       return (
-      <div className={s.dropdown_menu}>
-        <Link className={s.menu_link} to="/vendor-login">
+        <div className={s.dropdown_menu}>
+          <Link className={s.menu_link} to="/">
+            <div className={s.menu_link_text}>
+              Home
+            </div>
+          </Link>
+
+          <Link className={s.menu_link} to="/vendor-login">
           <div className={s.menu_link_text}>
             Vendor Login
           </div>

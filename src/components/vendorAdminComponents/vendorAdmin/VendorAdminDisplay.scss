@@ -27,6 +27,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   font-family: "Lato Regular";
+  z-index: 20;
 }
 
 .active, .inactive {
@@ -104,6 +105,11 @@
     width: 100px;
   }
 
+  .inactive:hover {
+    background-color: #616161;
+    color: white;
+  }
+
   .vendor_setting_content {
     top: 150px;
     bottom: 65px;
@@ -120,9 +126,11 @@
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
   .container {
-    position: static;
+    position: absolute;
     width: 100%;
-    height: 100%;
+    height: auto;
+    bottom: 0;
+    top: 66px;
   }
 
   .vendor_admin_display {
@@ -136,18 +144,28 @@
     opacity: 0.95;
   }
 
+  .context_control {
+    position: absolute;
+    width: 100px;
+    top: 0;
+    left: 20px;
+  }
+
   .vendor_name {
     display: none;
   }
 
   .result_explainer {
-    font-size: 12px;
+    display: none;
   }
 
   .display_selectors {
+    flex-direction: column;
     font-size: 12px;
-    justify-content: center;
-    margin: 3vh 0 0 0;
+    align-items: space-around;
+    justify-content: space-between;
+    margin: 15px 0;
+    height: 25vh;
   }
 
   .active, .inactive {
@@ -156,13 +174,34 @@
     width: 100px;
   }
 
+  .inactive {
+    cursor: pointer;
+  }
+
+  .inactive:hover {
+    background-color: #616161;
+    color: white;
+  }
+
+  .vendor_setting_content {
+    top: 0;
+    bottom: 0;
+    left: 160px;
+    right: 0;
+    width: auto;
+    font-size: 0.6em;
+  }
+
   .buttons {
     position: absolute;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin: 0;
     bottom: 3vh;
-    width: 100%;
+    left: 20px;
+    font-size: 10px;
+    padding: 12px 8px;
+    margin: 0 10px;
+    width: 100px;
   }
 }
 

@@ -1,6 +1,6 @@
 import { GraphQLList as List } from "graphql";
-import BarType from "../types/BarType";
-import Bar from '../../data/models/Bar';
+import BarType from "../types/VendorType";
+import Bar from '../../data/models/Vendor';
 
 
 const showCocktails = {

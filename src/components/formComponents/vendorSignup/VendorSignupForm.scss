@@ -97,29 +97,34 @@
 @media only screen and (orientation: landscape) and (min-width: 320px) {
   .partner_content {
     position: static;
-    margin: 3% auto 0 auto;
-    width: 90%;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 
   .partner_text {
+    margin: 1% 8% 0 8%;
     font-size: 1.2em;
   }
 
   .partner_form {
-    margin-top: 4vh;
-    padding: 0 10%;
+    top: 110px;
+    bottom: 0;
+    width: 50%;
   }
 
   .form_area {
-    height: 100px;
   }
 
   .partner_form_fields {
-    margin-bottom: 3vh;
+    top: 40px;
   }
 
   .form_status {
-    margin-bottom: 5vh
+    right: 20px;
+    left: 20px;
   }
 
   .status_indicator {
@@ -127,7 +132,11 @@
   }
 
   .buttons {
-    flex-direction: row;
+    position: absolute;
+    left: -120px;
+    flex-direction: column;
+    width: 120px;
+    height: 100px;
   }
 }
 

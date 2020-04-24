@@ -1,10 +1,6 @@
-@import '../../components/variables.css';
+@import '../../variables.css';
 
-.vendor_display_content {
-
-}
-
-.vendor_display {
+.vendor_admin_display {
   background-color: #121212;
   opacity: 0.98;
   z-index: 5;
@@ -17,57 +13,49 @@
   font-family: "Plantin Bold";
 }
 
-.address {
-  font-family: "Lato Regular";
-  text-align: center;
-  color: #595959;
-}
-
-.availability {
+.result_explainer {
   font-family: "Lato Regular";
   text-align: center;
   color: #505050;
-  background-color: #121212;
-  width: 100%;
+  width: 90%;
   x-index: 10;
+  margin: auto;
 }
 
-.cocktails {
+.display_selectors {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  overflow: scroll;
+  flex-wrap: nowrap;
+  font-family: "Lato Regular";
+}
+
+.active, .inactive {
+  border: solid #434343 1px;
+  border-radius: 4px;
+  padding: 20px 15px;
+  width: 170px;
+  text-align: center;
+  transition: 0.25s;
+}
+
+.active {
+  background-color: #251e1f;
+}
+
+.inactive {
+  cursor: pointer;
+}
+
+.inactive:hover {
+  background-color: #616161;
+  color: white;
+}
+
+.vendor_setting_content {
   position: absolute;
   margin: 0 0 0 0;
-  width: 100%;
-  height: auto;
-}
-
-.cocktail {
-  position: relative;
-  height: auto;
-}
-
-.cocktail_name {
-  text-align: center;
-  font-family: "Lato Regular";
-  color: #e9e9e9;
-}
-
-.cocktail_image {
-  position: relative;
-  width: 100%;
-  height: 110px;
-  object-fit: cover;
-}
-
-.cocktail_ingredients {
-  position: relative;
-  text-align: center;
-  z-index: 5;
-  font-family: "Lato Regular";
-  color: #bcbcbc;
+  width: 100%;  height: auto;
+  overflow: scroll;
 }
 
 .buttons {
@@ -78,56 +66,48 @@
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
-  .vendor_display_content {
+  .container {
     position: absolute;
-    height: auto;
     width: 100%;
-    bottom: 0;
+    height: auto;
     top: 66px;
+    bottom: 0;
   }
 
-  .vendor_display {
+  .vendor_admin_display {
     position: relative;
     width: 100%;
     height: 100%;
     display: block;
     float: right;
     margin: 0;
-    padding: 0;
     opacity: 0.95;
   }
 
   .vendor_name {
-    font-size: 28px;
-    margin: 5px 0 8px 0;
+    font-size: 30px;
+    margin: 10px 0 8px 0;
   }
 
-  .address {
+  .result_explainer {
     font-size: 12px;
   }
 
-  .cocktails {
-    top: 85px;
-    bottom: 115px;
-    font-size: 0.75em;
+  .display_selectors {
+    font-size: 12px;
+    justify-content: space-evenly;
+    margin: 3vh 0 0 0;
   }
 
-  .cocktail {
-    width: 200px;
-    margin: 10px 0;
+  .active, .inactive {
+    padding: 12px 8px;
+    width: 100px;
   }
 
-  .cocktail_name {
-    font-size: 16px;
-    padding-bottom: 8px;
-  }
-
-  .cocktail_ingredients {
-    font-size: 11px;
-  }
-
-  .availability {
-    font-size: 10px;
+  .vendor_setting_content {
+    top: 150px;
+    bottom: 65px;
+    font-size: 0.6em;
   }
 
   .buttons {
@@ -139,15 +119,15 @@
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
-  .vendor_display_content {
+  .container {
     position: absolute;
-    height: auto;
     width: 100%;
+    height: auto;
     bottom: 0;
     top: 66px;
   }
 
-  .vendor_display {
+  .vendor_admin_display {
     position: relative;
     width: 100%;
     height: 100%;
@@ -158,86 +138,72 @@
     opacity: 0.95;
   }
 
-  .text {
+  .context_control {
     position: absolute;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 30%;
+    width: 100px;
     top: 0;
-    bottom: 0;
-    left: 5vw;
+    left: 20px;
   }
 
   .vendor_name {
-    position: relative;
-    font-size: 28px;
-    text-align: left;
+    display: none;
   }
 
-  .address {
-    position: relative;
-    font-size: 14px;
-    text-align: left;
+  .result_explainer {
+    display: none;
   }
 
-  .availability {
-    position: relative;
-    font-size: 11px;
-    text-align: left;
-    padding-top: 10px;
-    padding-bottom: 30px;
+  .display_selectors {
+    flex-direction: column;
+    font-size: 12px;
+    align-items: space-around;
+    justify-content: space-between;
+    margin: 15px 0;
+    height: 25vh;
   }
 
-  .cocktails {
+  .active, .inactive {
+    padding: 12px 8px;
+    margin: 0 10px;
+    width: 100px;
+  }
+
+  .vendor_setting_content {
     top: 0;
     bottom: 0;
+    left: 160px;
     right: 0;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    flex: none;
-    width: 65%;
-    font-size: 12px;
-  }
-
-  .cocktail {
-    margin: 0 20px;
-  }
-
-  .cocktail_image {
-    position: relative;
-    width: 35vw;
-    height: 40vh;
-    object-fit: cover;
-  }
-
-  .cocktail_name {
-    font-size: 16px;
-    padding-bottom: 8px;
+    width: auto;
+    font-size: 0.6em;
   }
 
   .buttons {
-    display: none;
+    position: absolute;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    bottom: 3vh;
+    font-size: 14px;
+    padding: 12px 8px;
+    margin: 0 10px;
+    width: 140px;
   }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .vendor_display_content {
+  .container {
     position: absolute;
     width: 100%;
+    height: auto;
     top: 116px; /* This value is determined by the header */
     bottom: 0;
-    height: auto;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    background-image: url("../../../public/LevitationAspect.JPG");
+    background-image: url("../../../../public/LevitationAspect.JPG");
     background-size: cover;
     background-position: 50%, 0%;
   }
 
-  .vendor_display {
+  .vendor_admin_display {
     position: absolute;
     width: 55%;
     height: auto;
@@ -247,6 +213,12 @@
     margin: 0;
     padding: 0;
     opacity: 0.95;
+  }
+
+  .vendor_name {
+    display: block;
+    font-size: 60px;
+    margin: 10px 0 8px 0;
   }
 
   .display_selectors {
@@ -270,12 +242,6 @@
     color: #777777;
   }
 
-  .list {
-    top: 110px;
-    bottom: 130px;
-    height: auto;
-  }
-
   .buttons {
     position: absolute;
     margin: 0 0 0 0;
@@ -289,20 +255,20 @@
 }
 
 @media only screen and (min-width: 1224px) {
-  .vendor_display_content {
+  .container {
     position: absolute;
     width: 100%;
+    height: auto;
     top: 116px; /* This value is determined by the header */
     bottom: 0;
-    height: auto;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    background-image: url("../../../public/LevitationAspect.JPG");
+    background-image: url("../../../../public/LevitationAspect.JPG");
     background-size: cover;
-    background-position: 60%, 0%;
+    background-position: 50%, 0%;
   }
 
-  .vendor_display {
+  .vendor_admin_display {
     position: absolute;
     width: 55%;
     height: auto;
@@ -333,12 +299,6 @@
     padding-bottom: 30px;
     font-size: .94em;
     color: #777777;
-  }
-
-  .list {
-    top: 150px;
-    bottom: 130px;
-    height: auto;
   }
 
   .buttons {

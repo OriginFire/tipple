@@ -12,9 +12,9 @@ import {
   GraphQLObjectType as ObjectType,
 } from 'graphql';
 
-import newBar from './mutators/newBar';
-import listBars from './queries/listBars';
-import searchBars from './queries/searchBars';
+import newVendor from './mutators/newVendor';
+import listBars from './queries/listVendors';
+import searchVendors from './queries/searchVendors';
 import showCocktails from './queries/showCocktails';
 
 const schema = new Schema({
@@ -22,14 +22,14 @@ const schema = new Schema({
     name: 'Query',
     fields: {
       listBars,
-      searchBars,
+      searchVendors,
       showCocktails,
     },
   }),
   mutation: new ObjectType({
     name: 'Mutation',
     fields: {
-      newBar,
+      newVendor,
     },
   }),
 });

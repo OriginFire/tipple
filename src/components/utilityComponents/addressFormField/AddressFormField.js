@@ -1,6 +1,5 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
-import { geocodeByAddress, getLatLng} from 'react-google-places-autocomplete';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 import s from './AddressFormField.scss';
@@ -8,18 +7,15 @@ import s from './AddressFormField.scss';
 class AddressFormField extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      address: 'test',
-    };
+    this.state = {};
   }
 
   render() {
     const { placeholder } = this.props;
-    console.log(this.state.address);
 
     return (
       <GooglePlacesAutocomplete
-        onSelect={({ description }) => this.setState({ address: description })}
+        onSelect={({ description }) => this.props.onAddressSelection(description)}
         renderInput={(props) => (
           <div className={s.field}>
             <input

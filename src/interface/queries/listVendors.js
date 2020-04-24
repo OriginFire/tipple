@@ -8,19 +8,16 @@
  */
 
 import { GraphQLList as List } from 'graphql';
-import BarType from '../types/BarType';
-import Bar from '../../data/models/Bar';
+import VendorType from '../types/VendorType';
+import Vendor from '../../data/models/Vendor';
 
-const searchBars = {
-  type: List(BarType),
+const newVendor = {
+  type: List(VendorType),
   resolve() {
-    // Bar.findNearest() -- this needs to be postgis
-    bars = Bar.findNearest()
-    bars.mapToDelivery // set opts = input address is within distance
     return (
-      bars
+      Vendor.findAll()
     );
   },
 };
 
-export default searchBars;
+export default newVendor;
