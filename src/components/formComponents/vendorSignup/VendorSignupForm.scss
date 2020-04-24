@@ -1,6 +1,6 @@
 @import '../../variables.css';
 
-.partner_content {
+.vendor_signup_content {
   position: absolute;
   height: auto;
   width: 100%;
@@ -9,12 +9,12 @@
   bottom: 0;
 }
 
-.partner_text {
+.form_explainer {
   text-align: center;
   font-family: 'Plantin Bold';
 }
 
-.partner_form {
+.form {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -63,20 +63,17 @@
 .buttons {
   display: flex;
   flex-direction: column;
-  position: static;
   justify-content: space-evenly;
   position: absolute;
-  bottom: 10px;
-  width: 100%;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
-  .partner_text {
+  .form_explainer {
     margin: 3% 8% 0 8%;
     font-size: 1.3em;
   }
 
-  .partner_form {
+  .form {
     top: 70px;
   }
 
@@ -92,10 +89,15 @@
   .partner_form_fields {
     top: 70px;
   }
+
+  .buttons {
+    bottom: 10px;
+    width: 100%;
+  }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
-  .partner_content {
+  .vendor_signup_content {
     position: static;
     margin: 0;
     width: 100%;
@@ -104,18 +106,15 @@
     justify-content: center;
   }
 
-  .partner_text {
+  .form_explainer {
     margin: 1% 8% 0 8%;
     font-size: 1.2em;
   }
 
-  .partner_form {
+  .form {
     top: 110px;
     bottom: 0;
     width: 50%;
-  }
-
-  .form_area {
   }
 
   .partner_form_fields {
@@ -141,9 +140,13 @@
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .partner_content {
-    position: static;
-    height: 91vh;
+  .vendor_signup_content {
+    position: absolute;
+    height: auto;
+    top: 116px;
+    bottom: 0;
+    right: 0;
+    left: 0;
     margin: 0 0 0 0;
     padding: 0;
     background-image: url('../../../../public/OldFashioned.png');
@@ -152,36 +155,33 @@
     background-position: 50%, 0;
   }
 
-  .partner_text {
+  .form_explainer {
     position: absolute;
     width: 57%;
     margin: 0;
-    top: 32vh;
-    right: 1vw;
+    top: 12vh;
+    right: 2vw;
     font-size: 2em;
   }
 
-  .partner_form {
+  .form {
     position: absolute;
-    width: 60%;
+    width: 55%;
     margin: 0 0 0 0;
     padding: 0;
     min-height: 200px;
-    top: 40vh;
-    right: .1vw;
-  }
-
-  .form_area {
-    min-height: 32vh;
+    top: 25vh;
+    right: 2vw;
   }
 
   .partner_form_fields {
-    margin-bottom: 3vh;
-    width: 100%;
+    top: 70px;
   }
 
   .form_status {
-    margin: 2vh auto 3vh auto;
+    top: 0;
+    right: 2vw;
+    left: 2vw;
   }
 
   .status_indicator {
@@ -190,12 +190,17 @@
 
   .buttons {
     flex-direction: column;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 10%;
+    width: 80%;
   }
 
 }
 
 @media only screen and (min-width: 1224px) {
-  .partner_content {
+  .vendor_signup_content {
     height: 91vh;
     position: static;
     margin: 0 0 0 0;
@@ -205,17 +210,13 @@
     background-position: 50%, 0;
   }
 
-  .partner_text {
+  .form_explainer {
     position: absolute;
     width: 57%;
     margin: 0;
     top: 32vh;
     right: 1vw;
     font-size: 2em;
-  }
-
-  .form_area {
-    min-height: 32vh;
   }
 
   .partner_form_fields {

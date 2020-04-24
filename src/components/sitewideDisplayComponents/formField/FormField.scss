@@ -17,7 +17,8 @@
   color: #878787;
   left: 10%;
   top: 33%;
-  transition: 0.2s ease all;
+  transition: 0.1s linear;
+  will-change: top, left, font-size;
 }
 
 .input_field:focus ~ .placeholder {

@@ -1,9 +1,5 @@
 @import '../../components/variables.css';
 
-.vendor_display_content {
-
-}
-
 .vendor_display {
   background-color: #121212;
   opacity: 0.98;
@@ -249,38 +245,96 @@
     opacity: 0.95;
   }
 
-  .display_selectors {
-    font-size: 12px;
-    justify-content: space-evenly;
-    margin: 4% 0 0 0;
-  }
-
-  .active, .inactive {
-    padding: 14px 12px;
-    margin: 0 10px;
-    width: 120px;
-  }
-
-  .result_explainer {
+  .text {
     position: relative;
-    margin: 0 0 0 0;
-    padding-top: 4%;
-    padding-bottom: 3%;
-    font-size: .94em;
-    color: #777777;
+    text-align: center;
+    display: block;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
   }
 
-  .list {
+  .vendor_name {
+    position: relative;
+    font-size: 40px;
+    text-align: center;
+    margin: 8px 0 10px 0;
+  }
+
+  .address {
+    position: relative;
+    font-size: 18px;
+    font-family: "Lato Light", sans-serif;
+    text-align: center;
+    color: #919191;
+  }
+
+  .availability {
+    position: relative;
+    font-size: 14px;
+    font-family: "Lato Light", sans-serif;
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 30px;
+    color: #919191;
+  }
+
+  .cocktails {
     top: 110px;
-    bottom: 130px;
+    bottom: 120px;
+    right: 0;
+    left: 0;
     height: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: scroll;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .cocktail {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 10px;
+    min-height: 120px;
+  }
+
+  .cocktail_image {
+    position: relative;
+    width: 180px;
+    height: 120px;
+    margin-right: 20px;
+    object-fit: cover;
+  }
+
+  .cocktail_text {
+    width: 50%;
+    margin: auto;
+  }
+
+  .cocktail_name {
+    font-size: 20px;
+    padding-bottom: 8px;
+  }
+
+  .cocktail_ingredients {
+    font-size: 13px;
+    font-family: "Lato Light", sans-serif;
   }
 
   .buttons {
     position: absolute;
-    margin: 0 0 0 0;
+    left: 0;
+    right: 0;
+    margin: auto;
     bottom: 10px;
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;

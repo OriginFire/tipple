@@ -21,7 +21,7 @@
 
 .explainer {
   color: #e6e6e6;
-  font-family: "Lato Light";
+  font-family: "Lato Light", sans-serif;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
@@ -53,16 +53,22 @@
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .action_content {
-    justify-content: space-between;
-    height: 30vh;
+    justify-content: flex-start;
+    height: auto;
     width: 55%;
     top: 52vh;
+    bottom: 0;
     right: 20px;
     margin: 0 0 0 0;
   }
 
+  .action_item {
+    margin: 2vh 0;
+  }
+
   .explainer {
-    font-size: 18px;
+    font-size: 17px;
+    margin: 0 0 2px 0;
   }
 }
 

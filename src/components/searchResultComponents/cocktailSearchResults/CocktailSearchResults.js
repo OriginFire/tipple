@@ -37,7 +37,7 @@ class CocktailSearchResults extends React.Component {
     } else {
       return (
         <div className={s.results_message}>
-          <div>
+          <div style={{}}>
             Cocktails available for delivery to your current address or pickup within {this.state.searchFilter.pickupRadius.toString()} {miles}
           </div>
         </div>
@@ -68,9 +68,9 @@ class CocktailSearchResults extends React.Component {
             }
             return (
               <div className={s.list_item} onClick={e => this.storeLinkClick(vendor)}>
-                <img className={s.bar_image} src={cocktail.image} />
+                <img className={s.cocktail_image} src={cocktail.image} />
                 <div className={s.result_text}>
-                  <div className={s.bar_name}>{cocktail.name}</div>
+                  <div className={s.cocktail_name}>{cocktail.name}</div>
                   <div className={s.ingredients}>
                     {cocktail.ingredients}
                   </div>

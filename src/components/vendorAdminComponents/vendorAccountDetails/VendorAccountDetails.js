@@ -3,19 +3,62 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './VendorAccountDetails.scss';
 import FormField from '../../sitewideDisplayComponents/formField';
 import AddressFormField from '../../utilityComponents/addressFormField/AddressFormField';
-import Link from '../../utilityComponents/link';
-import Button from '../../sitewideDisplayComponents/Button';
 
 class VendorAccountDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formStage: 1,
+      openForm: null,
     };
+    this.openUserForm = this.openUserForm.bind(this);
+    this.openBusinessForm = this.openBusinessForm.bind(this);
+    this.openServiceForm = this.openServiceForm.bind(this);
+  }
+
+  openUserForm() {
+    this.setState({
+      openForm: 'userform',
+    });
+  }
+
+  openBusinessForm() {
+    this.setState({
+      openForm: 'businessform',
+    });
+  }
+
+  openServiceForm() {
+    this.setState({
+      openForm: 'serviceform',
+    });
   }
 
   render() {
     const vendor = this.props.vendorAccount;
+    let miles;
+    let displayUserForm;
+    let displayBusinessForm;
+    let displayServiceForm;
+
+    if (this.state.openForm === 'userform') {
+      displayUserForm = (<div></div>)
+    } else if (this.state.openForm === 'businessform') {
+      displayBusinessForm = (
+        <div className={s.settings_form}>The business form</div>
+      )
+    } else if (this.state.openForm === 'serviceform') {
+      displayServiceForm = (
+        <div className={s.settings_form}>The service form</div>
+      )
+    } else {}
+
+    console.log(this.state.openForm);
+
+    if (vendor.deliveryRadius === 1) {
+      miles = 'mile';
+    } else {
+      miles = 'miles';
+    }
 
     return (
       <div className={s.settings_content}>
@@ -26,50 +69,92 @@ class VendorAccountDetails extends React.Component {
         />
 
         <div className={s.section_wrapper}>
-          <div className={s.settings_section}>
-            Account User
-            <div className={s.setting_type}>Name: {vendor.adminName}</div>
-            <div className={s.setting_type}>
-              Telephone Number: {vendor.adminPhone}
+          <div className={s.settings_section} onClick={e => this.openUserForm()}>
+            <div className={s.section_name}>Account User</div>
+            <div className={s.setting}>
+              <div className={s.setting_field}>Name</div>
+              <div className={s.setting_value}>{vendor.adminName}</div>
             </div>
-            <div className={s.setting_type}>
-              Email Address: {vendor.adminEmail}
+            <div className={s.setting}>
+              <div className={s.setting_field}>Phone Number</div>
+              <div className={s.setting_value}>{vendor.adminPhone}</div>
             </div>
-            <div className={s.setting_type}>
-              Password: {vendor.userPassword}
+            <div className={s.setting}>
+              <div className={s.setting_field}>Email Address</div>
+              <div className={s.setting_value}>{vendor.adminEmail}</div>
             </div>
+            <div className={s.setting}>
+              <div className={s.setting_field}>Password</div>
+              <div className={s.setting_value}>{vendor.userPassword}</div>
+            </div>
+            <div className={s.section_form}>{displayUserForm}</div>
           </div>
 
-          <div className={s.settings_section}>
+          <div className={s.settings_section} onClick={e => this.openBusinessForm()}>
             Business Information
-            <div className={s.setting_type}>{vendor.physicalStreetAddress}</div>
-            <div className={s.setting_type}>{vendor.physicalCity}</div>
-            <div className={s.setting_type}>{vendor.physicalState}</div>
-            <div className={s.setting_type}>{vendor.physicalZipCode}</div>
-            <div className={s.setting_type}>
-              Alcohol License Number: {vendor.alcoholLicenseNumber}
+            <div className={s.section_form}>{displayBusinessForm}</div>
+            <div className={s.setting}>
+              <div className={s.setting_field}>Business Name (D.B.A.)</div>
+              <div className={s.setting_value}>{vendor.dbaName}</div>
             </div>
-            <div className={s.setting_type}>
-              Issuing Agency: {vendor.alcoholLicenseIssuingAgency}
+            <div className={s.setting}>
+              <div className={s.setting_field}>Street Address</div>
+              <div className={s.setting_value}>
+                {vendor.physicalStreetAddress}
+              </div>
             </div>
-            <div className={s.setting_type}>
-              Expiration Date: {vendor.alcoholLicenseExpiration}
+            <div className={s.setting}>
+              <div className={s.setting_field}>City</div>
+              <div className={s.setting_value}>{vendor.physicalCity}</div>
+            </div>
+            <div className={s.setting}>
+              <div className={s.setting_field}>State</div>
+              <div className={s.setting_value}>{vendor.physicalState}</div>
+            </div>
+            <div className={s.setting}>
+              <div className={s.setting_field}>Zip Code</div>
+              <div className={s.setting_value}>{vendor.physicalZipCode}</div>
+            </div>
+            <div className={s.setting}>
+              <div className={s.setting_field}>Alcohol License #</div>
+              <div className={s.setting_value}>
+                {vendor.alcoholLicenseNumber}
+              </div>
+            </div>
+            <div className={s.setting}>
+              <div className={s.setting_field}>Alcohol Licensing Agency</div>
+              <div className={s.setting_value}>
+                {vendor.alcoholLicenseIssuingAgency}
+              </div>
+            </div>
+            <div className={s.setting}>
+              <div className={s.setting_field}>Expiration Date</div>
+              <div className={s.setting_value}>
+                {vendor.alcoholLicenseExpiration}
+              </div>
             </div>
           </div>
 
-          <div className={s.settings_section}>
+          <div className={s.settings_section} onClick={e => this.openServiceForm()}>
             Service Settings
-            <div className={s.setting_type}>
-              Does Deliveries? {vendor.doesDelivery}
+            <div className={s.section_form}>{displayServiceForm}</div>
+            <div className={s.setting}>
+              <div className={s.setting_field}>Delivery</div>
+              <div className={s.setting_value}>{vendor.doesDelivery}</div>
             </div>
-            <div className={s.setting_type}>
-              Does Pickups? {vendor.doesPickup}
+            <div className={s.setting}>
+              <div className={s.setting_field}>Pickup</div>
+              <div className={s.setting_value}>{vendor.doesPickup}</div>
             </div>
-            <div className={s.setting_type}>
-              Delivery Radius: {vendor.deliveryRadius}
+            <div className={s.setting}>
+              <div className={s.setting_field}>Delivery Radius</div>
+              <div className={s.setting_value}>
+                {vendor.deliveryRadius} {miles}
+              </div>
             </div>
-            <div className={s.setting_type}>
-              Online Store: {vendor.onlineStore}
+            <div className={s.setting}>
+              <div className={s.setting_field}>Online Store</div>
+              <div className={s.setting_value}>{vendor.onlineStore}</div>
             </div>
           </div>
         </div>

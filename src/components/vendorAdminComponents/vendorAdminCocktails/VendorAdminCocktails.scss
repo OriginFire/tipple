@@ -24,8 +24,6 @@
 
 .display_selectors {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
   font-family: "Lato Regular";
 }
 
@@ -94,9 +92,11 @@
   }
 
   .display_selectors {
-    font-size: 12px;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: space-evenly;
     margin: 3vh 0 0 0;
+    font-size: 12px;
   }
 
   .active, .inactive {
@@ -215,16 +215,36 @@
     opacity: 0.95;
   }
 
+  .context_control {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: inherit;
+  }
+
   .vendor_name {
     display: block;
-    font-size: 60px;
+    font-size: 40px;
     margin: 10px 0 8px 0;
   }
 
+  .result_explainer {
+    position: relative;
+    display: block;
+    margin: auto;
+    padding: 0;
+    font-size: 14px;
+    font-family: "Lato Light", sans-serif;
+    color: #777777;
+  }
+
   .display_selectors {
-    font-size: 12px;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: space-evenly;
     margin: 4% 0 0 0;
+    height: inherit;
+    font-size: 12px;
   }
 
   .active, .inactive {
@@ -233,13 +253,14 @@
     width: 120px;
   }
 
-  .result_explainer {
-    position: relative;
-    margin: 0 0 0 0;
-    padding-top: 4%;
-    padding-bottom: 3%;
-    font-size: .94em;
-    color: #777777;
+  .vendor_setting_content {
+    top: 170px;
+    bottom: 65px;
+    left: 0;
+    right: 0;
+    height: auto;
+    width: auto;
+    font-size: 0.6em;
   }
 
   .buttons {

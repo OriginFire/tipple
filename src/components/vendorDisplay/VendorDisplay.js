@@ -51,10 +51,12 @@ class VendorDisplay extends React.Component {
             {vendor.cocktails.map((cocktail, index) => {
               return (
                 <div key={index} className={s.cocktail}>
-                  <div className={s.cocktail_name}>{cocktail.name}</div>
                   <img className={s.cocktail_image} src={cocktail.image} />
-                  <div className={s.cocktail_ingredients}>
-                    {cocktail.ingredients}
+                  <div className={s.cocktail_text}>
+                    <div className={s.cocktail_name}>{cocktail.name}</div>
+                    <div className={s.cocktail_ingredients}>
+                      {cocktail.ingredients}
+                    </div>
                   </div>
                 </div>
               );

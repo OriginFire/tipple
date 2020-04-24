@@ -20,6 +20,10 @@
   top: 22px;
 }
 
+.menu_icon_large {
+  display: none;
+}
+
 .dropdown_menu, .dropdown_menu_inactive {
   position: fixed;
   height: auto;
@@ -30,25 +34,31 @@
   font-family: "Lato Regular";
   color: black;
   text-decoration: none;
+  right: 0;
   transition: 0.5s;
+  will-change: transform 500ms linear;
 }
 
 .dropdown_menu {
-  right: 0;
+  transform: translateX(0);
 }
 
 .dropdown_menu_inactive {
-  right: -50%;
+  transform: translateX(100%);
 }
 
 .menu_link {
   position: relative;
   margin: 20px;
+  color: #b0b0b0;
   display: block;
 }
 
+.menu_link:hover {
+  color: #cdcdcd;
+}
+
 .menu_link_text {
-  color: #b0b0b0;
   text-align: left;
 }
 
@@ -86,21 +96,27 @@
   }
 
   .menu_icon {
+    display: none;
+  }
+
+  .menu_icon_large {
+    display: block;
     position: absolute;
     right: 40px;
-    top: 45px;
+    top: 40px;
   }
 
   .dropdown_menu, .dropdown_menu_inactive {
-    width: 25%;
+    width: 30%;
     top: 114px;
   }
 
   .menu_link {
     position: relative;
-    margin: 20px;
+    margin: 30px;
     display: block;
-    font-size: 16px;
+    font-size: 20px;
+    font-family: "Lato Light";
   }
 }
 

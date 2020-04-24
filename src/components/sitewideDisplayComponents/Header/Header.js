@@ -84,6 +84,10 @@ class Header extends React.Component {
         <div className={s.menu_icon} onClick={this.menuClick}>
           <FontAwesomeIcon icon={faBars} size="lg" color="white" pull="right" />
         </div>
+
+        <div className={s.menu_icon_large} onClick={this.menuClick}>
+          <FontAwesomeIcon icon={faBars} size="2x" color="white" pull="right" />
+        </div>
             {this.menuVisibility()}
       </div>
     );

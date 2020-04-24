@@ -63,12 +63,12 @@
 
   .explainer_text {
     position: absolute;
-    top: 16vh;
-    left: auto;
-    right: 20px;
-    width: 60%;
+    top: 17vh;
+    left: inherit;
+    text-align: right;
+    width: 95%;
     transform: translate(0, 0);
-    font-size: 5vh;
+    font-size: 4.9vh;
   }
 }
 

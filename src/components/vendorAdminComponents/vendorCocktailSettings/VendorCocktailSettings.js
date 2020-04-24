@@ -71,7 +71,7 @@ class VendorCocktailSettings extends React.Component {
     }
 
     return (
-      <div className={s.settings_content}>
+      <div className={s.cocktail_list}>
         {vendor.cocktails.map((cocktail, index, cocktails) => {
           let cocktailItemStatus;
           if (index === this.state.activeCocktailEdit) {

@@ -14,11 +14,13 @@ import Vendor from '../../data/models/Vendor';
 const searchVendors = {
   type: List(VendorType),
   resolve() {
+    let vendorsDummy = 'Here I am';
+    let vendors;
     // Bar.findNearest() -- this needs to be postgis
-    vendors = Vendor.findNearest()
-    vendors.mapToDelivery // set opts = input address is within distance
+    vendors = Vendor.findNearest();
+    vendors.mapToDelivery; // set opts = input address is within distance
     return (
-      vendors
+      vendorsDummy
     );
   },
 };

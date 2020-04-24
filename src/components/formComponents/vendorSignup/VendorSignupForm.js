@@ -91,7 +91,7 @@ function VendorSignupForm() {
   const [onlineStore, setOnlineStore] = useState('');
   const [formStage, setFormStage] = useState(1);
 
-  const [createVendor] = useMutation(CREATE_BAR_MUTATION);
+  const [createVendor] = useMutation(CREATE_VENDOR_MUTATION);
 
   async function createNewVendor() {
     await createVendor({
@@ -117,11 +117,11 @@ function VendorSignupForm() {
   }
 
   return (
-    <div className={s.partner_content}>
-      <h1 className={s.partner_text}>
+    <div className={s.vendor_signup_content}>
+      <h1 className={s.form_explainer}>
         List your cocktail delivery or takeout business on Tipple.
       </h1>
-      <div className={s.partner_form}>
+      <div className={s.form}>
         {/* eslint-disable-next-line consistent-return */}
         {(() => {
           switch (formStage) {

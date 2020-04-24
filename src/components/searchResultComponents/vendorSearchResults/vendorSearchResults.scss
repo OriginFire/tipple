@@ -8,11 +8,12 @@
 }
 
 .list_item {
-  font-family: "Lato Regular";
+  font-family: "Lato Regular", sans-serif;
   display: flex;
   flex: none;
   flex-direction: row;
   flex-wrap: nowrap;
+  cursor: pointer;
 }
 
 .bar_image {
@@ -25,7 +26,7 @@
 }
 
 .bar_name {
-  font-family: "Lato Regular";
+  font-family: "Lato Regular", sans-serif;
   text-align: center;
   color: white;
 }
@@ -48,9 +49,7 @@
 }
 
 .results_message {
-  width: 90%;
-  font-size: 12px;
-  font-family: "Lato Regular";
+  font-family: "Lato Regular", sans-serif;
   color: #858585;
   text-align: center;
 }
@@ -60,6 +59,11 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+  }
+
+  .results_message {
+    width: 90%;
+    font-size: 12px;
   }
 
   .list_item {
@@ -79,7 +83,7 @@
   }
 
   .bar_name {
-    font-size: 1.5em;
+    font-size: 14px;
     width: 100%;
     padding-bottom: 3px;
   }
@@ -109,6 +113,11 @@
     justify-content: space-around;
     flex-wrap: wrap;
     height: 100%;
+  }
+
+  .results_message {
+    width: 90%;
+    font-size: 12px;
   }
 
   .list_item {
@@ -154,8 +163,14 @@
     height: 100%;
   }
 
+  .results_message {
+    font-size: 16px;
+    font-family: "Lato Light", sans-serif;
+    width: 70%;
+  }
+
   .list_item {
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     font-size: 0.9em;
     width: 100%;
@@ -168,13 +183,13 @@
   }
 
   .bar_name {
-    font-size: 18px;
+    font-size: 20px;
     width: 100%;
-    padding: 0 0 8px 0;
+    padding: 0 0 4px 0;
   }
 
   .distance {
-    font-size: 10px;
+    font-size: 11px;
     text-align: center;
   }
 
@@ -184,12 +199,13 @@
   }
 
   .order_link {
-    font-size: 0.8em;
+    font-size: 14px;
     text-align: center;
   }
 
   .availability {
-    font-size: 0.7em;
+    font-size: 11px;
+    font-family: "Lato Light", sans-serif;
     text-align: center;
   }
 }

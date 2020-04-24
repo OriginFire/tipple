@@ -1,15 +1,29 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './searchResultDisplay.scss';
+import { useQuery } from "graphql-hooks";
 import SearchResultList from '../vendorSearchResults/vendorSearchResults';
 import CocktailSearchResults from '../cocktailSearchResults/CocktailSearchResults';
 import Button from '../../sitewideDisplayComponents/Button/Button';
 import Link from '../../utilityComponents/link/Link';
 
+const searchResults = `
+  query getSearchResults() {
+    searchVendors();
+  }
+`;
+
 class SearchResultDisplay extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { displaySetting: 'vendors' };
+    this.state = {
+      displaySetting: 'vendors',
+      filterSettings: {
+        doesDelivery: true,
+        doespickup: true,
+        pickupRadius: 1,
+      },
+    };
     this.changeDisplayToVendors = this.changeDisplayToVendors.bind(this);
     this.changeDisplayToCocktails = this.changeDisplayToCocktails.bind(this);
   }

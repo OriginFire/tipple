@@ -8,8 +8,6 @@
 }
 
 .results_message {
-  width: 90%;
-  font-size: 12px;
   font-family: "Lato Regular";
   color: #858585;
   text-align: center;
@@ -21,9 +19,10 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  cursor: pointer;
 }
 
-.bar_image {
+.cocktail_image {
   object-fit: cover;
 }
 
@@ -32,7 +31,7 @@
   flex-direction: column;
 }
 
-.bar_name {
+.cocktail_name {
   font-family: "Lato Regular";
   text-align: center;
   color: white;
@@ -62,6 +61,11 @@
     height: 100%;
   }
 
+  .results_message {
+    width: 90%;
+    font-size: 12px;
+  }
+
   .list_item {
     margin: 8px 0;
     justify-content: space-evenly;
@@ -69,7 +73,7 @@
     width: 100%;
   }
 
-  .bar_image {
+  .cocktail_image {
     width: 45vw;
     height: 15vh;
   }
@@ -78,7 +82,7 @@
     width: 40%;
   }
 
-  .bar_name {
+  .cocktail_name {
     font-size: 1.5em;
     width: 100%;
     padding-bottom: 3px;
@@ -112,18 +116,23 @@
     height: 100%;
   }
 
+  .results_message {
+    width: 90%;
+    font-size: 12px;
+  }
+
   .list_item {
     justify-content: space-evenly;
     margin: 10px 0;
     width: 45%;
   }
 
-  .bar_image {
+  .cocktail_image {
     width: 15vw;
     height: 17vh;
   }
 
-  .bar_name {
+  .cocktail_name {
     font-size: 1.5em;
     width: 100%;
     padding: 0 0 3px 0;
@@ -155,42 +164,55 @@
     height: 100%;
   }
 
+  .results_message {
+    font-size: 16px;
+    font-family: "Lato Light", sans-serif;
+    width: 70%;
+  }
+
   .list_item {
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     font-size: 0.9em;
     width: 100%;
     margin: 14px 0;
   }
 
-  .bar_image {
+  .cocktail_image {
     width: 225px;
     height: 150px;
   }
 
-  .bar_name {
-    font-size: 18px;
+  .result_text {
+    width: 45%;
+  }
+
+  .cocktail_name {
+    font-size: 20px;
+    font-family: "Lato Regular", sans-serif;
     width: 100%;
-    padding: 0 0 8px 0;
+    padding: 0 0 2px 0;
   }
 
   .ingredients {
-    font-size: 10px;
+    font-size: 12px;
+    color: #696969;
     text-align: center;
   }
 
   .sale_options {
-    margin: 10px 0;
+    margin: 14px 0;
     font-size: 14px;
   }
 
   .order_link {
-    font-size: 0.8em;
+    font-size: 14px;
     text-align: center;
   }
 
   .availability {
-    font-size: 0.7em;
+    font-size: 11px;
+    font-family: "Lato Light", sans-serif;
     text-align: center;
   }
 }
@@ -212,12 +234,12 @@
     margin: 14px 0;
   }
 
-  .bar_image {
+  .cocktail_image {
     width: 250px;
     height: 150px;
   }
 
-  .bar_name {
+  .cocktail_name {
     font-size: 18px;
     width: 100%;
     padding: 0 0 8px 0;

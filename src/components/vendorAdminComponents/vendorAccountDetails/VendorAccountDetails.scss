@@ -27,10 +27,17 @@
   font-family: "Lato Regular";
 }
 
-.setting_type {
+.setting {
   font-family: "Lato Regular";
   color: #8d8d8d;
   text-align: left;
+  border-bottom: solid 1px #1e1e1e;
+  cursor: pointer;
+}
+
+.setting:hover {
+  color: #c3c3c3;
+  background-color: #232323;
 }
 
 .partner_form {
@@ -95,7 +102,7 @@
     font-size: 18px;
   }
 
-  .setting_type {
+  .setting {
     font-size: 13px;
     margin-top: 6px;
     margin-left: 5px;
@@ -151,7 +158,7 @@
     font-size: 14px;
   }
 
-  .setting_type {
+  .setting {
     font-size: 13px;
     margin-top: 6px;
     margin-left: 5px;
@@ -183,31 +190,50 @@
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .partner_form {
+  .settings_content {
     position: absolute;
-    width: 60%;
-    margin: 0 0 0 0;
+    display: inherit;
+    width: 100%;
+    margin: 0;
     padding: 0;
     min-height: 200px;
-    top: 40vh;
-    right: .1vw;
+    top: 0;
   }
 
-  .form_area {
-    min-height: 32vh;
+  .vendor_image {
+    width: 300px;
+    height: 180px;
+    margin: auto;
   }
 
-  .partner_form_fields {
-    margin-bottom: 3vh;
+  .section_wrapper {
+    display: inherit;
+    margin-top: 20px;
+    margin-left: 10%;
+    width: 80%;
+  }
+
+  .settings_section {
+    margin: 40px 10px;
+    font-size: 20px;
+  }
+
+  .setting {
+    margin-top: 0;
+    margin-left: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     width: 100%;
+    padding: 13px 15px;
   }
 
-  .form_status {
-    margin: 2vh auto 3vh auto;
+  .setting_field {
+    width: 180px;
   }
 
-  .status_indicator {
-    font-size: 1.1em;
+  .setting_value {
+    width: 140px;
   }
 }
 

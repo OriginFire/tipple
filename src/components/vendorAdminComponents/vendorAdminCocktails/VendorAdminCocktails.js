@@ -18,8 +18,6 @@ class VendorAdminCocktails extends React.Component {
     /* Activate VendorCocktailSettings GraphQL mutator + scroll event */
   }
 
-  static contextType = ApplicationContext;
-
   render() {
     let vendor;
     let primaryButtonText;
@@ -29,8 +27,6 @@ class VendorAdminCocktails extends React.Component {
         vendor = vendorEntry;
       }
     });
-
-    console.log(this.context);
 
     return (
       <div className={s.container}>

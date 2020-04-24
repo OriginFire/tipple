@@ -49,15 +49,6 @@ class VendorAdminDisplay extends React.Component {
           <div className={s.vendor_setting_content}>
             <VendorAccountDetails vendorAccount={vendor}/>
           </div>
-
-
-          <div className={s.buttons}>
-            <Button
-              type="Primary"
-              onClick={e => this.handlePrimaryClick()}
-              text="Edit Account Details"
-            />
-          </div>
         </div>
       </div>
     );
