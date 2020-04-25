@@ -14,15 +14,9 @@ import User from "./User";
 
 Vendor.hasMany(Cocktail, {
   foreignKey: 'vendorId',
-  onUpdate: 'cascade',
-  onDelete: 'cascade',
 });
 
-Vendor.hasMany(User, {
-  foreignKey: 'vendorId',
-  onUpdate: 'cascade',
-  onDelete: 'cascade',
-});
+Vendor.hasMany(User);
 
 function sync(...args) {
   return sequelize.sync(...args);

@@ -6,6 +6,7 @@ import FormField from '../../sitewideDisplayComponents/formField/FormField';
 import AddressFormField from '../../utilityComponents/addressFormField/AddressFormField';
 import Button from '../../sitewideDisplayComponents/Button/Button';
 import Link from '../../utilityComponents/link/Link';
+import history from "../../../history";
 
 const CREATE_VENDOR_MUTATION = `
   mutation CreateVendor($dbaName: String!,
@@ -65,7 +66,7 @@ function VendorSignupForm() {
 
   async function createNewVendor() {
     console.log('click!')
-    await createVendor({
+    let res = await createVendor({
       variables: {
         dbaName,
         adminName,
@@ -79,6 +80,8 @@ function VendorSignupForm() {
         deliveryRadius,
       },
     });
+    console.log(res)
+    history.push(`/vendor/${res.data.newVendor.slug}`)  //why is newVendor here?
   }
 
   return (
