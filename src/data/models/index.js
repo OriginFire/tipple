@@ -9,20 +9,17 @@
 
 import sequelize from '../sequelize';
 import Vendor from './Vendor';
-import Address from './Address';
-import User from './User';
+import Cocktail from "./Cocktail";
+import User from "./User";
 
-
-Vendor.hasOne(Address, {
-  foreignKey: 'physicalAddressId',
-  as: 'physicalAddress',
+Vendor.hasMany(Cocktail, {
+  foreignKey: 'vendorId',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
 
-Vendor.hasOne(Address, {
-  foreignKey: 'billingAddressId',
-  as: 'billingAddress',
+Vendor.hasMany(User, {
+  foreignKey: 'vendorId',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
@@ -32,4 +29,4 @@ function sync(...args) {
 }
 
 export default { sync };
-export { Vendor, Address };
+export { Vendor, Cocktail, User };

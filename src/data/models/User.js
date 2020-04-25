@@ -11,6 +11,7 @@ import DataType from 'sequelize';
 import Model from '../sequelize';
 
 import bcrypt from 'bcrypt';
+import Vendor from "./Vendor";
 
 const User = Model.define(
   'User',
@@ -21,7 +22,15 @@ const User = Model.define(
       primaryKey: true,
     },
 
-    username: {
+    name: {
+      type: DataType.STRING(255),
+    },
+
+    email: {
+      type: DataType.STRING(255),
+    },
+
+    phone: {
       type: DataType.STRING(255),
     },
 
@@ -31,14 +40,14 @@ const User = Model.define(
     },
   },
   {
-    indexes: [{ fields: ['username'] }],
+    indexes: [{ fields: ['id', 'email'] }],
   },
 );
 
 User.authenticate = async function(username, password) {
 
-  let user = await User.findOne({ where: { username: username } });
-    console.log('user found');
+  let user = await Vendor.findOne({ where: { username: username } });
+  console.log('user found');
 
   // bcrypt is a one-way hashing algorithm that allows us to
   // store strings on the database rather than the raw

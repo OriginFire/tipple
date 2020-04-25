@@ -14,7 +14,7 @@ const VendorType = new ObjectType({
   name: 'Vendor',
   fields: {
     id: { type: new NonNull(ID) },
-    barId: { type: StringType },
+    slug: { type: StringType },
     dbaName: { type: StringType },
     adminName: { type: StringType },
     adminEmail: { type: StringType },

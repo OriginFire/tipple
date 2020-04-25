@@ -5,30 +5,23 @@ import {
   GraphQLBoolean as BooleanType,
   GraphQLInt as IntegerType,
   GraphQLNonNull as NonNull,
+  GraphQLFloat as FloatType,
 } from 'graphql';
 
 const VendorInputType = new ObjectType({
   name: 'VendorInput',
   fields: {
-    barId: { type: StringType },
     dbaName: { type: StringType },
-    adminName: { type: StringType },
-    adminEmail: { type: StringType },
-    adminPhone: { type: StringType },
-    physicalStreetAddress: { type: StringType },
-    physicalCity: { type: StringType },
-    physicalState: { type: StringType },
-    physicalZipCode: { type: StringType },
-    latitude: { type: IntegerType },
-    longitude: { type: IntegerType },
+    legalEntityName: { type: StringType },
+    physicalAddress: { type: StringType },
     alcoholLicenseNumber: { type: StringType },
     alcoholLicenseIssuingAgency: { type: StringType },
     alcoholLicenseExpiration: { type: StringType },
-    doesDelivery: { type: BooleanType },
-    doesPickup: { type: BooleanType },
-    deliveryRadius: { type: IntegerType },
-    onlineStore: { type: StringType },
-    vendorImage: { type: StringType },
+    deliveryRadius: { type: StringType },
+    adminName: { type: StringType },
+    adminEmail: { type: StringType },
+    adminPhone: { type: StringType },
+    adminPassword: { type: StringType },
   },
 });
 

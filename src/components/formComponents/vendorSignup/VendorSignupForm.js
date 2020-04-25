@@ -12,55 +12,25 @@ const CREATE_VENDOR_MUTATION = `
   $adminName: String!,
   $adminEmail: String!,
   $adminPhone: String!,
-  $physicalStreetAddress: String!,
-  $physicalCity: String!,
-  $physicalState: String!,
-  $physicalZipCode: String!,
-  $latitude: Integer!,
-  $longitude: Integer!,
+  $adminPassword: String!,
+  $physicalAddress: String!,
   $alcoholLicenseNumber: String!,
   $alcoholLicenseIssuingAgency: String!,
   $alcoholLicenseExpiration: String!,
-  $doesDelivery: Boolean!
-  $doesPickup: Boolean!
-  $deliveryRadius: Integer!
-  $onlineStore: String!)
+  $deliveryRadius: String!)
   {
     newVendor(vendor:{
     dbaName: $dbaName,
     adminName: $adminName,
     adminEmail: $adminEmail,
     adminPhone: $adminPhone,
-    physicalStreetAddress: $physicalStreetAddress,
-    physicalCity: $physicalCity,
-    physicalState: $physicalState,
-    physicalZipCode: $physicalZipCode,
-    latitude: $latitude,
-    longitude: $longitude,
+    adminPassword: $adminPassword,
+    physicalAddress: $physicalAddress,
     alcoholLicenseNumber: $alcoholLicenseNumber,
     alcoholLicenseIssuingAgency: $alcoholLicenseIssuingAgency,
     alcoholLicenseExpiration: $alcoholLicenseExpiration,
-    doesDelivery: $doesDelivery,
-    doesPickup: $doesPickup,
-    deliveryRadius: $deliveryRadius,
-    onlineStore: $onlineStore}) {
-      id
-      dbaName
-      adminName
-      adminEmail
-      adminPhone
-      physicalStreetAddress
-      physicalCity
-      physicalState
-      physicalZipCode
-      latitude
-      longitude
-      alcoholLicenseNumber
-      alcoholLicenseIssuingAgency
-      alcoholLicenseExpiration
-      doesDelivery
-      deliveryRadius
-      onlineStore
+    deliveryRadius: $deliveryRadius}) {
+      slug
     }
   }
 `;
@@ -73,7 +43,7 @@ function VendorSignupForm() {
   const [dbaName, setDbaName] = useState('');
   const [adminName, setAdminName] = useState('');
   const [adminEmail, setAdminEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [adminPassword, setAdminPassword] = useState('');
   const [adminPhone, setAdminPhone] = useState('');
   const [entityName, setEntityName] = useState('');
   const [physicalAddress, setPhysicalAddress] = useState('');
@@ -94,24 +64,19 @@ function VendorSignupForm() {
   const [createVendor] = useMutation(CREATE_VENDOR_MUTATION);
 
   async function createNewVendor() {
+    console.log('click!')
     await createVendor({
       variables: {
         dbaName,
         adminName,
         adminEmail,
         adminPhone,
-        physicalStreetAddress,
-        physicalCity,
-        physicalState,
-        physicalZipCode,
-        latitude,
-        longitude,
+        adminPassword,
+        physicalAddress,
         alcoholLicenseNumber,
         alcoholLicenseIssuingAgency,
         alcoholLicenseExpiration,
-        doesDelivery,
         deliveryRadius,
-        onlineStore,
       },
     });
   }
@@ -223,9 +188,9 @@ function VendorSignupForm() {
                   />
                   <FormField
                     placeholder="Password"
-                    onChange={e => setPassword(e.target.value)}
+                    onChange={e => setAdminPassword(e.target.value)}
                     type="password"
-                    value={password}
+                    value={adminPassword}
                   />
                   <FormField
                     placeholder="Phone Number"
@@ -253,10 +218,17 @@ function VendorSignupForm() {
                     type="text"
                     value={entityName}
                   />
-                  <AddressFormField
+                  <FormField
                     placeholder="Venue Street Address"
+                    onChange={e => setPhysicalAddress(e.target.value)}
+                    type="text"
                     value={physicalAddress}
                   />
+
+                  {/*<AddressFormField*/}
+                  {/*  placeholder="Venue Street Address"*/}
+                  {/*  value={physicalAddress}*/}
+                  {/*/>*/}
                 </form>
               );
 
@@ -372,7 +344,7 @@ function VendorSignupForm() {
                 return (
                   <Button
                     type="Primary"
-                    onClick={e => createNewVendor}
+                    onClick={e => createNewVendor()}
                     text="Add My Bar"
                   />
                 );

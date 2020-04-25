@@ -19,56 +19,56 @@ const Vendor = Model.define(
       primaryKey: true,
     },
 
+    slug: {
+      type: DataType.STRING(256),
+    },
+
     dbaName: {
-      type: DataType.STRING(255),
+      type: DataType.STRING(256),
     },
 
-    adminName: {
-      type: DataType.STRING(255),
+    legalEntityName: {
+      type: DataType.STRING(256),
     },
 
-    adminEmail: {
-      type: DataType.STRING(255),
-    },
-
-    adminPhone: {
-      type: DataType.STRING(255),
+    physicalAddress: {
+      type: DataType.STRING(256),
     },
 
     physicalStreetAddress: {
-      type: DataType.STRING(255),
+      type: DataType.STRING(256),
     },
 
     physicalCity: {
-      type: DataType.STRING(255),
+      type: DataType.STRING(256),
     },
 
     physicalState: {
-      type: DataType.STRING(255),
+      type: DataType.STRING(256),
     },
 
     physicalZipCode: {
-      type: DataType.STRING(255),
+      type: DataType.STRING(256),
     },
 
     latitude: {
-      type: DataType.INTEGER,
+      type: DataType.DOUBLE,
     },
 
     longitude: {
-      type: DataType.INTEGER,
+      type: DataType.DOUBLE,
     },
 
     alcoholLicenseNumber: {
-      type: DataType.STRING(255),
+      type: DataType.STRING(256),
     },
 
     alcoholLicenseIssuingAgency: {
-      type: DataType.STRING(255),
+      type: DataType.STRING(256),
     },
 
     alcoholLicenseExpiration: {
-      type: DataType.STRING(255),
+      type: DataType.STRING(256),
     },
 
     doesDelivery: {
@@ -80,33 +80,19 @@ const Vendor = Model.define(
     },
 
     deliveryRadius: {
-      type: DataType.INTEGER,
-    },
-
-    onlineStore: {
-      type: DataType.STRING(255),
+      type: DataType.STRING(256),
     },
 
     vendorImage: {
-      type: DataType.STRING(255),
+      type: DataType.BLOB('long'),
     },
 
-    cocktail: {
-      type: DataType.STRING(255),
-    },
-
-    legalEntity: {
-      type: DataType.STRING(255),
-      // validate: { isEmail: true },
-    },
-
-    vendorId: {
-      type: DataType.STRING(255),
-    },
   },
   {
-    indexes: [{ fields: ['id'] }],
+    indexes: [{ fields: ['id', 'slug'] }],
   },
 );
+
+
 
 export default Vendor;
