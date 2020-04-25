@@ -10,18 +10,17 @@
 import { GraphQLList as List } from 'graphql';
 import VendorType from '../types/VendorType';
 import Vendor from '../../data/models/Vendor';
+import db from '../../data/dbSimulator/Vendors.js';
 
 const searchVendors = {
   type: List(VendorType),
   resolve() {
-    let vendorsDummy = 'Here I am';
+    const vendorsDummy = db;
     let vendors;
     // Bar.findNearest() -- this needs to be postgis
     vendors = Vendor.findNearest();
     vendors.mapToDelivery; // set opts = input address is within distance
-    return (
-      vendorsDummy
-    );
+    return vendorsDummy;
   },
 };
 
