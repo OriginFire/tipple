@@ -1,12 +1,13 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React, { useState } from 'react';
 import { useMutation } from 'graphql-hooks';
+import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import s from './VendorSignupForm.scss';
 import FormField from '../../sitewideDisplayComponents/formField/FormField';
 import AddressFormField from '../../utilityComponents/addressFormField/AddressFormField';
 import Button from '../../sitewideDisplayComponents/Button/Button';
 import Link from '../../utilityComponents/link/Link';
-import history from "../../../history";
+import history from '../../../history';
 
 const CREATE_VENDOR_MUTATION = `
   mutation CreateVendor($dbaName: String!,
@@ -15,6 +16,8 @@ const CREATE_VENDOR_MUTATION = `
   $adminPhone: String!,
   $adminPassword: String!,
   $physicalAddress: String!,
+  $latitude: Float!,
+  $longitude: Float!,
   $alcoholLicenseNumber: String!,
   $alcoholLicenseIssuingAgency: String!,
   $alcoholLicenseExpiration: String!,
@@ -27,6 +30,8 @@ const CREATE_VENDOR_MUTATION = `
     adminPhone: $adminPhone,
     adminPassword: $adminPassword,
     physicalAddress: $physicalAddress,
+    latitude: $latitude,
+    longitude: $longitude,
     alcoholLicenseNumber: $alcoholLicenseNumber,
     alcoholLicenseIssuingAgency: $alcoholLicenseIssuingAgency,
     alcoholLicenseExpiration: $alcoholLicenseExpiration,
@@ -55,7 +60,10 @@ function VendorSignupForm() {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [alcoholLicenseNumber, setAlcoholLicenseNumber] = useState('');
-  const [alcoholLicenseIssuingAgency, setAlcoholLicenseIssuingAgency] = useState('');
+  const [
+    alcoholLicenseIssuingAgency,
+    setAlcoholLicenseIssuingAgency,
+  ] = useState('');
   const [alcoholLicenseExpiration, setAlcoholLicenseExpiration] = useState('');
   const [doesDelivery, setDoesDelivery] = useState('');
   const [deliveryRadius, setDeliveryRadius] = useState('');
@@ -64,9 +72,20 @@ function VendorSignupForm() {
 
   const [createVendor] = useMutation(CREATE_VENDOR_MUTATION);
 
+  function addressSelection(address) {
+    console.log(address);
+    setPhysicalAddress(address);
+    geocodeByAddress(address).then(geoResults => {
+      getLatLng(geoResults[0]).then(lLResults => {
+        setLatitude(lLResults.lat);
+        setLongitude(lLResults.lng);
+      });
+    });
+  }
+
   async function createNewVendor() {
-    console.log('click!')
-    let res = await createVendor({
+    console.log('click!');
+    const res = await createVendor({
       variables: {
         dbaName,
         adminName,
@@ -74,17 +93,19 @@ function VendorSignupForm() {
         adminPhone,
         adminPassword,
         physicalAddress,
+        latitude,
+        longitude,
         alcoholLicenseNumber,
         alcoholLicenseIssuingAgency,
         alcoholLicenseExpiration,
         deliveryRadius,
       },
     });
-    console.log(res)
-    history.push(`/vendor/${res.data.newVendor.slug}`)  //TODO: why is newVendor here?
+    console.log(res);
+    history.push(`/vendor/${res.data.newVendor.slug}`); // TODO: why is newVendor here?
   }
 
-  //TODO: reactor this
+  // TODO: reactor this
   return (
     <div className={s.vendor_signup_content}>
       <h1 className={s.form_explainer}>
@@ -222,17 +243,11 @@ function VendorSignupForm() {
                     type="text"
                     value={entityName}
                   />
-                  <FormField
+                  <AddressFormField
                     placeholder="Venue Street Address"
-                    onChange={e => setPhysicalAddress(e.target.value)}
-                    type="text"
                     value={physicalAddress}
+                    onAddressSelection={addressSelection}
                   />
-
-                  {/*<AddressFormField*/}
-                  {/*  placeholder="Venue Street Address"*/}
-                  {/*  value={physicalAddress}*/}
-                  {/*/>*/}
                 </form>
               );
 

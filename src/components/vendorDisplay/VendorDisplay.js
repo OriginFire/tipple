@@ -1,10 +1,10 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
+import { useQuery } from 'graphql-hooks';
 import s from './VendorDisplay.scss';
 import Button from '../sitewideDisplayComponents/Button/Button';
 import Link from '../utilityComponents/link/Link';
 import db from '../../data/dbSimulator/Vendors';
-import {useQuery} from 'graphql-hooks';
 
 // action frontEndName(params) {
 //  backendName(params) {
@@ -21,75 +21,72 @@ const FIND_VENDOR = `
   }
   `;
 
-function VendorDisplay() {
+function VendorDisplay(props) {
   const { loading, error, data } = useQuery(FIND_VENDOR, {
-    variables: {slug: 'asd'} //get this shit from the path
+    variables: { slug: props.id }, // get this shit from the path
   });
-  console.log(error)
+  console.log(error);
 
-  if (loading) return 'Loading...'
-  if (error) return 'Something Bad Happened'
+  if (loading) return 'Loading...';
+  if (error) return 'Something Bad Happened';
 
-  let vendor = data.findVendor;
+  const vendor = data.findVendor;
 
-    let availability;
+  let availability;
 
-    if (vendor.doesDelivery === true && vendor.doesPickup === true) {
-      availability =
-        ' sells cocktails for pickup or delivery to your current address';
-    } else if (vendor.doesDelivery === true && vendor.doesPickup === false) {
-      availability =
-        ' will deliver to you but does not sell cocktails for pickup';
-    } else {
-      availability =
-        ' sells cocktails for pickup, but does not deliver to your current address';
-    }
+  if (vendor.doesDelivery === true && vendor.doesPickup === true) {
+    availability =
+      ' sells cocktails for pickup or delivery to your current address';
+  } else if (vendor.doesDelivery === true && vendor.doesPickup === false) {
+    availability =
+      ' will deliver to you but does not sell cocktails for pickup';
+  } else {
+    availability =
+      ' sells cocktails for pickup, but does not deliver to your current address';
+  }
 
   return (
-      <div className={s.vendor_display_content}>
-        <div className={s.vendor_display}>
-          <div className={s.text}>
-            <div className={s.vendor_name}>{vendor.dbaName}</div>
+    <div className={s.vendor_display_content}>
+      <div className={s.vendor_display}>
+        <div className={s.text}>
+          <div className={s.vendor_name}>{vendor.dbaName}</div>
 
-            <div className={s.address}>
-              {`${vendor.physicalStreetAddress}, ${vendor.physicalCity}`}
-            </div>
-
-            <div className={s.availability}>{vendor.dbaName + availability}</div>
+          <div className={s.address}>
+            {`${vendor.physicalStreetAddress}, ${vendor.physicalCity}`}
           </div>
 
+          <div className={s.availability}>{vendor.dbaName + availability}</div>
+        </div>
 
-          {/*<div className={s.cocktails}>*/}
-          {/*  {vendor.cocktails.map((cocktail, index) => {*/}
-          {/*    return (*/}
-          {/*      <div key={index} className={s.cocktail}>*/}
-          {/*        <img className={s.cocktail_image} src={cocktail.image} />*/}
-          {/*        <div className={s.cocktail_text}>*/}
-          {/*          <div className={s.cocktail_name}>{cocktail.name}</div>*/}
-          {/*          <div className={s.cocktail_ingredients}>*/}
-          {/*            {cocktail.ingredients}*/}
-          {/*          </div>*/}
-          {/*        </div>*/}
-          {/*      </div>*/}
-          {/*    );*/}
-          {/*  })}*/}
-          {/*</div>*/}
+        {/* <div className={s.cocktails}> */}
+        {/*  {vendor.cocktails.map((cocktail, index) => { */}
+        {/*    return ( */}
+        {/*      <div key={index} className={s.cocktail}> */}
+        {/*        <img className={s.cocktail_image} src={cocktail.image} /> */}
+        {/*        <div className={s.cocktail_text}> */}
+        {/*          <div className={s.cocktail_name}>{cocktail.name}</div> */}
+        {/*          <div className={s.cocktail_ingredients}> */}
+        {/*            {cocktail.ingredients} */}
+        {/*          </div> */}
+        {/*        </div> */}
+        {/*      </div> */}
+        {/*    ); */}
+        {/*  })} */}
+        {/* </div> */}
 
-          <div className={s.buttons}>
-            <Link to="/search-results">
-              <Button type="Secondary" text="Back To Search Results" />
-            </Link>
+        <div className={s.buttons}>
+          <Link to="/search-results">
+            <Button type="Secondary" text="Back To Search Results" />
+          </Link>
 
-            <Link to="">
-              <Button type="Primary" text="Order Cocktails" />
-            </Link>
-          </div>
+          <Link to="">
+            <Button type="Primary" text="Order Cocktails" />
+          </Link>
         </div>
       </div>
+    </div>
   );
-
 }
-
 
 // class VendorDisplay extends React.Component {
 //
