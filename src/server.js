@@ -92,15 +92,6 @@ app.use(
 //
 app.use(passport.initialize());
 
-/// extract this to a new file somehow
-app.post('/register', function(req, res) {
-  // const hash = bcrypt.hashSync(req.body.password, 10);
-  const hash = bcrypt.hashSync('test', 10);
-  User.create({username: 'test', password: hash})
-  res.redirect(302, '/')
-  }
-);
-
 app.post('/login',
   passport.authenticate('local', { failureRedirect: '/login', flashFailure: true } ),
   function(req, res) {

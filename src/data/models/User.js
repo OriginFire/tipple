@@ -46,7 +46,7 @@ const User = Model.define(
 
 User.authenticate = async function(username, password) {
 
-  let user = await Vendor.findOne({ where: { username: username } });
+  let user = await User.findOne({ where: { email: username } });
   console.log('user found');
 
   // bcrypt is a one-way hashing algorithm that allows us to
