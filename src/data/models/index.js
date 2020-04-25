@@ -10,6 +10,8 @@
 import sequelize from '../sequelize';
 import Vendor from './Vendor';
 import Address from './Address';
+import User from './User';
+
 
 Vendor.hasOne(Address, {
   foreignKey: 'physicalAddressId',

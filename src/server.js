@@ -31,6 +31,14 @@ import schema from './interface/schema';
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
 import config from './config';
 
+import passport from './passportConfig';
+import flash from 'connect-flash';
+import session from 'express-session';
+
+import bcrypt from 'bcrypt';
+
+import User from "./data/models/User";
+
 process.on('unhandledRejection', (reason, p) => {
   console.error('Unhandled Rejection at:', p, 'reason:', reason);
   // send entire app down. Process manager will restart it
@@ -46,6 +54,15 @@ global.navigator.userAgent = global.navigator.userAgent || 'all';
 
 const app = express();
 
+
+/// request logging
+
+var log = function( req, res, next) {
+  console.info(`${req.method} ${req.originalUrl}`);
+  next();
+};
+app.use(log);
+
 //
 // If you are using proxy from external machine, you can set TRUST_PROXY env
 // Default is to trust proxy headers only from loopback interface.
@@ -56,7 +73,9 @@ app.set('trust proxy', config.trustProxy);
 // Register Node.js middleware
 // -----------------------------------------------------------------------------
 app.use(express.static(path.resolve(__dirname, 'public')));
-app.use(cookieParser());
+app.use(cookieParser('2894723498'));
+app.use(session({ cookie: { maxAge: 60000 }}));
+app.use(flash());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -70,6 +89,26 @@ app.use(
     getToken: req => req.cookies.id_token,
   }),
 );
+//
+app.use(passport.initialize());
+
+/// extract this to a new file somehow
+app.post('/register', function(req, res) {
+  // const hash = bcrypt.hashSync(req.body.password, 10);
+  const hash = bcrypt.hashSync('test', 10);
+  User.create({username: 'test', password: hash})
+  res.redirect(302, '/')
+  }
+);
+
+app.post('/login',
+  passport.authenticate('local', { failureRedirect: '/login', flashFailure: true } ),
+  function(req, res) {
+
+  res.redirect(302, '/');
+});
+
+
 // Error handler for express-jwt
 app.use((err, req, res, next) => {
   // eslint-disable-line no-unused-vars
@@ -164,6 +203,7 @@ app.get('*', async (req, res, next) => {
     next(err);
   }
 });
+
 
 //
 // Error handling
