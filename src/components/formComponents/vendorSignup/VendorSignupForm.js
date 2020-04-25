@@ -81,9 +81,10 @@ function VendorSignupForm() {
       },
     });
     console.log(res)
-    history.push(`/vendor/${res.data.newVendor.slug}`)  //why is newVendor here?
+    history.push(`/vendor/${res.data.newVendor.slug}`)  //TODO: why is newVendor here?
   }
 
+  //TODO: reactor this
   return (
     <div className={s.vendor_signup_content}>
       <h1 className={s.form_explainer}>

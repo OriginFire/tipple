@@ -11,6 +11,7 @@ class VendorDisplay extends React.Component {
     this.state = {};
   }
 
+  //TODO: Read from DB
   render() {
     let vendor;
 
