@@ -16,6 +16,7 @@ import newVendor from './mutators/newVendor';
 import listBars from './queries/listVendors';
 import searchVendors from './queries/searchVendors';
 import showCocktails from './queries/showCocktails';
+import findVendor from "./queries/findVendor";
 
 const schema = new Schema({
   query: new ObjectType({
@@ -24,6 +25,7 @@ const schema = new Schema({
       listBars,
       searchVendors,
       showCocktails,
+      findVendor,
     },
   }),
   mutation: new ObjectType({

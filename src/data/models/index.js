@@ -9,25 +9,18 @@
 
 import sequelize from '../sequelize';
 import Vendor from './Vendor';
-import Address from './Address';
+import Cocktail from "./Cocktail";
+import User from "./User";
 
-Vendor.hasOne(Address, {
-  foreignKey: 'physicalAddressId',
-  as: 'physicalAddress',
-  onUpdate: 'cascade',
-  onDelete: 'cascade',
+Vendor.hasMany(Cocktail, {
+  foreignKey: 'vendorId',
 });
 
-Vendor.hasOne(Address, {
-  foreignKey: 'billingAddressId',
-  as: 'billingAddress',
-  onUpdate: 'cascade',
-  onDelete: 'cascade',
-});
+Vendor.hasMany(User);
 
 function sync(...args) {
   return sequelize.sync(...args);
 }
 
 export default { sync };
-export { Vendor, Address };
+export { Vendor, Cocktail, User };

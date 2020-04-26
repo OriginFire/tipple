@@ -1,66 +1,42 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React, { useState } from 'react';
 import { useMutation } from 'graphql-hooks';
+import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import s from './VendorSignupForm.scss';
 import FormField from '../../sitewideDisplayComponents/formField/FormField';
 import AddressFormField from '../../utilityComponents/addressFormField/AddressFormField';
 import Button from '../../sitewideDisplayComponents/Button/Button';
 import Link from '../../utilityComponents/link/Link';
+import history from '../../../history';
 
 const CREATE_VENDOR_MUTATION = `
   mutation CreateVendor($dbaName: String!,
   $adminName: String!,
   $adminEmail: String!,
   $adminPhone: String!,
-  $physicalStreetAddress: String!,
-  $physicalCity: String!,
-  $physicalState: String!,
-  $physicalZipCode: String!,
-  $latitude: Integer!,
-  $longitude: Integer!,
+  $adminPassword: String!,
+  $physicalAddress: String!,
+  $latitude: Float!,
+  $longitude: Float!,
   $alcoholLicenseNumber: String!,
   $alcoholLicenseIssuingAgency: String!,
   $alcoholLicenseExpiration: String!,
-  $doesDelivery: Boolean!
-  $doesPickup: Boolean!
-  $deliveryRadius: Integer!
-  $onlineStore: String!)
+  $deliveryRadius: String!)
   {
     newVendor(vendor:{
     dbaName: $dbaName,
     adminName: $adminName,
     adminEmail: $adminEmail,
     adminPhone: $adminPhone,
-    physicalStreetAddress: $physicalStreetAddress,
-    physicalCity: $physicalCity,
-    physicalState: $physicalState,
-    physicalZipCode: $physicalZipCode,
+    adminPassword: $adminPassword,
+    physicalAddress: $physicalAddress,
     latitude: $latitude,
     longitude: $longitude,
     alcoholLicenseNumber: $alcoholLicenseNumber,
     alcoholLicenseIssuingAgency: $alcoholLicenseIssuingAgency,
     alcoholLicenseExpiration: $alcoholLicenseExpiration,
-    doesDelivery: $doesDelivery,
-    doesPickup: $doesPickup,
-    deliveryRadius: $deliveryRadius,
-    onlineStore: $onlineStore}) {
-      id
-      dbaName
-      adminName
-      adminEmail
-      adminPhone
-      physicalStreetAddress
-      physicalCity
-      physicalState
-      physicalZipCode
-      latitude
-      longitude
-      alcoholLicenseNumber
-      alcoholLicenseIssuingAgency
-      alcoholLicenseExpiration
-      doesDelivery
-      deliveryRadius
-      onlineStore
+    deliveryRadius: $deliveryRadius}) {
+      slug
     }
   }
 `;
@@ -73,7 +49,7 @@ function VendorSignupForm() {
   const [dbaName, setDbaName] = useState('');
   const [adminName, setAdminName] = useState('');
   const [adminEmail, setAdminEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [adminPassword, setAdminPassword] = useState('');
   const [adminPhone, setAdminPhone] = useState('');
   const [entityName, setEntityName] = useState('');
   const [physicalAddress, setPhysicalAddress] = useState('');
@@ -84,7 +60,10 @@ function VendorSignupForm() {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [alcoholLicenseNumber, setAlcoholLicenseNumber] = useState('');
-  const [alcoholLicenseIssuingAgency, setAlcoholLicenseIssuingAgency] = useState('');
+  const [
+    alcoholLicenseIssuingAgency,
+    setAlcoholLicenseIssuingAgency,
+  ] = useState('');
   const [alcoholLicenseExpiration, setAlcoholLicenseExpiration] = useState('');
   const [doesDelivery, setDoesDelivery] = useState('');
   const [deliveryRadius, setDeliveryRadius] = useState('');
@@ -93,29 +72,40 @@ function VendorSignupForm() {
 
   const [createVendor] = useMutation(CREATE_VENDOR_MUTATION);
 
+  function addressSelection(address) {
+    console.log(address);
+    setPhysicalAddress(address);
+    geocodeByAddress(address).then(geoResults => {
+      getLatLng(geoResults[0]).then(lLResults => {
+        setLatitude(lLResults.lat);
+        setLongitude(lLResults.lng);
+      });
+    });
+  }
+
   async function createNewVendor() {
-    await createVendor({
+    console.log('click!');
+    const res = await createVendor({
       variables: {
         dbaName,
         adminName,
         adminEmail,
         adminPhone,
-        physicalStreetAddress,
-        physicalCity,
-        physicalState,
-        physicalZipCode,
+        adminPassword,
+        physicalAddress,
         latitude,
         longitude,
         alcoholLicenseNumber,
         alcoholLicenseIssuingAgency,
         alcoholLicenseExpiration,
-        doesDelivery,
         deliveryRadius,
-        onlineStore,
       },
     });
+    console.log(res);
+    history.push(`/vendor/${res.data.newVendor.slug}`); // TODO: why is newVendor here?
   }
 
+  // TODO: reactor this
   return (
     <div className={s.vendor_signup_content}>
       <h1 className={s.form_explainer}>
@@ -223,9 +213,9 @@ function VendorSignupForm() {
                   />
                   <FormField
                     placeholder="Password"
-                    onChange={e => setPassword(e.target.value)}
+                    onChange={e => setAdminPassword(e.target.value)}
                     type="password"
-                    value={password}
+                    value={adminPassword}
                   />
                   <FormField
                     placeholder="Phone Number"
@@ -256,6 +246,7 @@ function VendorSignupForm() {
                   <AddressFormField
                     placeholder="Venue Street Address"
                     value={physicalAddress}
+                    onAddressSelection={addressSelection}
                   />
                 </form>
               );
@@ -372,7 +363,7 @@ function VendorSignupForm() {
                 return (
                   <Button
                     type="Primary"
-                    onClick={e => createNewVendor}
+                    onClick={e => createNewVendor()}
                     text="Add My Bar"
                   />
                 );
