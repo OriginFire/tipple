@@ -444,37 +444,37 @@ export default [
     vendorImage: '../../../OldFashioned.png',
     cocktails: [
       {
-        id: 'gibsonoldfashioned',
+        id: 'gibsonoldfashioned1',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '../../../LevitationAspect.JPG',
       },
       {
-        id: 'gibson_vieux_carre',
+        id: 'gibson_vieux_carre1',
         name: 'Vieux Carre',
         ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '../../../GoldenDark.jpg',
       },
       {
-        id: 'gibsonoldfashioned',
+        id: 'gibsonoldfashioned2',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '../../../Tipple Bottles.jpg',
       },
       {
-        id: 'gibson_vieux_carre',
+        id: 'gibson_vieux_carre2',
         name: 'Vieux Carre',
         ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '../../../Urbana.jpg',
       },
       {
-        id: 'gibsonoldfashioned',
+        id: 'gibsonoldfashioned3',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
         image: '../../../LevitationAspect.JPG',
       },
       {
-        id: 'gibson_vieux_carre',
+        id: 'gibson_vieux_carre3',
         name: 'Vieux Carre',
         ingredients: 'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
         image: '../../../TomCat.jpg',
