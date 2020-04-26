@@ -91,6 +91,10 @@ const Vendor = Model.define(
       type: DataType.STRING(255),
     },
 
+    cocktail: {
+      type: DataType.STRING(255),
+    },
+
     legalEntity: {
       type: DataType.STRING(255),
       // validate: { isEmail: true },

@@ -4,9 +4,11 @@ import {
   GraphQLString as StringType,
   GraphQLBoolean as BooleanType,
   GraphQLInt as IntegerType,
+  GraphQLFloat as FloatType,
   GraphQLNonNull as NonNull,
   GraphQLList as List,
 } from 'graphql';
+import CocktailType from "./CocktailType";
 
 const VendorType = new ObjectType({
   name: 'Vendor',
@@ -21,17 +23,17 @@ const VendorType = new ObjectType({
     physicalCity: { type: StringType },
     physicalState: { type: StringType },
     physicalZipCode: { type: StringType },
-    latitude: { type: IntegerType },
-    longitude: { type: IntegerType },
+    latitude: { type: FloatType },
+    longitude: { type: FloatType },
     alcoholLicenseNumber: { type: StringType },
     alcoholLicenseIssuingAgency: { type: StringType },
     alcoholLicenseExpiration: { type: StringType },
     doesDelivery: { type: BooleanType },
     doesPickup: { type: BooleanType },
-    deliveryRadius: { type: IntegerType },
+    deliveryRadius: { type: FloatType },
     onlineStore: { type: StringType },
     vendorImage: { type: StringType },
-    cocktails: { type: StringType },
+    cocktails: { type: List(CocktailType) },
   },
 });
 

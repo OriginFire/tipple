@@ -1,8 +1,6 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './CocktailSearchResults.scss';
-import Link from '../../utilityComponents/link';
-import db from '../../../data/dbSimulator/Vendors';
 import history from "../../../history";
 
 class CocktailSearchResults extends React.Component {
@@ -53,9 +51,12 @@ class CocktailSearchResults extends React.Component {
   }
 
   render() {
-    const availableVendors = db; /** This needs to be set to bars matching the user search */
+    let availableVendors;
     let onlineOrdering;
 
+    if (this.props.results) {
+      availableVendors = this.props.results;
+    }
     return (
       <div className={s.result_list}>
         {this.resultsMessage(availableVendors)}

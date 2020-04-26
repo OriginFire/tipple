@@ -26,7 +26,14 @@ const SEARCH_RESULTS_QUERY = `
         doesDelivery
         doesPickup
         deliveryRadius
+        vendorImage
         onlineStore
+        cocktails {
+          id
+          name
+          ingredients
+          image
+        }
       }
   }
 `;
@@ -69,7 +76,7 @@ function SearchResultsDisplay() {
   if (displaySetting === 'cocktails') {
     cocktailStyle = s.active;
     cocktailContent = 'Showing Cocktails';
-    resultsDisplay = <CocktailSearchResults />;
+    resultsDisplay = <CocktailSearchResults results={searchResults} />;
   } else {
     cocktailStyle = s.inactive;
     cocktailContent = 'Show Cocktails';

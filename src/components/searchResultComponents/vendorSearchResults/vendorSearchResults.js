@@ -85,7 +85,8 @@ class VendorSearchResults extends React.Component {
         {this.resultsMessage(db)}
         {console.log(searchResults)}
 
-        {db.map((vendor, index, vendorResults) => {
+        {searchResults &&
+          searchResults.map((vendor, index, vendorResults) => {
           if (vendor.onlineStore === '') {
             onlineOrdering = 'No Online Store';
           } else {
