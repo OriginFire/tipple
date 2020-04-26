@@ -7,25 +7,27 @@ import Button from '../../sitewideDisplayComponents/Button';
 import Splash from '../../sitewideDisplayComponents/Splash/Splash';
 import AddressFormField from '../../utilityComponents/addressFormField/AddressFormField';
 import HomepageImage from '../../../../public/LevitationAspect.JPG';
-import ApplicationContext from "../../ApplicationContext";
+import ApplicationContext from '../../ApplicationContext';
 
 class HomepageContent extends React.Component {
   constructor(props) {
     super(props);
     this.addressSelection = this.addressSelection.bind(this);
-    this.state = {
-      userAddress: '',
-      addressGeocode: null,
-    };
+    this.state = {};
   }
+
   static contextType = ApplicationContext;
+
   addressSelection(address) {
-    this.setState({userAddress: address});
-    this.context.context.temp = address;
+    geocodeByAddress(address).then(geoResults => {
+      getLatLng(geoResults[0]).then(latLngResults => {
+        this.context.context.userLatitude = latLngResults.lat;
+        this.context.context.userLongitude = latLngResults.lng;
+      });
+    });
   }
 
   render() {
-    console.log(this.context.context.temp);
     return (
       <div className={s.homepage_content}>
         <Splash
@@ -38,17 +40,12 @@ class HomepageContent extends React.Component {
             <h2 className={s.explainer}>
               Looking for craft cocktails from nearby bars?
             </h2>
-            <AddressFormField placeholder="Your Current Address" onAddressSelection={this.addressSelection} />
+            <AddressFormField
+              placeholder="Your Current Address"
+              onAddressSelection={this.addressSelection}
+            />
             <Link to="/search-results">
-              <Button
-                type="Primary"
-                text="Browse Cocktails"
-                onClick={e =>
-                  geocodeByAddress(this.state.userAddress).then(results =>
-                    console.log(results),
-                  )
-                }
-              />
+              <Button type="Primary" text="Browse Cocktails" />
             </Link>
           </div>
 
