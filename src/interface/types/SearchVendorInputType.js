@@ -3,7 +3,7 @@ import {
   GraphQLFloat as FloatType,
 } from 'graphql';
 
-const SearchVendorProximity = new ObjectType({
+const SearchVendorInputType = new ObjectType({
   name: 'SearchVendorProximity',
   fields: {
     userLatitude: { type: FloatType },
@@ -11,4 +11,4 @@ const SearchVendorProximity = new ObjectType({
   },
 });
 
-export default SearchVendorProximity;
+export default SearchVendorInputType;

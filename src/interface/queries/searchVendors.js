@@ -11,12 +11,12 @@ import { GraphQLList as List } from 'graphql';
 import Vendor from '../../data/models';
 import VendorType from '../types/VendorType';
 import db from '../../data/dbSimulator/Vendors.js';
-import SearchVendorProximity from '../types/SearchVendorProximity';
+import SearchVendorInputType from '../types/SearchVendorInputType';
 
 const searchVendors = {
   type: List(VendorType),
   args: {
-    vendor: { type: SearchVendorProximity },
+    latLng: { type: SearchVendorInputType },
   },
   resolve(value, { vendor }) {
     const vendorsDummy = db;

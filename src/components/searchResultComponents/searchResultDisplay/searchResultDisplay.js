@@ -14,7 +14,7 @@ const SEARCH_RESULTS_QUERY = `
     $userLongitude: Float!)
   {
     searchVendors(
-      vendor:{
+      latLng:{
         userLatitude: $userLatitude,
         userLongitude: $userLongitude
       })
