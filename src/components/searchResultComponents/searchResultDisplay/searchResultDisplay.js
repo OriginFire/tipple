@@ -14,7 +14,7 @@ const SEARCH_RESULTS_QUERY = `
     $userLongitude: Float!)
   {
     searchVendors(
-      vendor:{
+      latLng:{
         userLatitude: $userLatitude,
         userLongitude: $userLongitude
       })
@@ -39,11 +39,12 @@ const SEARCH_RESULTS_QUERY = `
 `;
 
 function SearchResultsDisplay() {
+  const userLocation = useContext(ApplicationContext);
+
   const [displaySetting, setDisplaySetting] = useState('vendors');
   const [doesDelivery, setDoesDelivery] = useState(true);
   const [doesPickup, setDoesPickup] = useState(true);
   const [pickupRadius, setPickupRadius] = useState(0);
-  const userLocation = useContext(ApplicationContext);
   const [userLatitude, setUserLatitude] = useState(
     userLocation.context.userLatitude,
   );
