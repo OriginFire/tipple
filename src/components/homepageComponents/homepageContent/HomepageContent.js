@@ -13,22 +13,21 @@ class HomepageContent extends React.Component {
   constructor(props) {
     super(props);
     this.addressSelection = this.addressSelection.bind(this);
-    this.state = {
-      userAddress: '',
-      addressGeocode: null,
-    };
+    this.state = {};
   }
 
   static contextType = ApplicationContext;
 
   addressSelection(address) {
-    this.setState({ userAddress: address });
+    geocodeByAddress(address).then(geoResults => {
+      getLatLng(geoResults[0]).then(latLngResults => {
+        this.context.context.userLatitude = latLngResults.lat;
+        this.context.context.userLongitude = latLngResults.lng;
+      });
+    });
   }
 
   render() {
-    console.log(this.state.userAddress);
-    console.log(this.context.context.userLatitude);
-    console.log(this.context.context.userLongitude);
     return (
       <div className={s.homepage_content}>
         <Splash

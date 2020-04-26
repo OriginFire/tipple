@@ -1,13 +1,13 @@
 import {
   GraphQLInputObjectType as ObjectType,
-  GraphQLInt as IntegerType,
+  GraphQLFloat as FloatType,
 } from 'graphql';
 
 const SearchVendorProximity = new ObjectType({
   name: 'SearchVendorProximity',
   fields: {
-    userLatitude: { type: IntegerType },
-    userLongitude: { type: IntegerType },
+    userLatitude: { type: FloatType },
+    userLongitude: { type: FloatType },
   },
 });
 

@@ -38,8 +38,8 @@ const context = {
   }),
   authenticatedUser: 'Ninja',
   address: null,
-  userLatitude: null,
-  userLongitude: null,
+  userLatitude: 0,
+  userLongitude: 0,
 };
 
 const container = document.getElementById('app');

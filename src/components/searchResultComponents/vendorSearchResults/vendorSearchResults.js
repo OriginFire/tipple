@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import { useMutation, useQuery } from 'graphql-hooks';
 import s from './vendorSearchResults.scss';
 import history from '../../../history';
 import db from '../../../data/dbSimulator/Vendors';

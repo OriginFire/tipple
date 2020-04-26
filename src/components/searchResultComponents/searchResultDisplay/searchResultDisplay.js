@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './searchResultDisplay.scss';
@@ -6,11 +6,12 @@ import VendorSearchResults from '../vendorSearchResults/vendorSearchResults';
 import CocktailSearchResults from '../cocktailSearchResults/CocktailSearchResults';
 import Button from '../../sitewideDisplayComponents/Button/Button';
 import Link from '../../utilityComponents/link/Link';
+import ApplicationContext from '../../ApplicationContext';
 
 const SEARCH_RESULTS_QUERY = `
   query SearchVendors(
-    $userLatitude: Int!,
-    $userLongitude: Int!)
+    $userLatitude: Float!,
+    $userLongitude: Float!)
   {
     searchVendors(
       vendor:{
@@ -34,9 +35,14 @@ function SearchResultsDisplay() {
   const [displaySetting, setDisplaySetting] = useState('vendors');
   const [doesDelivery, setDoesDelivery] = useState(true);
   const [doesPickup, setDoesPickup] = useState(true);
-  const [pickupRadius, setPickupRadius] = useState(1);
-  const [userLatitude, setUserLatitude] = useState(77);
-  const [userLongitude, setUserLongitude] = useState(64);
+  const [pickupRadius, setPickupRadius] = useState(0);
+  const userLocation = useContext(ApplicationContext);
+  const [userLatitude, setUserLatitude] = useState(
+    userLocation.context.userLatitude,
+  );
+  const [userLongitude, setUserLongitude] = useState(
+    userLocation.context.userLongitude,
+  );
   let vendorStyle;
   let cocktailStyle;
   let vendorContent;
