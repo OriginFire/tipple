@@ -8,20 +8,25 @@
  */
 
 import { GraphQLList as List } from 'graphql';
+import Vendor from '../../data/models';
 import VendorType from '../types/VendorType';
-import Vendor from '../../data/models/Vendor';
 import db from '../../data/dbSimulator/Vendors.js';
+import SearchVendorProximity from '../types/SearchVendorProximity';
 
 const searchVendors = {
   type: List(VendorType),
-  resolve() {
+  args: {
+    vendor: { type: SearchVendorProximity },
+  },
+  resolve(value, { vendor }) {
     const vendorsDummy = db;
-    let vendors;
-    // Bar.findNearest() -- this needs to be postgis
-    vendors = Vendor.findNearest();
-    vendors.mapToDelivery; // set opts = input address is within distance
     return vendorsDummy;
   },
 };
 
 export default searchVendors;
+
+/*    let vendors;
+// Bar.findNearest() -- this needs to be postgis
+vendors = Vendor.findNearest();
+vendors.mapToDelivery; // set opts = input address is within distance */

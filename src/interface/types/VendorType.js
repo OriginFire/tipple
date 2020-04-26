@@ -5,6 +5,7 @@ import {
   GraphQLBoolean as BooleanType,
   GraphQLInt as IntegerType,
   GraphQLNonNull as NonNull,
+  GraphQLList as List,
 } from 'graphql';
 
 const VendorType = new ObjectType({
@@ -30,6 +31,7 @@ const VendorType = new ObjectType({
     deliveryRadius: { type: IntegerType },
     onlineStore: { type: StringType },
     vendorImage: { type: StringType },
+    cocktails: { type: StringType },
   },
 });
 

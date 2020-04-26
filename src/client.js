@@ -36,7 +36,10 @@ const context = {
   fetch: createFetch(fetch, {
     baseUrl: window.App.apiUrl,
   }),
-  authenticatedUser: "Ninja",
+  authenticatedUser: 'Ninja',
+  address: null,
+  userLatitude: null,
+  userLongitude: null,
 };
 
 const container = document.getElementById('app');

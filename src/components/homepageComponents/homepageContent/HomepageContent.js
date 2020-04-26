@@ -7,7 +7,7 @@ import Button from '../../sitewideDisplayComponents/Button';
 import Splash from '../../sitewideDisplayComponents/Splash/Splash';
 import AddressFormField from '../../utilityComponents/addressFormField/AddressFormField';
 import HomepageImage from '../../../../public/LevitationAspect.JPG';
-import ApplicationContext from "../../ApplicationContext";
+import ApplicationContext from '../../ApplicationContext';
 
 class HomepageContent extends React.Component {
   constructor(props) {
@@ -18,13 +18,17 @@ class HomepageContent extends React.Component {
       addressGeocode: null,
     };
   }
+
   static contextType = ApplicationContext;
+
   addressSelection(address) {
-    this.context.context.temp = address;
+    this.setState({ userAddress: address });
   }
 
   render() {
-    console.log(this.context.context.temp);
+    console.log(this.state.userAddress);
+    console.log(this.context.context.userLatitude);
+    console.log(this.context.context.userLongitude);
     return (
       <div className={s.homepage_content}>
         <Splash
@@ -37,17 +41,12 @@ class HomepageContent extends React.Component {
             <h2 className={s.explainer}>
               Looking for craft cocktails from nearby bars?
             </h2>
-            <AddressFormField placeholder="Your Current Address" onAddressSelection={this.addressSelection} />
+            <AddressFormField
+              placeholder="Your Current Address"
+              onAddressSelection={this.addressSelection}
+            />
             <Link to="/search-results">
-              <Button
-                type="Primary"
-                text="Browse Cocktails"
-                onClick={e =>
-                  geocodeByAddress(this.state.userAddress).then(results =>
-                    console.log(results),
-                  )
-                }
-              />
+              <Button type="Primary" text="Browse Cocktails" />
             </Link>
           </div>
 

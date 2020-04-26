@@ -5,28 +5,6 @@ import s from './vendorSearchResults.scss';
 import history from '../../../history';
 import db from '../../../data/dbSimulator/Vendors';
 
-const SearchBarsQuery = `
-  mutation SearchBars(
-  $physicalStreetAddress: String!,
-  $physicalCity: String!,
-  $physicalState: String!,
-  $physicalZipCode: String!,
-)
-  {
-    searchBars(bar:{
-    physicalStreetAddress: $physicalStreetAddress,
-    physicalCity: $physicalCity,
-    physicalState: $physicalState,
-    physicalZipCode: $physicalZipCode,
-  ) {
-      dbaName
-      distance
-      deliveryRadius
-      onlineOrdering
-    }
-  }
-`;
-
 class VendorSearchResults extends React.Component {
   constructor(props) {
     super(props);
@@ -51,20 +29,28 @@ class VendorSearchResults extends React.Component {
     if (resultsArray.length === 0) {
       return (
         <div className={s.results_message}>
-          <div>There are no vendors delivering to your current address, however some may sell cocktails for pickup.</div>
-          <br />
-          <div>We checked for vendors less than {this.state.searchFilter.pickupRadius.toString()} {miles} away and found none, but you can adjust the search radius by clicking the filter settings button below.</div>
-        </div>
-      )
-    } else {
-      return (
-        <div className={s.results_message}>
           <div>
-            Vendors that deliver to your current address or offer pickup within {this.state.searchFilter.pickupRadius.toString()} {miles}
+            There are no vendors delivering to your current address, however
+            some may sell cocktails for pickup.
+          </div>
+          <br />
+          <div>
+            We checked for vendors less than{' '}
+            {this.state.searchFilter.pickupRadius.toString()} {miles} away and
+            found none, but you can adjust the search radius by clicking the
+            filter settings button below.
           </div>
         </div>
-      )
+      );
     }
+    return (
+      <div className={s.results_message}>
+        <div>
+          Vendors that deliver to your current address or offer pickup within{' '}
+          {this.state.searchFilter.pickupRadius.toString()} {miles}
+        </div>
+      </div>
+    );
   }
 
   onVendorClick(vendor) {
@@ -87,6 +73,7 @@ class VendorSearchResults extends React.Component {
   render() {
     let explainer;
     let onlineOrdering;
+    const searchResults = this.props.results;
 
     /**
      const { loading, error, data } = useQuery(SearchBarsQuery)
@@ -96,8 +83,8 @@ class VendorSearchResults extends React.Component {
      */
     return (
       <div className={s.result_list}>
-
         {this.resultsMessage(db)}
+        {console.log(searchResults)}
 
         {db.map((vendor, index, vendorResults) => {
           if (vendor.onlineStore === '') {
@@ -129,7 +116,6 @@ class VendorSearchResults extends React.Component {
             </div>
           );
         })}
-
       </div>
     );
   }
