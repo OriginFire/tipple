@@ -1,0 +1,94 @@
+.page_wrapper {
+  position: absolute;
+  height: auto;
+  top: 66px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.form {
+  height: 100%;
+  text-align: center;
+}
+
+.explainer, .redirect_explainer {
+  font-family: "Plantin Bold", serif;
+  padding: 0 0 10px 0;
+}
+
+
+@media only screen and (orientation: portrait) and (min-width: 320px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  .explainer, .redirect_explainer {
+    font-size: 1.3em;
+  }
+
+  .signup_content {
+    padding: 40px 0;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 320px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+  }
+
+  .explainer, .redirect_explainer {
+    font-size: 1.3em;
+  }
+
+  .signup_content {
+    padding: 40px 0;
+  }
+}
+
+@media only screen and (min-height: 500px) and (min-width: 768px) {
+  .page_wrapper {
+    top: 114px;
+    background-image: url('../../../../public/OldFashioned.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%, 0;
+  }
+
+  .form {
+    position: absolute;
+    right: 0;
+    bottom: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: normal;
+    width: 600px;
+    height: 50vh;
+  }
+
+  .explainer, .redirect_explainer {
+    font-size: 1.3em;
+  }
+
+  .signup_content {
+    padding: 40px 0;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .page_wrapper {
+    top: 114px;
+    background-image: url('../../../../public/OldFashioned.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%, 0;
+  }
+}

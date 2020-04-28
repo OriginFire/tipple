@@ -1,6 +1,6 @@
 import {
-  GraphQLInputObjectType as ObjectType,
-  GraphQLFloat as FloatType,
+GraphQLInputObjectType as ObjectType,
+GraphQLFloat as FloatType,
 } from 'graphql';
 
 const SearchVendorInputType = new ObjectType({

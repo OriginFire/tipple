@@ -20,7 +20,7 @@
 .placeholder {
   position: absolute;
   pointer-events: none;
-  font-family: "Lato Regular";
+  font-family: "Lato Regular", sans-serif;
   font-size: 15px;
   color: #878787;
   left: 10%;
@@ -33,11 +33,12 @@
   position: absolute;
   margin: 0 auto;
   width: 100%;
+  z-index: 10;
 }
 
 .suggestion, .active_suggestion {
   color: #242424;
-  font-family: "Lato Regular";
+  font-family: "Lato Regular", sans-serif;
   text-align: left;
   padding: 10px 0 10px 15px;
 }
@@ -55,10 +56,6 @@
     margin: 6px;
     padding: 6px 0 0 8px;
     width: 82%;
-  }
-
-  .suggestion_container {
-    bottom: 36.5vh;
   }
 
   .suggestion, .active_suggestion {

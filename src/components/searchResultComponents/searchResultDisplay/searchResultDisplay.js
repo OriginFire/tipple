@@ -19,6 +19,7 @@ const SEARCH_RESULTS_QUERY = `
         userLongitude: $userLongitude
       })
       {
+        id
         dbaName
         physicalStreetAddress
         physicalCity

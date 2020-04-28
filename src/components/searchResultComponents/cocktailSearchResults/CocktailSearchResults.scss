@@ -8,13 +8,13 @@
 }
 
 .results_message {
-  font-family: "Lato Regular";
+  font-family: "Lato Regular", sans-serif;
   color: #858585;
   text-align: center;
 }
 
 .list_item {
-  font-family: "Lato Regular";
+  font-family: "Lato Regular", sans-serif;
   flex: none;
   display: flex;
   flex-direction: row;
@@ -32,7 +32,7 @@
 }
 
 .cocktail_name {
-  font-family: "Lato Regular";
+  font-family: "Lato Regular", sans-serif;
   text-align: center;
   color: white;
 }
@@ -83,7 +83,7 @@
   }
 
   .cocktail_name {
-    font-size: 1.5em;
+    font-size: 14px;
     width: 100%;
     padding-bottom: 3px;
   }

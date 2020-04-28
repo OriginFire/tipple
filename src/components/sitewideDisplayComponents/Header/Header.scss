@@ -24,6 +24,18 @@
   display: none;
 }
 
+.shadow_background {
+  z-index: 15;
+  position: absolute;
+  top: 68px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #0a0a0a;
+  opacity: 0.9;
+  transition: 0.5s;
+}
+
 .dropdown_menu, .dropdown_menu_inactive {
   position: fixed;
   height: auto;
@@ -108,6 +120,10 @@
 
   .dropdown_menu, .dropdown_menu_inactive {
     width: 30%;
+    top: 114px;
+  }
+
+  .shadow_background {
     top: 114px;
   }
 

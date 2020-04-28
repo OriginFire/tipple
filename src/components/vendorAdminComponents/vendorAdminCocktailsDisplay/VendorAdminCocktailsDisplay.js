@@ -1,13 +1,13 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import s from './VendorAdminCocktails.scss';
+import s from './VendorAdminCocktailsDisplay.scss';
 import Button from '../../sitewideDisplayComponents/Button';
 import db from '../../../data/dbSimulator/Vendors';;
 import VendorCocktailSettings from '../vendorCocktailSettings/VendorCocktailSettings';
 import ApplicationContext from "../../ApplicationContext";
 import history from "../../../history";
 
-class VendorAdminCocktails extends React.Component {
+class VendorAdminCocktailsDisplay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -60,4 +60,4 @@ class VendorAdminCocktails extends React.Component {
   }
 }
 
-export default withStyles(s)(VendorAdminCocktails);
+export default withStyles(s)(VendorAdminCocktailsDisplay);

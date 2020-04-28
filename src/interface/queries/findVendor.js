@@ -12,6 +12,7 @@ import VendorType from '../types/VendorType';
 import Vendor from '../../data/models/Vendor';
 import FindVendorType from "../types/FindVendorType";
 import VendorInputType from "../types/VendorInputType";
+import db from "../../data/dbSimulator/Vendors";
 
 const findVendor = {
   type: VendorType,

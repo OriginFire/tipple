@@ -41,10 +41,6 @@ const CREATE_VENDOR_MUTATION = `
   }
 `;
 
-/** "CreateBar could be anything
- * "newbar calls newVendor.js mutator, which is also identified in the schema.js
- * */
-
 function VendorSignupForm() {
   const [dbaName, setDbaName] = useState('');
   const [adminName, setAdminName] = useState('');
@@ -194,7 +190,6 @@ function VendorSignupForm() {
         })()}
 
         {(() => {
-          // eslint-disable-next-line default-case
           switch (formStage) {
             case 1:
               return (
@@ -231,22 +226,22 @@ function VendorSignupForm() {
             case 2:
               return (
                 <form className={s.partner_form_fields}>
+                  <AddressFormField
+                    placeholder="Business Address"
+                    value={physicalAddress}
+                    onAddressSelection={addressSelection}
+                  />
                   <FormField
-                    placeholder="Bar Name (D.B.A.)"
+                    placeholder="Business Name (D.B.A.)"
                     onChange={e => setDbaName(e.target.value)}
                     type="text"
                     value={dbaName}
                   />
                   <FormField
-                    placeholder="Entity Name"
+                    placeholder="Legal Entity Name"
                     onChange={e => setEntityName(e.target.value)}
                     type="text"
                     value={entityName}
-                  />
-                  <AddressFormField
-                    placeholder="Venue Street Address"
-                    value={physicalAddress}
-                    onAddressSelection={addressSelection}
                   />
                 </form>
               );

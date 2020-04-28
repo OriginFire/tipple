@@ -10,11 +10,11 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
 import s from './VendorCreate.scss';
-import PartnerForm from '../../components/formComponents/vendorSignup/VendorSignupForm';
+import VendorSignupForm from '../../components/formComponents/vendorSignup/VendorSignupForm';
 
 class VendorCreate extends React.Component {
   render() {
-    return <PartnerForm />;
+    return <VendorSignupForm />;
   }
 }
 

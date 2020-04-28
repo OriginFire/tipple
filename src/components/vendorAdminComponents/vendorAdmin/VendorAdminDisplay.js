@@ -3,7 +3,7 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './VendorAdminDisplay.scss';
 import Button from '../../sitewideDisplayComponents/Button';
 import db from '../../../data/dbSimulator/Vendors';
-import VendorAccountDetails from '../vendorAccountDetails/VendorAccountDetails';
+import VendorAccountDetails from '../vendorAdminAccountDisplay/VendorAccountDetails';
 import ApplicationContext from "../../ApplicationContext";
 import history from "../../../history";
 
