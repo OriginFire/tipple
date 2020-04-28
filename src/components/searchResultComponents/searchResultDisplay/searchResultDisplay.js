@@ -2,8 +2,11 @@ import React, { useState, useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './searchResultDisplay.scss';
+import FilterSettings from "../filterSettings/FilterSettings";
 import VendorSearchResults from '../vendorSearchResults/vendorSearchResults';
 import CocktailSearchResults from '../cocktailSearchResults/CocktailSearchResults';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
 import Button from '../../sitewideDisplayComponents/Button/Button';
 import Link from '../../utilityComponents/link/Link';
 import ApplicationContext from '../../ApplicationContext';
@@ -43,19 +46,22 @@ function SearchResultsDisplay() {
   const userLocation = useContext(ApplicationContext);
 
   const [displaySetting, setDisplaySetting] = useState('vendors');
-  const [doesDelivery, setDoesDelivery] = useState(true);
-  const [doesPickup, setDoesPickup] = useState(true);
-  const [pickupRadius, setPickupRadius] = useState(0);
+  const [filterSettings, setFilterSettings] = useState({
+    doesDelivery: true,
+    doesPickup: true,
+    pickupRadius: 1,
+  });
   const [userLatitude, setUserLatitude] = useState(
     userLocation.context.userLatitude,
   );
   const [userLongitude, setUserLongitude] = useState(
     userLocation.context.userLongitude,
   );
+  const [filterSettingsOpen, setFilterSettingsOpen] = useState(false);
   let vendorStyle;
   let cocktailStyle;
-  let vendorContent;
-  let cocktailContent;
+  let vendorButton;
+  let cocktailButton;
   let resultsDisplay;
 
   const { loading, error, data } = useQuery(SEARCH_RESULTS_QUERY, {
@@ -68,37 +74,40 @@ function SearchResultsDisplay() {
 
   if (displaySetting === 'vendors') {
     vendorStyle = s.active;
-    vendorContent = 'Showing Vendors';
-    resultsDisplay = <VendorSearchResults results={searchResults} />;
+    vendorButton = 'Showing Vendors';
+    resultsDisplay = <VendorSearchResults results={searchResults} filterSettings={filterSettings} />;
   } else {
     vendorStyle = s.inactive;
-    vendorContent = 'Show Vendors';
+    vendorButton = 'Show Vendors';
   }
 
   if (displaySetting === 'cocktails') {
     cocktailStyle = s.active;
-    cocktailContent = 'Showing Cocktails';
-    resultsDisplay = <CocktailSearchResults results={searchResults} />;
+    cocktailButton = 'Showing Cocktails';
+    resultsDisplay = <CocktailSearchResults results={searchResults} filterSettings={filterSettings} />;
   } else {
     cocktailStyle = s.inactive;
-    cocktailContent = 'Show Cocktails';
+    cocktailButton = 'Show Cocktails';
   }
 
   return (
     <div className={s.search_result_content}>
+      <FilterSettings isOpen={filterSettingsOpen} close={e => console.log()}  />
       <div className={s.search_result_list_display}>
         <div className={s.display_selectors}>
+          <FontAwesomeIcon icon={faSlidersH} className={s.filter_icon} color="grey" onClick={e => setFilterSettingsOpen(true)} />
+
           <div
             className={vendorStyle}
             onClick={e => setDisplaySetting('vendors')}
           >
-            {vendorContent}
+            {vendorButton}
           </div>
           <div
             className={cocktailStyle}
             onClick={e => setDisplaySetting('cocktails')}
           >
-            {cocktailContent}
+            {cocktailButton}
           </div>
         </div>
 
@@ -109,7 +118,7 @@ function SearchResultsDisplay() {
             <Button type="Secondary" text="Return Home" />
           </Link>
 
-          <Button type="Primary" text="Adjust Filter Settings" />
+          <Button type="Primary" text="Adjust Filter Settings" onClick={e => setFilterSettingsOpen(true)} />
         </div>
       </div>
     </div>

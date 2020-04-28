@@ -161,9 +161,9 @@ export default [
       'ABRA' /** Should standardize entries with a dropdown menu */,
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
-    doesDelivery: true,
+    doesDelivery: false,
     doesPickup: true,
-    deliveryRadius: 1,
+    deliveryRadius: null,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../SL.jpeg',
     cocktails: [
@@ -300,7 +300,7 @@ export default [
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: true,
-    doesPickup: true,
+    doesPickup: false,
     deliveryRadius: 1,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../LevitationAspect.jpg',
@@ -437,7 +437,7 @@ export default [
       'ABRA' /** Should standardize entries with a dropdown menu */,
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
-    doesDelivery: true,
+    doesDelivery: false,
     doesPickup: true,
     deliveryRadius: 1,
     onlineStore: 'www.nipplesupply.com',

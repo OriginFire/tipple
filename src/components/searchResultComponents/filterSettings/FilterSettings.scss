@@ -1,0 +1,17 @@
+@import '../../../components/variables.css';
+
+.filter_settings {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background-color: #121212;;
+}
+
+.close {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+}
