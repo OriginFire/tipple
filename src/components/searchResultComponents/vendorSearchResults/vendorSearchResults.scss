@@ -22,35 +22,34 @@
   cursor: pointer;
 }
 
+.bar_name {
+  font-family: "Lato Regular", sans-serif;
+  text-align: center;
+  color: #f5f5f5;
+}
+
 .bar_image {
   object-fit: cover;
+  display: block;
+  margin: auto;
 }
 
 .result_text {
   display: flex;
-  flex-direction: column;
+  color: #b9b9b9;
 }
 
-.bar_name {
-  font-family: "Lato Regular", sans-serif;
-  text-align: center;
-  color: white;
-}
-
-.distance {
-  color: #595959;
+.availability {
+  color: #b9b9b9;
   text-align: center;
 }
 
-.sale_options {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  color: #d6d6d6;
+.address {
+  color: #919191;
+  text-align: center;
 }
 
-.order_link {
+.online_link {
   text-align: center;
 }
 
@@ -63,47 +62,59 @@
 
   .results_message {
     width: 90%;
-    font-size: 14px;
+    font-size: 16px;
+    padding: 5px 0;
   }
 
   .list_item {
-    margin: 12px 0;
-    justify-content: space-evenly;
+    padding: 16px 0;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
   }
 
-  .bar_image {
-    width: 45vw;
-    height: 15vh;
-  }
-
-  .result_text {
-    width: 40%;
+  .crap {
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
   }
 
   .bar_name {
-    font-size: 14px;
+    font-size: 24px;
+    font-family: "Plantin Bold", serif;
+    text-align: center;
     width: 100%;
-    padding-bottom: 3px;
+    padding: 0 0 2px 0;
   }
 
-  .distance {
-    font-size: 8px;
-  }
-
-  .sale_options {
-    padding-top: 12px;
-    padding-bottom: 5px;
-  }
-
-  .order_link {
-    font-size: 10px;
+  .bar_image {
+    width: 35vw;
+    height: 10vh;
+    padding: 0 0 2px 0;
   }
 
   .availability {
-    font-size: 8px;
+    font-size: 14px;
     text-align: center;
+  }
+
+  .address {
+    font-size: 10.5px;
+  }
+
+  .result_text {
+    width: 35%;
+    height: 11.5vh;
+    min-height: 95px;
+    font-size: 12px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .online_link {
+
   }
 }
 

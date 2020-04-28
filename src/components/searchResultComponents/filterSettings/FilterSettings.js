@@ -10,7 +10,7 @@ function FilterSettings(props) {
     <div>
       {props.isOpen &&
         <div className={s.filter_settings}>Filter settings
-          <div className={s.close} onClick={e => props.close()}>
+          <div className={s.close} onClick={e => props.close('New Settings?')}>
             <FontAwesomeIcon icon={faTimes} size="lg" color="white" pull="right" />
           </div>
 

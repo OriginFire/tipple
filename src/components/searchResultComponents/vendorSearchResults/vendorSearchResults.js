@@ -42,8 +42,8 @@ function VendorSearchResults(props) {
       <div className={s.results_message}>
         <div>
           {resultsArray.length} {vendors} deliver to your current address or
-          offer pickup within{' '}
-          {props.filterSettings.pickupRadius.toString()} {miles}
+          offer pickup within {props.filterSettings.pickupRadius.toString()}{' '}
+          {miles}
         </div>
       </div>
     );
@@ -87,17 +87,20 @@ function VendorSearchResults(props) {
               className={s.list_item}
               onClick={e => history.push(`/vendor/${vendor.id}`)}
             >
-              <img className={s.bar_image} src={vendor.vendorImage} />
-              <div className={s.result_text}>
+              <div className={s.crap}>
                 <div className={s.bar_name}>{vendor.dbaName}</div>
-                <div className={s.distance}>
+                <img className={s.bar_image} src={vendor.vendorImage} />
+                <div className={s.availability}>{availability(index)}</div>
+                <div className={s.address}>
                   {`${vendor.physicalStreetAddress}, ${vendor.physicalCity}`}
                 </div>
-                <div className={s.distance}>(.25 miles away)</div>
-                <div className={s.sale_options}>
-                  <div className={s.order_link}>{onlineOrdering}</div>
-                  <div className={s.availability}>{availability(index)}</div>
-                </div>
+              </div>
+
+              <div className={s.result_text}>
+                <div>{vendor.cocktails.length.toString()}{` `}cocktails, $6-10 / serving</div>
+                <div>{availability(index)}</div>
+                <div>{availability(index)}</div>
+                <div className={s.online_link}>{onlineOrdering}</div>
               </div>
             </div>
           );

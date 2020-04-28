@@ -90,12 +90,16 @@ function SearchResultsDisplay() {
     cocktailButton = 'Show Cocktails';
   }
 
+  function changeSettings(newSettings) {
+    console.log(newSettings);
+  };
+
   return (
     <div className={s.search_result_content}>
-      <FilterSettings isOpen={filterSettingsOpen} close={e => console.log()}  />
+      <FilterSettings isOpen={filterSettingsOpen} close={e => changeSettings()}  />
       <div className={s.search_result_list_display}>
         <div className={s.display_selectors}>
-          <FontAwesomeIcon icon={faSlidersH} className={s.filter_icon} color="grey" onClick={e => setFilterSettingsOpen(true)} />
+          <FontAwesomeIcon icon={faSlidersH} className={s.filter_icon} size="2x" color="grey" onClick={e => setFilterSettingsOpen(true)} />
 
           <div
             className={vendorStyle}
@@ -112,14 +116,6 @@ function SearchResultsDisplay() {
         </div>
 
         <div className={s.list}>{resultsDisplay}</div>
-
-        <div className={s.buttons}>
-          <Link to="/">
-            <Button type="Secondary" text="Return Home" />
-          </Link>
-
-          <Button type="Primary" text="Adjust Filter Settings" onClick={e => setFilterSettingsOpen(true)} />
-        </div>
       </div>
     </div>
   );
