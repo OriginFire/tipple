@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './vendorSearchResults.scss';
 import history from '../../../history';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStore, faGlassMartiniAlt } from '@fortawesome/free-solid-svg-icons';
 import db from '../../../data/dbSimulator/Vendors';
 
 function VendorSearchResults(props) {
@@ -90,17 +92,16 @@ function VendorSearchResults(props) {
               <div className={s.crap}>
                 <div className={s.bar_name}>{vendor.dbaName}</div>
                 <img className={s.bar_image} src={vendor.vendorImage} />
+                <div className={s.cocktails}>{vendor.cocktails.length.toString()} cocktails, $6-10 / serving</div>
+              </div>
+
+              <div className={s.result_text}>
                 <div className={s.availability}>{availability(index)}</div>
                 <div className={s.address}>
                   {`${vendor.physicalStreetAddress}, ${vendor.physicalCity}`}
                 </div>
-              </div>
-
-              <div className={s.result_text}>
-                <div>{vendor.cocktails.length.toString()}{` `}cocktails, $6-10 / serving</div>
-                <div>{availability(index)}</div>
-                <div>{availability(index)}</div>
-                <div className={s.online_link}>{onlineOrdering}</div>
+                <div className={s.info}>Scheduled delivery available today</div>
+                <div className={s.info}>Scheduled pickup available today until 11 PM</div>
               </div>
             </div>
           );

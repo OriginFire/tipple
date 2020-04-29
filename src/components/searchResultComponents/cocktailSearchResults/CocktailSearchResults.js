@@ -80,9 +80,14 @@ function CocktailSearchResults(props) {
               className={s.list_item}
               onClick={e => history.push(`/vendor/${vendor.id}`)}
             >
-              <img className={s.cocktail_image} src={cocktail.image} />
-              <div className={s.result_text}>
+              <div>
                 <div className={s.cocktail_name}>{cocktail.name}</div>
+                <img className={s.cocktail_image} src={cocktail.image} />
+                <div className={s.price}>$8 / 3.5 oz serving</div>
+              </div>
+
+              <div className={s.result_text}>
+                <div className={s.type}>Boozy Classic</div>
                 <div className={s.ingredients}>{cocktail.ingredients}</div>
                 <div className={s.sale_options}>
                   <div className={s.order_link}>{onlineOrdering}</div>

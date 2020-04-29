@@ -36,17 +36,21 @@
 
 .result_text {
   display: flex;
-  color: #b9b9b9;
-}
-
-.availability {
-  color: #b9b9b9;
-  text-align: center;
-}
-
-.address {
   color: #919191;
+}
+
+.cocktails {
+  color: #b9b9b9;
   text-align: center;
+}
+
+.address, .availability {
+  color: #ebebeb;
+  text-align: center;
+}
+
+.info {
+  font-family: "Lato Light", sans-serif;
 }
 
 .online_link {
@@ -70,14 +74,15 @@
     padding: 16px 0;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: space-between;
     width: 100%;
   }
 
   .crap {
     flex-direction: column;
     justify-content: center;
-    width: 50%;
+    width: 48%;
+    overflow: hidden;
   }
 
   .bar_name {
@@ -89,40 +94,54 @@
   }
 
   .bar_image {
-    width: 35vw;
-    height: 10vh;
+    width: 160px;
+    height: 90px;
     padding: 0 0 2px 0;
+  }
+
+  .cocktails {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .result_text {
+    width: 48%;
+    height: 15vh;
+    min-height: 100px;
+    font-size: 12px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 5px 0 0 0;
   }
 
   .availability {
     font-size: 14px;
-    text-align: center;
+    align-self: center;
   }
 
   .address {
     font-size: 10.5px;
+    align-self: center;
+    padding: 0 0 10px 0;
   }
 
-  .result_text {
-    width: 35%;
-    height: 11.5vh;
-    min-height: 95px;
-    font-size: 12px;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+  .info {
+    padding: 3px 0;
   }
 
-  .online_link {
-
+  .link {
+    font-size: 14px;
+    align-self: center;
+    padding: 40px 0 0 0;
   }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
   .result_list {
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: nowrap;
     height: 100%;
   }
 
@@ -134,7 +153,13 @@
   .list_item {
     justify-content: space-evenly;
     margin: 10px 0;
-    width: 45%;
+    width: 100%;
+  }
+
+  .bar_name {
+    font-size: 1.5em;
+    width: 100%;
+    padding: 0 0 3px 0;
   }
 
   .bar_image {
@@ -142,10 +167,15 @@
     height: 17vh;
   }
 
-  .bar_name {
-    font-size: 1.5em;
-    width: 100%;
-    padding: 0 0 3px 0;
+  .result_text {
+    width: 48%;
+    height: 15vh;
+    min-height: 100px;
+    font-size: 12px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 5px 0 0 0;
   }
 
   .distance {
