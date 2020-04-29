@@ -27,6 +27,18 @@ const Cocktail = Model.define(
       type: DataType.STRING(512),
     },
 
+    price: {
+      type: DataType.STRING(512),
+    },
+
+    servingSize: {
+      type: DataType.DOUBLE,
+    },
+
+    profile: {
+      type: DataType.STRING(512),
+    },
+
     image: {
       type: DataType.BLOB('long'),
     },

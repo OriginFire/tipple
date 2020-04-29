@@ -3,7 +3,7 @@ export default [
     id: 'thegibson',
     dbaName: 'the Gibson',
     legalEntityName: 'Soul Haven LLC',
-    userPassword: 'test',
+    adminPassword: 'test',
 
     adminName: 'Fox Mulder',
     adminPhoneNumber: '555 555 5555',
@@ -72,7 +72,7 @@ export default [
     id: 'urbana',
     dbaName: 'Urbana',
     legalEntityName: 'Soul Haven LLC',
-    userPassword: 'test',
+    adminPassword: 'test',
 
     adminName: 'Fox Mulder',
     adminPhoneNumber: '555 555 5555',
@@ -141,7 +141,7 @@ export default [
     id: 'revelershour',
     dbaName: "Reveler's Hour",
     legalEntityName: 'Soul Haven LLC',
-    userPassword: 'test',
+    adminPassword: 'test',
 
     adminName: 'Fox Mulder',
     adminPhoneNumber: '555 555 5555',
@@ -210,7 +210,7 @@ export default [
     id: 'columbiaroom',
     dbaName: 'Columbia Room',
     legalEntityName: 'Soul Haven LLC',
-    userPassword: 'test',
+    adminPassword: 'test',
 
     adminName: 'Fox Mulder',
     adminPhoneNumber: '555 555 5555',
@@ -279,7 +279,7 @@ export default [
     id: 'chezbillysud',
     dbaName: 'Chez Billy Sud',
     legalEntityName: 'Soul Haven LLC',
-    userPassword: 'test',
+    adminPassword: 'test',
 
     adminName: 'Fox Mulder',
     adminPhoneNumber: '555 555 5555',
@@ -348,7 +348,7 @@ export default [
     id: 'silverlyan',
     dbaName: 'Silver Lyan',
     legalEntityName: 'Soul Haven LLC',
-    userPassword: 'test',
+    adminPassword: 'test',
 
     adminName: 'Fox Mulder',
     adminPhoneNumber: '555 555 5555',
@@ -417,7 +417,7 @@ export default [
     id: 'badsaint',
     dbaName: 'Bad Saint',
     legalEntityName: 'Soul Haven LLC',
-    userPassword: 'test',
+    adminPassword: 'test',
 
     adminName: 'Fox Mulder',
     adminPhoneNumber: '555 555 5555',

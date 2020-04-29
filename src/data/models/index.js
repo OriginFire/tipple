@@ -11,14 +11,15 @@ import sequelize from '../sequelize';
 import Vendor from './Vendor';
 import Cocktail from "./Cocktail";
 import User from "./User";
+import seedData from '../seed/seedDbSimulator';
 
-Vendor.hasMany(Cocktail, {
-  foreignKey: 'vendorId',
-});
+Vendor.hasMany(Cocktail);
 
 Vendor.hasMany(User);
 
 function sync(...args) {
+  console.log("123");
+  seedData();
   return sequelize.sync(...args);
 }
 
