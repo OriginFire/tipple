@@ -55,10 +55,6 @@
   font-family: "Lato Light", sans-serif;
 }
 
-.order_link {
-  text-align: center;
-}
-
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .result_list {
     flex-direction: column;
@@ -119,13 +115,10 @@
     padding: 0 0 4px 0;
   }
 
-  .sale_options {
-    padding-bottom: 10px;
-    height: 50%;
-  }
-
-  .order_link {
-    font-size: 10px;
+  .expand {
+    font-size: 12px;
+    color: #c3c3c3;
+    padding: 4px 0 0 0;
   }
 }
 

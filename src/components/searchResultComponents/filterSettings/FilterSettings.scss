@@ -12,6 +12,85 @@
 
 .close {
   position: absolute;
-  right: 25px;
-  top: 20px;
+  left: 25px;
+  top: 25px;
+}
+
+.explainer {
+  font-family: "Lato Light", sans-serif;
+  color: grey;
+  position: absolute;
+  top: 66px;
+  text-align: center;
+  width: 100%;
+  font-size: 16px;
+}
+
+.settings {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.title {
+  font-family: "Lato Light", sans-serif;
+  color: #b4b4b4;
+  text-align: center;
+  font-size: 18px;
+  padding: 0 0 10px 0;
+}
+
+.availability {
+  width: 100%;
+}
+
+.ordering {
+  width: 100%;
+}
+
+.cocktails {
+  width: 100%;
+}
+
+.availability_settings, .ordering_settings, .cocktails_settings {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 8px;
+}
+
+.setting_message {
+  color: #9b9b9b;
+  font-family: "Lato Light", sans-serif;
+  font-size: 12px;
+  text-align: center;
+  padding: 15px 0 0 0;
+}
+
+.icon_active, .icon_inactive {
+  padding: 17px;
+  border: solid 1px;
+  border-radius: 4px;
+}
+
+.icon_active {
+  color: white;
+}
+
+.icon_inactive {
+  color: #555555;
+}
+
+.radius {
+  width: 30px;
 }

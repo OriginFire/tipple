@@ -1,6 +1,8 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './CocktailSearchResults.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import history from '../../../history';
 
 function CocktailSearchResults(props) {
@@ -90,6 +92,10 @@ function CocktailSearchResults(props) {
                 <div className={s.cocktail_name}>{cocktail.name}</div>
                 <div className={s.price}>$8 / 3.5 oz serving</div>
                 <div className={s.ingredients}>{cocktail.ingredients}</div>
+                <div className={s.expand}>
+                  More Details{` `}
+                  <FontAwesomeIcon icon={faChevronDown} size="xs" />
+                </div>
               </div>
             </div>
           );

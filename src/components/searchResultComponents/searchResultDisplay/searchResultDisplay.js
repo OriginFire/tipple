@@ -50,6 +50,14 @@ function SearchResultsDisplay() {
     doesDelivery: true,
     doesPickup: true,
     pickupRadius: 1,
+    showBoozy: true,
+    showStrong: true,
+    showLong: true,
+    showLow: true,
+    availableTodayOnly: false,
+    onDemandOnly: false,
+    lowPrice: 0,
+    highPrice: '',
   });
   const [userLatitude, setUserLatitude] = useState(
     userLocation.context.userLatitude,
@@ -90,13 +98,14 @@ function SearchResultsDisplay() {
     cocktailButton = 'Show Cocktails';
   }
 
-  function changeSettings(newSettings) {
+  function updateFilterSettings(newSettings) {
+    setFilterSettingsOpen(false)
     console.log(newSettings);
-  };
+  }
 
   return (
     <div className={s.search_result_content}>
-      <FilterSettings isOpen={filterSettingsOpen} close={e => changeSettings()}  />
+      <FilterSettings isOpen={filterSettingsOpen} settings={filterSettings} close={e => updateFilterSettings()}  />
       <div className={s.search_result_list_display}>
         <div className={s.display_selectors}>
           <FontAwesomeIcon icon={faSlidersH} className={s.filter_icon} size="2x" color="grey" onClick={e => setFilterSettingsOpen(true)} />
