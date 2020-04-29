@@ -99,13 +99,14 @@ function SearchResultsDisplay() {
   }
 
   function updateFilterSettings(newSettings) {
-    setFilterSettingsOpen(false)
-    console.log(newSettings);
+    setFilterSettingsOpen(false);
+    setFilterSettings(newSettings);
+    console.log(newSettings)
   }
 
   return (
     <div className={s.search_result_content}>
-      <FilterSettings isOpen={filterSettingsOpen} settings={filterSettings} close={e => updateFilterSettings()}  />
+      { filterSettingsOpen && <FilterSettings settings={filterSettings} onClose={newSettings => updateFilterSettings(newSettings)}  /> }
       <div className={s.search_result_list_display}>
         <div className={s.display_selectors}>
           <FontAwesomeIcon icon={faSlidersH} className={s.filter_icon} size="2x" color="grey" onClick={e => setFilterSettingsOpen(true)} />
@@ -122,6 +123,9 @@ function SearchResultsDisplay() {
           >
             {cocktailButton}
           </div>
+        </div>
+        <div>
+          {filterSettings.doesDelivery && <div>Deliv</div>}
         </div>
 
         <div className={s.list}>{resultsDisplay}</div>

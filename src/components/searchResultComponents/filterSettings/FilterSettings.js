@@ -43,10 +43,9 @@ function FilterSettings(props) {
 
   return (
     <div>
-      {props.isOpen && (
         <div className={s.filter_settings}>
           <div className={s.explainer}>To adjust search settings, (un)select options below</div>
-          <div className={s.close} onClick={e => props.close(filterSettings)}>
+          <div className={s.close} onClick={e => props.onClose(filterSettings)}>
             <FontAwesomeIcon
               icon={faTimes}
               size="lg"
@@ -63,6 +62,7 @@ function FilterSettings(props) {
                   className={classNameResolve(filterSettings.doesDelivery)}
                   onClick={e =>
                     setFilterSettings({
+                      ...filterSettings,
                       doesDelivery: !filterSettings.doesDelivery,
                     })
                   }
@@ -74,6 +74,7 @@ function FilterSettings(props) {
                   className={classNameResolve(filterSettings.doesPickup)}
                   onClick={e =>
                     setFilterSettings({
+                      ...filterSettings,
                       doesPickup: !filterSettings.doesPickup,
                     })
                   }
@@ -155,7 +156,6 @@ function FilterSettings(props) {
             </div>
           </div>
         </div>
-      )}
     </div>
   );
 }
