@@ -81,18 +81,15 @@ function CocktailSearchResults(props) {
               onClick={e => history.push(`/vendor/${vendor.id}`)}
             >
               <div>
-                <div className={s.cocktail_name}>{cocktail.name}</div>
                 <img className={s.cocktail_image} src={cocktail.image} />
-                <div className={s.price}>$8 / 3.5 oz serving</div>
+                <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>
+                <div className={s.availability}>Available Today</div>
               </div>
 
               <div className={s.result_text}>
-                <div className={s.type}>Boozy Classic</div>
+                <div className={s.cocktail_name}>{cocktail.name}</div>
+                <div className={s.price}>$8 / 3.5 oz serving</div>
                 <div className={s.ingredients}>{cocktail.ingredients}</div>
-                <div className={s.sale_options}>
-                  <div className={s.order_link}>{onlineOrdering}</div>
-                  <div className={s.availability}>{availability}</div>
-                </div>
               </div>
             </div>
           );
