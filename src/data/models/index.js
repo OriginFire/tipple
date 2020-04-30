@@ -13,14 +13,18 @@ import Cocktail from "./Cocktail";
 import User from "./User";
 import seedData from '../seed/seedDbSimulator';
 
-Vendor.hasMany(Cocktail);
+Vendor.hasMany(Cocktail, {
+  onDelete: 'cascade',
+});
 
-Vendor.hasMany(User);
+Vendor.hasMany(User, {
+  onDelete: 'cascade',
+});
 
 function sync(...args) {
-  console.log("123");
-  seedData();
-  return sequelize.sync(...args);
+  return sequelize.sync(...args).then( () => {
+    seedData();
+  });
 }
 
 export default { sync };
