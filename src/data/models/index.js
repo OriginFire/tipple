@@ -11,15 +11,20 @@ import sequelize from '../sequelize';
 import Vendor from './Vendor';
 import Cocktail from "./Cocktail";
 import User from "./User";
+import seedData from '../seed/seedDbSimulator';
 
 Vendor.hasMany(Cocktail, {
-  foreignKey: 'vendorId',
+  onDelete: 'cascade',
 });
 
-Vendor.hasMany(User);
+Vendor.hasMany(User, {
+  onDelete: 'cascade',
+});
 
 function sync(...args) {
-  return sequelize.sync(...args);
+  return sequelize.sync(...args).then( () => {
+    seedData();
+  });
 }
 
 export default { sync };

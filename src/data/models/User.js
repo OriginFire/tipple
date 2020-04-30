@@ -22,6 +22,10 @@ const User = Model.define(
       primaryKey: true,
     },
 
+    slug: {
+      type: DataType.STRING(255),
+    },
+
     name: {
       type: DataType.STRING(255),
     },
