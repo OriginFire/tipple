@@ -8,7 +8,8 @@
  */
 
 import { GraphQLList as List } from 'graphql';
-import Vendor from '../../data/models';
+import Vendor from '../../data/models/Vendor';
+import Cocktail from '../../data/models/Cocktail';
 import VendorType from '../types/VendorType';
 import db from '../../data/dbSimulator/Vendors.js';
 import SearchVendorInputType from '../types/SearchVendorInputType';
@@ -18,9 +19,15 @@ const searchVendors = {
   args: {
     latLng: { type: SearchVendorInputType },
   },
-  resolve(value, { vendor }) {
-    const vendorsDummy = db;
-    return vendorsDummy;
+  async resolve(value, { vendor }) {
+    let vendors = await Vendor.findAll({include: Cocktail});
+    vendors.forEach(v => {
+      v.vendorImage = v.vendorImage.toString();
+      v.Cocktails.forEach(c => {
+        c.image = c.image.toString();
+      })
+    });
+    return vendors;
   },
 };
 
