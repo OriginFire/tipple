@@ -8,6 +8,7 @@
  */
 
 import DataType, { STRING, BOOLEAN, INTEGER } from 'sequelize';
+import Cocktail from './Cocktail';
 import Model from '../sequelize';
 
 const Vendor = Model.define(
@@ -86,13 +87,10 @@ const Vendor = Model.define(
     vendorImage: {
       type: DataType.BLOB('long'),
     },
-
   },
   {
     indexes: [{ fields: ['id', 'slug'] }],
   },
 );
-
-
 
 export default Vendor;

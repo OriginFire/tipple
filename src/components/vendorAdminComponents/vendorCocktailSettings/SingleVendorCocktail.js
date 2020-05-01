@@ -1,11 +1,7 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './VendorCocktailSettings.scss';
-import FormField from '../../sitewideDisplayComponents/formField';
-import Button from "../../sitewideDisplayComponents/Button";
-import db from "../../../data/dbSimulator/Vendors";
 import CocktailInput from "./CocktailInput";
-import ApplicationContext from "../../ApplicationContext";
 
 function SingleVendorCocktail(props) {
   let active = props.activeId === props.cocktail.id;

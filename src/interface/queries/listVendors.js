@@ -10,14 +10,15 @@
 import { GraphQLList as List } from 'graphql';
 import VendorType from '../types/VendorType';
 import Vendor from '../../data/models/Vendor';
+import Cocktail from '../../data/models/Cocktail';
 
-const newVendor = {
+const listVendors = {
   type: List(VendorType),
   resolve() {
-    return (
-      Vendor.findAll()
-    );
+    return Vendor.findAll({
+      include: [{model: Cocktail, as: 'cocktails'}],
+    });
   },
 };
 
-export default newVendor;
+export default listVendors;

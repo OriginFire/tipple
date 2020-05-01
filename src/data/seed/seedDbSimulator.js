@@ -75,8 +75,7 @@ function createNew(vendor, slug) {
       latitude: vendor.latitude,
       longitude: vendor.longitude,
       alcoholLicenseNumber: vendor.alcoholLicenseNumber,
-      alcoholLicenseIssuingAgency:
-      vendor.alcoholLicenseIssuingAgency,
+      alcoholLicenseIssuingAgency: vendor.alcoholLicenseIssuingAgency,
       alcoholLicenseExpiration: vendor.alcoholLicenseExpiration,
       doesDelivery: vendor.doesDelivery,
       doesPickup: vendor.doesPickup,
@@ -91,10 +90,10 @@ function createNew(vendor, slug) {
           password: hash,
         },
       ],
-      Cocktails: cocktailHash(vendor),
+      cocktails: cocktailHash(vendor),
     },
     {
-      include: [User, Cocktail], // this is needed to make the Users initial entry work.
+      include: [User, {model: Cocktail, as: 'cocktails'}], // this is needed to make the Users initial entry work.
     },
   );
   console.log(`created vendor with ${v.id}`)

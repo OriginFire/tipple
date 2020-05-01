@@ -1,11 +1,7 @@
 import React, { set } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './VendorCocktailSettings.scss';
-import FormField from '../../sitewideDisplayComponents/formField';
-import Button from "../../sitewideDisplayComponents/Button";
-import db from "../../../data/dbSimulator/Vendors";
 import SingleVendorCocktail from "./SingleVendorCocktail";
-import ApplicationContext from "../../ApplicationContext";
 
 class VendorCocktailSettings extends React.Component {
   constructor(props) {
@@ -33,10 +29,10 @@ class VendorCocktailSettings extends React.Component {
 
     return (
       <div className={s.cocktail_list}>
-        {vendor.cocktails.map((cocktail) => {
+        {vendor.cocktails.map((cocktail, index, cocktails) => {
           return (
             <SingleVendorCocktail
-              key={cocktail.id}
+              key={index}
               cocktail={cocktail}
               activeId={this.state.activeCocktailId}
               updateActiveCocktailId={this.updateActiveCocktailId}

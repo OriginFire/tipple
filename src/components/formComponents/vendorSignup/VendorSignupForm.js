@@ -80,7 +80,6 @@ function VendorSignupForm() {
   }
 
   async function createNewVendor() {
-    console.log('click!');
     const res = await createVendor({
       variables: {
         dbaName,

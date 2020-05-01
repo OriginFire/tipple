@@ -42,7 +42,8 @@ function IndividualVendorDisplay(props) {
   db.map(vendorAccount => {
     if (props.id === vendorAccount.id) {
       vendor = vendorAccount;
-      console.log(graphVendor)
+      console.log(graphVendor, 'graphVendor');
+      console.log(props.id, 'propsId' );
     }
   });
   let availability;

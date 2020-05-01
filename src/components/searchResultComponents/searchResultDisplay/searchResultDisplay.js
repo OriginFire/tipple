@@ -1,14 +1,12 @@
 import React, { useState, useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
-import s from './searchResultDisplay.scss';
-import FilterSettings from "../filterSettings/FilterSettings";
-import VendorSearchResults from '../vendorSearchResults/vendorSearchResults';
-import CocktailSearchResults from '../cocktailSearchResults/CocktailSearchResults';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
-import Button from '../../sitewideDisplayComponents/Button/Button';
-import Link from '../../utilityComponents/link/Link';
+import s from './searchResultDisplay.scss';
+import FilterSettings from '../filterSettings/FilterSettings';
+import VendorSearchResults from '../vendorSearchResults/vendorSearchResults';
+import CocktailSearchResults from '../cocktailSearchResults/CocktailSearchResults';
 import ApplicationContext from '../../ApplicationContext';
 
 const SEARCH_RESULTS_QUERY = `
@@ -23,6 +21,7 @@ const SEARCH_RESULTS_QUERY = `
       })
       {
         id
+        slug
         dbaName
         physicalStreetAddress
         physicalCity
@@ -40,6 +39,26 @@ const SEARCH_RESULTS_QUERY = `
         }
       }
   }
+`;
+
+const DUMMY_LIST_ALL = `
+query {
+  listVendors {
+    slug
+    dbaName
+    physicalStreetAddress
+    physicalCity
+    doesDelivery
+    deliveryRadius
+    doesPickup
+    cocktails {
+      name
+      ingredients
+      profile
+      image
+    }
+  }
+}
 `;
 
 function SearchResultsDisplay() {
@@ -80,10 +99,22 @@ function SearchResultsDisplay() {
     searchResults = data.searchVendors;
   }
 
+  const listVendors = useQuery(DUMMY_LIST_ALL);
+  if (listVendors.data) {
+    console.log(listVendors.data.listVendors[0].cocktails[0], 'listVendors');
+  }
+
+  const image = 'test';
+
   if (displaySetting === 'vendors') {
     vendorStyle = s.active;
     vendorButton = 'Showing Vendors';
-    resultsDisplay = <VendorSearchResults results={searchResults} filterSettings={filterSettings} />;
+    resultsDisplay = (
+      <VendorSearchResults
+        results={searchResults}
+        filterSettings={filterSettings}
+      />
+    );
   } else {
     vendorStyle = s.inactive;
     vendorButton = 'Show Vendors';
@@ -92,7 +123,12 @@ function SearchResultsDisplay() {
   if (displaySetting === 'cocktails') {
     cocktailStyle = s.active;
     cocktailButton = 'Showing Cocktails';
-    resultsDisplay = <CocktailSearchResults results={searchResults} filterSettings={filterSettings} />;
+    resultsDisplay = (
+      <CocktailSearchResults
+        results={searchResults}
+        filterSettings={filterSettings}
+      />
+    );
   } else {
     cocktailStyle = s.inactive;
     cocktailButton = 'Show Cocktails';
@@ -101,15 +137,35 @@ function SearchResultsDisplay() {
   function updateFilterSettings(newSettings) {
     setFilterSettingsOpen(false);
     setFilterSettings(newSettings);
-    console.log(newSettings)
+    console.log(newSettings);
   }
 
   return (
     <div className={s.search_result_content}>
-      { filterSettingsOpen && <FilterSettings settings={filterSettings} onClose={newSettings => updateFilterSettings(newSettings)}  /> }
+      {listVendors.data && (
+        <img
+          width="16"
+          height="16"
+          alt="star"
+          src={`data:image/jpg;base64,${listVendors.data.listVendors[0].cocktails[0]}`}
+        />
+      )}
+
+      {filterSettingsOpen && (
+        <FilterSettings
+          settings={filterSettings}
+          onClose={newSettings => updateFilterSettings(newSettings)}
+        />
+      )}
       <div className={s.search_result_list_display}>
         <div className={s.display_selectors}>
-          <FontAwesomeIcon icon={faSlidersH} className={s.filter_icon} size="2x" color="grey" onClick={e => setFilterSettingsOpen(true)} />
+          <FontAwesomeIcon
+            icon={faSlidersH}
+            className={s.filter_icon}
+            size="2x"
+            color="grey"
+            onClick={e => setFilterSettingsOpen(true)}
+          />
 
           <div
             className={vendorStyle}
@@ -123,9 +179,6 @@ function SearchResultsDisplay() {
           >
             {cocktailButton}
           </div>
-        </div>
-        <div>
-          {filterSettings.doesDelivery && <div>Deliv</div>}
         </div>
 
         <div className={s.list}>{resultsDisplay}</div>

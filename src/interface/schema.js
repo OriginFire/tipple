@@ -13,16 +13,16 @@ import {
 } from 'graphql';
 
 import newVendor from './mutators/newVendor';
-import listBars from './queries/listVendors';
+import listVendors from './queries/listVendors';
 import searchVendors from './queries/searchVendors';
 import showCocktails from './queries/showCocktails';
-import findVendor from "./queries/findVendor";
+import findVendor from './queries/findVendor';
 
 const schema = new Schema({
   query: new ObjectType({
     name: 'Query',
     fields: {
-      listBars,
+      listVendors,
       searchVendors,
       showCocktails,
       findVendor,

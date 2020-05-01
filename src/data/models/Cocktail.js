@@ -23,6 +23,10 @@ const Cocktail = Model.define(
       type: DataType.STRING(256),
     },
 
+    name: {
+      type: DataType.STRING(512),
+    },
+
     ingredients: {
       type: DataType.STRING(512),
     },
@@ -47,6 +51,5 @@ const Cocktail = Model.define(
     indexes: [{ fields: ['slug'] }],
   },
 );
-
 
 export default Cocktail;

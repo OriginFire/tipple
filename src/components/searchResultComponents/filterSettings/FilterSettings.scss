@@ -81,10 +81,12 @@
   padding: 17px;
   border: solid 1px;
   border-radius: 4px;
+  transition: 0.25s;
 }
 
 .icon_active {
   color: white;
+  background-color: #251e1f;
 }
 
 .icon_inactive {
