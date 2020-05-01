@@ -101,7 +101,7 @@ function SearchResultsDisplay() {
 
   const listVendors = useQuery(DUMMY_LIST_ALL);
   if (listVendors.data) {
-    console.log(listVendors.data.listVendors[0].cocktails[0], 'listVendors');
+    console.log(listVendors, 'listVendors');
   }
 
   const image = 'test';
@@ -139,17 +139,18 @@ function SearchResultsDisplay() {
     setFilterSettings(newSettings);
     console.log(newSettings);
   }
-
-  return (
-    <div className={s.search_result_content}>
-      {listVendors.data && (
+  /*      {listVendors.data && (
         <img
           width="16"
           height="16"
           alt="star"
           src={`data:image/jpg;base64,${listVendors.data.listVendors[0].cocktails[0]}`}
         />
-      )}
+      )} */
+
+  return (
+    <div className={s.search_result_content}>
+
 
       {filterSettingsOpen && (
         <FilterSettings

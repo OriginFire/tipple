@@ -14,10 +14,18 @@ import Cocktail from '../../data/models/Cocktail';
 
 const listVendors = {
   type: List(VendorType),
-  resolve() {
-    return Vendor.findAll({
-      include: [{model: Cocktail, as: 'cocktails'}],
+  async resolve(value, {vendor}) {
+    let vendors = await Vendor.findAll({
+      include: [{ model: Cocktail, as: 'cocktails' }],
     });
+
+    vendors.forEach(v => {
+      v.vendorImage = v.vendorImage.toString();
+      v.cocktails.forEach(c => {
+        c.image = c.image.toString();
+      });
+    });
+    return vendors;
   },
 };
 
