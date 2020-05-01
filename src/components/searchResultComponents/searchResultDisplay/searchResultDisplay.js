@@ -20,7 +20,6 @@ const SEARCH_RESULTS_QUERY = `
         userLongitude: $userLongitude
       })
       {
-        id
         slug
         dbaName
         physicalStreetAddress
@@ -32,33 +31,12 @@ const SEARCH_RESULTS_QUERY = `
         vendorImage
         onlineStore
         cocktails {
-          id
           name
           ingredients
           image
         }
       }
   }
-`;
-
-const DUMMY_LIST_ALL = `
-query {
-  listVendors {
-    slug
-    dbaName
-    physicalStreetAddress
-    physicalCity
-    doesDelivery
-    deliveryRadius
-    doesPickup
-    cocktails {
-      name
-      ingredients
-      profile
-      image
-    }
-  }
-}
 `;
 
 function SearchResultsDisplay() {
@@ -97,14 +75,8 @@ function SearchResultsDisplay() {
   let searchResults;
   if (data) {
     searchResults = data.searchVendors;
+    console.log(searchResults);
   }
-
-  const listVendors = useQuery(DUMMY_LIST_ALL);
-  if (listVendors.data) {
-    console.log(listVendors, 'listVendors');
-  }
-
-  const image = 'test';
 
   if (displaySetting === 'vendors') {
     vendorStyle = s.active;
@@ -139,18 +111,9 @@ function SearchResultsDisplay() {
     setFilterSettings(newSettings);
     console.log(newSettings);
   }
-  /*      {listVendors.data && (
-        <img
-          width="16"
-          height="16"
-          alt="star"
-          src={`data:image/jpg;base64,${listVendors.data.listVendors[0].cocktails[0]}`}
-        />
-      )} */
 
   return (
     <div className={s.search_result_content}>
-
 
       {filterSettingsOpen && (
         <FilterSettings

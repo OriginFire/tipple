@@ -7,7 +7,7 @@ import IndividualVendorDisplay from "../../components/searchResultComponents/ind
 class Vendor extends React.Component {
   render() {
     return (
-      <IndividualVendorDisplay className={s.vendor_page} id={this.props.id} />
+      <IndividualVendorDisplay className={s.vendor_page} slug={this.props.slug} />
     );
   }
 }

@@ -87,11 +87,11 @@ function VendorSearchResults(props) {
             <div
               key={index}
               className={s.list_item}
-              onClick={e => history.push(`/vendor/${vendor.id}`)}
+              onClick={e => history.push(`/vendor/${vendor.slug}`)}
             >
               <div className={s.crap}>
                 <div className={s.bar_name}>{vendor.dbaName}</div>
-                <img className={s.bar_image} src={vendor.vendorImage} />
+                <img className={s.bar_image} src={`data:image/jpg;base64,${vendor.vendorImage}`} />
                 <div className={s.cocktails}>{vendor.cocktails.length.toString()} cocktails, $6-10 / serving</div>
               </div>
 

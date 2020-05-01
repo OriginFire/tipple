@@ -83,7 +83,7 @@ function CocktailSearchResults(props) {
               onClick={e => history.push(`/vendor/${vendor.id}`)}
             >
               <div>
-                <img className={s.cocktail_image} src={cocktail.image} />
+                <img className={s.cocktail_image} src={`data:image/jpg;base64,${cocktail.image}`} />
                 <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>
                 <div className={s.availability}>Available Today</div>
               </div>

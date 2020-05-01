@@ -10,15 +10,24 @@
 import { GraphQLList as List } from 'graphql';
 import VendorType from '../types/VendorType';
 import Vendor from '../../data/models/Vendor';
-import FindVendorType from "../types/FindVendorType";
+import Cocktail from '../../data/models/Cocktail';
+import FindVendorType from '../types/FindVendorType';
 
 const findVendor = {
   type: VendorType,
   args: {
-    vendor: {type: FindVendorType},
+    vendor: { type: FindVendorType },
   },
-  resolve(value, {vendor}) {
-   return Vendor.findOne( {where: { slug: vendor.slug }});
+  async resolve(value, { vendor }) {
+    const displayVendor = await Vendor.findOne({
+      where: { slug: vendor.slug },
+      include: [{ model: Cocktail, as: 'cocktails' }],
+    });
+
+    displayVendor.cocktails.forEach(c => {
+      c.image = c.image.toString();
+    });
+    return displayVendor;
   },
 };
 

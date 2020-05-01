@@ -36,7 +36,7 @@ const routes = {
       load: () => import(/* webpackChunkName: 'contact' */ './search-results'),
     },
     {
-      path: '/vendor/:id',
+      path: '/vendor/:slug',
       load: () => import(/* webpackChunkName: 'register' */ './vendor'),
     },
     {

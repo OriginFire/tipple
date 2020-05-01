@@ -12,12 +12,12 @@ import Vendor from './Vendor';
 import Layout from '../../components/sitewideDisplayComponents/Layout';
 
 async function action(route) {
-  const id = route.params.id;
+  const slug = route.params.slug;
   return {
     title: '',
     component: (
       <Layout>
-        <Vendor id={id}/>
+        <Vendor slug={slug}/>
       </Layout>
     ),
   };
