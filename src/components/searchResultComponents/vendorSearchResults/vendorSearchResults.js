@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './vendorSearchResults.scss';
 import history from '../../../history';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStore, faGlassMartiniAlt } from '@fortawesome/free-solid-svg-icons';
 import db from '../../../data/dbSimulator/Vendors';
 
 function VendorSearchResults(props) {
@@ -51,11 +49,11 @@ function VendorSearchResults(props) {
     );
   }
 
-  function availability(index) {
-    if (db[index].doesPickup === true && db[index].doesDelivery === true) {
+  function availability(vendor) {
+    if (vendor.doesPickup === true && vendor.doesDelivery === true) {
       return 'Delivery or Pickup';
     }
-    if (db[index].doesPickup === false && db[index].doesDelivery === true) {
+    if (vendor.doesPickup === false && vendor.doesDelivery === true) {
       return 'Delivery Only';
     }
     return 'Pickup Only';
@@ -72,7 +70,7 @@ function VendorSearchResults(props) {
      */
   return (
     <div className={s.result_list}>
-      {resultsMessage(db)}
+      {searchResults && resultsMessage(searchResults)}
       {console.log(searchResults)}
 
       {searchResults &&
@@ -96,7 +94,7 @@ function VendorSearchResults(props) {
               </div>
 
               <div className={s.result_text}>
-                <div className={s.availability}>{availability(index)}</div>
+                <div className={s.availability}>{availability(vendor)}</div>
                 <div className={s.address}>
                   {`${vendor.physicalStreetAddress}, ${vendor.physicalCity}`}
                 </div>
