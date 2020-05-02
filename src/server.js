@@ -77,7 +77,7 @@ app.use(cookieParser('2894723498'));
 app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '8mb' }));
 
 //
 // Authentication
