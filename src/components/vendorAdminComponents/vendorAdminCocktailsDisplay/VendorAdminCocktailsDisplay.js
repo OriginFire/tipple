@@ -35,7 +35,7 @@ const NEW_COCKTAIL = `
     $profile: String!,
   ) {
     newCocktail(cocktail: {
-      vendorSlug: $vendorSlug
+      vendorSlug: $vendorSlug,
       name: $name,
       ingredients: $ingredients,
       price: $price

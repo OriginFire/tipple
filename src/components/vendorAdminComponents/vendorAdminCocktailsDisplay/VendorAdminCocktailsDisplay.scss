@@ -82,6 +82,12 @@
     opacity: 0.95;
   }
 
+  .vendor_setting_content {
+    top: 150px;
+    bottom: 65px;
+    font-size: 0.6em;
+  }
+
   .vendor_name {
     font-size: 30px;
     margin: 10px 0 8px 0;
@@ -102,12 +108,6 @@
   .active, .inactive {
     padding: 12px 8px;
     width: 100px;
-  }
-
-  .vendor_setting_content {
-    top: 150px;
-    bottom: 65px;
-    font-size: 0.6em;
   }
 
   .buttons {

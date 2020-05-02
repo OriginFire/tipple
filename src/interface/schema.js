@@ -13,7 +13,8 @@ import {
 } from 'graphql';
 
 import newVendor from './mutators/newVendor';
-import newCocktail from "./mutators/newCockail";
+import newCocktail from './mutators/newCockail';
+import updateCocktail from './mutators/updateCocktail';
 import listVendors from './queries/listVendors';
 import searchVendors from './queries/searchVendors';
 import showCocktails from './queries/showCocktails';
@@ -34,6 +35,7 @@ const schema = new Schema({
     fields: {
       newVendor,
       newCocktail,
+      updateCocktail,
     },
   }),
 });

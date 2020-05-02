@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './vendorSearchResults.scss';
 import history from '../../../history';
-import db from '../../../data/dbSimulator/Vendors';
 
 function VendorSearchResults(props) {
   function resultsMessage(resultsArray) {

@@ -3,16 +3,43 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './VendorCocktailSettings.scss';
 import FormField from '../../sitewideDisplayComponents/formField';
 import Button from "../../sitewideDisplayComponents/Button";
-import db from "../../../data/dbSimulator/Vendors";
-import {geocodeByAddress, getLatLng} from "react-google-places-autocomplete";
+import {useMutation} from "graphql-hooks";
 
-const UPDATE_COCKTAIL_MUTATOR = `stuff`
+const UPDATE_COCKTAIL = `
+  mutation UpdateCocktail(
+    $id: String!,
+    $name: String!,
+    $ingredients: String!,
+    $price: Float!,
+    $servingSize: Float!,
+    $profile: String!,
+    $image: String!,
+  ) {
+    updateCocktail(
+      id: $id,
+      name: $name,
+      ingredients: $ingredients,
+      price: $price,
+      servingSize: $servingSize,
+      profile: $profile,
+      image: $image
+    ) {
+      name
+    }
+  }
+`;
 
 function CocktailInput(props) {
-  let active = props.activeId === props.cocktail.id;
-
   const [name, setName] = useState(props.cocktail.name);
   const [ingredients, setIngredients] = useState(props.cocktail.ingredients);
+  const [price, setPrice] = useState(props.cocktail.price);
+  const [servingSize, setServingSize] = useState(props.cocktail.price);
+  const [profile, setProfile] = useState(props.cocktail.profile);
+  const [image, setImage] = useState(props.cocktail.image);
+  const [updateCocktail] = useMutation(UPDATE_COCKTAIL);
+  const id = props.cocktail.id;
+
+  let active = props.activeId === props.cocktail.id;
 
   function toggleActive() {
     if (active) {
@@ -22,9 +49,12 @@ function CocktailInput(props) {
     }
   }
 
-  function updateCocktail() {
+  async function submitUpdate() {
+    const update = await updateCocktail({
+      variables: {id, name, ingredients, price, servingSize, profile, image}
+    });
     console.log(`Updating cocktail ${props.cocktail.id} with ${name}, ${ingredients}`);
-    // call mutator
+    console.log(update);
    toggleActive();
   }
   return (
@@ -46,7 +76,7 @@ function CocktailInput(props) {
         type="text"
         value={ingredients}
       />
-      <Button type="Secondary" text="Save Changes" onClick={e => updateCocktail()}/>
+      <Button type="Secondary" text="Save Changes" onClick={e => submitUpdate()}/>
       <Button type="Primary" text="Delete Cocktail"/>
     </div>
   );
