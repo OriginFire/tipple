@@ -6,7 +6,7 @@ import VendorAdminCocktail from "../../components/vendorAdminComponents/vendorAd
 class VendorAdminCocktails extends React.Component {
   render() {
     return (
-      <VendorAdminCocktail id={this.props.id}/>
+      <VendorAdminCocktail slug={this.props.slug}/>
     );
   }
 }

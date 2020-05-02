@@ -84,7 +84,7 @@ const newVendor = {
         pops: 1,
       },
       {
-        include: [User, Cocktail], // this is needed to make the Users initial entry work.
+        include: [User, {model: Cocktail, as: 'cocktails'}] // this is needed to make the Users initial entry work.
       },
     );
   },

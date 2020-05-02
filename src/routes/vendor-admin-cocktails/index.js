@@ -3,12 +3,12 @@ import VendorAdminCocktails from './VendorAdminCocktails';
 import Layout from '../../components/sitewideDisplayComponents/Layout';
 
 async function action(route) {
-  const id = route.params.id;
+  const slug = route.params.slug;
   return {
     title: '',
     component: (
       <Layout>
-        <VendorAdminCocktails id={id}/>
+        <VendorAdminCocktails slug={slug}/>
       </Layout>
     ),
   };

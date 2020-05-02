@@ -8,6 +8,7 @@ import AddressFormField from '../../utilityComponents/addressFormField/AddressFo
 import Button from '../../sitewideDisplayComponents/Button/Button';
 import Link from '../../utilityComponents/link/Link';
 import history from '../../../history';
+import ApplicationContext from "../../ApplicationContext";
 
 const CREATE_VENDOR_MUTATION = `
   mutation CreateVendor($dbaName: String!,
@@ -97,6 +98,7 @@ function VendorSignupForm() {
       },
     });
     console.log(res);
+
     history.push(`/vendor/${res.data.newVendor.slug}`); // TODO: why is newVendor here?
   }
 

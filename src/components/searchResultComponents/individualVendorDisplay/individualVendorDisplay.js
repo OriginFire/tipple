@@ -38,15 +38,16 @@ function IndividualVendorDisplay(props) {
   let availability;
 
   if (data.findVendor) {
-  if (vendor.doesDelivery === true && vendor.doesPickup === true) {
-    availability = ' available for pickup or delivery to your current address';
-  } else if (vendor.doesDelivery === true && vendor.doesPickup === false) {
-    availability =
-      ' available for delivery to your current address, but not pickup';
-  } else {
-    availability =
-      ' available for pickup, but not delivery to your current address';
-  }
+    if (vendor.doesDelivery === true && vendor.doesPickup === true) {
+      availability =
+        ' available for pickup or delivery to your current address';
+    } else if (vendor.doesDelivery === true && vendor.doesPickup === false) {
+      availability =
+        ' available for delivery to your current address, but not pickup';
+    } else {
+      availability =
+        ' available for pickup, but not delivery to your current address';
+    }
   }
 
   return (
@@ -96,7 +97,6 @@ function IndividualVendorDisplay(props) {
           </div>
         </div>
       )}
-
     </div>
   );
 }

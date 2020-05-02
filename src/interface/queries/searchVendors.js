@@ -36,6 +36,6 @@ const searchVendors = {
 export default searchVendors;
 
 /*    let vendors;
-// Bar.findNearest() -- this needs to be postgis
+// Bar.findNearest() -- this needs to be postgisr
 vendors = Vendor.findNearest();
 vendors.mapToDelivery; // set opts = input address is within distance */

@@ -32,7 +32,7 @@ const Cocktail = Model.define(
     },
 
     price: {
-      type: DataType.STRING(512),
+      type: DataType.DOUBLE(512),
     },
 
     servingSize: {

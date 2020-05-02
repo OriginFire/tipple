@@ -24,7 +24,7 @@ function SingleVendorCocktail(props) {
   return (
     <div className={cocktailItemStatus}>
       <div className={s.cocktail} onClick={e => toggleActive()}>
-        <img className={s.cocktail_image} src="../../../../Urbana.jpg" />
+        <img className={s.cocktail_image} src={`data:image/jpg;base64,${props.cocktail.image}`} />
         <div className={s.cocktail_text}>
           <div className={s.cocktail_name}>{props.cocktail.name}</div>
           <div className={s.ingredients}>

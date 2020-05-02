@@ -3,12 +3,11 @@ import {
   GraphQLID as ID,
   GraphQLString as StringType,
   GraphQLBoolean as BooleanType,
-  GraphQLInt as IntegerType,
   GraphQLFloat as FloatType,
   GraphQLNonNull as NonNull,
   GraphQLList as List,
 } from 'graphql';
-import CocktailType from "./CocktailType";
+import CocktailType from './CocktailType';
 
 const VendorType = new ObjectType({
   name: 'Vendor',

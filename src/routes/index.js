@@ -40,11 +40,11 @@ const routes = {
       load: () => import(/* webpackChunkName: 'register' */ './vendor'),
     },
     {
-      path: '/vendor-admin/:id',
+      path: '/vendor-admin/:slug',
       load: () => import('./vendor-admin'),
     },
     {
-      path: '/vendor-admin-cocktails/:id',
+      path: '/vendor-admin-cocktails/:slug',
       load: () => import('./vendor-admin-cocktails'),
     },
     {

@@ -14,6 +14,8 @@ const VendorInputType = new ObjectType({
     dbaName: { type: StringType },
     legalEntityName: { type: StringType },
     physicalAddress: { type: StringType },
+    latitude: { type: FloatType },
+    longitude: { type: FloatType },
     alcoholLicenseNumber: { type: StringType },
     alcoholLicenseIssuingAgency: { type: StringType },
     alcoholLicenseExpiration: { type: StringType },

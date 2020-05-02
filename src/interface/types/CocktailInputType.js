@@ -1,23 +1,21 @@
 import {
-  GraphQLObjectType as ObjectType,
-  GraphQLID as ID,
+  GraphQLInputObjectType as ObjectType,
   GraphQLString as StringType,
   GraphQLFloat as FloatType,
-  GraphQLNonNull as NonNull,
 } from 'graphql';
 
-const CocktailType = new ObjectType({
-  name: 'Cocktail',
+const CocktailInputType = new ObjectType({
+  name: 'CocktailInput',
   fields: {
-    id: { type: new NonNull(ID) },
     slug: { type: StringType },
+    vendorSlug: { type: StringType },
     name: { type: StringType },
     ingredients: { type: StringType },
-    price: { type: StringType },
+    price: { type: FloatType },
     servingSize: { type: FloatType },
     profile: { type: StringType },
     image: { type: StringType },
   },
 });
 
-export default CocktailType;
+export default CocktailInputType;
