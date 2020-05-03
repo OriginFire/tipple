@@ -6,6 +6,7 @@ import Button from '../../sitewideDisplayComponents/Button';
 import history from "../../../history";
 import {useMutation} from "graphql-hooks";
 import ApplicationContext from "../../ApplicationContext";
+import jwt from 'jsonwebtoken';
 
 const VENDOR_LOGIN_MUTATION = `
   mutation VendorLogin(
@@ -18,8 +19,6 @@ const VENDOR_LOGIN_MUTATION = `
       }
     ) {
       JWT
-      vendorSlug
-      userEmail
     }
   }
 `;
@@ -37,13 +36,14 @@ function VendorLogin() {
       variables: {vendorAdminEmail, vendorAdminPassword}
     }).then((data) => {
       console.log('pre');
-      console.log(authenticationContext);
-      authenticationContext.context.authenticatedUser = data.data.userLogin.vendorSlug;
+      const decoded = jwt.decode(data.data.userLogin.JWT);
+      console.log(decoded);
+      authenticationContext.context.authenticatedUser = decoded.vendorSlug;
       authenticationContext.context.JWT = data.data.userLogin.JWT;
       // place JWT and vendorSlug in a cookie
       console.log('post');
       console.log(authenticationContext);
-      history.push(`/vendor-admin/${data.data.userLogin.vendorSlug}`);
+      history.push(`/vendor-admin/${decoded.vendorSlug}`);
     });
   };
 

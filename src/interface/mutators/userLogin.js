@@ -35,8 +35,6 @@ const findVendor = {
 
     return {
       JWT: JWT,
-      vendorSlug: foundVendor.slug,
-      userEmail: foundUser.email,
     };
   },
 };
