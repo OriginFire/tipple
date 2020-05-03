@@ -1,13 +1,48 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import withStyles from "isomorphic-style-loader/withStyles";
 import s from './VendorLogin.scss';
 import FormField from '../../sitewideDisplayComponents/formField';
 import Button from '../../sitewideDisplayComponents/Button';
 import history from "../../../history";
+import {useMutation} from "graphql-hooks";
+import ApplicationContext from "../../ApplicationContext";
+
+const VENDOR_LOGIN_MUTATION = `
+  mutation VendorLogin(
+    $vendorAdminEmail: String!,
+    $vendorAdminPassword: String!,
+  ) {
+    userLogin( user: {
+        email: $vendorAdminEmail,
+        password: $vendorAdminPassword,
+      }
+    ) {
+      id
+      slug
+    }
+  }
+`;
 
 function VendorLogin() {
+  const authenticationContext = useContext(ApplicationContext);
+
+  const [login] = useMutation(VENDOR_LOGIN_MUTATION);
+
   const [vendorAdminEmail, setVendorAdminEmail] = useState('');
   const [vendorAdminPassword, setVendorAdminPassword] = useState('');
+
+  const onClickLogin = () => {
+    login({
+      variables: {vendorAdminEmail, vendorAdminPassword}
+    }).then((data) => {
+      console.log('pre');
+      console.log(authenticationContext);
+      authenticationContext.context.authenticatedUser = data.data.userLogin.slug;
+      console.log('post');
+      console.log(authenticationContext);
+      history.push(`/vendor-admin/${data.data.userLogin.slug}`);
+    });
+  };
 
   return (
     <div className={s.page_wrapper}>
@@ -33,6 +68,7 @@ function VendorLogin() {
           <Button
             type="Primary"
             text="Log In"
+            onClick = {e => onClickLogin()}
           />
         </div>
 
