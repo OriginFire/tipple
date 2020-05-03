@@ -17,8 +17,9 @@ const VENDOR_LOGIN_MUTATION = `
         password: $vendorAdminPassword,
       }
     ) {
-      id
-      slug
+      JWT
+      vendorSlug
+      userEmail
     }
   }
 `;
@@ -37,10 +38,12 @@ function VendorLogin() {
     }).then((data) => {
       console.log('pre');
       console.log(authenticationContext);
-      authenticationContext.context.authenticatedUser = data.data.userLogin.slug;
+      authenticationContext.context.authenticatedUser = data.data.userLogin.vendorSlug;
+      authenticationContext.context.JWT = data.data.userLogin.JWT;
+      // place JWT and vendorSlug in a cookie
       console.log('post');
       console.log(authenticationContext);
-      history.push(`/vendor-admin/${data.data.userLogin.slug}`);
+      history.push(`/vendor-admin/${data.data.userLogin.vendorSlug}`);
     });
   };
 
