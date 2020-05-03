@@ -24,7 +24,6 @@ passport.use(new LocalStrategy({
     session: true
   },
   async function (username, password, done) {
-
     try {
       let user = await User.authenticate(username, password);
       return done(null, user);

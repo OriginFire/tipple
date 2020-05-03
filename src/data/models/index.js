@@ -24,6 +24,8 @@ Vendor.hasMany(User, {
   onDelete: 'cascade',
 });
 
+User.belongsTo(Vendor);
+
 function sync(...args) {
   return sequelize.sync(...args).then(() => {
     seedData();

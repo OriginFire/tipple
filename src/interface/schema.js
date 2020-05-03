@@ -19,6 +19,7 @@ import listVendors from './queries/listVendors';
 import searchVendors from './queries/searchVendors';
 import showCocktails from './queries/showCocktails';
 import findVendor from './queries/findVendor';
+import userLogin from './mutators/userLogin';
 
 const schema = new Schema({
   query: new ObjectType({
@@ -36,6 +37,7 @@ const schema = new Schema({
       newVendor,
       newCocktail,
       updateCocktail,
+      userLogin,
     },
   }),
 });
