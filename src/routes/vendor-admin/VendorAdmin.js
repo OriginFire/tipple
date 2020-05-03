@@ -6,7 +6,7 @@ import VendorAdminDisplay from "../../components/vendorAdminComponents/vendorAdm
 class VendorAdmin extends React.Component {
   render() {
     return (
-      <VendorAdminDisplay id={this.props.id} />
+      <VendorAdminDisplay pathId={this.props.pathId} />
     );
   }
 }

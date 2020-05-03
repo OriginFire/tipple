@@ -17,7 +17,7 @@ async function action(route) {
     title: '',
     component: (
       <Layout>
-        <VendorAdmin id={pathId}/>
+        <VendorAdmin pathId={pathId}/>
       </Layout>
     ),
   };

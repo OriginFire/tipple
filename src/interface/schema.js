@@ -19,6 +19,7 @@ import listVendors from './queries/listVendors';
 import searchVendors from './queries/searchVendors';
 import showCocktails from './queries/showCocktails';
 import findVendor from './queries/findVendor';
+import protectedFindVendor from './queries/protected/protectedFindVendor';
 import userLogin from './mutators/userLogin';
 
 const schema = new Schema({
@@ -29,6 +30,7 @@ const schema = new Schema({
       searchVendors,
       showCocktails,
       findVendor,
+      protectedFindVendor,
     },
   }),
   mutation: new ObjectType({
