@@ -12,6 +12,8 @@ import VendorType from '../../types/VendorType';
 import Vendor from '../../../data/models/Vendor';
 import Cocktail from '../../../data/models/Cocktail';
 import FindVendorType from '../../types/FindVendorType';
+import jwt from 'jsonwebtoken';
+import config from '../../../config';
 
 const findVendor = {
   type: VendorType,
@@ -19,6 +21,13 @@ const findVendor = {
     vendor: { type: FindVendorType },
   },
   async resolve(value, { vendor }) {
+    const JWT = jwt.verify(vendor.JWT, config.auth.jwt.secret);
+    console.log(JWT);
+
+    if (JWT.vendorSlug !== vendor.slug) {
+      return 'nope';
+    }
+
     const displayVendor = await Vendor.findOne({
       where: { slug: vendor.slug },
       include: [{ model: Cocktail, as: 'cocktails' }],

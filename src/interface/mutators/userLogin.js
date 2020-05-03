@@ -12,6 +12,7 @@ import Vendor from '../../data/models/Vendor';
 import UserLoginInputType from '../types/UserLoginInputType';
 import User from "../../data/models/User";
 import jwt from 'jsonwebtoken';
+import config from '../../config'
 import {GraphQLString as StringType} from "graphql/type/scalars";
 
 const findVendor = {
@@ -30,7 +31,7 @@ const findVendor = {
         userEmail: foundUser.email,
     };
 
-    const JWT = jwt.sign(payload, 'secret');
+    const JWT = jwt.sign(payload, config.auth.jwt.secret);
 
     return {
       JWT: JWT,
