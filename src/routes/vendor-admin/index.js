@@ -1,15 +1,18 @@
 import React from 'react';
 import VendorAdmin from './VendorAdmin';
 import Layout from '../../components/sitewideDisplayComponents/Layout';
+import jwt from "jsonwebtoken";
 
 async function action(route) {
   const pathId = route.params.slug;
-  const authenticatedUser = route.authenticatedUser;
-  console.log(`auth user = ${authenticatedUser}`);
+  const decoded = jwt.decode(route.JWT);
+  console.log(decoded);
+
+  console.log(`auth user = ${decoded.vendorSlug}`);
   console.log(`path = ${pathId}`);
   console.log(route);
 
-  if (authenticatedUser !== pathId) {
+  if (decoded.vendorSlug !== pathId) {
     return { redirect: '/vendor-login' }
   };
 

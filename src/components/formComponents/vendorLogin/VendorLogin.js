@@ -35,14 +35,10 @@ function VendorLogin() {
     login({
       variables: {vendorAdminEmail, vendorAdminPassword}
     }).then((data) => {
-      console.log('pre');
-      const decoded = jwt.decode(data.data.userLogin.JWT);
-      console.log(decoded);
-      authenticationContext.context.authenticatedUser = decoded.vendorSlug;
       authenticationContext.context.JWT = data.data.userLogin.JWT;
       // place JWT and vendorSlug in a cookie
-      console.log('post');
-      console.log(authenticationContext);
+
+      const decoded = jwt.decode(data.data.userLogin.JWT);
       history.push(`/vendor-admin/${decoded.vendorSlug}`);
     });
   };
