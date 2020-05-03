@@ -9,20 +9,21 @@ const UPDATE_COCKTAIL = `
   mutation UpdateCocktail(
     $id: String!,
     $name: String!,
-    $ingredients: String!,
-    $price: Float!,
-    $servingSize: Float!,
-    $profile: String!,
-    $image: String!,
+    $ingredients: String,
+    $price: Float,
+    $servingSize: Float,
+    $profile: String,
+    $image: String,
   ) {
-    updateCocktail(
-      id: $id,
-      name: $name,
-      ingredients: $ingredients,
-      price: $price,
-      servingSize: $servingSize,
-      profile: $profile,
-      image: $image
+    updateCocktail( cocktail: {
+        id: $id,
+        name: $name,
+        ingredients: $ingredients,
+        price: $price,
+        servingSize: $servingSize,
+        profile: $profile,
+        image: $image
+      }
     ) {
       name
     }
@@ -30,6 +31,9 @@ const UPDATE_COCKTAIL = `
 `;
 
 function CocktailInput(props) {
+  //on component render,
+  //query graphql for cocktail based on props.cocktail.id
+
   const [name, setName] = useState(props.cocktail.name);
   const [ingredients, setIngredients] = useState(props.cocktail.ingredients);
   const [price, setPrice] = useState(props.cocktail.price);
