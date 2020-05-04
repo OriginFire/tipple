@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
 import s from './searchResultDisplay.scss';
 import FilterSettings from '../filterSettings/FilterSettings';
-import VendorSearchResults from '../vendorSearchResults/vendorSearchResults';
+import VendorSearchResults from '../vendorSearchResults/vendorResultsList';
 import CocktailSearchResults from '../cocktailSearchResults/CocktailSearchResults';
 import ApplicationContext from '../../ApplicationContext';
 

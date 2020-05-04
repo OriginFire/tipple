@@ -21,6 +21,7 @@ const searchVendors = {
   async resolve(value, {vendor}) {
     let vendors = await Vendor.findAll({
       include: [{ model: Cocktail, as: 'cocktails' }],
+      // where: [ logic checking customer lat/lng versus vendor lat/lng + delivery radius
     });
 
     vendors.forEach(v => {
