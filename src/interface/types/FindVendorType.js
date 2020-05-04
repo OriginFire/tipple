@@ -7,6 +7,7 @@ const FindVendorType = new ObjectType({
   name: 'FindVendor',
   fields: {
     slug: { type: StringType },
+    JWT: { type: StringType },
   },
 });
 

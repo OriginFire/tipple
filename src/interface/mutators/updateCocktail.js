@@ -36,6 +36,8 @@ const updateCocktail = {
     cocktail: {type: CocktailInputType},
   },
   async resolve(value, {cocktail}) {
+    //check JWT valid
+    //check auth to make sure you're allowed to update
     const cocktailFormInput = cocktail; // unsure why vendor needs to be exact name?
     Cocktail.update(
       {

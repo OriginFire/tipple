@@ -1,13 +1,47 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import withStyles from "isomorphic-style-loader/withStyles";
 import s from './VendorLogin.scss';
 import FormField from '../../sitewideDisplayComponents/formField';
 import Button from '../../sitewideDisplayComponents/Button';
 import history from "../../../history";
+import {useMutation} from "graphql-hooks";
+import ApplicationContext from "../../ApplicationContext";
+import jwt from 'jsonwebtoken';
+
+const VENDOR_LOGIN_MUTATION = `
+  mutation VendorLogin(
+    $vendorAdminEmail: String!,
+    $vendorAdminPassword: String!,
+  ) {
+    userLogin( user: {
+        email: $vendorAdminEmail,
+        password: $vendorAdminPassword,
+      }
+    ) {
+      JWT
+    }
+  }
+`;
 
 function VendorLogin() {
+  const authenticationContext = useContext(ApplicationContext);
+
+  const [login] = useMutation(VENDOR_LOGIN_MUTATION);
+
   const [vendorAdminEmail, setVendorAdminEmail] = useState('');
   const [vendorAdminPassword, setVendorAdminPassword] = useState('');
+
+  const onClickLogin = () => {
+    login({
+      variables: {vendorAdminEmail, vendorAdminPassword}
+    }).then((data) => {
+      authenticationContext.context.JWT = data.data.userLogin.JWT;
+      // place JWT and vendorSlug in a cookie
+
+      const decoded = jwt.decode(data.data.userLogin.JWT);
+      history.push(`/vendor-admin/${decoded.vendorSlug}`);
+    });
+  };
 
   return (
     <div className={s.page_wrapper}>
@@ -33,6 +67,7 @@ function VendorLogin() {
           <Button
             type="Primary"
             text="Log In"
+            onClick = {e => onClickLogin()}
           />
         </div>
 

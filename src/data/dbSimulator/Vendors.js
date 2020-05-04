@@ -3,11 +3,11 @@ export default [
     id: 'thegibson',
     dbaName: 'the Gibson',
     legalEntityName: 'Soul Haven LLC',
-    adminPassword: 'test',
+    adminPassword: 'test1',
 
     adminName: 'Fox Mulder',
     adminPhoneNumber: '555 555 5555',
-    adminEmail: 'test',
+    adminEmail: 'test1',
 
     physicalAddress: '2009 14th St NW, Washington, DC, 20009',
     physicalStreetAddress: '2009 14th St NW',
