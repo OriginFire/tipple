@@ -7,15 +7,14 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
+import jwt from 'jsonwebtoken';
 import AuthenticationType from '../types/AuthenticationType';
 import Vendor from '../../data/models/Vendor';
 import UserLoginInputType from '../types/UserLoginInputType';
-import User from "../../data/models/User";
-import jwt from 'jsonwebtoken';
-import config from '../../config'
-import {GraphQLString as StringType} from "graphql/type/scalars";
+import User from '../../data/models/User';
+import config from '../../config';
 
-const findVendor = {
+const vendorLogin = {
   type: AuthenticationType,
   args: {
     user: { type: UserLoginInputType },
@@ -23,20 +22,22 @@ const findVendor = {
   async resolve(value, { user }) {
     const foundUser = await User.authenticate(user.email, user.password);
     console.log(foundUser);
-    const foundVendor = await Vendor.findOne({where: {id: foundUser.VendorId}});
+    const foundVendor = await Vendor.findOne({
+      where: { id: foundUser.VendorId },
+    });
     console.log(foundVendor);
 
     const payload = {
       vendorSlug: foundVendor.slug,
-        userEmail: foundUser.email,
+      userEmail: foundUser.email,
     };
 
     const JWT = jwt.sign(payload, config.auth.jwt.secret);
 
     return {
-      JWT: JWT,
+      JWT,
     };
   },
 };
 
-export default findVendor;
+export default vendorLogin;

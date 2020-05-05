@@ -1,11 +1,11 @@
 import React from 'react';
-import withStyles from "isomorphic-style-loader/withStyles";
+import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './SearchResults.scss';
-import SearchResultDisplay from "../../components/searchResultComponents/searchResultDisplay/searchResultDisplay";
+import SearchResultDisplay from '../../components/searchResultComponents/searchResultDisplay/SearchResultDisplay';
 
 class SearchResults extends React.Component {
   render() {
-    return <SearchResultDisplay className={s.results_page}/>;
+    return <SearchResultDisplay className={s.results_page} />;
   }
 }
 

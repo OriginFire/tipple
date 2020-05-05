@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
-import s from './individualVendorDisplay.scss';
+import s from './IndividualVendorDisplay.scss';
 import Button from '../../sitewideDisplayComponents/Button';
 import Link from '../../utilityComponents/link';
 

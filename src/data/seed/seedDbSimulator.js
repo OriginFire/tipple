@@ -1,14 +1,14 @@
-import db from '../dbSimulator/Vendors'
-import bcrypt from "bcrypt";
-import Vendor from "../models/Vendor";
-import User from "../models/User";
-import Cocktail from "../models/Cocktail";
+import bcrypt from 'bcrypt';
+import db from '../dbSimulator/Vendors';
+import Vendor from '../models/Vendor';
+import User from '../models/User';
+import Cocktail from '../models/Cocktail';
 
-var fs = require('fs');
+const fs = require('fs');
 
 function base64_encode(file) {
   // read binary data
-  var bitmap = fs.readFileSync(file);
+  const bitmap = fs.readFileSync(file);
   // convert binary data to base64 encoded string
   return new Buffer(bitmap).toString('base64');
 }
@@ -35,7 +35,7 @@ function stringToSlug(str) {
 function cocktailHash(vendor) {
   return vendor.cocktails.map(cocktail => {
     // ../../../LevitationAspect.JPG  => ./public/LevitationAspect.JPG
-    const cocktailImageUrl = cocktail.image.replace("../../../", "./public/");
+    const cocktailImageUrl = cocktail.image.replace('../../../', './public/');
     const cocktailSlug = stringToSlug(`${vendor.dbaName}-${cocktail.name}`);
 
     return {
@@ -45,24 +45,25 @@ function cocktailHash(vendor) {
       price: cocktail.price,
       servingSize: cocktail.servingSize,
       profile: cocktail.profile,
-      image: base64_encode(cocktailImageUrl)
+      description: cocktail.description,
+      image: base64_encode(cocktailImageUrl),
     };
   });
 }
 
-function deleteExisting(existingVendors, slug){
-  existingVendors.map( (v) => {
-    console.log(`Destoring vendor with ${v.id} ${slug}`)
-    Vendor.destroy({where: {id: v.id}});
+function deleteExisting(existingVendors, slug) {
+  existingVendors.map(v => {
+    console.log(`Destoring vendor with ${v.id} ${slug}`);
+    Vendor.destroy({ where: { id: v.id } });
   });
 }
 
 function createNew(vendor, slug) {
-  const vendorImageUrl = vendor.vendorImage.replace("../../../", "./public/");
+  const vendorImageUrl = vendor.vendorImage.replace('../../../', './public/');
   const userSlug = stringToSlug(`${vendor.dbaName}-${vendor.adminName}`);
   const hash = bcrypt.hashSync(vendor.adminPassword, 10);
 
-  let v = Vendor.create(
+  const v = Vendor.create(
     {
       slug,
       dbaName: vendor.dbaName,
@@ -93,22 +94,23 @@ function createNew(vendor, slug) {
       cocktails: cocktailHash(vendor),
     },
     {
-      include: [User, {model: Cocktail, as: 'cocktails'}], // this is needed to make the Users initial entry work.
+      include: [User, { model: Cocktail, as: 'cocktails' }], // this is needed to make the Users initial entry work.
     },
   );
-  console.log(`created vendor with ${v.id}`)
+  console.log(`created vendor with ${v.id}`);
 }
 
 function seedData() {
-  db.map( vendor => {
+  db.map(vendor => {
     const slug = stringToSlug(vendor.dbaName);
 
-    Vendor.findAll( {where: {slug: slug}}).then((existing) => {
-      deleteExisting(existing, slug);
-    }).then(() => {
-      createNew(vendor, slug);
-    });
-
+    Vendor.findAll({ where: { slug } })
+      .then(existing => {
+        deleteExisting(existing, slug);
+      })
+      .then(() => {
+        createNew(vendor, slug);
+      });
   });
 }
 

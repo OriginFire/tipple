@@ -1,19 +1,19 @@
-import React, {useContext, useState} from 'react';
-import withStyles from "isomorphic-style-loader/withStyles";
+import React, { useContext, useState } from 'react';
+import withStyles from 'isomorphic-style-loader/withStyles';
+import { useMutation } from 'graphql-hooks';
+import jwt from 'jsonwebtoken';
 import s from './VendorLogin.scss';
 import FormField from '../../sitewideDisplayComponents/formField';
 import Button from '../../sitewideDisplayComponents/Button';
-import history from "../../../history";
-import {useMutation} from "graphql-hooks";
-import ApplicationContext from "../../ApplicationContext";
-import jwt from 'jsonwebtoken';
+import history from '../../../history';
+import ApplicationContext from '../../ApplicationContext';
 
 const VENDOR_LOGIN_MUTATION = `
   mutation VendorLogin(
     $vendorAdminEmail: String!,
     $vendorAdminPassword: String!,
   ) {
-    userLogin( user: {
+    vendorLogin( user: {
         email: $vendorAdminEmail,
         password: $vendorAdminPassword,
       }
@@ -33,8 +33,8 @@ function VendorLogin() {
 
   const onClickLogin = () => {
     login({
-      variables: {vendorAdminEmail, vendorAdminPassword}
-    }).then((data) => {
+      variables: { vendorAdminEmail, vendorAdminPassword },
+    }).then(data => {
       authenticationContext.context.JWT = data.data.userLogin.JWT;
       // place JWT and vendorSlug in a cookie
 
@@ -64,13 +64,8 @@ function VendorLogin() {
               setVendorAdminPassword(e.target.value);
             }}
           />
-          <Button
-            type="Primary"
-            text="Log In"
-            onClick = {e => onClickLogin()}
-          />
+          <Button type="Primary" text="Log In" onClick={e => onClickLogin()} />
         </div>
-
 
         <div className={s.signup_content}>
           <div className={s.redirect_explainer}>Don't have an account?</div>
@@ -80,10 +75,9 @@ function VendorLogin() {
             onClick={e => history.push('/vendor-create')}
           />
         </div>
-
       </div>
     </div>
   );
-};
+}
 
 export default withStyles(s)(VendorLogin);

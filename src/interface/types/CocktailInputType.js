@@ -15,6 +15,7 @@ const CocktailInputType = new ObjectType({
     price: { type: FloatType },
     servingSize: { type: FloatType },
     profile: { type: StringType },
+    description: { type: StringType },
     image: { type: StringType },
   },
 });

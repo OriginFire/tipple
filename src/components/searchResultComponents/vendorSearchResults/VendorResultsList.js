@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
-import s from './vendorResultsList.scss';
+import s from './VendorResultsList.scss';
 import ApplicationContext from '../../ApplicationContext';
-import VendorListItem from './vendorListItem';
+import VendorListItem from './VendorListItem';
 
 const SEARCH_VENDORS = `
   query SearchVendors($userLatitude: Float!, $userLongitude: Float!) {

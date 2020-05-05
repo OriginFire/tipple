@@ -1,48 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import { useQuery } from 'graphql-hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
-import s from './searchResultDisplay.scss';
+import s from './SearchResultDisplay.scss';
 import FilterSettings from '../filterSettings/FilterSettings';
-import VendorSearchResults from '../vendorSearchResults/vendorResultsList';
-import CocktailSearchResults from '../cocktailSearchResults/CocktailSearchResults';
-import ApplicationContext from '../../ApplicationContext';
-
-const SEARCH_RESULTS_QUERY = `
-  query SearchVendors(
-    $userLatitude: Float!,
-    $userLongitude: Float!)
-  {
-    searchVendors(
-      latLng:{
-        userLatitude: $userLatitude,
-        userLongitude: $userLongitude
-      })
-      {
-        slug
-        dbaName
-        physicalStreetAddress
-        physicalCity
-        physicalState
-        doesDelivery
-        doesPickup
-        deliveryRadius
-        vendorImage
-        onlineStore
-        cocktails {
-          name
-          ingredients
-          image
-        }
-      }
-  }
-`;
+import VendorSearchResults from '../vendorSearchResults/VendorResultsList';
+import CocktailSearchResults from '../cocktailSearchResults/CocktailResultsList';
 
 function SearchResultsDisplay() {
-  const userLocation = useContext(ApplicationContext);
-
-  const [displaySetting, setDisplaySetting] = useState('vendors');
+  const [displaySetting, setDisplaySetting] = useState('cocktails');
   const [filterSettings, setFilterSettings] = useState({
     doesDelivery: true,
     doesPickup: true,
@@ -56,12 +22,6 @@ function SearchResultsDisplay() {
     lowPrice: 0,
     highPrice: '',
   });
-  const [userLatitude, setUserLatitude] = useState(
-    userLocation.context.userLatitude,
-  );
-  const [userLongitude, setUserLongitude] = useState(
-    userLocation.context.userLongitude,
-  );
   const [filterSettingsOpen, setFilterSettingsOpen] = useState(false);
   let vendorStyle;
   let cocktailStyle;
@@ -69,24 +29,10 @@ function SearchResultsDisplay() {
   let cocktailButton;
   let resultsDisplay;
 
-  const { loading, error, data } = useQuery(SEARCH_RESULTS_QUERY, {
-    variables: { userLatitude, userLongitude },
-  });
-  let searchResults;
-  if (data) {
-    searchResults = data.searchVendors;
-    console.log(searchResults);
-  }
-
   if (displaySetting === 'vendors') {
     vendorStyle = s.active;
     vendorButton = 'Showing Vendors';
-    resultsDisplay = (
-      <VendorSearchResults
-        results={searchResults}
-        filterSettings={filterSettings}
-      />
-    );
+    resultsDisplay = <VendorSearchResults filterSettings={filterSettings} />;
   } else {
     vendorStyle = s.inactive;
     vendorButton = 'Show Vendors';
@@ -95,12 +41,7 @@ function SearchResultsDisplay() {
   if (displaySetting === 'cocktails') {
     cocktailStyle = s.active;
     cocktailButton = 'Showing Cocktails';
-    resultsDisplay = (
-      <CocktailSearchResults
-        results={searchResults}
-        filterSettings={filterSettings}
-      />
-    );
+    resultsDisplay = <CocktailSearchResults filterSettings={filterSettings} />;
   } else {
     cocktailStyle = s.inactive;
     cocktailButton = 'Show Cocktails';
@@ -114,7 +55,6 @@ function SearchResultsDisplay() {
 
   return (
     <div className={s.search_result_content}>
-
       {filterSettingsOpen && (
         <FilterSettings
           settings={filterSettings}
@@ -132,16 +72,17 @@ function SearchResultsDisplay() {
           />
 
           <div
-            className={vendorStyle}
-            onClick={e => setDisplaySetting('vendors')}
-          >
-            {vendorButton}
-          </div>
-          <div
             className={cocktailStyle}
             onClick={e => setDisplaySetting('cocktails')}
           >
             {cocktailButton}
+          </div>
+
+          <div
+            className={vendorStyle}
+            onClick={e => setDisplaySetting('vendors')}
+          >
+            {vendorButton}
           </div>
         </div>
 
