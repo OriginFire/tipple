@@ -7,7 +7,7 @@
   left: 0;
   right: 0;
   z-index: 40;
-  background-color: #121212;;
+  background-color: #121212;
 }
 
 .close {
@@ -59,6 +59,24 @@
   width: 100%;
 }
 
+.cocktail_button_label {
+  font-family: "Lato Regular", sans-serif;
+  font-size: 12px;
+  width: 50px;
+  margin: auto;
+  text-align: center;
+  padding: 0 0 2px 0;
+}
+
+.button_explainer {
+  font-family: "Lato Regular", sans-serif;
+  color: #9b9b9b;
+  font-size: 10px;
+  width: 40px;
+  text-align: center;
+  margin: auto;
+}
+
 .availability_settings, .ordering_settings, .cocktails_settings {
   width: 100%;
   display: flex;
@@ -69,12 +87,18 @@
   font-size: 8px;
 }
 
+.ordering_settings {
+  font-size: 12px;
+}
+
 .setting_message {
   color: #9b9b9b;
   font-family: "Lato Light", sans-serif;
   font-size: 12px;
   text-align: center;
   padding: 15px 0 0 0;
+  width: 90%;
+  margin: auto;
 }
 
 .icon_active, .icon_inactive {

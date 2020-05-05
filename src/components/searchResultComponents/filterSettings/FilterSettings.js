@@ -22,9 +22,6 @@ function FilterSettings(props) {
     miles = 'miles';
   }
 
-  let cocktailMessage;
-
-
   let orderingMessage;
   if (filterSettings.doesDelivery && filterSettings.doesPickup) {
     orderingMessage = `Showing vendors that deliver to your current address or offer pickup within ${filterSettings.pickupRadius} ${miles}`;
@@ -119,55 +116,72 @@ function FilterSettings(props) {
 
         <div className={s.settings}>
           <div className={s.cocktails}>
-            <div className={s.title}>Cocktail Display</div>
+            <div className={s.title}>Showing Cocktails</div>
             <div className={s.cocktails_settings}>
-              <div
-                className={classNameResolve(filterSettings.showBoozy)}
-                onClick={e =>
-                  setFilterSettings({
-                    ...filterSettings,
-                    showBoozy: !filterSettings.showBoozy,
-                  })
-                }
-              >
-                <FontAwesomeIcon icon={faGlassWhiskey} size="3x" />
+              <div>
+                <div className={s.cocktail_button_label}>Stiff</div>
+                <div
+                  className={classNameResolve(filterSettings.showBoozy)}
+                  onClick={e =>
+                    setFilterSettings({
+                      ...filterSettings,
+                      showBoozy: !filterSettings.showBoozy,
+                    })
+                  }
+                >
+                  <FontAwesomeIcon icon={faGlassWhiskey} size="3x" />
+                </div>
+                <div className={s.button_explainer}>e.g. Old Fashioned</div>
               </div>
-              <div
-                className={classNameResolve(filterSettings.showStrong)}
-                onClick={e =>
-                  setFilterSettings({
-                    ...filterSettings,
-                    showStrong: !filterSettings.showStrong,
-                  })
-                }
-              >
-                <FontAwesomeIcon icon={faCocktail} size="3x" />
+
+              <div>
+                <div className={s.cocktail_button_label}>Strong</div>
+                <div
+                  className={classNameResolve(filterSettings.showStrong)}
+                  onClick={e =>
+                    setFilterSettings({
+                      ...filterSettings,
+                      showStrong: !filterSettings.showStrong,
+                    })
+                  }
+                >
+                  <FontAwesomeIcon icon={faCocktail} size="3x" />
+                </div>
+                <div className={s.button_explainer}>e.g. Margarita</div>
               </div>
-              <div
-                className={classNameResolve(filterSettings.showLong)}
-                onClick={e =>
-                  setFilterSettings({
-                    ...filterSettings,
-                    showLong: !filterSettings.showLong,
-                  })
-                }
-              >
-                <FontAwesomeIcon icon={faWineGlass} size="3x" />
+
+              <div>
+                <div className={s.cocktail_button_label}>Long</div>
+                <div
+                  className={classNameResolve(filterSettings.showLong)}
+                  onClick={e =>
+                    setFilterSettings({
+                      ...filterSettings,
+                      showLong: !filterSettings.showLong,
+                    })
+                  }
+                >
+                  <FontAwesomeIcon icon={faWineGlass} size="3x" />
+                </div>
+                <div className={s.button_explainer}>e.g. Gin Mule</div>
               </div>
-              <div
-                className={classNameResolve(filterSettings.showLow)}
-                onClick={e =>
-                  setFilterSettings({
-                    ...filterSettings,
-                    showLow: !filterSettings.showLow,
-                  })
-                }
-              >
-                <FontAwesomeIcon icon={faWineBottle} size="3x" />
+
+              <div>
+                <div className={s.cocktail_button_label}>Low ABV</div>
+                <div
+                  className={classNameResolve(filterSettings.showLow)}
+                  onClick={e =>
+                    setFilterSettings({
+                      ...filterSettings,
+                      showLow: !filterSettings.showLow,
+                    })
+                  }
+                >
+                  <FontAwesomeIcon icon={faWineBottle} size="3x" />
+                </div>
+                <div className={s.button_explainer}>e.g. Spritzer</div>
               </div>
-            </div>
-            <div className={s.setting_message}>
-              Showing cocktails with the following profiles: {cocktailMessage}
+
             </div>
           </div>
 
