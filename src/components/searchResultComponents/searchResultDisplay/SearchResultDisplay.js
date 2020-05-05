@@ -19,8 +19,7 @@ function SearchResultsDisplay() {
     showLow: true,
     availableTodayOnly: false,
     onDemandOnly: false,
-    lowPrice: 0,
-    highPrice: '',
+    highPrice: null,
   });
   const [filterSettingsOpen, setFilterSettingsOpen] = useState(false);
   let vendorStyle;
