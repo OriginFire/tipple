@@ -10,6 +10,8 @@ const SEARCH_COCKTAILS = `
     searchVendors(latLng: {userLongitude: $userLongitude, userLatitude: $userLatitude}) {
       slug
       dbaName
+      doesDelivery
+      doesPickup
       cocktails {
         name
         ingredients
