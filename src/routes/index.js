@@ -44,8 +44,16 @@ const routes = {
       load: () => import('./vendor-admin'),
     },
     {
+      path: '/vendor-admin-service/:slug',
+      load: () => import('./vendor-admin-service'),
+    },
+    {
       path: '/vendor-admin-cocktails/:slug',
       load: () => import('./vendor-admin-cocktails'),
+    },
+    {
+      path: '/vendor-admin-user/:slug',
+      load: () => import('./vendor-admin-user'),
     },
     {
       path: '/vendor-create',

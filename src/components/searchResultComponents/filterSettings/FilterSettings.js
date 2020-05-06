@@ -163,7 +163,7 @@ function FilterSettings(props) {
                 >
                   <FontAwesomeIcon icon={faWineGlass} size="3x" />
                 </div>
-                <div className={s.button_explainer}>e.g. Gin Mule</div>
+                <div className={s.button_explainer}>e.g. Mojito</div>
               </div>
 
               <div>

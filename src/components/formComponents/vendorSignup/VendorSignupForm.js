@@ -5,10 +5,9 @@ import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import s from './VendorSignupForm.scss';
 import FormField from '../../sitewideDisplayComponents/formField/FormField';
 import AddressFormField from '../../utilityComponents/addressFormField/AddressFormField';
-import Button from '../../sitewideDisplayComponents/Button/Button';
-import Link from '../../utilityComponents/link/Link';
+import VendorFormStatus from "./VendorFormStatus";
+import VendorFormButtons from "./VendorFormButtons";
 import history from '../../../history';
-import ApplicationContext from "../../ApplicationContext";
 
 const CREATE_VENDOR_MUTATION = `
   mutation CreateVendor($dbaName: String!,
@@ -17,12 +16,15 @@ const CREATE_VENDOR_MUTATION = `
   $adminPhone: String!,
   $adminPassword: String!,
   $physicalAddress: String!,
+  $physicalStreetAddress: String!,
+  $physicalCity: String!,
+  $physicalState: String!,
+  $physicalZipCode: String!,
   $latitude: Float!,
   $longitude: Float!,
   $alcoholLicenseNumber: String!,
   $alcoholLicenseIssuingAgency: String!,
-  $alcoholLicenseExpiration: String!,
-  $deliveryRadius: String!)
+  $alcoholLicenseExpiration: String!)
   {
     newVendor(vendor:{
     dbaName: $dbaName,
@@ -35,8 +37,7 @@ const CREATE_VENDOR_MUTATION = `
     longitude: $longitude,
     alcoholLicenseNumber: $alcoholLicenseNumber,
     alcoholLicenseIssuingAgency: $alcoholLicenseIssuingAgency,
-    alcoholLicenseExpiration: $alcoholLicenseExpiration,
-    deliveryRadius: $deliveryRadius}) {
+    alcoholLicenseExpiration: $alcoholLicenseExpiration}) {
       slug
     }
   }
@@ -62,9 +63,6 @@ function VendorSignupForm() {
     setAlcoholLicenseIssuingAgency,
   ] = useState('');
   const [alcoholLicenseExpiration, setAlcoholLicenseExpiration] = useState('');
-  const [doesDelivery, setDoesDelivery] = useState('');
-  const [deliveryRadius, setDeliveryRadius] = useState('');
-  const [onlineStore, setOnlineStore] = useState('');
   const [formStage, setFormStage] = useState(1);
 
   const [createVendor] = useMutation(CREATE_VENDOR_MUTATION);
@@ -89,12 +87,15 @@ function VendorSignupForm() {
         adminPhone,
         adminPassword,
         physicalAddress,
+        physicalStreetAddress,
+        physicalCity,
+        physicalState,
+        physicalZipCode,
         latitude,
         longitude,
         alcoholLicenseNumber,
         alcoholLicenseIssuingAgency,
         alcoholLicenseExpiration,
-        deliveryRadius,
       },
     });
     console.log(res);
@@ -109,86 +110,7 @@ function VendorSignupForm() {
         List your cocktail delivery or takeout business on Tipple.
       </h1>
       <div className={s.form}>
-        {/* eslint-disable-next-line consistent-return */}
-        {(() => {
-          switch (formStage) {
-            case 1:
-              return (
-                <div className={s.form_status}>
-                  <div className={s.active_status_item}>
-                    <div className={s.status_indicator}>Account User</div>
-                    <div className={s.status_bar} />
-                  </div>
-                  <div className={s.status_item} onClick={e => setFormStage(2)}>
-                    <div className={s.status_indicator}>Business Details</div>
-                  </div>
-                  <div className={s.status_item} onClick={e => setFormStage(3)}>
-                    <div className={s.status_indicator}>Alcohol License</div>
-                  </div>
-                  <div className={s.status_item} onClick={e => setFormStage(4)}>
-                    <div className={s.status_indicator}>Service Settings</div>
-                  </div>
-                </div>
-              );
-            case 2:
-              return (
-                <div className={s.form_status}>
-                  <div className={s.status_item} onClick={e => setFormStage(1)}>
-                    <div className={s.status_indicator}>Account User</div>
-                  </div>
-                  <div className={s.active_status_item}>
-                    <div className={s.status_indicator}>Business Details</div>
-                    <div className={s.status_bar} />
-                  </div>
-                  <div className={s.status_item} onClick={e => setFormStage(3)}>
-                    <div className={s.status_indicator}>Alcohol License</div>
-                  </div>
-                  <div className={s.status_item} onClick={e => setFormStage(4)}>
-                    <div className={s.status_indicator}>Service Settings</div>
-                  </div>
-                </div>
-              );
-            case 3:
-              return (
-                <div className={s.form_status}>
-                  <div
-                    className={s.active_status_item}
-                    onClick={e => setFormStage(1)}
-                  >
-                    <div className={s.status_indicator}>Account User</div>
-                  </div>
-                  <div className={s.status_item} onClick={e => setFormStage(2)}>
-                    <div className={s.status_indicator}>Business Details</div>
-                  </div>
-                  <div className={s.active_status_item}>
-                    <div className={s.status_indicator}>Alcohol License</div>
-                    <div className={s.status_bar} />
-                  </div>
-                  <div className={s.status_item} onClick={e => setFormStage(4)}>
-                    <div className={s.status_indicator}>Service Settings</div>
-                  </div>
-                </div>
-              );
-            case 4:
-              return (
-                <div className={s.form_status}>
-                  <div className={s.status_item} onClick={e => setFormStage(1)}>
-                    <div className={s.status_indicator}>Account User</div>
-                  </div>
-                  <div className={s.status_item} onClick={e => setFormStage(2)}>
-                    <div className={s.status_indicator}>Business Details</div>
-                  </div>
-                  <div className={s.status_item} onClick={e => setFormStage(3)}>
-                    <div className={s.status_indicator}>Alcohol License</div>
-                  </div>
-                  <div className={s.active_status_item}>
-                    <div className={s.status_indicator}>Service Settings</div>
-                    <div className={s.status_bar} />
-                  </div>
-                </div>
-              );
-          }
-        })()}
+        <VendorFormStatus formStage={formStage} formStageChange={newStage => setFormStage(newStage)} />
 
         {(() => {
           switch (formStage) {
@@ -269,102 +191,11 @@ function VendorSignupForm() {
                   />
                 </form>
               );
-
-            case 4:
-              return (
-                <form className={s.partner_form_fields}>
-                  <FormField
-                    placeholder="Delivery"
-                    onChange={e => setDoesDelivery(e.target.value)}
-                    value={doesDelivery}
-                  />
-                  <FormField
-                    placeholder="Delivery Distance"
-                    onChange={e => setDeliveryRadius(e.target.value)}
-                    value={deliveryRadius}
-                  />
-                  <FormField
-                    placeholder="Online Store (if any)"
-                    onChange={e => setOnlineStore(e.target.value)}
-                    value={onlineStore}
-                  />
-                </form>
-              );
           }
         })()}
 
         <div className={s.buttons}>
-          {(() => {
-            switch (formStage) {
-              case 1:
-                return (
-                  <Link to="/">
-                    <Button type="Secondary" text="Return Home" />
-                  </Link>
-                );
-              case 2:
-                return (
-                  <Button
-                    type="Secondary"
-                    onClick={e => setFormStage(1)}
-                    text="Go Back"
-                  />
-                );
-              case 3:
-                return (
-                  <Button
-                    type="Secondary"
-                    onClick={e => setFormStage(2)}
-                    text="Go Back"
-                  />
-                );
-              case 4:
-                return (
-                  <Button
-                    type="Secondary"
-                    onClick={e => setFormStage(3)}
-                    text="Go Back"
-                  />
-                );
-            }
-          })()}
-
-          {(() => {
-            switch (formStage) {
-              case 1:
-                return (
-                  <Button
-                    type="Primary"
-                    onClick={e => setFormStage(2)}
-                    text="Next"
-                  />
-                );
-              case 2:
-                return (
-                  <Button
-                    type="Primary"
-                    onClick={e => setFormStage(3)}
-                    text="Next"
-                  />
-                );
-              case 3:
-                return (
-                  <Button
-                    type="Primary"
-                    onClick={e => setFormStage(4)}
-                    text="Next"
-                  />
-                );
-              case 4:
-                return (
-                  <Button
-                    type="Primary"
-                    onClick={e => createNewVendor()}
-                    text="Add My Bar"
-                  />
-                );
-            }
-          })()}
+          <VendorFormButtons formStage={formStage} formStageChange={newStage => setFormStage(newStage)} submitForm={e => createNewVendor()} />
         </div>
       </div>
     </div>

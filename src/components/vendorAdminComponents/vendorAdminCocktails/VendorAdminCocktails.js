@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import {useMutation, useQuery} from 'graphql-hooks';
-import s from './VendorAdminCocktailsDisplay.scss';
+import s from './VendorAdminCocktails.scss';
 import Button from '../../sitewideDisplayComponents/Button';
-import VendorCocktailSettings from '../vendorCocktailSettings/VendorCocktailSettings';
-import history from '../../../history';
+import VendorCocktailSettings from './VendorCocktailSettings';
+import ApplicationContext from "../../ApplicationContext";
+import VendorConsole from "../vendorAdminConsole/VendorAdminConsole";
 
 const FIND_VENDOR = `
-  query FindVendor($slug: String!) {
-    findVendor(vendor: { slug: $slug }) {
-      physicalStreetAddress
-      physicalCity
+  query FindVendor($slug: String!, $JWT: String!) {
+    protectedFindVendor(vendor: { slug: $slug, JWT: $JWT }) {
       dbaName
+      slug
       cocktails {
         id
         name
@@ -51,15 +51,19 @@ const NEW_COCKTAIL = `
   }
 `;
 
-function VendorAdminCocktailsDisplay(props) {
+function VendorAdminCocktails(props) {
+  const authenticationContext = useContext(ApplicationContext);
   const { loading, error, data } = useQuery(FIND_VENDOR, {
-    variables: { slug: props.slug },
+    variables: { slug: props.slug, JWT: authenticationContext.context.JWT },
   });
   const [addCocktail] = useMutation(NEW_COCKTAIL);
 
   let vendor;
+
+  if (loading) return 'Loading...';
+  if (error) return 'Something Bad Happened';
   if (data) {
-    vendor = data.findVendor;
+    vendor = data.protectedFindVendor;
   }
 
   const vendorSlug = props.slug;
@@ -80,23 +84,7 @@ function VendorAdminCocktailsDisplay(props) {
     <div className={s.container}>
       {vendor && (
         <div className={s.vendor_admin_display}>
-          <div className={s.context_control}>
-            <div className={s.vendor_name}>{vendor.dbaName}</div>
-            <h2 className={s.result_explainer}>
-              Here you can manage {vendor.dbaName}'s account details (user info,
-              online service settings, cocktails, etc.)
-            </h2>
-
-            <div className={s.display_selectors}>
-              <div
-                className={s.inactive}
-                onClick={e => history.push(`/vendor-admin/${vendor.slug}`)}
-              >
-                Account Details
-              </div>
-              <div className={s.active}>Cocktail Settings</div>
-            </div>
-          </div>
+          <VendorConsole vendor={vendor} active={'cocktail'} />
           <div className={s.vendor_setting_content}>
             <VendorCocktailSettings vendor={vendor} />
           </div>
@@ -113,4 +101,4 @@ function VendorAdminCocktailsDisplay(props) {
   );
 }
 
-export default withStyles(s)(VendorAdminCocktailsDisplay);
+export default withStyles(s)(VendorAdminCocktails);

@@ -7,12 +7,12 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import { GraphQLList as List } from 'graphql';
+import jwt from 'jsonwebtoken';
 import VendorType from '../../types/VendorType';
 import Vendor from '../../../data/models/Vendor';
 import Cocktail from '../../../data/models/Cocktail';
+import User from '../../../data/models/User';
 import FindVendorType from '../../types/FindVendorType';
-import jwt from 'jsonwebtoken';
 import config from '../../../config';
 
 const findVendor = {
@@ -28,11 +28,11 @@ const findVendor = {
       return 'nope';
     }
 
-    const displayVendor = await Vendor.findOne({
+    let displayVendor = await Vendor.findOne({
       where: { slug: vendor.slug },
-      include: [{ model: Cocktail, as: 'cocktails' }],
+      include: [{ model: Cocktail, as: 'cocktails' }, User],
     });
-
+    displayVendor.vendorImage = displayVendor.vendorImage.toString();
     displayVendor.cocktails.forEach(c => {
       c.image = c.image.toString();
     });

@@ -24,6 +24,7 @@ const findVendor = {
       include: [{ model: Cocktail, as: 'cocktails' }],
     });
 
+    displayVendor.vendorImage = displayVendor.vendorImage.toString();
     displayVendor.cocktails.forEach(c => {
       c.image = c.image.toString();
     });
