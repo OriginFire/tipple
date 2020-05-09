@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './VendorAdminGeneral.scss';
-import VendorConsole from "../vendorAdminConsole/VendorAdminConsole";
-import GeneralSettings from "./GeneralSettings";
+import VendorConsole from '../vendorAdminConsole/VendorAdminConsole';
+import GeneralSettings from './GeneralSettings';
 import ApplicationContext from '../../ApplicationContext';
 
 const FIND_VENDOR = `
@@ -11,6 +11,7 @@ const FIND_VENDOR = `
     protectedFindVendor(vendor: { slug: $slug, JWT: $JWT }) {
       slug
       dbaName
+      physicalAddress
       physicalStreetAddress
       physicalCity
       physicalState
@@ -45,7 +46,7 @@ function VendorAdminGeneral(props) {
   return (
     <div className={s.container}>
       <div className={s.vendor_admin_display}>
-        <VendorConsole vendor={vendor} active={'general'} />
+        <VendorConsole vendor={vendor} active="general" />
         <div className={s.vendor_setting_content}>
           <GeneralSettings vendor={vendor} />
         </div>

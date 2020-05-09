@@ -7,55 +7,37 @@
   margin: auto;
 }
 
+.explainer {
+  font-family: 'Lato Light', sans-serif;
+  color: #919191;
+  text-align: left;
+}
+
+.to_do {
+  font-size: 12px;
+  margin: auto;
+  text-align: left;
+  color: #ff433d;
+  padding: 2px 0;
+}
+
 .vendor_image {
   object-fit: cover;
   display: block;
   margin: auto;
 }
 
-.setting {
-  font-family: "Lato Regular", sans-serif;
-  color: #8d8d8d;
-  text-align: left;
-  border-bottom: solid 1px #1e1e1e;
-  cursor: pointer;
-}
-
-.setting:hover {
-  color: #c3c3c3;
-  background-color: #232323;
-}
-
-.setting {
-  margin-top: 0;
-  margin-left: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  width: 100%;
-  padding: 13px 15px;
-}
-
-.setting_field {
-  width: 180px;
-}
-
-.setting_value {
-  width: 140px;
-}
-
-
 @media only screen and (orientation: portrait) and (min-width: 320px) {
+  .explainer {
+    font-size: 14px;
+    width: 90%;
+    margin: auto;
+  }
+
   .vendor_image {
     width: 160px;
     height: 90px;
     padding: 0 0 2px 0;
-  }
-
-  .setting {
-    font-size: 13px;
-    margin-top: 6px;
-    margin-left: 5px;
   }
 }
 
@@ -78,12 +60,6 @@
     width: 200px;
     margin: 30px 20px 0 20px;
   }
-
-  .setting {
-    font-size: 13px;
-    margin-top: 6px;
-    margin-left: 5px;
-  }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
@@ -95,22 +71,6 @@
     padding: 0;
     min-height: 200px;
     top: 0;
-  }
-
-  .vendor_image {
-    width: 300px;
-    height: 180px;
-    margin: auto;
-  }
-
-  .setting {
-    margin-top: 0;
-    margin-left: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding: 13px 15px;
   }
 }
 

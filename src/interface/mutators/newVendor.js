@@ -13,6 +13,8 @@ import Vendor from '../../data/models/Vendor';
 import VendorInputType from '../types/VendorInputType';
 import User from '../../data/models/User';
 import Cocktail from '../../data/models/Cocktail';
+import Availability from '../../data/models/Availability';
+import AvailabilitySchedule from '../../data/models/AvailabilitySchedule';
 
 function stringToSlug(str) {
   str = str.replace(/^\s+|\s+$/g, ''); // trim
@@ -67,7 +69,7 @@ const newVendor = {
         alcoholLicenseIssuingAgency:
           vendorFormInput.alcoholLicenseIssuingAgency,
         alcoholLicenseExpiration: vendorFormInput.alcoholLicenseExpiration,
-        doesDelivery: true, // need to impute these
+        doesDelivery: false, // need to impute these
         doesPickup: false,
         deliveryRadius: vendorFormInput.deliveryRadius,
         vendorImage:
@@ -84,7 +86,7 @@ const newVendor = {
         pops: 1,
       },
       {
-        include: [User, {model: Cocktail, as: 'cocktails'}] // this is needed to make the Users initial entry work.
+        include: [User, { model: Cocktail, as: 'cocktails' }], // this is needed to make the Users initial entry work.
       },
     );
   },

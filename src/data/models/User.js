@@ -8,10 +8,8 @@
  */
 
 import DataType from 'sequelize';
-import Model from '../sequelize';
-
 import bcrypt from 'bcrypt';
-import Vendor from "./Vendor";
+import Model from '../sequelize';
 
 const User = Model.define(
   'User',
@@ -49,8 +47,7 @@ const User = Model.define(
 );
 
 User.authenticate = async function(username, password) {
-
-  let user = await User.findOne({ where: { email: username } });
+  const user = await User.findOne({ where: { email: username } });
   console.log('user found');
 
   // bcrypt is a one-way hashing algorithm that allows us to
@@ -60,7 +57,7 @@ User.authenticate = async function(username, password) {
     return user;
   }
 
-  throw "Unable to Authenticate";
+  throw 'Unable to Authenticate';
 };
 
 export default User;

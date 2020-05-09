@@ -1,3 +1,5 @@
+import weekdays from '../../consts/weekdays';
+
 export default [
   {
     id: 'thegibson',
@@ -23,8 +25,8 @@ export default [
       'ABRA' /** Should standardize entries with a dropdown menu */,
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
-    doesDelivery: true,
-    doesPickup: true,
+    doesDelivery: false,
+    doesPickup: false,
     deliveryRadius: 1,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Urbana.jpg',
@@ -99,6 +101,26 @@ export default [
         profile: 'boozy',
       },
     ],
+    availability: [
+      {
+        availabilityType: 'pickup',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 18, 19, 20, 21, 22, 23, 24],
+          },
+          { day: weekdays.monday, hours: [18, 19, 20, 21, 22, 23, 24] },
+        ],
+      },
+
+      {
+        availabilityType: 'delivery',
+        availabilityDaysAndTimes: [
+          { day: weekdays.sunday, hours: [18] },
+          { day: weekdays.monday, hours: [19] },
+        ],
+      },
+    ],
   },
 
   {
@@ -125,8 +147,8 @@ export default [
       'ABRA' /** Should standardize entries with a dropdown menu */,
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
-    doesDelivery: true,
-    doesPickup: true,
+    doesDelivery: false,
+    doesPickup: false,
     deliveryRadius: 1,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Golden.jpg',
@@ -226,7 +248,7 @@ export default [
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
-    doesPickup: true,
+    doesPickup: false,
     deliveryRadius: null,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../SL.jpeg',
@@ -324,8 +346,8 @@ export default [
       'ABRA' /** Should standardize entries with a dropdown menu */,
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
-    doesDelivery: true,
-    doesPickup: true,
+    doesDelivery: false,
+    doesPickup: false,
     deliveryRadius: 1,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Columbia.jpg',
@@ -424,7 +446,7 @@ export default [
       'ABRA' /** Should standardize entries with a dropdown menu */,
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
-    doesDelivery: true,
+    doesDelivery: false,
     doesPickup: false,
     deliveryRadius: 1,
     onlineStore: 'www.nipplesupply.com',
@@ -524,8 +546,8 @@ export default [
       'ABRA' /** Should standardize entries with a dropdown menu */,
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
-    doesDelivery: true,
-    doesPickup: true,
+    doesDelivery: false,
+    doesPickup: false,
     deliveryRadius: 1,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../SL.jpeg',
@@ -625,7 +647,7 @@ export default [
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
-    doesPickup: true,
+    doesPickup: false,
     deliveryRadius: 1,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../OldFashioned.png',

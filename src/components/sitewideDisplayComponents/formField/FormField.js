@@ -1,6 +1,5 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './FormField.scss';
 
@@ -21,10 +20,10 @@ class FormField extends React.Component {
       size = s.medium_field;
     } else if (size === 'Large') {
       size = s.large_field;
-    };
+    }
 
     return (
-      <div className={s.field} >
+      <div className={s.field}>
         <input
           className={cx(s.input_field, size)}
           onChange={onChange}

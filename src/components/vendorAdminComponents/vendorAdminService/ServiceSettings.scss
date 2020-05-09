@@ -8,26 +8,14 @@
 }
 
 .setting {
-  font-family: "Lato Regular", sans-serif;
+  font-family: 'Lato Regular', sans-serif;
   color: #8d8d8d;
   text-align: left;
   border-bottom: solid 1px #1e1e1e;
   cursor: pointer;
-}
-
-.setting:hover {
-  color: #c3c3c3;
-  background-color: #232323;
-}
-
-.setting {
-  margin-top: 0;
-  margin-left: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  width: 100%;
-  padding: 13px 15px;
 }
 
 .setting_field {
@@ -38,12 +26,71 @@
   width: 140px;
 }
 
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+  align-self: center;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #4b4b4b;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider::before {
+  position: absolute;
+  content: '';
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #63c363;
+}
+
+input:focus + .slider {
+  background-color: #63c363;
+}
+
+input:checked + .slider::before {
+  -webkit-transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  transform: translateX(24px);
+}
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .setting {
+    justify-content: space-between;
     font-size: 13px;
-    margin-top: 6px;
-    margin-left: 5px;
+    margin: auto;
+    padding: 13px 0;
+    width: 90%;
+  }
+
+  .setting_field {
+    align-self: center;
   }
 }
 

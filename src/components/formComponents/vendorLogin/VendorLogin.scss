@@ -9,24 +9,26 @@
 
 .form {
   height: 100%;
+  margin: auto;
   text-align: center;
 }
 
-.explainer, .redirect_explainer {
-  font-family: "Plantin Bold", serif;
+.explainer,
+.redirect_explainer {
+  font-family: 'Plantin Bold', serif;
   padding: 0 0 10px 0;
 }
-
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 100%;
+    width: 80%;
   }
 
-  .explainer, .redirect_explainer {
+  .explainer,
+  .redirect_explainer {
     font-size: 1.3em;
   }
 
@@ -44,7 +46,8 @@
     width: 100%;
   }
 
-  .explainer, .redirect_explainer {
+  .explainer,
+  .redirect_explainer {
     font-size: 1.3em;
   }
 
@@ -74,7 +77,8 @@
     height: 50vh;
   }
 
-  .explainer, .redirect_explainer {
+  .explainer,
+  .redirect_explainer {
     font-size: 1.3em;
   }
 

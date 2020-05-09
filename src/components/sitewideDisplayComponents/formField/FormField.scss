@@ -12,32 +12,34 @@
 .placeholder {
   position: absolute;
   pointer-events: none;
-  font-family: "Lato Regular";
+  font-family: 'Lato Regular', sans-serif;
+  margin: auto;
   font-size: 15px;
   color: #878787;
-  left: 10%;
+  left: 5px;
+  right: 0;
   top: 33%;
   transition: 0.1s linear;
   will-change: top, left, font-size;
 }
 
 .input_field:focus ~ .placeholder {
-   top: 15%;
-   left: 10%;
-   font-size: 10px;
-   opacity: 1;
- }
-
-.input_field:not([value=""]) ~ .placeholder {
-  top: 15%;
-  left: 10%;
+  top: 8px;
+  left: 5px;
   font-size: 10px;
   opacity: 1;
 }
 
-.input_field:not([value=""]):not(:focus):invalid ~ .placeholder {
-  top: 15%;
-  left: 10%;
+.input_field:not([value='']) ~ .placeholder {
+  top: 8px;
+  left: 5px;
+  font-size: 10px;
+  opacity: 1;
+}
+
+.input_field:not([value='']):not(:focus):invalid ~ .placeholder {
+  top: 8px;
+  left: 5px;
   font-size: 10px;
   color: red;
   opacity: 1;
@@ -46,12 +48,17 @@
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .field {
     width: 100%;
-    margin: 0 auto 2px auto;
   }
+
   .input_field {
-    margin: 6px;
+    margin: 5px 0 5px -8px;
     padding: 6px 0 0 8px;
-    width: 82%;
+    width: 100%;
+  }
+
+  .placeholder {
+    width: 100%;
+    text-align: left;
   }
 }
 
@@ -71,7 +78,7 @@
   }
 
   .input_field {
-    font-size: .8em;
+    font-size: 0.8em;
     margin: 6px;
     padding: 4px 0 2px 6px;
     width: 90%;

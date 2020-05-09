@@ -18,6 +18,7 @@ const VendorType = new ObjectType({
     adminName: { type: StringType },
     adminEmail: { type: StringType },
     adminPhone: { type: StringType },
+    physicalAddress: { type: StringType },
     physicalStreetAddress: { type: StringType },
     physicalCity: { type: StringType },
     physicalState: { type: StringType },

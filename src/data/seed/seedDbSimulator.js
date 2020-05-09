@@ -3,6 +3,8 @@ import db from '../dbSimulator/Vendors';
 import Vendor from '../models/Vendor';
 import User from '../models/User';
 import Cocktail from '../models/Cocktail';
+import Availability from '../models/Availability';
+import weekdays from '../../consts/weekdays';
 
 const fs = require('fs');
 
@@ -51,6 +53,29 @@ function cocktailHash(vendor) {
   });
 }
 
+function scheduleHash(availabilityDaysAndTimes) {
+  return availabilityDaysAndTimes.map(schedule => {
+    return {
+      day: schedule.day,
+      hours: schedule.hours,
+    };
+  });
+}
+
+function availabilityHash(vendor) {
+  if (!vendor.availability) {
+    return "It's a trap!";
+  }
+  return vendor.availability.map(availability => {
+    return {
+      availabilityType: availability.availabilityType,
+      availabilityDaysAndTimes: scheduleHash(
+        availability.availabilityDaysAndTimes,
+      ),
+    };
+  });
+}
+
 function deleteExisting(existingVendors, slug) {
   existingVendors.map(v => {
     console.log(`Destoring vendor with ${v.id} ${slug}`);
@@ -82,6 +107,8 @@ function createNew(vendor, slug) {
       doesPickup: vendor.doesPickup,
       deliveryRadius: vendor.deliveryRadius,
       vendorImage: base64_encode(vendorImageUrl),
+      cocktails: cocktailHash(vendor),
+      Availability: availabilityHash(vendor),
       Users: [
         {
           slug: userSlug,
@@ -91,10 +118,9 @@ function createNew(vendor, slug) {
           password: hash,
         },
       ],
-      cocktails: cocktailHash(vendor),
     },
     {
-      include: [User, { model: Cocktail, as: 'cocktails' }], // this is needed to make the Users initial entry work.
+      include: [User, { model: Cocktail, as: 'cocktails' }, Availability], // this is needed to make the Users initial entry work.
     },
   );
   console.log(`created vendor with ${v.id}`);

@@ -12,7 +12,8 @@
 .vendor_setting_content {
   position: absolute;
   margin: 0 0 0 0;
-  width: 100%;  height: auto;
+  width: 100%;
+  height: auto;
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -37,7 +38,7 @@
   }
 
   .vendor_setting_content {
-    top: 150px;
+    top: 160px;
     bottom: 15px;
     font-size: 0.6em;
   }
@@ -82,7 +83,7 @@
     bottom: 0;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    background-image: url("../../../../public/LevitationAspect.JPG");
+    background-image: url('../../../../public/LevitationAspect.JPG');
     background-size: cover;
     background-position: 50%, 0%;
   }
@@ -116,7 +117,7 @@
     bottom: 0;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    background-image: url("../../../../public/LevitationAspect.JPG");
+    background-image: url('../../../../public/LevitationAspect.JPG');
     background-size: cover;
     background-position: 50%, 0%;
   }

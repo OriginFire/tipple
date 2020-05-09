@@ -11,7 +11,7 @@
 
 .form_explainer {
   text-align: center;
-  font-family: "Plantin Bold";
+  font-family: 'Plantin Bold', serif;
 }
 
 .form {
@@ -55,9 +55,10 @@
 
 .partner_form_fields {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  left: 0;
+  right: 0;
+  width: 80%;
+  margin: auto;
 }
 
 .buttons {
@@ -82,6 +83,7 @@
     right: 5vw;
     left: 5vw;
   }
+
   .status_indicator {
     font-size: 0.75em;
   }
@@ -196,7 +198,6 @@
     bottom: 10%;
     width: 80%;
   }
-
 }
 
 @media only screen and (min-width: 1224px) {
@@ -204,9 +205,9 @@
     height: 91vh;
     position: static;
     margin: 0 0 0 0;
-    background-image: url("../../../../public/LevitationAspect.JPG");
-    background-size: cover;
+    background-image: url('../../../../public/LevitationAspect.JPG');
     -webkit-background-size: cover;
+    background-size: cover;
     background-position: 50%, 0;
   }
 
