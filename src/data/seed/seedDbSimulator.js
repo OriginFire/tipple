@@ -4,6 +4,7 @@ import Vendor from '../models/Vendor';
 import User from '../models/User';
 import Cocktail from '../models/Cocktail';
 import Availability from '../models/Availability';
+import AvailabilitySchedule from "../models/AvailabilitySchedule";
 import weekdays from '../../consts/weekdays';
 
 const fs = require('fs');
@@ -108,7 +109,7 @@ function createNew(vendor, slug) {
       deliveryRadius: vendor.deliveryRadius,
       vendorImage: base64_encode(vendorImageUrl),
       cocktails: cocktailHash(vendor),
-      Availability: availabilityHash(vendor),
+      availability: availabilityHash(vendor),
       Users: [
         {
           slug: userSlug,
@@ -120,7 +121,7 @@ function createNew(vendor, slug) {
       ],
     },
     {
-      include: [User, { model: Cocktail, as: 'cocktails' }, Availability], // this is needed to make the Users initial entry work.
+      include: [{model: User}, { model: Cocktail, as: 'cocktails' }, Availability], // this is needed to make the Users initial entry work.
     },
   );
   console.log(`created vendor with ${v.id}`);

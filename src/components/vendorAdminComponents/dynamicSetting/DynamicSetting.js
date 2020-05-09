@@ -8,9 +8,18 @@ import FormField from '../../sitewideDisplayComponents/formField';
 function DynamicSetting(props) {
   const { settingName } = props;
   const { settingValue } = props;
+  const {specialDisplay} = props;
   const { addressFieldType } = props;
   const [fieldValue, setFieldValue] = useState(settingValue);
   const [inputDisplayed, setInputDisplayed] = useState(false);
+
+  function SpecialDisplay() {
+    if (specialDisplay) {
+      return specialDisplay;
+    } else {
+      return settingValue;
+    }
+  }
 
   function Content() {
     if (inputDisplayed) {
@@ -38,7 +47,7 @@ function DynamicSetting(props) {
       <div>
         <div className={s.display_setting}>
           <div className={s.setting_field}>{settingName}</div>
-          <div className={s.setting_value}>{settingValue}</div>
+          <div className={s.setting_value}>{SpecialDisplay()}</div>
           <FontAwesomeIcon
             icon={faEdit}
             className={s.icon}

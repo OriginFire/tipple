@@ -2,19 +2,19 @@
   position: relative;
 }
 
-.input_field:focus ~ .placeholder,
-.input_field:valid ~ .placeholder {
-  top: 15%;
-  left: 10%;
-  font-size: 10px;
-  opacity: 1;
-}
-
 .input_field {
   border: 1px solid white;
   border-radius: 1px;
   font-size: 14px;
   height: 35px;
+}
+
+.input_field:focus ~ .placeholder,
+.input_field:valid ~ .placeholder {
+  top: 8px;
+  left: 5px;
+  font-size: 10px;
+  opacity: 1;
 }
 
 .placeholder {
@@ -23,7 +23,7 @@
   font-family: "Lato Regular", sans-serif;
   font-size: 15px;
   color: #878787;
-  left: 10%;
+  left: 5px;
   top: 33%;
   transition: 0.2s ease all;
 }
@@ -50,12 +50,11 @@
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .field {
     width: 100%;
-    margin: 0 auto 2px auto;
   }
   .input_field {
-    margin: 6px;
+    margin: 5px 0 5px -8px;
     padding: 6px 0 0 8px;
-    width: 82%;
+    width: 100%;
   }
 
   .suggestion, .active_suggestion {

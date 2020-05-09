@@ -36,12 +36,11 @@ function ServiceSettings(props) {
   function DeliverySettings() {
     if (doesDelivery) {
       return (
-        <div className={s.setting}>
-          <div className={s.setting_field}>Delivery Radius</div>
-          <div className={s.setting_value}>
-            {vendor.deliveryRadius} {miles}
-          </div>
-        </div>
+        <DynamicSetting
+          settingName="Delivery Radius"
+          settingValue={vendor.deliveryRadius}
+          specialDisplay={`${vendor.deliveryRadius} ${miles}`}
+        />
       );
     }
   }
@@ -71,10 +70,10 @@ function ServiceSettings(props) {
         </label>
       </div>
 
-      <div className={s.setting}>
-        <div className={s.setting_field}>Online Store</div>
-        <div className={s.setting_value}>{vendor.onlineStore}</div>
-      </div>
+      <DynamicSetting
+        settingName="Online Store"
+        settingValue={vendor.onlineStore}
+      />
     </div>
   );
 }
