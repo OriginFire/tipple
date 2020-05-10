@@ -22,7 +22,7 @@ function DynamicSetting(props) {
 
   function UpdateSetting() {
     setInputDisplayed(false);
-    props.settingSave();
+    props.settingSave(fieldValue);
   }
 
   function Content() {
@@ -37,7 +37,7 @@ function DynamicSetting(props) {
                 onChange={e => setFieldValue(e.target.value)}
               />
             </div>
-            <div className={s.save} onClick={e => UpdateSetting(fieldValue)}>
+            <div className={s.save} onClick={() => UpdateSetting(fieldValue)}>
               Save
             </div>
           </div>

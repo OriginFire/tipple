@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useMutation } from 'graphql-hooks';
 import s from './GeneralSettings.scss';
@@ -56,6 +56,8 @@ function GeneralSettings(props) {
   );
   const [updateVendor] = useMutation(UPDATE_VENDOR);
 
+  console.log(`This is the ${dbaName}`);
+
   async function settingSave() {
     const update = await updateVendor({
       variables: {
@@ -71,6 +73,20 @@ function GeneralSettings(props) {
       },
     });
     console.log(update, "It's just the power of love");
+    console.log(dbaName);
+  }
+
+  function update(newValue) {
+    console.log(
+      dbaName,
+      'is the dbaName value at the start.',
+      `${newValue} is getting passed to setDbaName hook.`,
+    );
+    setDbaName(newValue);
+    console.log(
+      `${dbaName} is the dbaName value after ${newValue} was given to the setDbaName hook.`,
+    );
+    settingSave();
   }
 
   return (
@@ -86,7 +102,9 @@ function GeneralSettings(props) {
       <DynamicSetting
         settingName="Business Name (D.B.A.)"
         settingValue={vendor.dbaName}
-        settingSave={newValue => settingSave(setDbaName(newValue))}
+        settingSave={newValue => {
+          update(newValue);
+        }}
       />
 
       <DynamicSetting
