@@ -86,7 +86,7 @@ function GeneralSettings(props) {
       <DynamicSetting
         settingName="Business Name (D.B.A.)"
         settingValue={vendor.dbaName}
-        settingSave={e => settingSave()}
+        settingSave={newValue => settingSave(setDbaName(newValue))}
       />
 
       <DynamicSetting

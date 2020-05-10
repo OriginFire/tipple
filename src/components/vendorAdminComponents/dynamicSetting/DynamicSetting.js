@@ -8,7 +8,7 @@ import FormField from '../../sitewideDisplayComponents/formField';
 function DynamicSetting(props) {
   const { settingName } = props;
   const { settingValue } = props;
-  const {specialDisplay} = props;
+  const { specialDisplay } = props;
   const { addressFieldType } = props;
   const [fieldValue, setFieldValue] = useState(settingValue);
   const [inputDisplayed, setInputDisplayed] = useState(false);
@@ -16,9 +16,8 @@ function DynamicSetting(props) {
   function SpecialDisplay() {
     if (specialDisplay) {
       return specialDisplay;
-    } else {
-      return settingValue;
     }
+    return settingValue;
   }
 
   function UpdateSetting() {
@@ -38,10 +37,7 @@ function DynamicSetting(props) {
                 onChange={e => setFieldValue(e.target.value)}
               />
             </div>
-            <div
-              className={s.save}
-              onClick={e => UpdateSetting()}
-            >
+            <div className={s.save} onClick={e => UpdateSetting(fieldValue)}>
               Save
             </div>
           </div>
