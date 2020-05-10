@@ -49,8 +49,6 @@ const newVendor = {
     const city = 'city from address';
     const state = 'state from address';
     const zip = 'zip from address';
-    const long = '25.4';
-    const lat = '25.2';
     const hash = bcrypt.hashSync(vendorFormInput.adminPassword, 10);
 
     return Vendor.create(
@@ -63,8 +61,8 @@ const newVendor = {
         physicalCity: city,
         physicalState: state,
         physicalZipCode: zip,
-        latitude: lat,
-        longitude: long,
+        latitude: vendorFormInput.latitude,
+        longitude: vendorFormInput.longitude,
         alcoholLicenseNumber: vendorFormInput.alcoholLicenseNumber,
         alcoholLicenseIssuingAgency:
           vendorFormInput.alcoholLicenseIssuingAgency,

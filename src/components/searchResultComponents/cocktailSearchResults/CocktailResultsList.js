@@ -35,7 +35,7 @@ function CocktailSearchResults(props) {
     customerLocation.context.userLongitude,
   );
   const { loading, error, data } = useQuery(SEARCH_COCKTAILS, {
-    variables: { userLatitude, userLongitude },
+    variables: { userLatitude: userLatitude, userLongitude: userLongitude },
   });
   let searchResults;
 

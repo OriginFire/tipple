@@ -24,6 +24,25 @@
   align-self: center;
 }
 
+
+.save {
+  border: solid #434343 1px;
+  color: #b9b9b9;
+  background-color: #251e1f;
+  border-radius: 4px;
+  padding: 8px 8px;
+  text-align: center;
+  transition: 0.2s;
+  cursor: pointer;
+  font-family: 'Lato Regular', sans-serif;
+  align-self: center;
+}
+
+.save:hover {
+  background-color: #25191b;
+  color: white;
+}
+
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .display_setting,
   .input_setting {

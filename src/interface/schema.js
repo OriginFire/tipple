@@ -20,6 +20,7 @@ import searchVendors from './queries/searchVendors';
 import showCocktails from './queries/showCocktails';
 import findVendor from './queries/findVendor';
 import protectedFindVendor from './queries/protected/protectedFindVendor';
+import protectedUpdateVendor from './mutators/protected/protectedUpdateVendor';
 import vendorLogin from './mutators/vendorLogin';
 
 const schema = new Schema({
@@ -40,6 +41,7 @@ const schema = new Schema({
       newCocktail,
       updateCocktail,
       vendorLogin,
+      protectedUpdateVendor,
     },
   }),
 });

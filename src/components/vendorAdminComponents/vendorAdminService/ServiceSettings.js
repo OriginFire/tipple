@@ -36,12 +36,30 @@ function ServiceSettings(props) {
   function DeliverySettings() {
     if (doesDelivery) {
       return (
-        <DynamicSetting
-          settingName="Delivery Radius"
-          settingValue={vendor.deliveryRadius}
-          specialDisplay={`${vendor.deliveryRadius} ${miles}`}
-        />
+        <div>
+          <DynamicSetting
+            settingName="Delivery Radius"
+            settingValue={vendor.deliveryRadius}
+            specialDisplay={`${vendor.deliveryRadius} ${miles}`}
+          />
+        </div>
       );
+    }
+  }
+
+  function PickupSettings() {
+    if (doesPickup) {
+      return (
+        <div className={s.setting}>
+          <div className={s.setting_field}>
+            Can customers pick up orders themselves?
+          </div>
+          <label className={s.switch}>
+            <input type="checkbox" onChange={e => setDoesPickup(!doesPickup)} />
+            <span className={s.slider} />;
+          </label>
+        </div>
+      )
     }
   }
 
@@ -69,6 +87,8 @@ function ServiceSettings(props) {
           <span className={s.slider} />;
         </label>
       </div>
+
+      {PickupSettings()}
 
       <DynamicSetting
         settingName="Online Store"

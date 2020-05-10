@@ -107,6 +107,7 @@ function createNew(vendor, slug) {
       doesDelivery: vendor.doesDelivery,
       doesPickup: vendor.doesPickup,
       deliveryRadius: vendor.deliveryRadius,
+      onlineStore: vendor.onlineStore,
       vendorImage: base64_encode(vendorImageUrl),
       cocktails: cocktailHash(vendor),
       availability: availabilityHash(vendor),

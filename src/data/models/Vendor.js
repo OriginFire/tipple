@@ -84,6 +84,10 @@ const Vendor = Model.define(
       type: DataType.STRING(256),
     },
 
+    onlineStore: {
+      type: DataType.STRING(256),
+    },
+
     vendorImage: {
       type: DataType.BLOB('long'),
     },

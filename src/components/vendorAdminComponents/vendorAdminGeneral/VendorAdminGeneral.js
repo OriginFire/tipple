@@ -12,6 +12,8 @@ const FIND_VENDOR = `
       slug
       dbaName
       physicalAddress
+      latitude
+      longitude
       physicalStreetAddress
       physicalCity
       physicalState
@@ -24,6 +26,9 @@ const FIND_VENDOR = `
       deliveryRadius
       onlineStore
       vendorImage
+      cocktails {
+        id
+      }
     }
   }
   `;

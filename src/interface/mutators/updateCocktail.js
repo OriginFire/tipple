@@ -47,7 +47,7 @@ const updateCocktail = {
         price: cocktailFormInput.price,
         servingSize: cocktailFormInput.servingSize,
         profile: cocktailFormInput.profile,
-        image: cocktailFormInput.image
+        image: cocktailFormInput.image,
       },
       {where: {id: cocktail.id}},
     );

@@ -21,6 +21,11 @@ function DynamicSetting(props) {
     }
   }
 
+  function UpdateSetting() {
+    setInputDisplayed(false);
+    props.settingSave();
+  }
+
   function Content() {
     if (inputDisplayed) {
       return (
@@ -33,12 +38,12 @@ function DynamicSetting(props) {
                 onChange={e => setFieldValue(e.target.value)}
               />
             </div>
-            <FontAwesomeIcon
-              icon={faEdit}
-              className={s.icon}
-              color="#7d7d7d"
-              onClick={e => setInputDisplayed(false)}
-            />
+            <div
+              className={s.save}
+              onClick={e => UpdateSetting()}
+            >
+              Save
+            </div>
           </div>
         </div>
       );

@@ -27,7 +27,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: 1,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Urbana.jpg',
     cocktails: [
@@ -149,7 +149,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: 1,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Golden.jpg',
     cocktails: [
@@ -249,7 +249,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: null,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../SL.jpeg',
     cocktails: [
@@ -348,7 +348,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: 1,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Columbia.jpg',
     cocktails: [
@@ -448,7 +448,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: 1,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../LevitationAspect.jpg',
     cocktails: [
@@ -548,7 +548,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: 1,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../SL.jpeg',
     cocktails: [
@@ -648,7 +648,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: 1,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../OldFashioned.png',
     cocktails: [

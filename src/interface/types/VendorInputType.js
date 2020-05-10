@@ -11,7 +11,9 @@ import {
 const VendorInputType = new ObjectType({
   name: 'VendorInput',
   fields: {
+    slug: { type: StringType },
     dbaName: { type: StringType },
+    JWT: { type: StringType },
     legalEntityName: { type: StringType },
     physicalAddress: { type: StringType },
     latitude: { type: FloatType },
