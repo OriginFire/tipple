@@ -47,7 +47,6 @@ function SearchResultsDisplay() {
   }
 
   function updateFilterSettings(newSettings) {
-    debugger;
     setFilterSettingsOpen(false);
     setFilterSettings(newSettings);
     console.log(filterSettings);

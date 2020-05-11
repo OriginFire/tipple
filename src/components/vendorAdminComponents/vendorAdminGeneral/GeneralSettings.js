@@ -3,7 +3,7 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import { useMutation } from 'graphql-hooks';
 import s from './GeneralSettings.scss';
 import DynamicSetting from '../dynamicSetting/DynamicSetting';
-import DynamicSettingAddress from "../dynamicSetting/DynamicSettingAddress";
+import DynamicSettingAddress from '../dynamicSetting/DynamicSettingAddress';
 import VendorDataAlert from '../vendorDataAlert/VendorDataAlert';
 import ApplicationContext from '../../ApplicationContext';
 
@@ -37,9 +37,10 @@ const UPDATE_VENDOR = `
 function GeneralSettings(props) {
   const { vendor } = props;
   const authenticationContext = useContext(ApplicationContext);
-  const [vendorSettings, setVendorSettings] = useState(vendor);
+  const [uploaded, setUploaded] = useState();
   const [slug, setSlug] = useState(vendor.slug);
   const [dbaName, setDbaName] = useState(vendor.dbaName);
+  const [vendorImage, setVendorImage] = useState(vendor.vendorImage);
   const [physicalAddress, setPhysicalAddress] = useState(
     vendor.physicalAddress,
   );
@@ -56,6 +57,15 @@ function GeneralSettings(props) {
     vendor.alcoholLicenseExpiration,
   );
   const [updateVendor] = useMutation(UPDATE_VENDOR);
+
+  const fs = require('fs');
+
+  function base64_encode(file) {
+    // read binary data
+    const bitmap = fs.readFileSync(file);
+    // convert binary data to base64 encoded string
+    return new Buffer(bitmap).toString('base64');
+  }
 
   async function settingSave() {
     const update = await updateVendor({
@@ -85,15 +95,32 @@ function GeneralSettings(props) {
     alcoholLicenseIssuingAgency,
   ]);
 
+  function DynamicSettingImage() {
+    if (vendorImage) {
+      return (
+        <img
+          src={`data:image/jpg;base64,${vendorImage}`}
+          alt={dbaName}
+          className={s.vendor_image}
+        />
+      );
+    }
+    return <div className={s.vendor_image} />;
+  }
+
+  function imageHandle(event) {
+    console.log(event.target.files[0]);
+    let image = URL.createObjectURL(event.target.files[0]);
+    image = base64_encode(image);
+    setVendorImage(image);
+  }
+
   return (
     <div className={s.settings_content}>
       <VendorDataAlert vendor={vendor} />
 
-      <img
-        src={`data:image/jpg;base64,${vendor.vendorImage}`}
-        alt={vendor.dbaName}
-        className={s.vendor_image}
-      />
+      <DynamicSettingImage />
+      <input type="file" onChange={imageHandle} />
 
       <DynamicSetting
         settingName="Business Name (D.B.A.)"

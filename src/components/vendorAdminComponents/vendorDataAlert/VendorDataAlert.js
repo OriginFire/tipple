@@ -11,6 +11,7 @@ function VendorDataAlert(props) {
     [vendor.alcoholLicenseIssuingAgency === '', "The alcohol agency that issued the vendor's license"],
     [vendor.alcoholLicenseExpiration === '', "The expiration date of the alcohol license"],
     [!vendor.doesDelivery && !vendor.doesPickup, "Delivery and/or pickup service settings"],
+    [vendor.doesDelivery && (vendor.deliveryRadius === 0), "The delivery radius (i.e. the distance from this venue that you will fill deliveries within)"],
     [vendor.onlineStore === '', "A link to the online store"],
     [vendor.cocktails.length === 0, "At least one cocktail"]
   ];
