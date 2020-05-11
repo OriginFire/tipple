@@ -3,6 +3,7 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import { useMutation } from 'graphql-hooks';
 import s from './GeneralSettings.scss';
 import DynamicSetting from '../dynamicSetting/DynamicSetting';
+import DynamicSettingAddress from "../dynamicSetting/DynamicSettingAddress";
 import VendorDataAlert from '../vendorDataAlert/VendorDataAlert';
 import ApplicationContext from '../../ApplicationContext';
 
@@ -56,8 +57,6 @@ function GeneralSettings(props) {
   );
   const [updateVendor] = useMutation(UPDATE_VENDOR);
 
-  console.log(`This is the ${dbaName}`);
-
   async function settingSave() {
     const update = await updateVendor({
       variables: {
@@ -72,22 +71,19 @@ function GeneralSettings(props) {
         alcoholLicenseNumber,
       },
     });
-    console.log(update, "It's just the power of love");
-    console.log(dbaName);
   }
 
-  function update(newValue) {
-    console.log(
-      dbaName,
-      'is the dbaName value at the start.',
-      `${newValue} is getting passed to setDbaName hook.`,
-    );
-    setDbaName(newValue);
-    console.log(
-      `${dbaName} is the dbaName value after ${newValue} was given to the setDbaName hook.`,
-    );
+  useEffect(() => {
     settingSave();
-  }
+  }, [
+    dbaName,
+    physicalAddress,
+    latitude,
+    longitude,
+    alcoholLicenseNumber,
+    alcoholLicenseExpiration,
+    alcoholLicenseIssuingAgency,
+  ]);
 
   return (
     <div className={s.settings_content}>
@@ -101,30 +97,46 @@ function GeneralSettings(props) {
 
       <DynamicSetting
         settingName="Business Name (D.B.A.)"
-        settingValue={vendor.dbaName}
+        settingValue={dbaName}
         settingSave={newValue => {
-          update(newValue);
+          setDbaName(newValue);
+        }}
+      />
+
+      <DynamicSettingAddress
+        settingName="Venue Address"
+        settingValue={physicalAddress}
+        latitude={latitude}
+        longitude={longitude}
+        settingSave={addressData => {
+          setPhysicalAddress(addressData[0]);
+          setLatitude(addressData[1]);
+          setLongitude(addressData[2]);
         }}
       />
 
       <DynamicSetting
-        settingName="Venue Address"
-        settingValue={vendor.physicalAddress}
-      />
-
-      <DynamicSetting
         settingName="Alcohol License #"
-        settingValue={vendor.alcoholLicenseNumber}
+        settingValue={alcoholLicenseNumber}
+        settingSave={newValue => {
+          setAlcoholLicenseNumber(newValue);
+        }}
       />
 
       <DynamicSetting
         settingName="Licensing Agency"
-        settingValue={vendor.alcoholLicenseIssuingAgency}
+        settingValue={alcoholLicenseIssuingAgency}
+        settingSave={newValue => {
+          setAlcoholLicenseIssuingAgency(newValue);
+        }}
       />
 
       <DynamicSetting
         settingName="Expiration Date"
-        settingValue={vendor.alcoholLicenseExpiration}
+        settingValue={alcoholLicenseExpiration}
+        settingSave={newValue => {
+          setAlcoholLicenseExpiration(newValue);
+        }}
       />
     </div>
   );
