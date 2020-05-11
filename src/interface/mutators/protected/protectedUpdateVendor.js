@@ -12,7 +12,8 @@ const protectedUpdateVendor = {
   async resolve(value, { vendor }) {
     const vendorInput = vendor;
     const JWT = jwt.verify(vendor.JWT, config.auth.jwt.secret);
-    console.log(JWT);
+    console.log('Hello');
+    console.log(vendor.deliveryRadius);
 
     if (JWT.vendorSlug !== vendor.slug) {
       return 'nope';
@@ -28,7 +29,9 @@ const protectedUpdateVendor = {
         alcoholLicenseIssuingAgency: vendorInput.alcoholLicenseIssuingAgency,
         alcoholLicenseExpiration: vendorInput.alcoholLicenseExpiration,
         doesDelivery: vendorInput.doesDelivery,
+        deliveryRadius: vendorInput.deliveryRadius,
         doesPickup: vendorInput.doesPickup,
+        onlineStore: vendorInput.onlineStore,
       },
       { where: { slug: vendor.slug } },
     );

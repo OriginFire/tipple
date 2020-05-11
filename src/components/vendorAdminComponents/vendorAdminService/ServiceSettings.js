@@ -1,28 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './ServiceSettings.scss';
 import DynamicSetting from '../dynamicSetting/DynamicSetting';
+import ApplicationContext from "../../ApplicationContext";
+import {useMutation} from "graphql-hooks";
 
 const UPDATE_SERVICE_SETTINGS = `
-  mutator UpdateSettings (
+  mutation UpdateSettings (
     $slug: String!,
     $JWT: String!,
     $doesDelivery: Boolean!,
     $deliveryRadius: Float!,
-    $doesPickup: Boolean!)
-  protectedUpdateVendor( settings: {
-    slug: $slug,
-    JWT: $JWT,
-    doesDelivery: $doesDelivery,
-    deliveryRadius: $deliveryRadius,
-    doesPickup: $doesPickup,
-  })
+    $doesPickup: Boolean!
+    $onlineStore: String!,
+    ) {
+    protectedUpdateVendor( vendor: {
+      slug: $slug,
+      JWT: $JWT,
+      doesDelivery: $doesDelivery,
+      deliveryRadius: $deliveryRadius,
+      doesPickup: $doesPickup,
+      onlineStore: $onlineStore,
+    }) {
+         id
+      }
+  }
 `;
 
 function ServiceSettings(props) {
   const { vendor } = props;
+  const [slug, setSlug] = useState(vendor.slug);
   const [doesDelivery, setDoesDelivery] = useState(vendor.doesDelivery);
+  const [deliveryRadius, setDeliveryRadius] = useState(vendor.deliveryRadius);
   const [doesPickup, setDoesPickup] = useState(vendor.doesPickup);
+  const [onlineStore, setOnlineStore] = useState(vendor.onlineStore);
+  const [updateVendor] = useMutation(UPDATE_SERVICE_SETTINGS);
+  const authenticationContext = useContext(ApplicationContext);
   let miles;
 
   if (vendor.deliveryRadius === 1) {
@@ -31,7 +44,23 @@ function ServiceSettings(props) {
     miles = 'miles';
   }
 
-  function UpdateSettings() {}
+  async function settingSave() {
+    const update = await updateVendor({
+      variables: {
+        slug,
+        JWT: authenticationContext.context.JWT,
+        doesDelivery,
+        deliveryRadius,
+        doesPickup,
+        onlineStore,
+      },
+    });
+    console.log(onlineStore);
+  }
+
+  useEffect(() => {
+    settingSave();
+  }, [doesDelivery, deliveryRadius, doesPickup, onlineStore]);
 
   function DeliverySettings() {
     if (doesDelivery) {
@@ -39,8 +68,9 @@ function ServiceSettings(props) {
         <div>
           <DynamicSetting
             settingName="Delivery Radius"
-            settingValue={vendor.deliveryRadius}
-            specialDisplay={`${vendor.deliveryRadius} ${miles}`}
+            settingValue={deliveryRadius}
+            specialDisplay={`${deliveryRadius} ${miles}`}
+            settingSave={newValue => setDeliveryRadius(parseFloat(newValue))}
           />
         </div>
       );
@@ -59,7 +89,7 @@ function ServiceSettings(props) {
             <span className={s.slider} />;
           </label>
         </div>
-      )
+      );
     }
   }
 
@@ -70,6 +100,7 @@ function ServiceSettings(props) {
         <label className={s.switch}>
           <input
             type="checkbox"
+            checked={doesDelivery}
             onChange={e => setDoesDelivery(!doesDelivery)}
           />
           <span className={s.slider} />;
@@ -83,7 +114,10 @@ function ServiceSettings(props) {
           Can customers pick up orders themselves?
         </div>
         <label className={s.switch}>
-          <input type="checkbox" onChange={e => setDoesPickup(!doesPickup)} />
+          <input
+            type="checkbox"
+            checked={doesPickup}
+            onChange={e => setDoesPickup(!doesPickup)} />
           <span className={s.slider} />;
         </label>
       </div>
@@ -92,7 +126,8 @@ function ServiceSettings(props) {
 
       <DynamicSetting
         settingName="Online Store"
-        settingValue={vendor.onlineStore}
+        settingValue={onlineStore}
+        settingSave={newValue => setOnlineStore(newValue)}
       />
     </div>
   );

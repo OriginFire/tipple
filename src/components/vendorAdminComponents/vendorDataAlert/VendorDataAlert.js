@@ -4,7 +4,6 @@ import s from './VendorDataAlert.scss';
 
 function VendorDataAlert(props) {
   const { vendor } = props;
-  const [completion, setCompletion] = useState(false);
   const conditionalAlerts = [
     [vendor.image === '', 'A vendor image'],
     [vendor.dbaName === '', 'The vendor business name'],
@@ -15,6 +14,7 @@ function VendorDataAlert(props) {
     [vendor.onlineStore === '', "A link to the online store"],
     [vendor.cocktails.length === 0, "At least one cocktail"]
   ];
+  const [completion, setCompletion] = useState(conditionalAlerts.every(v => v[0] === false));
 
   function ActiveAlerts() {
     if (!completion) {
