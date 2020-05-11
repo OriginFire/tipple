@@ -96,6 +96,7 @@ function GeneralSettings(props) {
   ]);
 
   function DynamicSettingImage() {
+    console.log(vendorImage);
     if (vendorImage) {
       return (
         <img
@@ -111,7 +112,7 @@ function GeneralSettings(props) {
   function imageHandle(event) {
     console.log(event.target.files[0]);
     let image = URL.createObjectURL(event.target.files[0]);
-    image = base64_encode(image);
+    image = btoa(image);
     setVendorImage(image);
   }
 
