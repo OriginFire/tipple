@@ -17,6 +17,7 @@ const CocktailInputType = new ObjectType({
     profile: { type: StringType },
     description: { type: StringType },
     image: { type: StringType },
+    vendorID: { type: StringType },
   },
 });
 

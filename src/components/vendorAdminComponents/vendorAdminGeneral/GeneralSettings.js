@@ -113,7 +113,7 @@ function GeneralSettings(props) {
     console.log(event.target.files[0]);
     let image = URL.createObjectURL(event.target.files[0]);
     image = btoa(image);
-    setVendorImage(image);
+    setVendorImage(image.toString());
   }
 
   return (

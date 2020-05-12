@@ -1,15 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import {useMutation, useQuery} from 'graphql-hooks';
 import s from './VendorAdminCocktails.scss';
 import Button from '../../sitewideDisplayComponents/Button';
-import VendorCocktailSettings from './VendorCocktailSettings';
+import CocktailSettingList from './CocktailSettingList';
 import ApplicationContext from "../../ApplicationContext";
 import VendorConsole from "../vendorAdminConsole/VendorAdminConsole";
 
 const FIND_VENDOR = `
   query FindVendor($slug: String!, $JWT: String!) {
     protectedFindVendor(vendor: { slug: $slug, JWT: $JWT }) {
+      id
       dbaName
       slug
       cocktails {
@@ -19,6 +20,7 @@ const FIND_VENDOR = `
         price
         servingSize
         profile
+        description
         image
       }
     }
@@ -28,6 +30,7 @@ const FIND_VENDOR = `
 const NEW_COCKTAIL = `
   mutation NewCocktail(
     $vendorSlug: String!,
+    $vendorID: String!,
     $name: String!,
     $ingredients: String!,
     $price: Float!,
@@ -36,6 +39,7 @@ const NEW_COCKTAIL = `
   ) {
     newCocktail(cocktail: {
       vendorSlug: $vendorSlug,
+      vendorID: $vendorID,
       name: $name,
       ingredients: $ingredients,
       price: $price
@@ -66,7 +70,11 @@ function VendorAdminCocktails(props) {
     vendor = data.protectedFindVendor;
   }
 
+  console.log(vendor.id);
+  console.log(vendor.cocktails[0]);
+
   const vendorSlug = props.slug;
+  const vendorID = vendor.id;
   const name = 'Tipple';
   const ingredients = 'The good stuff';
   const price = 3.5;
@@ -75,7 +83,7 @@ function VendorAdminCocktails(props) {
 
   async function cocktailAdd() {
     const results = await addCocktail( {
-      variables: {vendorSlug, name, ingredients, price, servingSize, profile}
+      variables: {vendorSlug, vendorID, name, ingredients, price, servingSize, profile}
     });
     console.log(results);
   };
@@ -86,7 +94,7 @@ function VendorAdminCocktails(props) {
         <div className={s.vendor_admin_display}>
           <VendorConsole vendor={vendor} active={'cocktail'} />
           <div className={s.vendor_setting_content}>
-            <VendorCocktailSettings vendor={vendor} />
+            <CocktailSettingList vendor={vendor} />
           </div>
           <div className={s.buttons}>
             <Button

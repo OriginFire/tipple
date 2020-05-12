@@ -1,9 +1,9 @@
 import React, { set } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './VendorCocktailSettings.scss';
-import SingleVendorCocktail from "./SingleVendorCocktail";
+import SingleVendorCocktail from "./Cocktail";
 
-class VendorCocktailSettings extends React.Component {
+class CocktailSettingList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,6 +33,7 @@ class VendorCocktailSettings extends React.Component {
           return (
             <SingleVendorCocktail
               key={index}
+              vendor={vendor}
               cocktail={cocktail}
               activeId={this.state.activeCocktailId}
               updateActiveCocktailId={this.updateActiveCocktailId}
@@ -46,4 +47,4 @@ class VendorCocktailSettings extends React.Component {
   }
 }
 
-export default withStyles(s)(VendorCocktailSettings);
+export default withStyles(s)(CocktailSettingList);

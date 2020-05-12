@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, {useState, useContext} from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import s from './CocktailListItem.scss';
-import history from '../../../history';
+import s from './VendorCocktailSettings.scss';
+import CocktailInput from "./CocktailInput";
+import history from "../../../history";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faChevronDown, faChevronUp} from "@fortawesome/free-solid-svg-icons";
+import ApplicationContext from "../../ApplicationContext";
 
-function CocktailListItem(props) {
+function Cocktail(props) {
+  const authenticationContext = useContext(ApplicationContext);
+
   const { vendor } = props;
   const { cocktail } = props;
-  const { index } = props;
+  const { key } = props;
   const [isOpen, setIsOpen] = useState(false);
   let availability;
+  console.log(cocktail.description);
+  console.log(authenticationContext.context.JWT);
 
   if (vendor.doesDelivery && vendor.doesPickup) {
     availability = 'Delivery or Pickup';
@@ -25,9 +31,8 @@ function CocktailListItem(props) {
       return (
         <div className={s.active}>
           <div
-            index={index}
+            key={key}
             className={s.list_item_open}
-            // onClick={e => history.push(`/vendor/${vendor.slug}`)}
           >
             <div>
               <img
@@ -64,9 +69,8 @@ function CocktailListItem(props) {
     return (
       <div className={s.inactive}>
         <div
-          index={index}
+          key={key}
           className={s.list_item}
-          // onClick={e => history.push(`/vendor/${vendor.slug}`)}
         >
           <div>
             <img
@@ -99,4 +103,5 @@ function CocktailListItem(props) {
   return <div className={s.no_crash}>{DisplayContent()}</div>;
 }
 
-export default withStyles(s)(CocktailListItem);
+export default withStyles(s)(Cocktail);
+//

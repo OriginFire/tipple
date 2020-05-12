@@ -8,47 +8,6 @@
   box-shadow: #252225 0 0 4px 1px;
 }
 
-.vendor_name {
-  text-align: center;
-  font-family: "Plantin Bold";
-}
-
-.result_explainer {
-  font-family: "Lato Regular";
-  text-align: center;
-  color: #505050;
-  width: 90%;
-  x-index: 10;
-  margin: auto;
-}
-
-.display_selectors {
-  display: flex;
-  font-family: "Lato Regular";
-}
-
-.active, .inactive {
-  border: solid #434343 1px;
-  border-radius: 4px;
-  padding: 20px 15px;
-  width: 170px;
-  text-align: center;
-  transition: 0.25s;
-}
-
-.active {
-  background-color: #251e1f;
-}
-
-.inactive {
-  cursor: pointer;
-}
-
-.inactive:hover {
-  background-color: #616161;
-  color: white;
-}
-
 .vendor_setting_content {
   position: absolute;
   margin: 0 0 0 0;
@@ -83,31 +42,9 @@
   }
 
   .vendor_setting_content {
-    top: 150px;
+    top: 160px;
     bottom: 65px;
     font-size: 0.6em;
-  }
-
-  .vendor_name {
-    font-size: 30px;
-    margin: 10px 0 8px 0;
-  }
-
-  .result_explainer {
-    font-size: 12px;
-  }
-
-  .display_selectors {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    margin: 3vh 0 0 0;
-    font-size: 12px;
-  }
-
-  .active, .inactive {
-    padding: 12px 8px;
-    width: 100px;
   }
 
   .buttons {
@@ -136,36 +73,6 @@
     margin: 0;
     padding: 0;
     opacity: 0.95;
-  }
-
-  .context_control {
-    position: absolute;
-    width: 100px;
-    top: 0;
-    left: 20px;
-  }
-
-  .vendor_name {
-    display: none;
-  }
-
-  .result_explainer {
-    display: none;
-  }
-
-  .display_selectors {
-    flex-direction: column;
-    font-size: 12px;
-    align-items: space-around;
-    justify-content: space-between;
-    margin: 15px 0;
-    height: 25vh;
-  }
-
-  .active, .inactive {
-    padding: 12px 8px;
-    margin: 0 10px;
-    width: 100px;
   }
 
   .vendor_setting_content {
@@ -215,44 +122,6 @@
     opacity: 0.95;
   }
 
-  .context_control {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: inherit;
-  }
-
-  .vendor_name {
-    display: block;
-    font-size: 40px;
-    margin: 10px 0 8px 0;
-  }
-
-  .result_explainer {
-    position: relative;
-    display: block;
-    margin: auto;
-    padding: 0;
-    font-size: 14px;
-    font-family: "Lato Light", sans-serif;
-    color: #777777;
-  }
-
-  .display_selectors {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    margin: 4% 0 0 0;
-    height: inherit;
-    font-size: 12px;
-  }
-
-  .active, .inactive {
-    padding: 14px 12px;
-    margin: 0 10px;
-    width: 120px;
-  }
-
   .vendor_setting_content {
     top: 170px;
     bottom: 65px;
@@ -299,27 +168,6 @@
     margin: 0;
     padding: 0;
     opacity: 0.95;
-  }
-
-  .display_selectors {
-    font-size: 14px;
-    justify-content: space-evenly;
-    margin: 30px 0 0 0;
-  }
-
-  .active, .inactive {
-    padding: 18px 20px;
-    margin: 0 10px;
-    width: 120px;
-  }
-
-  .result_explainer {
-    position: relative;
-    margin: 0 0 0 0;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    font-size: .94em;
-    color: #777777;
   }
 
   .buttons {

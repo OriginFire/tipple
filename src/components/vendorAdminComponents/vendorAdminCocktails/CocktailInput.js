@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './VendorCocktailSettings.scss';
+import DynamicSetting from "../dynamicSetting/DynamicSetting";
 import FormField from '../../sitewideDisplayComponents/formField';
 import Button from "../../sitewideDisplayComponents/Button";
 import {useMutation} from "graphql-hooks";
+import DynamicSettingLong from "../dynamicSetting/DynamicSettingLong";
+import ApplicationContext from "../../ApplicationContext";
 
 const UPDATE_COCKTAIL = `
   mutation UpdateCocktail(
@@ -53,6 +56,15 @@ function CocktailInput(props) {
     }
   }
 
+  function deleteCocktail() {
+    console.log("Delete cocktail fired");
+    if (confirm("Are you sure you want to delete this cocktail?")) {
+      console.log('Yes')
+    } else {
+      console.log('No')
+    }
+  }
+
   async function submitUpdate() {
     const update = await updateCocktail({
       variables: {id, name, ingredients, price, servingSize, profile, image}
@@ -68,11 +80,9 @@ function CocktailInput(props) {
         <div className={s.upload_image_filename}>Test</div>
         <div></div>
       </div>
-      <FormField
-        placeholder="Cocktail Name"
-        onChange={e => setName(e.target.value) }
-        type="text"
-        value={name}
+      <DynamicSetting
+        settingName={name}
+        settingValue={name}
       />
       <FormField
         placeholder="Ingredients"
@@ -80,8 +90,12 @@ function CocktailInput(props) {
         type="text"
         value={ingredients}
       />
+      <DynamicSettingLong
+        settingName="Cocktail Name"
+        settingValue={name}
+      />
       <Button type="Secondary" text="Save Changes" onClick={e => submitUpdate()}/>
-      <Button type="Primary" text="Delete Cocktail"/>
+      <Button type="Primary" text="Delete Cocktail" onClick={e=> deleteCocktail()}/>
     </div>
   );
 }
