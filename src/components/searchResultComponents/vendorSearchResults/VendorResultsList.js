@@ -6,8 +6,8 @@ import ApplicationContext from '../../ApplicationContext';
 import VendorListItem from './VendorListItem';
 
 const SEARCH_VENDORS = `
-  query SearchVendors($userLatitude: Float!, $userLongitude: Float!) {
-    searchVendors(parameters: {userLatitude: $userLatitude, userLongitude: $userLongitude}) {
+  query SearchVendors($userLatitude: Float!, $userLongitude: Float!, $doesDelivery: Boolean!) {
+    searchVendors(parameters: {userLatitude: $userLatitude, userLongitude: $userLongitude, doesDelivery: $doesDelivery}) {
       slug
       dbaName
       physicalStreetAddress
@@ -34,8 +34,13 @@ function VendorResultsList(props) {
   const [userLongitude, setUserLongitude] = useState(
     customerLocation.context.userLongitude,
   );
+  const [filterSettings, setFilterSettings] = useState(props.filterSettings)
   const { loading, error, data } = useQuery(SEARCH_VENDORS, {
-    variables: { userLatitude, userLongitude },
+    variables: {
+      userLatitude,
+      userLongitude,
+      doesDelivery: filterSettings.doesDelivery,
+    },
   });
   let searchResults;
 
@@ -47,7 +52,7 @@ function VendorResultsList(props) {
     let miles;
     let vendorsText;
 
-    props.filterSettings.pickupRadius === 1
+    filterSettings.pickupRadius === 1
       ? (miles = 'mile')
       : (miles = 'miles');
 

@@ -1,6 +1,7 @@
 import {
-GraphQLInputObjectType as ObjectType,
-GraphQLFloat as FloatType,
+  GraphQLInputObjectType as ObjectType,
+  GraphQLFloat as FloatType,
+  GraphQLBoolean as BooleanType,
 } from 'graphql';
 
 const SearchVendorInputType = new ObjectType({
@@ -8,6 +9,8 @@ const SearchVendorInputType = new ObjectType({
   fields: {
     userLatitude: { type: FloatType },
     userLongitude: { type: FloatType },
+    doesDelivery: { type: BooleanType },
+    doesPickup: { type: BooleanType },
   },
 });
 

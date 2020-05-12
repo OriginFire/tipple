@@ -18,8 +18,14 @@ const searchVendors = {
   args: {
     parameters: { type: SearchVendorInputType },
   },
-  async resolve(value, {vendor}) {
+  async resolve(value, { parameters }) {
+
+
     let vendors = await Vendor.findAll({
+      where: {
+        doesDelivery:
+
+      },
       include: [{ model: Cocktail, as: 'cocktails' }],
       // where: [ logic checking customer lat/lng versus vendor lat/lng + delivery radius
     });
