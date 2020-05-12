@@ -100,7 +100,7 @@ function GeneralSettings(props) {
     if (vendorImage) {
       return (
         <img
-          src={`data:image/jpg;base64,${vendorImage}`}
+          src={vendorImage}
           alt={dbaName}
           className={s.vendor_image}
         />
@@ -109,11 +109,25 @@ function GeneralSettings(props) {
     return <div className={s.vendor_image} />;
   }
 
-  function imageHandle(event) {
-    console.log(event.target.files[0]);
-    let image = URL.createObjectURL(event.target.files[0]);
-    image = btoa(image);
-    setVendorImage(image.toString());
+  // function imageHandle(event) {
+  //   console.log(event.target.files[0]);
+  //   let image = URL.createObjectURL(event.target.files[0]);
+  //   image = btoa(image);
+  //   setVendorImage(image.toString());
+  // }
+
+  function loadfile(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+      // convert image file to base64 string
+      setVendorImage( reader.result);
+    }, false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   }
 
   return (
@@ -121,7 +135,7 @@ function GeneralSettings(props) {
       <VendorDataAlert vendor={vendor} />
 
       <DynamicSettingImage />
-      <input type="file" onChange={imageHandle} />
+      <input type="file" onChange={loadfile} />
 
       <DynamicSetting
         settingName="Business Name (D.B.A.)"
