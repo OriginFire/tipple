@@ -12,6 +12,7 @@ import VendorType from '../types/VendorType';
 import Vendor from '../../data/models/Vendor';
 import Cocktail from '../../data/models/Cocktail';
 import SearchVendorInputType from '../types/SearchVendorInputType';
+import { Op } from 'sequelize';
 
 const searchVendors = {
   type: List(VendorType),
@@ -20,14 +21,25 @@ const searchVendors = {
   },
   async resolve(value, { parameters }) {
 
+    const latToMiles = 69.0;
+    const defaultDeliveryRadius = 1;
+    const deliveryRadius = parameters.deliveryRadius || defaultDeliveryRadius;
+
+    let minLat = parameters.userLatitude - deliveryRadius/latToMiles;
+    let maxLat = parameters.userLatitude + deliveryRadius/latToMiles;
+    let minLong = parameters.userLongitude - deliveryRadius/latToMiles;
+    let maxLong = parameters.userLongitude + deliveryRadius/latToMiles;
 
     let vendors = await Vendor.findAll({
       where: {
-        doesDelivery:
-
+        latitude: {
+          [Op.between]: [minLat, maxLat]
+        },
+        longitude: {
+          [Op.between]: [minLong, maxLong]
+        },
       },
       include: [{ model: Cocktail, as: 'cocktails' }],
-      // where: [ logic checking customer lat/lng versus vendor lat/lng + delivery radius
     });
 
     vendors.forEach(v => {

@@ -16,8 +16,8 @@ export default [
     physicalCity: 'Washington, DC',
     physicalState: 'District of Columbia',
     physicalZipCode: '20009',
-    latitude: 38,
-    longitude: 66,
+    latitude: 38.917351,
+    longitude: -77.031639,
 
     alcoholLicenseNumber:
       '555555-555555' /** Format restrictions based on issuing agency */,
@@ -187,8 +187,8 @@ export default [
     physicalCity: 'Washington, DC',
     physicalState: 'District of Columbia',
     physicalZipCode: '20009',
-    latitude: 38,
-    longitude: 66,
+    latitude: 38.909850,
+    longitude: -77.047420,
 
     alcoholLicenseNumber:
       '555555-555555' /** Format restrictions based on issuing agency */,
@@ -356,8 +356,8 @@ export default [
     physicalCity: 'Washington, DC',
     physicalState: 'District of Columbia',
     physicalZipCode: '20009',
-    latitude: 38,
-    longitude: 66,
+    latitude: 38.923580,
+    longitude: -77.042190,
 
     alcoholLicenseNumber:
       '555555-555555' /** Format restrictions based on issuing agency */,
@@ -524,8 +524,8 @@ export default [
     physicalCity: 'Washington, DC',
     physicalState: 'District of Columbia',
     physicalZipCode: '20009',
-    latitude: 38,
-    longitude: 66,
+    latitude: 38.906441,
+    longitude: -77.024658,
 
     alcoholLicenseNumber:
       '555555-555555' /** Format restrictions based on issuing agency */,
@@ -693,8 +693,8 @@ export default [
     physicalCity: 'Washington, DC',
     physicalState: 'District of Columbia',
     physicalZipCode: '20009',
-    latitude: 38,
-    longitude: 66,
+    latitude: 38.903629,
+    longitude: -77.060959,
 
     alcoholLicenseNumber:
       '555555-555555' /** Format restrictions based on issuing agency */,
@@ -862,8 +862,8 @@ export default [
     physicalCity: 'Washington, DC',
     physicalState: 'District of Columbia',
     physicalZipCode: '20009',
-    latitude: 38,
-    longitude: 66,
+    latitude: 38.897138,
+    longitude: -77.024348,
 
     alcoholLicenseNumber:
       '555555-555555' /** Format restrictions based on issuing agency */,
@@ -1031,8 +1031,8 @@ export default [
     physicalCity: 'Washington, DC',
     physicalState: 'District of Columbia',
     physicalZipCode: '20009',
-    latitude: 38,
-    longitude: 66,
+    latitude: 38.930287,
+    longitude: -77.028104,
 
     alcoholLicenseNumber:
       '555555-555555' /** Format restrictions based on issuing agency */,
