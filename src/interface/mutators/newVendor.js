@@ -35,12 +35,22 @@ function stringToSlug(str) {
   return str;
 }
 
+function isVendorValid(vendor) {
+  var valid = RegExp('([0-9]{3})-[0-9]{3}-[0-9]{4}').test(vendor.adminPhone);
+
+  return valid;
+}
+
 const newVendor = {
   type: VendorType,
   args: {
     vendor: { type: VendorInputType },
   },
   resolve(value, { vendor }) {
+    if (!isVendorValid()) {
+      return 'You have died.';
+    }
+
     const vendorFormInput = vendor; // unsure why vendor needs to be exact name?
     const slug = stringToSlug(vendorFormInput.dbaName);
 
