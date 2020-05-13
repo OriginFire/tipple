@@ -121,11 +121,11 @@ function GeneralSettings(props) {
     const reader = new FileReader();
 
     reader.addEventListener("load", function () {
-      // convert image file to base64 string
       setVendorImage( reader.result);
     }, false);
 
     if (file) {
+      //read image file to base64 string
       reader.readAsDataURL(file);
     }
   }

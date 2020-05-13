@@ -1,6 +1,8 @@
 import CocktailInputType from '../types/CocktailInputType';
 import Cocktail from '../../data/models/Cocktail';
 import CocktailType from '../types/CocktailType';
+import jwt from "jsonwebtoken";
+import config from "../../config";
 
 const fs = require('fs');
 
@@ -37,6 +39,8 @@ const updateCocktail = {
   },
   async resolve(value, {cocktail}) {
     //check JWT valid
+    const JWT = jwt.verify(cocktail.JWT, config.auth.jwt.secret);
+
     //check auth to make sure you're allowed to update
     const cocktailFormInput = cocktail; // unsure why vendor needs to be exact name?
     Cocktail.update(

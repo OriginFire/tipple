@@ -7,9 +7,7 @@ import {
 const CocktailInputType = new ObjectType({
   name: 'CocktailInput',
   fields: {
-    id: { type: StringType },
-    slug: { type: StringType },
-    vendorSlug: { type: StringType },
+    JWT: {type: StringType },
     name: { type: StringType },
     ingredients: { type: StringType },
     price: { type: FloatType },
@@ -17,7 +15,6 @@ const CocktailInputType = new ObjectType({
     profile: { type: StringType },
     description: { type: StringType },
     image: { type: StringType },
-    vendorID: { type: StringType },
   },
 });
 

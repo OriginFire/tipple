@@ -37,8 +37,9 @@ function VendorLogin() {
     }).then(data => {
       authenticationContext.context.JWT = data.data.vendorLogin.JWT;
       // place JWT and vendorSlug in a cookie
-      console.log(data);
       const decoded = jwt.decode(data.data.vendorLogin.JWT);
+      console.log("Got JWT");
+      console.log(decoded);
       history.push(`/vendor-admin/${decoded.vendorSlug}`);
     });
   };

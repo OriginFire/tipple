@@ -28,6 +28,7 @@ const vendorLogin = {
     console.log(foundVendor);
 
     const payload = {
+      vendorId: foundVendor.id,
       vendorSlug: foundVendor.slug,
       userEmail: foundUser.email,
     };

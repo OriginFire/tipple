@@ -29,8 +29,7 @@ const FIND_VENDOR = `
 
 const NEW_COCKTAIL = `
   mutation NewCocktail(
-    $vendorSlug: String!,
-    $vendorID: String!,
+    $JWT: String!,
     $name: String!,
     $ingredients: String!,
     $price: Float!,
@@ -38,8 +37,7 @@ const NEW_COCKTAIL = `
     $profile: String!,
   ) {
     newCocktail(cocktail: {
-      vendorSlug: $vendorSlug,
-      vendorID: $vendorID,
+      JWT: $JWT,
       name: $name,
       ingredients: $ingredients,
       price: $price
@@ -83,7 +81,7 @@ function VendorAdminCocktails(props) {
 
   async function cocktailAdd() {
     const results = await addCocktail( {
-      variables: {vendorSlug, vendorID, name, ingredients, price, servingSize, profile}
+      variables: {JWT: authenticationContext.context.JWT, name, ingredients, price, servingSize, profile}
     });
     console.log(results);
   };
