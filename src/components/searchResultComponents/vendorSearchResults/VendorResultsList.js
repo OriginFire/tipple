@@ -7,7 +7,7 @@ import VendorListItem from './VendorListItem';
 
 const SEARCH_VENDORS = `
   query SearchVendors($userLatitude: Float!, $userLongitude: Float!) {
-    searchVendors(latLng: {userLatitude: $userLatitude, userLongitude: $userLongitude}) {
+    searchVendors(parameters: {userLatitude: $userLatitude, userLongitude: $userLongitude}) {
       slug
       dbaName
       physicalStreetAddress

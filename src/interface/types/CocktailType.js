@@ -9,6 +9,7 @@ import {
 const CocktailType = new ObjectType({
   name: 'Cocktail',
   fields: {
+    JWT: { type: StringType },
     id: { type: new NonNull(ID) },
     slug: { type: StringType },
     name: { type: StringType },

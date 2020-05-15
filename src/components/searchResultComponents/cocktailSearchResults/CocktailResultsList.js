@@ -7,7 +7,7 @@ import ApplicationContext from '../../ApplicationContext';
 
 const SEARCH_COCKTAILS = `
   query SearchCocktails($userLongitude: Float, $userLatitude: Float) {
-    searchVendors(latLng: {userLongitude: $userLongitude, userLatitude: $userLatitude}) {
+    searchVendors(parameters: {userLongitude: $userLongitude, userLatitude: $userLatitude}) {
       slug
       dbaName
       doesDelivery

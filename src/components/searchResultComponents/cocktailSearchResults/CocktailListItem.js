@@ -32,7 +32,7 @@ function CocktailListItem(props) {
             <div>
               <img
                 className={s.cocktail_image}
-                src={`data:image/jpg;base64,${cocktail.image}`}
+                src={cocktail.image}
                 alt={`${cocktail.name} Image`}
               />
               <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>
@@ -71,7 +71,7 @@ function CocktailListItem(props) {
           <div>
             <img
               className={s.cocktail_image}
-              src={`data:image/jpg;base64,${cocktail.image}`}
+              src={cocktail.image}
               alt={`${cocktail.name} Image`}
             />
             <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>

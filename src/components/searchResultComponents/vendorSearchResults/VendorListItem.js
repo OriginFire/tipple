@@ -43,7 +43,7 @@ function VendorListItem(props) {
         <div className={s.bar_name}>{vendor.dbaName}</div>
         <img
           className={s.bar_image}
-          src={`data:image/jpg;base64,${vendor.vendorImage}`}
+          src={vendor.vendorImage}
         />
         <div className={s.address}>
           {`${vendor.physicalStreetAddress}, ${vendor.physicalCity}`}

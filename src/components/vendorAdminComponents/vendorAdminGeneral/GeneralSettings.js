@@ -58,14 +58,7 @@ function GeneralSettings(props) {
   );
   const [updateVendor] = useMutation(UPDATE_VENDOR);
 
-  const fs = require('fs');
-
-  function base64_encode(file) {
-    // read binary data
-    const bitmap = fs.readFileSync(file);
-    // convert binary data to base64 encoded string
-    return new Buffer(bitmap).toString('base64');
-  }
+  console.log(latitude, longitude, physicalAddress);
 
   async function settingSave() {
     const update = await updateVendor({
@@ -96,7 +89,6 @@ function GeneralSettings(props) {
   ]);
 
   function DynamicSettingImage() {
-    console.log(vendorImage);
     if (vendorImage) {
       return (
         <img
@@ -108,13 +100,6 @@ function GeneralSettings(props) {
     }
     return <div className={s.vendor_image} />;
   }
-
-  // function imageHandle(event) {
-  //   console.log(event.target.files[0]);
-  //   let image = URL.createObjectURL(event.target.files[0]);
-  //   image = btoa(image);
-  //   setVendorImage(image.toString());
-  // }
 
   function loadfile(event) {
     const file = event.target.files[0];

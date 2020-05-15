@@ -15,13 +15,6 @@
   overflow: scroll;
 }
 
-.buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  text-align: center;
-}
-
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .container {
     position: absolute;
@@ -43,15 +36,8 @@
 
   .vendor_setting_content {
     top: 160px;
-    bottom: 65px;
+    bottom: 0;
     font-size: 0.6em;
-  }
-
-  .buttons {
-    position: absolute;
-    margin: 0;
-    bottom: 2vh;
-    width: 100%;
   }
 }
 
