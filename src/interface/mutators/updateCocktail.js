@@ -33,7 +33,7 @@ const updateCocktail = {
         profile: cocktailFormInput.profile,
         image: cocktailFormInput.image,
       },
-      {where: {id: cocktail.id}},
+      {where: {slug: cocktail.slug}},
     );
   },
 };

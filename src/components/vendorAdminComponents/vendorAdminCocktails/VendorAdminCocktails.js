@@ -14,6 +14,7 @@ const FIND_VENDOR = `
       slug
       cocktails {
         id
+        slug
         name
         ingredients
         price

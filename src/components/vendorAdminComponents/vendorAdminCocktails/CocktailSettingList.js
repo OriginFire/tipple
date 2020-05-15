@@ -25,6 +25,7 @@ const NEW_COCKTAIL = `
       servingSize: $servingSize,
       profile: $profile,
     }) {
+      slug
       name
       ingredients
       description

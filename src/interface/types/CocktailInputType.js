@@ -8,6 +8,7 @@ const CocktailInputType = new ObjectType({
   name: 'CocktailInput',
   fields: {
     JWT: {type: StringType },
+    slug: {type: StringType },
     name: { type: StringType },
     ingredients: { type: StringType },
     price: { type: FloatType },

@@ -1,15 +1,21 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
+import { useMutation } from 'graphql-hooks';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCocktail,
+  faGlassWhiskey,
+  faWineBottle,
+  faWineGlass,
+} from '@fortawesome/free-solid-svg-icons';
 import s from './CocktailUpdate.scss';
-import DynamicSetting from "../dynamicSetting/DynamicSetting";
-import {useMutation} from "graphql-hooks";
-import ApplicationContext from "../../ApplicationContext";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCocktail, faGlassWhiskey, faWineBottle, faWineGlass} from "@fortawesome/free-solid-svg-icons";
+import DynamicSetting from '../dynamicSetting/DynamicSetting';
+import ApplicationContext from '../../ApplicationContext';
 
 const UPDATE_COCKTAIL = `
   mutation UpdateCocktail(
-    $id: String!,
+    $JWT: String!,
+    $slug: String!,
     $name: String!,
     $ingredients: String,
     $price: Float,
@@ -18,7 +24,8 @@ const UPDATE_COCKTAIL = `
     $image: String,
   ) {
     updateCocktail( cocktail: {
-        id: $id,
+        JWT: $JWT,
+        slug: $slug,
         name: $name,
         ingredients: $ingredients,
         price: $price,
@@ -32,60 +39,90 @@ const UPDATE_COCKTAIL = `
   }
 `;
 
+const DELETE_COCKTAIL = `
+  query DeleteCocktail($JWT: String!, $id: String!) {
+    protectedDeleteCocktail( cocktail: {
+        JWT: $JWT,
+        id: $id
+      }
+    )
+  }
+`;
+
 function CocktailUpdate(props) {
   const authenticationContext = useContext(ApplicationContext);
   const { cocktail } = props;
+
+  const { id } = cocktail;
+  const { slug } = cocktail;
   const [cocktailName, setCocktailName] = useState(cocktail.name);
   const [cocktailImage, setCocktailImage] = useState(cocktail.image);
-  const [cocktailIngredients, setCocktailIngredients] = useState(cocktail.ingredients);
+  const [cocktailIngredients, setCocktailIngredients] = useState(
+    cocktail.ingredients,
+  );
   const [cocktailPrice, setCocktailPrice] = useState(cocktail.price);
-  const [cocktailSize, setCocktailSize] = useState(cocktail.servingSize);
+  const [cocktailServingSize, setCocktailServingSize] = useState(
+    cocktail.servingSize,
+  );
   const [cocktailProfile, setCocktailProfile] = useState(cocktail.profile);
-  const [cocktailDescription, setCocktailDescription] = useState(cocktail.description);
+  const [cocktailDescription, setCocktailDescription] = useState(
+    cocktail.description,
+  );
   const { key } = props;
   const [updateCocktail] = useMutation(UPDATE_COCKTAIL);
-  const id = props.cocktail.id;
-
-  let active = props.activeId === props.cocktail.id;
-
-  function toggleActive() {
-    if (active) {
-      props.updateActiveCocktailId(null);
-    } else {
-      props.updateActiveCocktailId(props.cocktail.id);
-    }
-  }
-
-  function deleteCocktail() {
-    console.log("Delete cocktail fired");
-    if (confirm("Are you sure you want to delete this cocktail?")) {
-      console.log('Yes')
-    } else {
-      console.log('No')
-    }
-  }
 
   async function submitUpdate() {
     const update = await updateCocktail({
-      variables: {id, cocktailName, cocktailIngredients, cocktailPrice, cocktailServingSize, cocktailProfile, cocktailImage}
+      variables: {
+        JWT: authenticationContext.context.JWT,
+        slug,
+        name: cocktailName,
+        ingredients: cocktailIngredients,
+        price: cocktailPrice,
+        cocktailServingSize,
+        profile: cocktailProfile,
+        image: cocktailImage,
+      },
     });
-    console.log(`Updating cocktail ${props.cocktail.id} with ${name}, ${ingredients}`);
+    console.log(
+      `Updating cocktail ${props.cocktail.id} with ${cocktailName}, ${cocktailIngredients}`,
+    );
     console.log(update);
-   toggleActive();
   }
+
+  function deleteCocktail() {
+    console.log('Delete cocktail fired');
+    if (confirm('Are you sure you want to delete this cocktail?')) {
+      console.log('Yes');
+    } else {
+      console.log('No');
+    }
+  }
+
+  function saveCocktail() {
+    const updates = 'test';
+    submitUpdate().then(props.saveUpdates(updates));
+  }
+
+  function classNameResolve(setting) {
+    if (cocktailProfile === setting) {
+      return s.icon_active;
+    }
+    return s.icon_inactive;
+  }
+
   return (
     <div className={s.active}>
-      <div
-        key={key}
-        className={s.list_item_open}
-      >
+      <div key={key} className={s.list_item_open}>
         <div>
           <img
             className={s.cocktail_image}
-            src={cocktail.image}
+            src={cocktailImage}
             alt={`${cocktailName} Image`}
           />
-          <div className={s.availability}>{cocktailName} is currently public. This is how it appears to users.</div>
+          <div className={s.availability}>
+            {cocktailName} is currently public. This is how it appears to users.
+          </div>
         </div>
 
         <div className={s.result_text}>
@@ -103,33 +140,33 @@ function CocktailUpdate(props) {
         </div>
       </div>
       <DynamicSetting
-        settingName={"Cocktail Name"}
+        settingName="Cocktail Name"
         settingValue={cocktailName}
         settingSave={newValue => setCocktailName(newValue)}
       />
 
       <DynamicSetting
-        settingName={"Ingredients"}
+        settingName="Ingredients"
         settingValue={cocktailIngredients}
         settingSave={newValue => setCocktailIngredients(newValue)}
       />
 
       <DynamicSetting
-        settingName={"Price of Smallest Serving"}
+        settingName="Price of Smallest Serving"
         settingValue={cocktailPrice}
         specialDisplay={`$${cocktailPrice} / serving`}
         settingSave={newValue => setCocktailPrice(newValue)}
       />
 
       <DynamicSetting
-        settingName={"Size of Smallest Serving"}
-        settingValue={cocktailSize}
-        specialDisplay={`${cocktailSize} oz / serving`}
-        settingSave={newValue => setCocktailSize(newValue)}
+        settingName="Size of Smallest Serving"
+        settingValue={cocktailServingSize}
+        specialDisplay={`${cocktailServingSize} oz / serving`}
+        settingSave={newValue => setCocktailServingSize(newValue)}
       />
 
       <DynamicSetting
-        settingName={"Flavor Description"}
+        settingName="Flavor Description"
         settingValue={cocktailDescription}
         settingSave={newValue => setCocktailDescription(newValue)}
       />
@@ -140,10 +177,9 @@ function CocktailUpdate(props) {
           <div className={s.cocktail_button_label}>Stiff</div>
           <div
             className={classNameResolve('stiff')}
-            onclick={e => setCocktailProfile('stiff')
-            }
+            onClick={e => setCocktailProfile('stiff')}
           >
-            <FontAwesomeIcon icon={faGlassWhiskey} size="3x"/>
+            <FontAwesomeIcon icon={faGlassWhiskey} size="3x" />
           </div>
           <div className={s.button_explainer}>e.g. Old Fashioned</div>
         </div>
@@ -152,11 +188,9 @@ function CocktailUpdate(props) {
           <div className={s.cocktail_button_label}>Strong</div>
           <div
             className={classNameResolve('strong')}
-            onclick={e =>
-              setCocktailProfile('strong')
-            }
+            onClick={e => setCocktailProfile('strong')}
           >
-            <FontAwesomeIcon icon={faCocktail} size="3x"/>
+            <FontAwesomeIcon icon={faCocktail} size="3x" />
           </div>
           <div className={s.button_explainer}>e.g. Margarita</div>
         </div>
@@ -165,11 +199,9 @@ function CocktailUpdate(props) {
           <div className={s.cocktail_button_label}>Long</div>
           <div
             className={classNameResolve('long')}
-            onclick={e =>
-              setCocktailProfile('long')
-            }
+            onClick={e => setCocktailProfile('long')}
           >
-            <FontAwesomeIcon icon={faWineGlass} size="3x"/>
+            <FontAwesomeIcon icon={faWineGlass} size="3x" />
           </div>
           <div className={s.button_explainer}>e.g. Mojito</div>
         </div>
@@ -178,19 +210,21 @@ function CocktailUpdate(props) {
           <div className={s.cocktail_button_label}>Low ABV</div>
           <div
             className={classNameResolve('low')}
-            onclick={e =>
-              setCocktailProfile('low')
-            }
+            onClick={e => setCocktailProfile('low')}
           >
-            <FontAwesomeIcon icon={faWineBottle} size="3x"/>
+            <FontAwesomeIcon icon={faWineBottle} size="3x" />
           </div>
           <div className={s.button_explainer}>e.g. Spritzer</div>
         </div>
       </div>
 
       <div>
-        <div className={s.order} onClick={e => setIsOpen(false)}>Save Changes</div>
-        <div className={s.order} onClick={e => setIsOpen(true)}>Delete Cocktail</div>
+        <div className={s.order} onClick={e => saveCocktail()}>
+          Save Changes
+        </div>
+        <div className={s.order} onClick={e => saveCocktail()}>
+          Delete Cocktail
+        </div>
       </div>
     </div>
   );
