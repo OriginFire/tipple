@@ -24,11 +24,16 @@ function Cocktail(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   function cocktailUpdated(updates) {
-    debugger
     console.log(updates);
     console.log(cocktailName);
     setIsOpen(false);
-    setCocktailName(updates);
+    setCocktailName(updates.name);
+    setCocktailImage(updates.image);
+    setCocktailIngredients(updates.ingredients);
+    setCocktailPrice(updates.price);
+    setCocktailSize(updates.size);
+    setCocktailProfile(updates.profile);
+    setCocktailDescription(updates.description);
   }
 
   function DisplayContent() {
@@ -50,7 +55,7 @@ function Cocktail(props) {
               alt={`${cocktailName} Image`}
             />
             <div className={s.availability}>
-              {cocktail.name} is currently public. This is how it appears to
+              {cocktailName} is currently public. This is how it appears to
               users.
             </div>
             <div className={s.order} onClick={e => setIsOpen(true)}>
@@ -59,16 +64,16 @@ function Cocktail(props) {
           </div>
 
           <div className={s.result_text}>
-            <div className={s.cocktail_name}>{cocktail.name}</div>
+            <div className={s.cocktail_name}>{cocktailName}</div>
             <div className={s.price}>
-              From ${cocktail.price} / {cocktail.servingSize} oz serving
+              From ${cocktailPrice} / {cocktailSize} oz serving
             </div>
             <div className={s.ingredients}>
-              {cocktail.ingredients} {cocktail.ingredients.length}
+              {cocktailIngredients} {cocktail.ingredients.length}
             </div>
             <div className={s.description}>
-              {cocktail.description} {cocktail.description.length}
-              {cocktail.description} {cocktail.description.length}
+              {cocktailDescription} {cocktail.description.length}
+              {cocktailDescription} {cocktail.description.length}
             </div>
           </div>
         </div>

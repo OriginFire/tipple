@@ -30,6 +30,7 @@ const updateCocktail = {
         ingredients: cocktailFormInput.ingredients,
         price: cocktailFormInput.price,
         servingSize: cocktailFormInput.servingSize,
+        description: cocktailFormInput.description,
         profile: cocktailFormInput.profile,
         image: cocktailFormInput.image,
       },

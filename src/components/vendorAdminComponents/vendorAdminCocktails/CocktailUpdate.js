@@ -22,6 +22,7 @@ const UPDATE_COCKTAIL = `
     $servingSize: Float,
     $profile: String,
     $image: String,
+    $description: String,
   ) {
     updateCocktail( cocktail: {
         JWT: $JWT,
@@ -31,7 +32,8 @@ const UPDATE_COCKTAIL = `
         price: $price,
         servingSize: $servingSize,
         profile: $profile,
-        image: $image
+        image: $image,
+        description: $description,
       }
     ) {
       name
@@ -78,8 +80,9 @@ function CocktailUpdate(props) {
         slug,
         name: cocktailName,
         ingredients: cocktailIngredients,
-        price: cocktailPrice,
-        cocktailServingSize,
+        price: parseFloat(cocktailPrice),
+        servingSize: parseFloat(cocktailServingSize),
+        description: cocktailDescription,
         profile: cocktailProfile,
         image: cocktailImage,
       },
@@ -100,8 +103,17 @@ function CocktailUpdate(props) {
   }
 
   function saveCocktail() {
-    const updates = 'test';
-    submitUpdate().then(props.saveUpdates(updates));
+    const updates = {
+      name: cocktailName,
+      image: cocktailImage,
+      ingredients: cocktailIngredients,
+      price: cocktailPrice,
+      size: cocktailServingSize,
+      profile: cocktailProfile,
+      description: cocktailDescription,
+    };
+    submitUpdate();
+    props.saveUpdates(updates);
   }
 
   function classNameResolve(setting) {
