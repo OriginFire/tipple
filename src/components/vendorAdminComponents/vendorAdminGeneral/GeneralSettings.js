@@ -44,6 +44,7 @@ function GeneralSettings(props) {
   const [physicalAddress, setPhysicalAddress] = useState(
     vendor.physicalAddress,
   );
+  const [onlineStore, setOnlineStore] = useState(vendor.onlineStore);
   const [latitude, setLatitude] = useState(vendor.latitude);
   const [longitude, setLongitude] = useState(vendor.longitude);
   const [alcoholLicenseNumber, setAlcoholLicenseNumber] = useState(
@@ -140,6 +141,12 @@ function GeneralSettings(props) {
           setLatitude(addressData[1]);
           setLongitude(addressData[2]);
         }}
+      />
+
+      <DynamicSetting
+        settingName="Online Store"
+        settingValue={onlineStore}
+        settingSave={newValue => setOnlineStore(newValue)}
       />
 
       <DynamicSetting
