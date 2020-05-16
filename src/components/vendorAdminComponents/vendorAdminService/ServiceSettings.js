@@ -40,38 +40,31 @@ function ServiceSettings(props) {
   const [deliveryAvailability, setDeliveryAvailability] = useState([
     {
       day: weekdays.sunday,
-      hours: [],
-      shifts: 1,
+      hours: [0, 1, 2, 3],
     },
     {
       day: weekdays.monday,
       hours: [],
-      shifts: 1,
     },
     {
       day: weekdays.tuesday,
       hours: [],
-      shifts: 1,
     },
     {
       day: weekdays.wednesday,
       hours: [],
-      shifts: 1,
     },
     {
       day: weekdays.thursday,
       hours: [],
-      shifts: 1,
     },
     {
       day: weekdays.friday,
       hours: [],
-      shifts: 1,
     },
     {
       day: weekdays.saturday,
       hours: [],
-      shifts: 1,
     },
   ]);
   const [doesPickup, setDoesPickup] = useState(vendor.doesPickup);
@@ -81,37 +74,30 @@ function ServiceSettings(props) {
     {
       day: weekdays.sunday,
       hours: [],
-      shifts: 1,
     },
     {
       day: weekdays.monday,
       hours: [],
-      shifts: 1,
     },
     {
       day: weekdays.tuesday,
       hours: [],
-      shifts: 1,
     },
     {
       day: weekdays.wednesday,
       hours: [],
-      shifts: 1,
     },
     {
       day: weekdays.thursday,
       hours: [],
-      shifts: 1,
     },
     {
       day: weekdays.friday,
       hours: [],
-      shifts: 1,
     },
     {
       day: weekdays.saturday,
       hours: [],
-      shifts: 1,
     },
   ]);
   const [onlineStore, setOnlineStore] = useState(vendor.onlineStore);
@@ -209,6 +195,11 @@ function ServiceSettings(props) {
                   <div className={s.day_indicator}>{day.day}</div>
 
                   <div className={s.shift_list}>
+                    {day.hours.map((hour, index, hours) => {
+                      if (hours[index - 1] && (hour === (hours[index - 1] + 1))) {
+                        console.log('Here I am!');
+                      }
+                    })}
                     <div className={s.shift}>
                       <label
                         className={s.availability_selector_label}
