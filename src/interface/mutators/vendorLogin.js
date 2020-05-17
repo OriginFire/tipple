@@ -21,13 +21,14 @@ const vendorLogin = {
   },
   async resolve(value, { user }) {
     const foundUser = await User.authenticate(user.email, user.password);
-    console.log(foundUser);
+    console.log(foundUser, "found user");
     const foundVendor = await Vendor.findOne({
       where: { id: foundUser.VendorId },
     });
     console.log(foundVendor);
 
     const payload = {
+      vendorId: foundVendor.id,
       vendorSlug: foundVendor.slug,
       userEmail: foundUser.email,
     };

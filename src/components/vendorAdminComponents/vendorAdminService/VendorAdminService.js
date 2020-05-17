@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './VendorAdminService.scss';
-import VendorConsole from "../vendorAdminConsole/VendorAdminConsole";
-import VendorServiceSettings from "./ServiceSettings";
+import VendorConsole from '../vendorAdminConsole/VendorAdminConsole';
+import VendorServiceSettings from './ServiceSettings';
 import ApplicationContext from '../../ApplicationContext';
 
 const FIND_VENDOR = `
@@ -31,7 +31,7 @@ function VendorAdminGeneral(props) {
   const authenticationContext = useContext(ApplicationContext);
 
   const { loading, error, data } = useQuery(FIND_VENDOR, {
-    variables: { slug: props.pathId, JWT: authenticationContext.context.JWT},
+    variables: { slug: props.pathId, JWT: authenticationContext.context.JWT },
   });
   let vendor;
 
@@ -44,7 +44,7 @@ function VendorAdminGeneral(props) {
   return (
     <div className={s.container}>
       <div className={s.vendor_admin_display}>
-        <VendorConsole vendor={vendor} active={'service'} />
+        <VendorConsole vendor={vendor} active="service" />
         <div className={s.vendor_setting_content}>
           <VendorServiceSettings vendor={vendor} />
         </div>

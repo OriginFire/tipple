@@ -10,6 +10,7 @@
 import DataType, { STRING, BOOLEAN, INTEGER } from 'sequelize';
 import Cocktail from './Cocktail';
 import Model from '../sequelize';
+import stringToSlug from "../../utils/stringToSlug";
 
 const Vendor = Model.define(
   'Vendor',
@@ -84,6 +85,10 @@ const Vendor = Model.define(
       type: DataType.STRING(256),
     },
 
+    onlineStore: {
+      type: DataType.STRING(256),
+    },
+
     vendorImage: {
       type: DataType.BLOB('long'),
     },
@@ -92,5 +97,14 @@ const Vendor = Model.define(
     indexes: [{ fields: ['id', 'slug'] }],
   },
 );
+
+Vendor.beforeCreate(async (vendor, options) => {
+  vendor.slug=stringToSlug(vendor.dbaName);
+});
+
+Vendor.beforeUpdate(async (vendor, options) => {
+  vendor.slug=stringToSlug(vendor.dbaName);
+});
+
 
 export default Vendor;

@@ -16,7 +16,7 @@ import SearchVendorInputType from '../types/SearchVendorInputType';
 const searchVendors = {
   type: List(VendorType),
   args: {
-    latLng: { type: SearchVendorInputType },
+    parameters: { type: SearchVendorInputType },
   },
   async resolve(value, {vendor}) {
     let vendors = await Vendor.findAll({
@@ -35,8 +35,3 @@ const searchVendors = {
 };
 
 export default searchVendors;
-
-/*    let vendors;
-// Bar.findNearest() -- this needs to be postgisr
-vendors = Vendor.findNearest();
-vendors.mapToDelivery; // set opts = input address is within distance */

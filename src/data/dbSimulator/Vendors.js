@@ -27,7 +27,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: 1,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Urbana.jpg',
     cocktails: [
@@ -40,7 +40,7 @@ export default [
         servingSize: 3,
         description:
           'A lengthy-ish bit of text explaining the flavor profile of the cocktail should go here.',
-        profile: 'boozy',
+        profile: 'stiff',
       },
       {
         id: 'gibson_vieux_carre',
@@ -98,7 +98,7 @@ export default [
         servingSize: 2.25,
         description:
           'A lengthy-ish bit of text explaining the flavor profile of the cocktail should go here.',
-        profile: 'boozy',
+        profile: 'stiff',
       },
     ],
     availability: [
@@ -107,17 +107,66 @@ export default [
         availabilityDaysAndTimes: [
           {
             day: weekdays.sunday,
-            hours: [0, 1, 2, 18, 19, 20, 21, 22, 23, 24],
+            hours: [0, 1, 2, 3],
           },
-          { day: weekdays.monday, hours: [18, 19, 20, 21, 22, 23, 24] },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
         ],
       },
 
       {
         availabilityType: 'delivery',
         availabilityDaysAndTimes: [
-          { day: weekdays.sunday, hours: [18] },
-          { day: weekdays.monday, hours: [19] },
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
         ],
       },
     ],
@@ -149,7 +198,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: 1,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Golden.jpg',
     cocktails: [
@@ -161,7 +210,7 @@ export default [
         price: 8,
         servingSize: 3,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
-        profile: 'boozy',
+        profile: 'stiff',
       },
       {
         id: 'gibson_vieux_carre',
@@ -218,7 +267,76 @@ export default [
         price: 8,
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
-        profile: 'boozy',
+        profile: 'stiff',
+      },
+    ],
+    availability: [
+      {
+        availabilityType: 'pickup',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+
+      {
+        availabilityType: 'delivery',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
       },
     ],
   },
@@ -249,7 +367,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: null,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../SL.jpeg',
     cocktails: [
@@ -261,7 +379,7 @@ export default [
         price: 8,
         servingSize: 3,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
-        profile: 'boozy',
+        profile: 'stiff',
       },
       {
         id: 'gibson_vieux_carre',
@@ -318,7 +436,76 @@ export default [
         price: 8,
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
-        profile: 'boozy',
+        profile: 'stiff',
+      },
+    ],
+    availability: [
+      {
+        availabilityType: 'pickup',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+
+      {
+        availabilityType: 'delivery',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
       },
     ],
   },
@@ -348,7 +535,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: 1,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Columbia.jpg',
     cocktails: [
@@ -360,7 +547,7 @@ export default [
         price: 8,
         servingSize: 3,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
-        profile: 'boozy',
+        profile: 'stiff',
       },
       {
         id: 'gibson_vieux_carre',
@@ -417,7 +604,76 @@ export default [
         price: 8,
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
-        profile: 'boozy',
+        profile: 'stiff',
+      },
+    ],
+    availability: [
+      {
+        availabilityType: 'pickup',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+
+      {
+        availabilityType: 'delivery',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
       },
     ],
   },
@@ -448,7 +704,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: 1,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../LevitationAspect.JPG',
     cocktails: [
@@ -460,7 +716,7 @@ export default [
         price: 8,
         servingSize: 3,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
-        profile: 'boozy',
+        profile: 'stiff',
       },
       {
         id: 'gibson_vieux_carre',
@@ -517,7 +773,76 @@ export default [
         price: 8,
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
-        profile: 'boozy',
+        profile: 'stiff',
+      },
+    ],
+    availability: [
+      {
+        availabilityType: 'pickup',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+
+      {
+        availabilityType: 'delivery',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
       },
     ],
   },
@@ -548,7 +873,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: 1,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../SL.jpeg',
     cocktails: [
@@ -560,7 +885,7 @@ export default [
         price: 8,
         servingSize: 3,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
-        profile: 'boozy',
+        profile: 'stiff',
       },
       {
         id: 'gibson_vieux_carre',
@@ -617,7 +942,76 @@ export default [
         price: 8,
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
-        profile: 'boozy',
+        profile: 'stiff',
+      },
+    ],
+    availability: [
+      {
+        availabilityType: 'pickup',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+
+      {
+        availabilityType: 'delivery',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
       },
     ],
   },
@@ -648,7 +1042,7 @@ export default [
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
     doesPickup: false,
-    deliveryRadius: 1,
+    deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../OldFashioned.png',
     cocktails: [
@@ -660,7 +1054,7 @@ export default [
         price: 8,
         servingSize: 3,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
-        profile: 'boozy',
+        profile: 'stiff',
       },
       {
         id: 'gibson_vieux_carre',
@@ -717,7 +1111,76 @@ export default [
         price: 8,
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
-        profile: 'boozy',
+        profile: 'stiff',
+      },
+    ],
+    availability: [
+      {
+        availabilityType: 'pickup',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+
+      {
+        availabilityType: 'delivery',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
       },
     ],
   },

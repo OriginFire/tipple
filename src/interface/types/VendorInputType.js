@@ -11,7 +11,9 @@ import {
 const VendorInputType = new ObjectType({
   name: 'VendorInput',
   fields: {
+    slug: { type: StringType },
     dbaName: { type: StringType },
+    JWT: { type: StringType },
     legalEntityName: { type: StringType },
     physicalAddress: { type: StringType },
     latitude: { type: FloatType },
@@ -19,7 +21,10 @@ const VendorInputType = new ObjectType({
     alcoholLicenseNumber: { type: StringType },
     alcoholLicenseIssuingAgency: { type: StringType },
     alcoholLicenseExpiration: { type: StringType },
-    deliveryRadius: { type: StringType },
+    doesDelivery: { type: BooleanType },
+    deliveryRadius: { type: FloatType },
+    doesPickup: {type: BooleanType},
+    onlineStore: {type: StringType},
     adminName: { type: StringType },
     adminEmail: { type: StringType },
     adminPhone: { type: StringType },

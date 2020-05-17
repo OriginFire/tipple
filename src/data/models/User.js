@@ -10,6 +10,8 @@
 import DataType from 'sequelize';
 import bcrypt from 'bcrypt';
 import Model from '../sequelize';
+import stringToSlug from "../../utils/stringToSlug";
+import Vendor from "./Vendor";
 
 const User = Model.define(
   'User',
@@ -59,5 +61,14 @@ User.authenticate = async function(username, password) {
 
   throw 'Unable to Authenticate';
 };
+
+User.beforeCreate(async (user, options) => {
+  user.slug=stringToSlug(`${user.name}-${user.email}`);
+});
+
+User.beforeUpdate(async (user, options) => {
+  user.slug=stringToSlug(`${user.name}-${user.email}`);
+});
+
 
 export default User;

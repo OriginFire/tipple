@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './VendorAdminGeneral.scss';
@@ -12,6 +12,8 @@ const FIND_VENDOR = `
       slug
       dbaName
       physicalAddress
+      latitude
+      longitude
       physicalStreetAddress
       physicalCity
       physicalState
@@ -24,12 +26,16 @@ const FIND_VENDOR = `
       deliveryRadius
       onlineStore
       vendorImage
+      cocktails {
+        id
+      }
     }
   }
   `;
 
 function VendorAdminGeneral(props) {
   const authenticationContext = useContext(ApplicationContext);
+  const [vendorDisplay, setVendorDisplay] = useState();
 
   const { loading, error, data } = useQuery(FIND_VENDOR, {
     variables: { slug: props.pathId, JWT: authenticationContext.context.JWT },
@@ -39,7 +45,6 @@ function VendorAdminGeneral(props) {
   if (loading) return 'Loading...';
   if (error) return 'Something Bad Happened';
   if (data) {
-    console.log(data);
     vendor = data.protectedFindVendor;
   }
 

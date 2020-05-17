@@ -1,57 +1,176 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
+import { useMutation } from 'graphql-hooks';
 import s from './GeneralSettings.scss';
 import DynamicSetting from '../dynamicSetting/DynamicSetting';
+import DynamicSettingAddress from '../dynamicSetting/DynamicSettingAddress';
+import VendorDataAlert from '../vendorDataAlert/VendorDataAlert';
+import ApplicationContext from '../../ApplicationContext';
+
+const UPDATE_VENDOR = `
+  mutation UpdateVendor(
+    $slug: String!,
+    $JWT: String,
+    $dbaName: String!,
+    $physicalAddress: String!,
+    $latitude: Float!,
+    $longitude: Float!,
+    $alcoholLicenseNumber: String!,
+    $alcoholLicenseIssuingAgency: String!,
+    $alcoholLicenseExpiration: String!) {
+    protectedUpdateVendor(vendor: {
+      slug: $slug,
+      JWT: $JWT,
+      dbaName: $dbaName,
+      physicalAddress: $physicalAddress,
+      latitude: $latitude,
+      longitude: $longitude,
+      alcoholLicenseNumber: $alcoholLicenseNumber,
+      alcoholLicenseIssuingAgency: $alcoholLicenseIssuingAgency,
+      alcoholLicenseExpiration: $alcoholLicenseExpiration,
+    }) {
+      dbaName
+    }
+  }
+`;
 
 function GeneralSettings(props) {
   const { vendor } = props;
-  const [vendorSettings, setVendorSettings] = useState(vendor);
+  const authenticationContext = useContext(ApplicationContext);
+  const [uploaded, setUploaded] = useState();
+  const [slug, setSlug] = useState(vendor.slug);
+  const [dbaName, setDbaName] = useState(vendor.dbaName);
+  const [vendorImage, setVendorImage] = useState(vendor.vendorImage);
+  const [physicalAddress, setPhysicalAddress] = useState(
+    vendor.physicalAddress,
+  );
+  const [onlineStore, setOnlineStore] = useState(vendor.onlineStore);
+  const [latitude, setLatitude] = useState(vendor.latitude);
+  const [longitude, setLongitude] = useState(vendor.longitude);
+  const [alcoholLicenseNumber, setAlcoholLicenseNumber] = useState(
+    vendor.alcoholLicenseNumber,
+  );
+  const [
+    alcoholLicenseIssuingAgency,
+    setAlcoholLicenseIssuingAgency,
+  ] = useState(vendor.alcoholLicenseIssuingAgency);
+  const [alcoholLicenseExpiration, setAlcoholLicenseExpiration] = useState(
+    vendor.alcoholLicenseExpiration,
+  );
+  const [updateVendor] = useMutation(UPDATE_VENDOR);
+
+  console.log(latitude, longitude, physicalAddress);
+
+  async function settingSave() {
+    const update = await updateVendor({
+      variables: {
+        slug,
+        JWT: authenticationContext.context.JWT,
+        dbaName,
+        physicalAddress,
+        longitude,
+        latitude,
+        alcoholLicenseIssuingAgency,
+        alcoholLicenseExpiration,
+        alcoholLicenseNumber,
+      },
+    });
+  }
+
+  useEffect(() => {
+    settingSave();
+  }, [
+    dbaName,
+    physicalAddress,
+    latitude,
+    longitude,
+    alcoholLicenseNumber,
+    alcoholLicenseExpiration,
+    alcoholLicenseIssuingAgency,
+  ]);
+
+  function DynamicSettingImage() {
+    if (vendorImage) {
+      return (
+        <img
+          src={vendorImage}
+          alt={dbaName}
+          className={s.vendor_image}
+        />
+      );
+    }
+    return <div className={s.vendor_image} />;
+  }
+
+  function loadfile(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+      setVendorImage( reader.result);
+    }, false);
+
+    if (file) {
+      //read image file to base64 string
+      reader.readAsDataURL(file);
+    }
+  }
 
   return (
     <div className={s.settings_content}>
-      <div className={s.explainer}>
-        Currently, this account is missing required information and will not
-        appear in search results on the site.
-      </div>
-      <br />
-      <div className={s.explainer}>
-        To correct this, please upload the following:
-        <ul>
-          <li className={s.to_do}>The vendor image</li>
-          <li className={s.to_do}>Service settings</li>
-          <li className={s.to_do}>At least one cocktail</li>
-        </ul>
-      </div>
+      <VendorDataAlert vendor={vendor} />
 
-      <img
-        src={`data:image/jpg;base64,${vendor.vendorImage}`}
-        alt={vendor.dbaName}
-        className={s.vendor_image}
-      />
+      <DynamicSettingImage />
+      <input type="file" onChange={loadfile} />
 
       <DynamicSetting
         settingName="Business Name (D.B.A.)"
-        settingValue={vendor.dbaName}
+        settingValue={dbaName}
+        settingSave={newValue => {
+          setDbaName(newValue);
+        }}
+      />
+
+      <DynamicSettingAddress
+        settingName="Venue Address"
+        settingValue={physicalAddress}
+        latitude={latitude}
+        longitude={longitude}
+        settingSave={addressData => {
+          setPhysicalAddress(addressData[0]);
+          setLatitude(addressData[1]);
+          setLongitude(addressData[2]);
+        }}
       />
 
       <DynamicSetting
-        settingName="Venue Address"
-        settingValue={vendor.physicalAddress}
+        settingName="Online Store"
+        settingValue={onlineStore}
+        settingSave={newValue => setOnlineStore(newValue)}
       />
 
       <DynamicSetting
         settingName="Alcohol License #"
-        settingValue={vendor.alcoholLicenseNumber}
+        settingValue={alcoholLicenseNumber}
+        settingSave={newValue => {
+          setAlcoholLicenseNumber(newValue);
+        }}
       />
 
       <DynamicSetting
         settingName="Licensing Agency"
-        settingValue={vendor.alcoholLicenseIssuingAgency}
+        settingValue={alcoholLicenseIssuingAgency}
+        settingSave={newValue => {
+          setAlcoholLicenseIssuingAgency(newValue);
+        }}
       />
 
       <DynamicSetting
         settingName="Expiration Date"
-        settingValue={vendor.alcoholLicenseExpiration}
+        settingValue={alcoholLicenseExpiration}
+        settingSave={newValue => {
+          setAlcoholLicenseExpiration(newValue);
+        }}
       />
     </div>
   );

@@ -4,6 +4,8 @@ import Vendor from '../models/Vendor';
 import User from '../models/User';
 import Cocktail from '../models/Cocktail';
 import Availability from '../models/Availability';
+import stringToSlug from '../../utils/stringToSlug';
+
 import AvailabilitySchedule from "../models/AvailabilitySchedule";
 import weekdays from '../../consts/weekdays';
 
@@ -13,26 +15,8 @@ function base64_encode(file) {
   // read binary data
   const bitmap = fs.readFileSync(file);
   // convert binary data to base64 encoded string
-  return new Buffer(bitmap).toString('base64');
-}
-
-function stringToSlug(str) {
-  str = str.replace(/^\s+|\s+$/g, ''); // trim
-  str = str.toLowerCase();
-
-  // remove accents, swap ñ for n, etc
-  const from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;';
-  const to = 'aaaaeeeeiiiioooouuuunc------';
-  for (let i = 0, l = from.length; i < l; i++) {
-    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-  }
-
-  str = str
-    .replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-    .replace(/\s+/g, '-') // collapse whitespace and replace by -
-    .replace(/-+/g, '-'); // collapse dashes
-
-  return str;
+  let bytes =new Buffer(bitmap).toString('base64');
+  return `data:image/jpg;base64,${bytes}`;
 }
 
 function cocktailHash(vendor) {
@@ -77,21 +61,19 @@ function availabilityHash(vendor) {
   });
 }
 
-function deleteExisting(existingVendors, slug) {
+function deleteExisting(existingVendors) {
   existingVendors.map(v => {
-    console.log(`Destoring vendor with ${v.id} ${slug}`);
+    console.log(`Destoring vendor with ${v.id}`);
     Vendor.destroy({ where: { id: v.id } });
   });
 }
 
-function createNew(vendor, slug) {
+function createNew(vendor) {
   const vendorImageUrl = vendor.vendorImage.replace('../../../', './public/');
-  const userSlug = stringToSlug(`${vendor.dbaName}-${vendor.adminName}`);
   const hash = bcrypt.hashSync(vendor.adminPassword, 10);
 
   const v = Vendor.create(
     {
-      slug,
       dbaName: vendor.dbaName,
       legalEntityName: vendor.legalEntityName,
       physicalAddress: vendor.physicalAddress,
@@ -107,12 +89,12 @@ function createNew(vendor, slug) {
       doesDelivery: vendor.doesDelivery,
       doesPickup: vendor.doesPickup,
       deliveryRadius: vendor.deliveryRadius,
+      onlineStore: vendor.onlineStore,
       vendorImage: base64_encode(vendorImageUrl),
       cocktails: cocktailHash(vendor),
       availability: availabilityHash(vendor),
       Users: [
         {
-          slug: userSlug,
           name: vendor.adminName,
           email: vendor.adminEmail,
           phone: vendor.adminPhoneNumber,
@@ -129,14 +111,12 @@ function createNew(vendor, slug) {
 
 function seedData() {
   db.map(vendor => {
-    const slug = stringToSlug(vendor.dbaName);
-
-    Vendor.findAll({ where: { slug } })
+    Vendor.findAll({ where: { dbaName: vendor.dbaName } })
       .then(existing => {
-        deleteExisting(existing, slug);
+        deleteExisting(existing);
       })
       .then(() => {
-        createNew(vendor, slug);
+        createNew(vendor);
       });
   });
 }

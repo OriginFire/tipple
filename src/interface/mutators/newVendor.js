@@ -16,23 +16,10 @@ import Cocktail from '../../data/models/Cocktail';
 import Availability from '../../data/models/Availability';
 import AvailabilitySchedule from '../../data/models/AvailabilitySchedule';
 
-function stringToSlug(str) {
-  str = str.replace(/^\s+|\s+$/g, ''); // trim
-  str = str.toLowerCase();
+function isVendorValid(vendor) {
+  var valid = RegExp('([0-9]{3})-[0-9]{3}-[0-9]{4}').test(vendor.adminPhone);
 
-  // remove accents, swap ñ for n, etc
-  const from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;';
-  const to = 'aaaaeeeeiiiioooouuuunc------';
-  for (let i = 0, l = from.length; i < l; i++) {
-    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-  }
-
-  str = str
-    .replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-    .replace(/\s+/g, '-') // collapse whitespace and replace by -
-    .replace(/-+/g, '-'); // collapse dashes
-
-  return str;
+  return valid;
 }
 
 const newVendor = {
@@ -41,21 +28,21 @@ const newVendor = {
     vendor: { type: VendorInputType },
   },
   resolve(value, { vendor }) {
+    if (!isVendorValid()) {
+      return 'You have died.';
+    }
+
     const vendorFormInput = vendor; // unsure why vendor needs to be exact name?
-    const slug = stringToSlug(vendorFormInput.dbaName);
 
     // split address
     const streetAddress = 'address from address';
     const city = 'city from address';
     const state = 'state from address';
     const zip = 'zip from address';
-    const long = '25.4';
-    const lat = '25.2';
     const hash = bcrypt.hashSync(vendorFormInput.adminPassword, 10);
 
     return Vendor.create(
       {
-        slug,
         dbaName: vendorFormInput.dbaName,
         legalEntityName: vendorFormInput.legalEntityName,
         physicalAddress: vendorFormInput.physicalAddress,
@@ -63,8 +50,8 @@ const newVendor = {
         physicalCity: city,
         physicalState: state,
         physicalZipCode: zip,
-        latitude: lat,
-        longitude: long,
+        latitude: vendorFormInput.latitude,
+        longitude: vendorFormInput.longitude,
         alcoholLicenseNumber: vendorFormInput.alcoholLicenseNumber,
         alcoholLicenseIssuingAgency:
           vendorFormInput.alcoholLicenseIssuingAgency,

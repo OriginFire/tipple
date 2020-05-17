@@ -9,6 +9,9 @@
 
 import DataType from 'sequelize';
 import Model from '../sequelize';
+import Vendor from './Vendor';
+import stringToSlug from '../../utils/stringToSlug';
+
 
 const Cocktail = Model.define(
   'Cocktail',
@@ -55,5 +58,13 @@ const Cocktail = Model.define(
     indexes: [{ fields: ['slug'] }],
   },
 );
+
+Cocktail.beforeCreate(async (cocktail, options) => {
+  cocktail.slug=stringToSlug(`${cocktail.name}`);
+});
+
+Cocktail.beforeUpdate(async (cocktail, options) => {
+  cocktail.slug=stringToSlug(`${cocktail.name}`);
+});
 
 export default Cocktail;

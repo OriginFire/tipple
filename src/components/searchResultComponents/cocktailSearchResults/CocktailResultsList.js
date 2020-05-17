@@ -7,7 +7,7 @@ import ApplicationContext from '../../ApplicationContext';
 
 const SEARCH_COCKTAILS = `
   query SearchCocktails($userLongitude: Float, $userLatitude: Float) {
-    searchVendors(latLng: {userLongitude: $userLongitude, userLatitude: $userLatitude}) {
+    searchVendors(parameters: {userLongitude: $userLongitude, userLatitude: $userLatitude}) {
       slug
       dbaName
       doesDelivery
@@ -35,7 +35,7 @@ function CocktailSearchResults(props) {
     customerLocation.context.userLongitude,
   );
   const { loading, error, data } = useQuery(SEARCH_COCKTAILS, {
-    variables: { userLatitude, userLongitude },
+    variables: { userLatitude: userLatitude, userLongitude: userLongitude },
   });
   let searchResults;
 

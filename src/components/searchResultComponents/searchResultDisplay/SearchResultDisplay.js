@@ -49,7 +49,7 @@ function SearchResultsDisplay() {
   function updateFilterSettings(newSettings) {
     setFilterSettingsOpen(false);
     setFilterSettings(newSettings);
-    console.log(newSettings);
+    console.log(filterSettings);
   }
 
   return (

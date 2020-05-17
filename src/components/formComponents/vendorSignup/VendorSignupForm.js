@@ -16,10 +16,6 @@ const CREATE_VENDOR_MUTATION = `
   $adminPhone: String!,
   $adminPassword: String!,
   $physicalAddress: String!,
-  $physicalStreetAddress: String!,
-  $physicalCity: String!,
-  $physicalState: String!,
-  $physicalZipCode: String!,
   $latitude: Float!,
   $longitude: Float!,
   $alcoholLicenseNumber: String!,
@@ -64,6 +60,7 @@ function VendorSignupForm() {
   ] = useState('');
   const [alcoholLicenseExpiration, setAlcoholLicenseExpiration] = useState('');
   const [formStage, setFormStage] = useState(1);
+  const [errorMsg, setErroMsg] = useState('');
 
   const [createVendor] = useMutation(CREATE_VENDOR_MUTATION);
 
@@ -78,7 +75,18 @@ function VendorSignupForm() {
     });
   }
 
+  function isVendorValid() {
+    //test phone
+    var valid = RegExp('([0-9]{3})-[0-9]{3}-[0-9]{4}').test(adminPhone);
+
+    return valid;
+  }
+
   async function createNewVendor() {
+    if (!isVendorValid()) {
+      setErroMsg("Formatting Error - Check Fields");
+      return;
+    }
     const res = await createVendor({
       variables: {
         dbaName,
@@ -107,7 +115,7 @@ function VendorSignupForm() {
   return (
     <div className={s.vendor_signup_content}>
       <h1 className={s.form_explainer}>
-        List your cocktail delivery or takeout business on Tipple.
+        List your cocktail delivery or takeout business on Tipple. {errorMsg}
       </h1>
       <div className={s.form}>
         <VendorFormStatus formStage={formStage} formStageChange={newStage => setFormStage(newStage)} />
@@ -141,7 +149,7 @@ function VendorSignupForm() {
                     type="tel"
                     value={adminPhone}
                     pattern="([0-9]{3})-[0-9]{3}-[0-9]{4}"
-                    maxlength="10"
+                    maxlength="12"
                   />
                 </form>
               );

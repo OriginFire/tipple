@@ -3,7 +3,6 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import s from './CocktailListItem.scss';
-import Button from "../../sitewideDisplayComponents/Button";
 import history from '../../../history';
 
 function CocktailListItem(props) {
@@ -33,7 +32,7 @@ function CocktailListItem(props) {
             <div>
               <img
                 className={s.cocktail_image}
-                src={`data:image/jpg;base64,${cocktail.image}`}
+                src={cocktail.image}
                 alt={`${cocktail.name} Image`}
               />
               <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>
@@ -72,7 +71,7 @@ function CocktailListItem(props) {
           <div>
             <img
               className={s.cocktail_image}
-              src={`data:image/jpg;base64,${cocktail.image}`}
+              src={cocktail.image}
               alt={`${cocktail.name} Image`}
             />
             <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>
@@ -97,7 +96,7 @@ function CocktailListItem(props) {
     );
   }
 
-  return <div className={s.no_}>{DisplayContent()}</div>;
+  return <div className={s.no_crash}>{DisplayContent()}</div>;
 }
 
 export default withStyles(s)(CocktailListItem);
