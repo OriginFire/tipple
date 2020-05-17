@@ -450,7 +450,7 @@ export default [
     doesPickup: false,
     deliveryRadius: 1,
     onlineStore: 'www.nipplesupply.com',
-    vendorImage: '../../../LevitationAspect.jpg',
+    vendorImage: '../../../LevitationAspect.JPG',
     cocktails: [
       {
         id: 'gibsonoldfashioned',
