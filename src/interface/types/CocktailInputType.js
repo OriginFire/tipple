@@ -7,6 +7,7 @@ import {
 const CocktailInputType = new ObjectType({
   name: 'CocktailInput',
   fields: {
+    id: {type: StringType},
     JWT: {type: StringType },
     slug: {type: StringType },
     name: { type: StringType },

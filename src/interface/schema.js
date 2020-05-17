@@ -43,6 +43,7 @@ const schema = new Schema({
       updateCocktail,
       vendorLogin,
       protectedUpdateVendor,
+      protectedDeleteCocktail,
     },
   }),
 });

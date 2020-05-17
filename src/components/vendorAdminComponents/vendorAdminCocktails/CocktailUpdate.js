@@ -42,12 +42,14 @@ const UPDATE_COCKTAIL = `
 `;
 
 const DELETE_COCKTAIL = `
-  query DeleteCocktail($JWT: String!, $id: String!) {
+  mutation DeleteCocktail($JWT: String!, $id: String!) {
     protectedDeleteCocktail( cocktail: {
         JWT: $JWT,
         id: $id
       }
-    )
+    ) {
+        id
+      }
   }
 `;
 
@@ -55,8 +57,7 @@ function CocktailUpdate(props) {
   const authenticationContext = useContext(ApplicationContext);
   const { cocktail } = props;
 
-  const { id } = cocktail;
-  const { slug } = cocktail;
+  const { id } = cocktail.id;
   const [cocktailName, setCocktailName] = useState(cocktail.name);
   const [cocktailImage, setCocktailImage] = useState(cocktail.image);
   const [cocktailIngredients, setCocktailIngredients] = useState(
@@ -72,6 +73,7 @@ function CocktailUpdate(props) {
   );
   const { key } = props;
   const [updateCocktail] = useMutation(UPDATE_COCKTAIL);
+  const [deleteCocktail] = useMutation(DELETE_COCKTAIL);
 
   async function submitUpdate() {
     const update = await updateCocktail({
@@ -93,13 +95,19 @@ function CocktailUpdate(props) {
     console.log(update);
   }
 
-  function deleteCocktail() {
-    console.log('Delete cocktail fired');
+  async function cocktailToDelete(id) {
+    console.log(id);
     if (confirm('Are you sure you want to delete this cocktail?')) {
-      console.log('Yes');
+      const deletion = await deleteCocktail({
+        variables: {
+          JWT: authenticationContext.context.JWT,
+          id: id,
+        }
+      })
     } else {
       console.log('No');
     }
+    props.cocktailDeleted;
   }
 
   function saveCocktail() {
@@ -234,7 +242,7 @@ function CocktailUpdate(props) {
         <div className={s.order} onClick={e => saveCocktail()}>
           Save Changes
         </div>
-        <div className={s.order} onClick={e => saveCocktail()}>
+        <div className={s.order} onClick={e => cocktailToDelete(cocktail.id)}>
           Delete Cocktail
         </div>
       </div>

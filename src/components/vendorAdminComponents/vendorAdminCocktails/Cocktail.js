@@ -36,12 +36,17 @@ function Cocktail(props) {
     setCocktailDescription(updates.description);
   }
 
+  function cocktailDeleted() {
+    setIsOpen(false);
+  }
+
   function DisplayContent() {
     if (isOpen) {
       return (
         <CocktailUpdate
           cocktail={cocktail}
           saveUpdates={newStateValues => cocktailUpdated(newStateValues)}
+          cocktailDeleted={e => cocktailDeleted()}
         />
       );
     }

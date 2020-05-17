@@ -1,17 +1,18 @@
 import jwt from 'jsonwebtoken';
 import Cocktail from '../../../data/models/Cocktail';
-import CocktailType from '../../types/CocktailType';
+import CocktailType from "../../types/CocktailType";
+import CocktailInputType from '../../types/CocktailInputType';
 import config from '../../../config';
 
 const protectedDeleteCocktail = {
   type: CocktailType,
   args: {
-    cocktail: { type: CocktailType },
+    cocktail: { type: CocktailInputType },
   },
-  async resolve(value, { cocktail }) {
+  resolve(value, { cocktail }) {
     const JWT = jwt.verify(cocktail.JWT, config.auth.jwt.secret);
 
-    await Cocktail.destroy(
+    Cocktail.destroy(
       { where: { id: cocktail.id } },
     );
   },
