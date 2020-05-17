@@ -107,17 +107,66 @@ export default [
         availabilityDaysAndTimes: [
           {
             day: weekdays.sunday,
-            hours: [0, 1, 2, 18, 19, 20, 21, 22, 23, 24],
+            hours: [0, 1, 2, 3],
           },
-          { day: weekdays.monday, hours: [18, 19, 20, 21, 22, 23, 24] },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
         ],
       },
 
       {
         availabilityType: 'delivery',
         availabilityDaysAndTimes: [
-          { day: weekdays.sunday, hours: [18] },
-          { day: weekdays.monday, hours: [19] },
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
         ],
       },
     ],
@@ -221,6 +270,75 @@ export default [
         profile: 'stiff',
       },
     ],
+    availability: [
+      {
+        availabilityType: 'pickup',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+
+      {
+        availabilityType: 'delivery',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+    ],
   },
 
   {
@@ -321,6 +439,75 @@ export default [
         profile: 'stiff',
       },
     ],
+    availability: [
+      {
+        availabilityType: 'pickup',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+
+      {
+        availabilityType: 'delivery',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+    ],
   },
 
   {
@@ -418,6 +605,75 @@ export default [
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
         profile: 'stiff',
+      },
+    ],
+    availability: [
+      {
+        availabilityType: 'pickup',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+
+      {
+        availabilityType: 'delivery',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
       },
     ],
   },
@@ -520,6 +776,75 @@ export default [
         profile: 'stiff',
       },
     ],
+    availability: [
+      {
+        availabilityType: 'pickup',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+
+      {
+        availabilityType: 'delivery',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+    ],
   },
 
   {
@@ -620,6 +945,75 @@ export default [
         profile: 'stiff',
       },
     ],
+    availability: [
+      {
+        availabilityType: 'pickup',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+
+      {
+        availabilityType: 'delivery',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+    ],
   },
 
   {
@@ -718,6 +1112,75 @@ export default [
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
         profile: 'stiff',
+      },
+    ],
+    availability: [
+      {
+        availabilityType: 'pickup',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
+      },
+
+      {
+        availabilityType: 'delivery',
+        availabilityDaysAndTimes: [
+          {
+            day: weekdays.sunday,
+            hours: [0, 1, 2, 3],
+          },
+          {
+            day: weekdays.monday,
+            hours: [],
+          },
+          {
+            day: weekdays.tuesday,
+            hours: [],
+          },
+          {
+            day: weekdays.wednesday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.thursday,
+            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.friday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+          {
+            day: weekdays.saturday,
+            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+          },
+        ],
       },
     ],
   },
