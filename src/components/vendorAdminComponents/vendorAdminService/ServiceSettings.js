@@ -230,6 +230,11 @@ function ServiceSettings(props) {
               />
             </div>
           )}
+
+          <div className={s.setting_explainer}>
+            What times and days can customers pick up orders directly from the venue?
+          </div>
+          <AvailabilityInput availabilityType={pickupAvailability} />
         </div>
       );
     }
