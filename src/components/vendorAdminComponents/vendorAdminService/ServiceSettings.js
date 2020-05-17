@@ -185,7 +185,7 @@ function ServiceSettings(props) {
           )}
 
           <div className={s.setting_explainer}>
-            What times and days can customers receive delivery orders?
+            What times and days are customers able to receive delivery orders?
           </div>
           <AvailabilityInput availabilityType={deliveryAvailability} />
         </div>

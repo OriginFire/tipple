@@ -42,7 +42,7 @@ function TimeSelectors(props) {
       "9 PM",
       "10 PM",
       "11 PM",
-      "12 PM"
+      "12 AM"
     ];
     let start = converter[startHour];
     let end = converter[endHour];
