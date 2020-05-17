@@ -41,7 +41,7 @@ function ServiceSettings(props) {
   const [deliveryAvailability, setDeliveryAvailability] = useState([
     {
       day: weekdays.sunday,
-      hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+      hours: [0, 1, 2, 3],
     },
     {
       day: weekdays.monday,
@@ -53,19 +53,19 @@ function ServiceSettings(props) {
     },
     {
       day: weekdays.wednesday,
-      hours: [],
+      hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
     },
     {
       day: weekdays.thursday,
-      hours: [],
+      hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
     },
     {
       day: weekdays.friday,
-      hours: [],
+      hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
     },
     {
       day: weekdays.saturday,
-      hours: [],
+      hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
     },
   ]);
   const [doesPickup, setDoesPickup] = useState(vendor.doesPickup);
@@ -74,7 +74,7 @@ function ServiceSettings(props) {
   const [pickupAvailability, setPickupAvailability] = useState([
     {
       day: weekdays.sunday,
-      hours: [],
+      hours: [0, 1, 2, 3],
     },
     {
       day: weekdays.monday,
@@ -86,19 +86,19 @@ function ServiceSettings(props) {
     },
     {
       day: weekdays.wednesday,
-      hours: [],
+      hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
     },
     {
       day: weekdays.thursday,
-      hours: [],
+      hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
     },
     {
       day: weekdays.friday,
-      hours: [],
+      hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
     },
     {
       day: weekdays.saturday,
-      hours: [],
+      hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
     },
   ]);
   const [onlineStore, setOnlineStore] = useState(vendor.onlineStore);
