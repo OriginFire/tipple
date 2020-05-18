@@ -29,6 +29,75 @@ const UPDATE_SERVICE_SETTINGS = `
   }
 `;
 
+const data = [
+  {
+    day: weekdays.sunday,
+    hours: [0, 1, 2, 3],
+  },
+  {
+    day: weekdays.monday,
+    hours: [],
+  },
+  {
+    day: weekdays.tuesday,
+    hours: [],
+  },
+  {
+    day: weekdays.wednesday,
+    hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+  },
+  {
+    day: weekdays.thursday,
+    hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+  },
+  {
+    day: weekdays.friday,
+    hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+  },
+  {
+    day: weekdays.saturday,
+    hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+  },
+];
+
+function deconstructQueryData(availabilityObject) {
+  let localState = [];
+  availabilityObject.map(day => {
+    const operatingHours = day.hours.sort((a, b) => a - b);
+    let shifts = [];
+    let currentSequence = [];
+    operatingHours.map((hour, index, hours) => {
+      if (!currentSequence[0] && currentSequence[0] !== 0) {
+        currentSequence[0] = hour;
+      }
+      if (!currentSequence[1]) {
+        currentSequence[1] = hour;
+      }
+      if (hours[index - 1]) {
+        if (hour - hours[index - 1] === 1) {
+          currentSequence[1] = hour;
+        } else {
+          shifts.push(currentSequence);
+          currentSequence = [];
+        }
+      }
+      if (!hours[index + 1]) {
+        shifts.push(currentSequence);
+        currentSequence = [];
+      }
+    });
+    localState.push({
+      day: day.day,
+      shifts: shifts,
+    });
+  });
+  return localState;
+}
+
+function reconstructQueryData(localState) {
+
+}
+
 function ServiceSettings(props) {
   const { vendor } = props;
   const [slug, setSlug] = useState(vendor.slug);
@@ -38,69 +107,11 @@ function ServiceSettings(props) {
     false,
   );
   const [deliveryFulfillment, setDeliveryFulfillment] = useState(0);
-  const [deliveryAvailability, setDeliveryAvailability] = useState([
-    {
-      day: weekdays.sunday,
-      hours: [0, 1, 2, 3],
-    },
-    {
-      day: weekdays.monday,
-      hours: [],
-    },
-    {
-      day: weekdays.tuesday,
-      hours: [],
-    },
-    {
-      day: weekdays.wednesday,
-      hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-    },
-    {
-      day: weekdays.thursday,
-      hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-    },
-    {
-      day: weekdays.friday,
-      hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
-    },
-    {
-      day: weekdays.saturday,
-      hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
-    },
-  ]);
+  const [deliveryAvailability, setDeliveryAvailability] = useState(deconstructQueryData(data));
   const [doesPickup, setDoesPickup] = useState(vendor.doesPickup);
   const [scheduledPickupRequired, setScheduledPickupRequired] = useState(false);
   const [pickupFulfillment, setPickupFulfillment] = useState(0);
-  const [pickupAvailability, setPickupAvailability] = useState([
-    {
-      day: weekdays.sunday,
-      hours: [0, 1, 2, 3],
-    },
-    {
-      day: weekdays.monday,
-      hours: [],
-    },
-    {
-      day: weekdays.tuesday,
-      hours: [],
-    },
-    {
-      day: weekdays.wednesday,
-      hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-    },
-    {
-      day: weekdays.thursday,
-      hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-    },
-    {
-      day: weekdays.friday,
-      hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
-    },
-    {
-      day: weekdays.saturday,
-      hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
-    },
-  ]);
+  const [pickupAvailability, setPickupAvailability] = useState(deconstructQueryData(data));
   const [onlineStore, setOnlineStore] = useState(vendor.onlineStore);
   const [updateVendor] = useMutation(UPDATE_SERVICE_SETTINGS);
   const authenticationContext = useContext(ApplicationContext);
@@ -187,7 +198,7 @@ function ServiceSettings(props) {
           <div className={s.setting_explainer}>
             What times and days are customers able to receive delivery orders?
           </div>
-          <AvailabilityInput availabilityType={deliveryAvailability} />
+          <AvailabilityInput availability={deliveryAvailability} />
         </div>
       );
     }
@@ -234,7 +245,7 @@ function ServiceSettings(props) {
           <div className={s.setting_explainer}>
             What times and days can customers pick up orders directly from the venue?
           </div>
-          <AvailabilityInput availabilityType={pickupAvailability} />
+          <AvailabilityInput availability={pickupAvailability} />
         </div>
       );
     }
