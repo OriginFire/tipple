@@ -8,7 +8,7 @@ import s from "./TimeSelectors.scss";
 function TimeSelectors(props) {
   const [startHour, setStartHour] = useState(props.startHour);
   const [endHour, setEndHour] = useState(props.endHour);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(props.isOpen);
 
   function updateTimes() {
     const times = [startHour, endHour];
@@ -50,7 +50,7 @@ function TimeSelectors(props) {
   }
 
   function selectorDisplay() {
-    if (isOpen) {
+    if (props.isOpen) {
       return (
         <div className={s.shift}>
           <div className={s.selection_row}>
