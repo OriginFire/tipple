@@ -5,7 +5,7 @@ import s from './ServiceSettings.scss';
 import DynamicSetting from '../dynamicSetting/DynamicSetting';
 import ApplicationContext from '../../ApplicationContext';
 import weekdays from '../../../consts/weekdays';
-import AvailabilityInput from "./availability/Availability";
+import Availability from './availability/Availability';
 
 const UPDATE_SERVICE_SETTINGS = `
   mutation UpdateSettings (
@@ -14,7 +14,6 @@ const UPDATE_SERVICE_SETTINGS = `
     $doesDelivery: Boolean!,
     $deliveryRadius: Float!,
     $doesPickup: Boolean!
-    $onlineStore: String!,
     ) {
     protectedUpdateVendor( vendor: {
       slug: $slug,
@@ -22,7 +21,6 @@ const UPDATE_SERVICE_SETTINGS = `
       doesDelivery: $doesDelivery,
       deliveryRadius: $deliveryRadius,
       doesPickup: $doesPickup,
-      onlineStore: $onlineStore,
     }) {
          id
       }
@@ -32,7 +30,7 @@ const UPDATE_SERVICE_SETTINGS = `
 const data = [
   {
     day: weekdays.sunday,
-    hours: [0, 1, 2, 3],
+    hours: [0, 1, 2],
   },
   {
     day: weekdays.monday,
@@ -44,58 +42,81 @@ const data = [
   },
   {
     day: weekdays.wednesday,
-    hours: [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    hours: [18, 19, 20, 21, 22, 23],
   },
   {
     day: weekdays.thursday,
-    hours: [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    hours: [18, 19, 20, 21, 22, 23],
   },
   {
     day: weekdays.friday,
-    hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+    hours: [12, 13, 14, 15, 18, 19, 20, 21, 22, 23],
   },
   {
     day: weekdays.saturday,
-    hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+    hours: [12, 13, 0, 1, 2, 14, 15, 16, 18, 19, 20, 21, 22, 23],
   },
 ];
 
 function deconstructQueryData(availabilityObject) {
-  let localState = [];
+  const localState = [];
   availabilityObject.map(day => {
     const operatingHours = day.hours.sort((a, b) => a - b);
-    let shifts = [];
-    let currentSequence = [];
+    const shifts = [];
+    let currentSequence = {
+      start: null,
+      end: null,
+    };
     operatingHours.map((hour, index, hours) => {
-      if (!currentSequence[0] && currentSequence[0] !== 0) {
-        currentSequence[0] = hour;
+      if (currentSequence.start === null) {
+        currentSequence.start = hour;
       }
-      if (!currentSequence[1]) {
-        currentSequence[1] = hour;
+      if (currentSequence.end === null) {
+        currentSequence.end = hour;
       }
       if (hours[index - 1]) {
         if (hour - hours[index - 1] === 1) {
-          currentSequence[1] = hour;
+          currentSequence.end = hour;
         } else {
           shifts.push(currentSequence);
-          currentSequence = [];
+          currentSequence = {
+            start: hour,
+            end: null,
+          };
         }
       }
       if (!hours[index + 1]) {
         shifts.push(currentSequence);
-        currentSequence = [];
+        currentSequence = {
+          start: null,
+          end: null,
+        };
       }
     });
     localState.push({
       day: day.day,
-      shifts: shifts,
+      shifts,
     });
   });
   return localState;
 }
 
 function reconstructQueryData(localState) {
+  console.log(localState, "reconstruction commence");
+  const reconstructedData = [];
+  localState.map((day, index, days) => {
+    let oneDay = {
+      day: day.day,
+      hours: null,
+    };
+    let hours = [];
+    day.shifts.map((shift, index, shifts) => {
 
+    });
+    reconstructedData.push(oneDay);
+  });
+  console.log(reconstructedData);
+  return reconstructedData;
 }
 
 function ServiceSettings(props) {
@@ -107,12 +128,15 @@ function ServiceSettings(props) {
     false,
   );
   const [deliveryFulfillment, setDeliveryFulfillment] = useState(0);
-  const [deliveryAvailability, setDeliveryAvailability] = useState(deconstructQueryData(data));
+  const [deliveryAvailability, setDeliveryAvailability] = useState(
+    deconstructQueryData(data),
+  );
   const [doesPickup, setDoesPickup] = useState(vendor.doesPickup);
   const [scheduledPickupRequired, setScheduledPickupRequired] = useState(false);
   const [pickupFulfillment, setPickupFulfillment] = useState(0);
-  const [pickupAvailability, setPickupAvailability] = useState(deconstructQueryData(data));
-  const [onlineStore, setOnlineStore] = useState(vendor.onlineStore);
+  const [pickupAvailability, setPickupAvailability] = useState(
+    deconstructQueryData(data),
+  );
   const [updateVendor] = useMutation(UPDATE_SERVICE_SETTINGS);
   const authenticationContext = useContext(ApplicationContext);
   let miles;
@@ -138,14 +162,24 @@ function ServiceSettings(props) {
         doesDelivery,
         deliveryRadius,
         doesPickup,
-        onlineStore,
       },
     });
+    reconstructQueryData(deliveryAvailability);
   }
 
   useEffect(() => {
     settingSave();
-  }, [doesDelivery, deliveryRadius, doesPickup, onlineStore]);
+  }, [
+    doesDelivery,
+    deliveryRadius,
+    scheduledDeliveryRequired,
+    deliveryFulfillment,
+    deliveryAvailability,
+    doesPickup,
+    scheduledPickupRequired,
+    pickupFulfillment,
+    pickupAvailability,
+  ]);
 
   function DeliverySettings() {
     if (doesDelivery) {
@@ -198,7 +232,12 @@ function ServiceSettings(props) {
           <div className={s.setting_explainer}>
             What times and days are customers able to receive delivery orders?
           </div>
-          <AvailabilityInput availability={deliveryAvailability} />
+          <Availability
+            availability={deliveryAvailability}
+            setNewAvailability={newAvailability =>
+              setDeliveryAvailability(newAvailability)
+            }
+          />
         </div>
       );
     }
@@ -243,9 +282,15 @@ function ServiceSettings(props) {
           )}
 
           <div className={s.setting_explainer}>
-            What times and days can customers pick up orders directly from the venue?
+            What times and days can customers pick up orders directly from the
+            venue?
           </div>
-          <AvailabilityInput availability={pickupAvailability} />
+          <Availability
+            availability={pickupAvailability}
+            setNewAvailability={newAvailability =>
+              setPickupAvailability(newAvailability)
+            }
+          />
         </div>
       );
     }

@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import s from './ShiftList.scss';
 import TimeSelectors from "../timeSelectors/TimeSelectors";
 
 function ShiftList(props) {
   const [shifts, setShifts] = useState(props.shifts);
   const [daySelectorsOpen, setDaySelectorsOpen] = useState(false);
+
+  function updateShifts(newTimes, shiftArrayIndex) {
+    let updatedShifts = shifts;
+    updatedShifts[shiftArrayIndex].start = newTimes[0];
+    updatedShifts[shiftArrayIndex].end = newTimes[1];
+    setShifts(updatedShifts);
+  }
+
+  function saveUpdates() {
+    setDaySelectorsOpen(false);
+    props.updateShifts(shifts);
+  }
 
   return (
     <div className={s.shift_list}>
@@ -18,9 +30,9 @@ function ShiftList(props) {
         {shifts.map((shift, shiftIndex, shifts) => {
           return (
             <TimeSelectors
-              startHour={shift[0]}
-              endHour={shift[1]}
-              updatedTimes={times => setShifts(times)}
+              startHour={shift.start}
+              endHour={shift.end}
+              updatedShifts={times => updateShifts(times, shiftIndex)}
               isOpen={daySelectorsOpen}
             />
           );
@@ -35,8 +47,8 @@ function ShiftList(props) {
         />
       )}
       {daySelectorsOpen && (
-        <div className={s.save} onClick={e => setDaySelectorsOpen(false)}>Save</div>
-        )}
+        <div className={s.save} onClick={e => saveUpdates()}>Save</div>
+      )}
     </div>
   )
 }
