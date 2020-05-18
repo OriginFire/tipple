@@ -5,7 +5,7 @@ import s from './ServiceSettings.scss';
 import DynamicSetting from '../dynamicSetting/DynamicSetting';
 import ApplicationContext from '../../ApplicationContext';
 import weekdays from '../../../consts/weekdays';
-import AvailabilityInput from "./availabilityInput/AvailabilityInput";
+import AvailabilityInput from "./availability/Availability";
 
 const UPDATE_SERVICE_SETTINGS = `
   mutation UpdateSettings (
@@ -44,11 +44,11 @@ const data = [
   },
   {
     day: weekdays.wednesday,
-    hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    hours: [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
   },
   {
     day: weekdays.thursday,
-    hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    hours: [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
   },
   {
     day: weekdays.friday,

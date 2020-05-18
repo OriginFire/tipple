@@ -9,12 +9,6 @@ function ShiftList(props) {
   const [shifts, setShifts] = useState(props.shifts);
   const [daySelectorsOpen, setDaySelectorsOpen] = useState(false);
 
-  function updateShiftTimes(times, availabilityIndex, shiftIndex) {
-    console.log(individualShifts);
-    individualShifts[availabilityIndex][shiftIndex] = times;
-    console.log(individualShifts);
-  }
-
   return (
     <div className={s.shift_list}>
       <div>
@@ -40,6 +34,9 @@ function ShiftList(props) {
           onClick={e => setDaySelectorsOpen(true)}
         />
       )}
+      {daySelectorsOpen && (
+        <div className={s.save} onClick={e => setDaySelectorsOpen(false)}>Save</div>
+        )}
     </div>
   )
 }

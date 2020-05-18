@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import s from './AvailabilityInput.scss';
+import s from './Availability.scss';
 import ShiftList from "../shiftList/ShiftList";
 
-function AvailabilityInput(props) {
+function Availability(props) {
   const [availability, setAvailability] = useState(props.availability);
   const [daySelectorsOpen, setDaySelectorsOpen] = useState([
     false,
@@ -39,4 +39,4 @@ function AvailabilityInput(props) {
   );
 }
 
-export default withStyles(s)(AvailabilityInput);
+export default withStyles(s)(Availability);
