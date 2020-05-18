@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import withStyles from "isomorphic-style-loader/withStyles";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
@@ -10,11 +10,11 @@ function TimeSelectors(props) {
   const [endHour, setEndHour] = useState(props.endHour);
   const [isOpen, setIsOpen] = useState(props.isOpen);
 
-  function updateTimes() {
+
+  useEffect(() => {
     const times = [startHour, endHour];
-    props.updatedTimes(times);
-    setIsOpen(false);
-  }
+    props.updatedShifts(times);
+  }, [startHour, endHour]);
 
   function renderHours(startHour, endHour) {
     const converter = [
@@ -45,7 +45,7 @@ function TimeSelectors(props) {
       "12 AM"
     ];
     let start = converter[startHour];
-    let end = converter[endHour];
+    let end = converter[endHour + 1];
     return (`${start} - ${end}`)
   }
 
@@ -95,8 +95,8 @@ function TimeSelectors(props) {
             <div className={s.selection}>
               <select
                 id="end"
-                value={endHour}
-                onChange={newHour => setEndHour(parseInt(newHour.target.value))}
+                value={endHour + 1}
+                onChange={newHour => setEndHour(parseInt(newHour.target.value) - 1)}
                 className={s.availability_selector}
               >
                 <option value={"end"}>End Time</option>

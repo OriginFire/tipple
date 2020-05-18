@@ -5,33 +5,25 @@ import ShiftList from "../shiftList/ShiftList";
 
 function Availability(props) {
   const [availability, setAvailability] = useState(props.availability);
-  const [daySelectorsOpen, setDaySelectorsOpen] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
 
-  function newSelectorDisplayState(updatedSelectors) {
-    console.log(daySelectorsOpen);
-    const currentDisplay = daySelectorsOpen;
-    currentDisplay[updatedSelectors] = !currentDisplay[updatedSelectors];
-    setDaySelectorsOpen(currentDisplay);
-    console.log(daySelectorsOpen);
+  function updateAvailability(updatedShifts, day) {
+    let newAvailability = [];
+    availability.forEach(day => {
+      newAvailability.push(day);
+    });
+    newAvailability[day].shifts = updatedShifts;
+    props.setNewAvailability(newAvailability);
   }
 
   return (
     <div className={s.day_list}>
-      {availability.map((day, availabilityIndex, days) => {
+      {availability.map((day, index, days) => {
         return (
           <div className={s.availability_day}>
             <div className={s.day}>
               <div className={s.day_indicator}>{day.day}</div>
             </div>
-            <ShiftList shifts={day.shifts} />
+            <ShiftList shifts={day.shifts} updateShifts={updatedShifts => updateAvailability(updatedShifts, index)} />
           </div>
         );
       })}
