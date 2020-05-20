@@ -5,53 +5,13 @@
   flex-direction: column;
   align-items: center;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .results_message {
   font-family: 'Lato Regular', sans-serif;
   color: #c3c3c3;
   text-align: center;
-}
-
-.list_item {
-  font-family: 'Lato Regular', sans-serif;
-  flex: none;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  cursor: pointer;
-}
-
-.cocktail_image {
-  object-fit: cover;
-}
-
-.availability,
-.vendor_name {
-  color: #b9b9b9;
-  text-align: center;
-}
-
-.result_text {
-  display: flex;
-  flex-direction: column;
-}
-
-.cocktail_name {
-  font-family: 'Lato Regular', sans-serif;
-  text-align: center;
-  color: #e1e1e1;
-}
-
-.price {
-  color: #b9b9b9;
-  text-align: center;
-}
-
-.ingredients {
-  color: #919191;
-  text-align: center;
-  font-family: 'Lato Light', sans-serif;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
@@ -66,106 +26,21 @@
     font-size: 16px;
     padding: 5px 0;
   }
-
-  .list_item {
-    margin: 12px 0;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-  }
-
-  .cocktail_image {
-    width: 160px;
-    height: 90px;
-    padding: 0 0 2px 0;
-  }
-
-  .vendor_name {
-    font-size: 12px;
-  }
-
-  .availability {
-    font-size: 10px;
-  }
-
-  .result_text {
-    width: 48%;
-    min-height: 115px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0 0 0 0;
-  }
-
-  .cocktail_name {
-    font-size: 14px;
-    text-align: center;
-    width: 100%;
-    padding: 0;
-  }
-
-  .price {
-    font-size: 10.5px;
-    padding: 0 0 6px 0;
-  }
-
-  .ingredients {
-    font-size: 11.5px;
-    padding: 0 0 4px 0;
-  }
-
-  .expand {
-    font-size: 12px;
-    color: #c3c3c3;
-    padding: 4px 0 0 0;
-  }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
   .result_list {
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: nowrap;
     height: 100%;
+    overflow-y: scroll;
   }
 
   .results_message {
-    width: 90%;
-    font-size: 12px;
-  }
-
-  .list_item {
-    justify-content: space-evenly;
-    margin: 10px 0;
-    width: 45%;
-  }
-
-  .cocktail_image {
-    width: 15vw;
-    height: 17vh;
-  }
-
-  .cocktail_name {
-    font-size: 1.5em;
-    width: 100%;
-    padding: 0 0 3px 0;
-  }
-
-  .ingredients {
-    font-size: 8px;
-  }
-
-  .sale_options {
-    height: 50%;
-  }
-
-  .order_link {
-    font-size: 10px;
-  }
-
-  .availability {
-    font-size: 8px;
-    text-align: center;
+    width: 70%;
+    font-size: 14px;
+    padding: 5px 0 8px 0;
   }
 }
 
@@ -182,52 +57,6 @@
     font-family: 'Lato Light', sans-serif;
     width: 70%;
   }
-
-  .list_item {
-    justify-content: space-evenly;
-    align-items: center;
-    font-size: 0.9em;
-    width: 100%;
-    margin: 14px 0;
-  }
-
-  .cocktail_image {
-    width: 225px;
-    height: 150px;
-  }
-
-  .result_text {
-    width: 45%;
-  }
-
-  .cocktail_name {
-    font-size: 20px;
-    font-family: 'Lato Regular', sans-serif;
-    width: 100%;
-    padding: 0 0 2px 0;
-  }
-
-  .ingredients {
-    font-size: 12px;
-    color: #696969;
-    text-align: center;
-  }
-
-  .sale_options {
-    margin: 14px 0;
-    font-size: 14px;
-  }
-
-  .order_link {
-    font-size: 14px;
-    text-align: center;
-  }
-
-  .availability {
-    font-size: 11px;
-    font-family: 'Lato Light', sans-serif;
-    text-align: center;
-  }
 }
 
 @media only screen and (min-width: 1224px) {
@@ -237,44 +66,5 @@
     align-items: center;
     flex-wrap: nowrap;
     height: 100%;
-  }
-
-  .list_item {
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9em;
-    width: 450px;
-    margin: 14px 0;
-  }
-
-  .cocktail_image {
-    width: 250px;
-    height: 150px;
-  }
-
-  .cocktail_name {
-    font-size: 18px;
-    width: 100%;
-    padding: 0 0 8px 0;
-  }
-
-  .ingredients {
-    font-size: 10px;
-    text-align: center;
-  }
-
-  .sale_options {
-    margin: 10px 0;
-    font-size: 14px;
-  }
-
-  .order_link {
-    font-size: 0.8em;
-    text-align: center;
-  }
-
-  .availability {
-    font-size: 0.7em;
-    text-align: center;
   }
 }

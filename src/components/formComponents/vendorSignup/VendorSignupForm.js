@@ -65,7 +65,6 @@ function VendorSignupForm() {
   const [createVendor] = useMutation(CREATE_VENDOR_MUTATION);
 
   function addressSelection(address) {
-    console.log(address);
     setPhysicalAddress(address);
     geocodeByAddress(address).then(geoResults => {
       getLatLng(geoResults[0]).then(lLResults => {
@@ -77,7 +76,7 @@ function VendorSignupForm() {
 
   function isVendorValid() {
     //test phone
-    var valid = RegExp('([0-9]{3})-[0-9]{3}-[0-9]{4}').test(adminPhone);
+    let valid = RegExp('([0-9]{3})-[0-9]{3}-[0-9]{4}').test(adminPhone);
 
     return valid;
   }
@@ -114,9 +113,9 @@ function VendorSignupForm() {
   // TODO: reactor this
   return (
     <div className={s.vendor_signup_content}>
-      <h1 className={s.form_explainer}>
+      <div className={s.form_explainer}>
         List your cocktail delivery or takeout business on Tipple. {errorMsg}
-      </h1>
+      </div>
       <div className={s.form}>
         <VendorFormStatus formStage={formStage} formStageChange={newStage => setFormStage(newStage)} />
 

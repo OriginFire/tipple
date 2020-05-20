@@ -126,3 +126,60 @@
   width: 75px;
   font-size: 14px;
 }
+
+@media only screen and (min-height: 500px) and (min-width: 768px) {
+  .filter_settings {
+    width: 60%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: initial;
+    overflow-y: scroll;
+  }
+
+  .explainer {
+    top: 100px;
+    font-size:22px;
+  }
+
+  .settings {
+    justify-content: flex-start;
+    top: 200px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .title {
+    padding: 0 0 15px 0;
+  }
+
+  .availability_settings, .ordering_settings {
+    padding: 10px 0;
+  }
+
+  .cocktail_button_label {
+    font-size: 14px;
+    width: 60px;
+  }
+
+  .button_explainer {
+    font-size: 12px;
+    width: 50px;
+  }
+
+  .setting_message {
+    font-size: 14px;
+    width: 60%;
+  }
+
+  .radius {
+    width: 75px;
+    font-size: 14px;
+  }
+
+  .price {
+    width: 95px;
+    font-size: 14px;
+  }
+}

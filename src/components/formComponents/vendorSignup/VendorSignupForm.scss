@@ -11,7 +11,7 @@
 
 .form_explainer {
   text-align: center;
-  font-family: 'Plantin Bold', serif;
+  font-family: "Plantin Bold", serif;
 }
 
 .form {
@@ -134,8 +134,11 @@
 
   .buttons {
     position: absolute;
+    justify-content: space-evenly;
     left: -120px;
+    top: calc(30px + 10vh);
     flex-direction: column;
+    flex-wrap: nowrap;
     width: 120px;
     height: 100px;
   }
@@ -145,7 +148,7 @@
   .vendor_signup_content {
     position: absolute;
     height: auto;
-    top: 116px;
+    top: 85px;
     bottom: 0;
     right: 0;
     left: 0;
@@ -159,20 +162,21 @@
 
   .form_explainer {
     position: absolute;
+    font-family: "Plantin Bold", serif;
     width: 57%;
     margin: 0;
     top: 12vh;
     right: 2vw;
-    font-size: 2em;
+    font-size: calc(12px + 2vh);
   }
 
   .form {
     position: absolute;
-    width: 55%;
+    width: 60%;
     margin: 0 0 0 0;
     padding: 0;
     min-height: 200px;
-    top: 25vh;
+    top: calc(40vh - 120px);
     right: 2vw;
   }
 
@@ -192,10 +196,11 @@
 
   .buttons {
     flex-direction: column;
+    top: initial;
     left: 0;
     right: 0;
+    bottom: calc(30vh - 180px);
     margin: auto;
-    bottom: 10%;
     width: 80%;
   }
 }
@@ -204,6 +209,7 @@
   .vendor_signup_content {
     height: 91vh;
     position: static;
+    top: 85px;
     margin: 0 0 0 0;
     background-image: url('../../../../public/LevitationAspect.JPG');
     -webkit-background-size: cover;

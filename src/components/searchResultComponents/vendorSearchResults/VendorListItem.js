@@ -13,12 +13,12 @@ function VendorListItem(props) {
 
   function availability(vendor) {
     if (vendor.doesPickup === true && vendor.doesDelivery === true) {
-      return 'Delivery or Pickup';
+      return 'Deliveries or Pickups';
     }
     if (vendor.doesPickup === false && vendor.doesDelivery === true) {
-      return 'Delivery Only';
+      return 'Deliveries Only';
     }
-    return 'Pickup Only';
+    return 'Pickups Only';
   }
 
   function cocktailRange(cocktails) {

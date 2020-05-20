@@ -58,7 +58,7 @@
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .page_wrapper {
-    top: 114px;
+    top: 85px;
     background-image: url('../../../../public/OldFashioned.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -67,19 +67,19 @@
 
   .form {
     position: absolute;
-    right: 0;
-    bottom: 10vh;
+    right: 5vw;
+    bottom: 20vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: normal;
-    width: 600px;
-    height: 50vh;
+    width: calc(350px + 5vh + 5vw);
+    height: 40vh;
   }
 
   .explainer,
   .redirect_explainer {
-    font-size: 1.3em;
+    font-size: calc(16px + 0.6vh);
   }
 
   .signup_content {

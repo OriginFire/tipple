@@ -7,10 +7,7 @@
 .active, .inactive {
   transition: 0.25s;
   width: 100%;
-}
-
-.active {
-  background-color: #191919;
+  margin: auto;
 }
 
 .list_item, .list_item_open {
@@ -58,7 +55,6 @@
 .cocktail_name {
   font-family: 'Lato Regular', sans-serif;
   text-align: center;
-  color: #e1e1e1;
 }
 
 .price {
@@ -81,6 +77,10 @@
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .active, .inactive {
     padding: 12px 0;
+  }
+
+  .active {
+    background-color: #191919;
   }
 
   .list_item, .list_item_open {
@@ -127,6 +127,7 @@
     text-align: center;
     width: 100%;
     padding: 0;
+    color: #e1e1e1;
   }
 
   .price {
@@ -153,53 +154,121 @@
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
-  .list_item {
+  .active, .inactive {
+    padding: 12px 0;
+  }
+
+  .list_item, .list_item_open {
     justify-content: space-evenly;
-    margin: 10px 0;
-    width: 45%;
+    align-items: center;
+    width: calc(70% + 100px);
+    padding: 0 0 8px 0;
+    margin: auto;
+  }
+
+  .list_item_open {
+    align-items: flex-start;
   }
 
   .cocktail_image {
-    width: 15vw;
-    height: 17vh;
+    width: 160px;
+    height: 90px;
+    padding: 0 0 2px 0;
+  }
+
+  .vendor_name {
+    font-size: 12px;
+  }
+
+  .availability {
+    font-size: 10px;
+  }
+
+  .order {
+    font-size: 10px;
+    width: 80%;
+  }
+
+  .result_text {
+    width: 40%;
+    min-height: 115px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 0 0 0;
   }
 
   .cocktail_name {
-    font-size: 1.5em;
+    font-size: 14px;
+    text-align: center;
     width: 100%;
-    padding: 0 0 3px 0;
+    padding: 0;
+  }
+
+  .price {
+    font-size: 10.5px;
+    padding: 0 0 6px 0;
   }
 
   .ingredients {
-    font-size: 8px;
+    font-size: 11.5px;
+    padding: 0 0 4px 0;
   }
 
   .sale_options {
     height: 50%;
   }
 
-  .availability {
-    font-size: 8px;
-    text-align: center;
+  .description {
+    font-size: 11.5px;
+    width: 100%;
+    padding: 10px 0 6px 0;
+  }
+
+  .expand {
+    font-size: 12px;
+    color: #c3c3c3;
+    padding: 4px 0 0 0;
   }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
+  .active, .inactive {
+    padding: 12px 0;
+  }
+
+  .active {
+    background-color: none;
+  }
+
   .list_item {
     justify-content: space-evenly;
     align-items: center;
     font-size: 0.9em;
-    width: 100%;
-    margin: 14px 0;
+    width: calc(65% + 15vh);
+    margin: 6px auto;
   }
 
   .cocktail_image {
-    width: 225px;
-    height: 150px;
+    width: 200px;
+    height: 120px;
+  }
+
+  .vendor_name {
+    font-size: 14px;
+  }
+
+  .availability {
+    font-size: 12px;
   }
 
   .result_text {
-    width: 45%;
+    width: 44%;
+    min-height: 150px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 0 0 0;
   }
 
   .cocktail_name {
@@ -207,12 +276,25 @@
     font-family: 'Lato Regular', sans-serif;
     width: 100%;
     padding: 0 0 2px 0;
+    color: #d7d7d7;
+  }
+
+  .price {
+    font-size: 13px;
+    padding: 0 0 14px 0;
   }
 
   .ingredients {
-    font-size: 12px;
-    color: #696969;
+    font-size: 14px;
+    color: #7d7d7d;
     text-align: center;
+    padding: 0 0 10px 0;
+  }
+
+  .description {
+    font-size: 14px;
+    width: 100%;
+    padding: 10px 0 6px 0;
   }
 
   .sale_options {
@@ -225,10 +307,10 @@
     text-align: center;
   }
 
-  .availability {
-    font-size: 11px;
-    font-family: 'Lato Light', sans-serif;
-    text-align: center;
+  .expand {
+    font-size: 13px;
+    color: #c3c3c3;
+    padding: 4px 0 0 0;
   }
 }
 

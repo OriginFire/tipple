@@ -27,7 +27,6 @@ function CocktailListItem(props) {
           <div
             index={index}
             className={s.list_item_open}
-            // onClick={e => history.push(`/vendor/${vendor.slug}`)}
           >
             <div>
               <img
@@ -66,7 +65,6 @@ function CocktailListItem(props) {
         <div
           index={index}
           className={s.list_item}
-          // onClick={e => history.push(`/vendor/${vendor.slug}`)}
         >
           <div>
             <img

@@ -7,6 +7,7 @@
   margin: 3px auto;
   position: static;
   overflow: hidden;
+  max-width: 1800px;
 }
 
 .logo {
@@ -43,7 +44,7 @@
   box-shadow: #0b0b0b 1px 1px;
   background: linear-gradient(180deg, rgba(28,28,28,1) 0%, rgb(38, 36, 38) 50%, rgb(29, 29, 29) 100%);
   z-index: 20;
-  font-family: "Lato Regular";
+  font-family: "Lato Regular", sans-serif;
   color: black;
   text-decoration: none;
   right: 0;
@@ -83,6 +84,10 @@
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
+  .container {
+    position: relative;
+  }
+
   .dropdown_menu, .dropdown_menu_inactive {
     width: 25%;
     top: 68px;
@@ -99,32 +104,30 @@
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .container {
-    height: 100px;
+    position: static;
+    height: 70px;
     padding: 5px 0;
+    margin: 2px auto;
   }
 
   .logo {
-    height: 90px;
+    height: 65px;
   }
 
   .menu_icon {
-    display: none;
-  }
-
-  .menu_icon_large {
     display: block;
     position: absolute;
-    right: 40px;
-    top: 40px;
+    right: 30px;
+    top: 30px;
   }
 
   .dropdown_menu, .dropdown_menu_inactive {
-    width: 30%;
-    top: 114px;
+    width: 250px;
+    top: 85px;
   }
 
   .shadow_background {
-    top: 114px;
+    top: 85px;
   }
 
   .menu_link {
@@ -132,17 +135,19 @@
     margin: 30px;
     display: block;
     font-size: 20px;
-    font-family: "Lato Light";
+    font-family: "Lato Light", sans-serif;
   }
 }
 
 @media only screen and (min-width: 1224px) {
-  .container {
-    height: 100px;
-    padding: 5px 0;
+  .dropdown_menu, .dropdown_menu_inactive {
+    width: 250px;
   }
 
-  .logo {
-    height: 90px;
+  .menu_icon {
+    position: relative;
+    float: top;
+    z-index: 0;
+    margin: -75px 0 0 0;
   }
 }
