@@ -39,9 +39,9 @@ class HomepageContent extends React.Component {
             <div className={s.header_two}>Anywhere.</div>
           </div>
           <div className={s.action_item}>
-            <h2 className={s.explainer}>
-              Find nearby bars selling takeout cocktails
-            </h2>
+            <div className={s.explainer}>
+              Nearby bars selling takeout cocktails
+            </div>
             <AddressFormField
               placeholder="Enter Your Address"
               onAddressSelection={this.addressSelection}
@@ -52,9 +52,6 @@ class HomepageContent extends React.Component {
           </div>
 
           <div className={s.action_item}>
-            <h2 className={s.explainer}>
-              ... and if your bar sells takeout cocktails
-            </h2>
             <Link to="/vendor-create">
               <Button type="Secondary" text="Become A Vendor" />
             </Link>
