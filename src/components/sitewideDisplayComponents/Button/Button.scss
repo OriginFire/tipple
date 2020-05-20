@@ -45,7 +45,7 @@ color: #e5e5e5;
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .button {
-    font-size: 1.1em;
+    font-size: calc(14px + 0.1vh);
     padding: 1.2vh 2vh;
     margin: 4px auto;
     width: 85%;

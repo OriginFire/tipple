@@ -99,7 +99,7 @@
   .action_content {
     justify-content: flex-end;
     height: auto;
-    width: 65%;
+    width: calc(600px);
     top: 25%;
     bottom: 10%;
     right: 0;
@@ -107,13 +107,14 @@
   }
 
   .header_text {;
-    position: absolute;
+    position: relative;
     text-align: right;
-    top: 10%;
-    left: -10vw;
+    top: 8%;
+    left: -7vw;
     right: 0;
-    width: 100%;
-    font-size: 4.7vh;
+    margin-bottom: 6vh;
+    width: 90%;
+    font-size: calc(12px + 1.8vw + 1.9vh);
   }
 
   .header_one {
