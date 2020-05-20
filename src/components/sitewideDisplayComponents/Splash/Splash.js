@@ -11,11 +11,6 @@ class Splash extends React.Component {
     return (
       <div className={s.splash_box}>
         <img className={s.homepage_image} src={image} />
-        <h2 className={s.explainer_text}>
-          { first_line }
-          <br />
-          { second_line }
-        </h2>
       </div>
     );
   }

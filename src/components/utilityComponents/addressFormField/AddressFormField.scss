@@ -57,6 +57,15 @@
     width: 100%;
   }
 
+  .suggestion_container {
+    background-color: white;
+    position: absolute;
+    margin: 0 auto;
+    width: 85%;
+    right: 30px;
+    z-index: 10;
+  }
+
   .suggestion, .active_suggestion {
     font-size: 12px;
     padding: 10px 0 10px 15px;

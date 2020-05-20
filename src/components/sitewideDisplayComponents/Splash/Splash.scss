@@ -10,23 +10,6 @@
   object-fit: cover;
 }
 
-.explainer_text {
-  font-family: "Plantin Bold";
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-}
-
-@media only screen and (orientation: portrait) and (min-width: 320px) {
-  .explainer_text {
-    min-height: 100px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -70%);
-    font-size: 30px;
-  }
-}
-
 @media only screen and (orientation: landscape) and (min-width: 320px) {
   .splash_box {
     position: absolute;
@@ -38,21 +21,12 @@
     margin: 0;
     padding: 0;
   }
-
-  .explainer_text {
-    position: absolute;
-    top: 20vh;
-    left: 20px;
-    width: auto;
-    transform: translate(0, 0);
-    font-size: 22px;
-  }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .splash_box {
     position: absolute;
-    top: 116px;
+    top: 85px;
     bottom: 0;
     right: 0;
     left: 0;
@@ -60,22 +34,12 @@
     justify-content: center;
     align-items: center;
   }
-
-  .explainer_text {
-    position: absolute;
-    top: 17vh;
-    left: inherit;
-    text-align: right;
-    width: 95%;
-    transform: translate(0, 0);
-    font-size: 4.9vh;
-  }
 }
 
 @media only screen and (min-width: 1224px) {
   .splash_box {
     position: absolute;
-    top: 116px;
+    top: 85px;
     bottom: 0;
     right: 0;
     left: 0;
@@ -88,15 +52,7 @@
   .homepage_image {
     object-fit: cover;
     width: 100%;
+    max-width: 1800px;
     height: 100%;
-  }
-
-  .explainer_text {
-    position: absolute;
-    top: 12vh;
-    left: auto;
-    right: 4vw;
-    width: 800px;
-    font-size: 6.5vh;
   }
 }

@@ -32,13 +32,15 @@ class HomepageContent extends React.Component {
       <div className={s.homepage_content}>
         <Splash
           image={HomepageImage}
-          first_line="It's a stir crazy world."
-          second_line="Of course they deliver cocktails."
         />
         <div className={s.action_content}>
+          <div className={s.header_text}>
+            <div className={s.header_one}>Where can you get the very best cocktails?</div>
+            <div className={s.header_two}>Anywhere.</div>
+          </div>
           <div className={s.action_item}>
             <h2 className={s.explainer}>
-              Find nearby bars delivering craft cocktails
+              Find nearby bars selling takeout cocktails
             </h2>
             <AddressFormField
               placeholder="Enter Your Address"
@@ -51,7 +53,7 @@ class HomepageContent extends React.Component {
 
           <div className={s.action_item}>
             <h2 className={s.explainer}>
-              If your bar sells cocktails to go
+              ... and if your bar sells takeout cocktails
             </h2>
             <Link to="/vendor-create">
               <Button type="Secondary" text="Become A Vendor" />

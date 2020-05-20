@@ -13,6 +13,25 @@
   text-align: center;
 }
 
+.header_text {
+  font-family: "Plantin Bold", serif;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.header_one {
+  text-align: right;
+  margin: 0 20px 0 0;
+}
+
+.header_two {
+  position: absolute;
+  text-align: right;
+  right: 40px;
+  margin: 20px 0 0 0;
+}
+
 .action_item {
   width: 80%;
   position: static;
@@ -33,6 +52,12 @@
     justify-content: space-around;
   }
 
+  .header_text {
+    min-height: 100px;
+    font-size: 30px;
+    top: -45%;
+  }
+
   .explainer {
     font-size: 17px;
   }
@@ -46,24 +71,65 @@
     margin: 10vh 0 0 55vw;
   }
 
+  .header_text {
+    position: absolute;
+    top: 10vh;
+    left: -125%;
+    width: 85%;
+    font-size: 22px;
+  }
+
+  .header_one {
+    text-align: left;
+    margin: 0;
+  }
+
+  .header_two {
+    text-align: left;
+    width: 100%;
+    right: inherit;
+  }
+
   .explainer {
     font-size: 12px;
   }
 }
 
-@media only screen and (min-height: 500px) and (min-width: 768px) {
+@media only screen and (min-height: 600px) and (min-width: 768px) {
   .action_content {
-    justify-content: flex-start;
+    justify-content: flex-end;
     height: auto;
-    width: 55%;
-    top: 52vh;
-    bottom: 0;
-    right: 20px;
+    width: 65%;
+    top: 25%;
+    bottom: 10%;
+    right: 0;
     margin: 0 0 0 0;
   }
 
+  .header_text {;
+    position: absolute;
+    text-align: right;
+    top: 10%;
+    left: -10vw;
+    right: 0;
+    width: 100%;
+    font-size: 4.7vh;
+  }
+
+  .header_one {
+    text-align: right;
+    margin: 0;
+  }
+
+  .header_two {
+    position: relative;
+    text-align: right;
+    right: 0;
+    margin: 3vh 0 0 0;
+  }
+
   .action_item {
-    margin: 2vh 0;
+    margin: 6vh 0 2vh 0;
   }
 
   .explainer {
@@ -73,11 +139,33 @@
 }
 
 @media only screen and (min-width: 1224px) {
+  .homepage_content {
+    max-width: 1800px;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
   .action_content {
+    position: relative;
     justify-content: space-between;
-    height: 30vh;
-    width: 800px;
-    right: 4vw;
+    align-items: flex-end;
+    width: 750px;
+    margin: 0;
+    float: right;
+  }
+
+  .header_text {
+    position: relative;
+    text-align: right;
+    top: 10%;
+    right: 0;
+    width: 100%;
+    font-size: 4.7vh;
+  }
+
+  .action_item {
+    margin: 200px 0 -100px 0;
   }
 
   .explainer {
