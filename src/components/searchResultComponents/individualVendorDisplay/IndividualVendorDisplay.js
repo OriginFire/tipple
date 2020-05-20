@@ -2,6 +2,8 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './IndividualVendorDisplay.scss';
+import IndividualVendorCocktails from "./individualVendorCocktails/IndividualVendorCocktails";
+import history from "../../../history";
 import Button from '../../sitewideDisplayComponents/Button';
 import Link from '../../utilityComponents/link';
 
@@ -18,6 +20,10 @@ const FIND_VENDOR = `
         name
         ingredients
         image
+        price
+        servingSize
+        profile
+        description
       }
     }
   }
@@ -36,6 +42,9 @@ function IndividualVendorDisplay(props) {
   }
 
   let availability;
+
+  let schedule = "Available Today";
+  let scheduleStatus = s.schedule_status;
 
   if (data.findVendor) {
     if (vendor.doesDelivery === true && vendor.doesPickup === true) {
@@ -57,43 +66,28 @@ function IndividualVendorDisplay(props) {
           <div className={s.text}>
             <div className={s.vendor_name}>{vendor.dbaName}</div>
 
+            <span className={s.schedule}>
+              <span className={scheduleStatus}>{schedule} </span>
+              until 12 AM
+            </span>
+
             <div className={s.address}>
               {`${vendor.physicalStreetAddress}, ${vendor.physicalCity}`}
             </div>
-
-            <div className={s.availability}>
-              {' '}
-              Displaying all cocktails sold by {vendor.dbaName}, {availability}
-            </div>
           </div>
 
-          <div className={s.cocktails}>
-            {vendor.cocktails.map((cocktail, index) => {
-              return (
-                <div key={index} className={s.cocktail}>
-                  <img
-                    className={s.cocktail_image}
-                    src={`data:image/jpg;base64,${cocktail.image}`}
-                  />
-                  <div className={s.cocktail_text}>
-                    <div className={s.cocktail_name}>{cocktail.name}</div>
-                    <div className={s.cocktail_ingredients}>
-                      {cocktail.ingredients}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <IndividualVendorCocktails
+            cocktails={vendor.cocktails}
+            vendor={vendor}
+          />
 
-          <div className={s.buttons}>
-            <Link to="/search-results">
-              <Button type="Secondary" text="Return To Search Results" />
-            </Link>
+          <div className={s.selectors}>
+            <div
+              className={s.secondary_selector}
+              onClick={e => history.push('/search-results')}
+            >Return To Search</div>
 
-            <Link to="">
-              <Button type="Primary" text="Order From This Vendor" />
-            </Link>
+            <div className={s.primary_selector}>Order Cocktails</div>
           </div>
         </div>
       )}

@@ -4,13 +4,27 @@
   background-color: #121212;
   opacity: 0.98;
   z-index: 5;
-  overflow: scroll;
-  box-shadow: #252225 0 0 4px 1px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .vendor_name {
   text-align: center;
   font-family: 'Plantin Bold', serif;
+}
+
+.schedule {
+  font-family: "Lato Light", sans-serif;
+  color: #a5a5a5;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.schedule_status {
+  color: #53874c;
 }
 
 .address {
@@ -28,50 +42,23 @@
   z-index: 10;
 }
 
-.cocktails {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  overflow: scroll;
-  position: absolute;
-  margin: 0 0 0 0;
-  width: 100%;
-  height: auto;
-}
-
-.cocktail {
-  position: relative;
-  height: auto;
+.selectors {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-}
-
-.cocktail_name {
-  text-align: center;
   font-family: 'Lato Regular', sans-serif;
-  color: #e9e9e9;
 }
 
-.cocktail_image {
-  position: relative;
-  object-fit: cover;
-}
-
-.cocktail_ingredients {
-  position: relative;
+.primary_selector, .secondary_selector {
+  border: solid #434343 1px;
+  border-radius: 4px;
   text-align: center;
-  z-index: 5;
-  font-family: 'Lato Regular', sans-serif;
-  color: #7d7d7d;
+  transition: 0.2s;
+  background-color: #251e1f;
 }
 
-.buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  text-align: center;
+.primary_selector {
+  background-color: #6e1618;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
@@ -95,12 +82,12 @@
   }
 
   .vendor_name {
-    font-size: 28px;
-    margin: 5px 0 3px 0;
+    font-size: 32px;
+    margin: 5px 0 2px 0;
   }
 
   .address {
-    font-size: 13px;
+    font-size: 16px;
     margin: 0 0 3px 0;
   }
 
@@ -110,43 +97,19 @@
     margin: auto;
   }
 
-  .cocktails {
-    top: 85px;
-    bottom: 100px;
-    font-size: 0.75em;
-  }
-
-  .cocktail {
-    width: 100%;
-    margin: 8px 0;
-    justify-content: space-evenly;
-  }
-
-  .cocktail_image {
-    width: 45vw;
-    height: 15vh;
-  }
-
-  .cocktail_text {
-    width: 45%;
-  }
-
-  .cocktail_name {
-    font-size: 16px;
-    padding: 6px 0;
-  }
-
-  .cocktail_ingredients {
-    font-size: 10px;
-    width: 80%;
-    margin: auto;
-  }
-
-  .buttons {
+  .selectors {
     position: absolute;
     margin: 0;
     bottom: 2vh;
     width: 100%;
+    font-size: 12px;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .primary_selector, .secondary_selector {
+    padding: 15px 10px;
+    width: calc(100px);
   }
 }
 
@@ -200,34 +163,6 @@
     text-align: left;
     padding-top: 10px;
     padding-bottom: 30px;
-  }
-
-  .cocktails {
-    top: 0;
-    bottom: 0;
-    right: 0;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    flex: none;
-    width: 65%;
-    font-size: 12px;
-  }
-
-  .cocktail {
-    margin: 0 20px;
-  }
-
-  .cocktail_image {
-    position: relative;
-    width: 35vw;
-    height: 40vh;
-    object-fit: cover;
-  }
-
-  .cocktail_name {
-    font-size: 16px;
-    padding-bottom: 8px;
   }
 
   .buttons {
@@ -298,52 +233,6 @@
     color: #919191;
   }
 
-  .cocktails {
-    top: 110px;
-    bottom: 120px;
-    right: 0;
-    left: 0;
-    height: auto;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: flex-start;
-    overflow: scroll;
-    width: 100%;
-    font-size: 12px;
-  }
-
-  .cocktail {
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-    margin: 10px;
-    min-height: 120px;
-  }
-
-  .cocktail_image {
-    position: relative;
-    width: 180px;
-    height: 120px;
-    margin-right: 20px;
-    object-fit: cover;
-  }
-
-  .cocktail_text {
-    width: 50%;
-    margin: auto;
-  }
-
-  .cocktail_name {
-    font-size: 20px;
-    padding-bottom: 8px;
-  }
-
-  .cocktail_ingredients {
-    font-size: 13px;
-    font-family: 'Lato Light', sans-serif;
-  }
-
   .buttons {
     position: absolute;
     left: 0;
@@ -382,34 +271,6 @@
     margin: 0;
     padding: 0;
     opacity: 0.95;
-  }
-
-  .display_selectors {
-    font-size: 14px;
-    justify-content: space-evenly;
-    margin: 30px 0 0 0;
-  }
-
-  .active,
-  .inactive {
-    padding: 18px 20px;
-    margin: 0 10px;
-    width: 120px;
-  }
-
-  .result_explainer {
-    position: relative;
-    margin: 0 0 0 0;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    font-size: 0.94em;
-    color: #777;
-  }
-
-  .list {
-    top: 150px;
-    bottom: 130px;
-    height: auto;
   }
 
   .buttons {
