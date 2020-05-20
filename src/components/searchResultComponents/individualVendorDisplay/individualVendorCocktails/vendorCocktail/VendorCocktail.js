@@ -4,6 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronUp,
   faChevronDown,
+  faGlassWhiskey,
+  faWineBottle,
+  faCocktail,
+  faWineGlass,
 } from '@fortawesome/free-solid-svg-icons';
 import s from './VendorCocktail.scss';
 
@@ -15,16 +19,16 @@ function VendorCocktail(props) {
 
   switch (cocktail.profile) {
     case 'stiff':
-      profile = 'This cocktail is stiff like an Old Fashioned, Martini, etc.';
+      profile = faGlassWhiskey;
       break;
     case 'strong':
-      profile = 'This cocktail is strong like a Daiquiri, Margarita, etc.';
+      profile = faCocktail;
       break;
     case 'long':
-      profile = 'This cocktail is lengthened like a Mojito, Moscow Mule, etc.';
+      profile = faWineGlass;
       break;
     case 'lowABV':
-      profile = 'This cocktail is low a.b.v. like a Spritzer.';
+      profile = faWineBottle;
       break;
   }
 
@@ -46,28 +50,29 @@ function VendorCocktail(props) {
         <div className={s.ingredients}>
           {cocktail.ingredients} {cocktail.ingredients.length}
         </div>
-        <div className={s.ingredients}>{profile}</div>
-        {!expanded && (
-          <div className={s.expand} onClick={e => setExpanded(true)}>
-            More Details{` `}
-            <FontAwesomeIcon icon={faChevronDown} size="xs" />
-          </div>
-        )}
-        {expanded && (
-          <div>
-            <div className={s.description}>
-              {cocktail.description} {cocktail.description.length}
-              {cocktail.description} {cocktail.description.length}
-            </div>
-            <div className={s.expand} onClick={e => setExpanded(false)}>
-              More Details{` `}
-              <FontAwesomeIcon icon={faChevronUp} size="xs" />
-            </div>
-          </div>
-        )}
+        <div className={s.description}>
+          {cocktail.description} {cocktail.description.length}
+          {cocktail.description} {cocktail.description.length}
+        </div>
       </div>
     </div>
   );
 }
 
 export default withStyles(s)(VendorCocktail);
+
+/* {!expanded && (
+  <div className={s.expand} onClick={e => setExpanded(true)}>
+    More Details{` `}
+    <FontAwesomeIcon icon={faChevronDown} size="xs" />
+  </div>
+)}
+{expanded && (
+  <div>
+
+    <div className={s.expand} onClick={e => setExpanded(false)}>
+      More Details{` `}
+      <FontAwesomeIcon icon={faChevronUp} size="xs" />
+    </div>
+  </div>
+)} */

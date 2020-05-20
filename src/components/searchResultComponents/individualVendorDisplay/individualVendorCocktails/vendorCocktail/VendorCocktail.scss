@@ -31,6 +31,13 @@
   font-family: 'Lato Light', sans-serif;
 }
 
+.ingredients {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .expand {
   font-family: "Lato Regular", sans-serif;
   text-align: center;
@@ -40,7 +47,7 @@
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .cocktail {
     width: 100%;
-    margin: 10px 0;
+    margin: 16px 0;
     justify-content: space-evenly;
   }
 
@@ -77,12 +84,12 @@
   }
 
   .ingredients {
-    font-size: 11.5px;
+    font-size: 12px;
     padding: 0 0 10px 0;
   }
 
   .description {
-    font-size: 11.5px;
+    font-size: 12px;
     width: 100%;
     padding: 10px 0 6px 0;
   }
