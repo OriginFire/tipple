@@ -1,20 +1,21 @@
 .homepage_content {
-  position: static;
+  position: fixed;
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
 }
 
 .action_content {
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: relative;
   align-items: center;
   z-index: 10;
   text-align: center;
 }
 
 .header_text {
-  font-family: "Plantin Bold", serif;
+  font-family: 'Plantin Bold', serif;
   position: absolute;
   width: 100%;
   z-index: 1;
@@ -34,28 +35,36 @@
 
 .action_item {
   width: 80%;
-  position: static;
+  position: relative;
   text-align: center;
 }
 
 .explainer {
   color: #e6e6e6;
-  font-family: "Lato Light", sans-serif;
+  font-family: 'Lato Light', sans-serif;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
+  .homepage_splash {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
   .action_content {
     width: 100%;
-    height: auto;
-    top: 42vh;
-    bottom: 3vh;
+    max-width: 500px;
     justify-content: space-around;
+    margin: 4vh auto;
   }
 
   .header_text {
-    min-height: 100px;
-    font-size: calc(16px + 1.8vh);
-    top: -45%;
+    top: calc(2vh + 10vw - 25px);
+    font-size: calc(14px + 1vh + 4.1vw);
+  }
+
+  .action_item {
+    margin: 3vh 0;
   }
 
   .explainer {
@@ -64,6 +73,12 @@
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
+  .homepage_splash {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
   .action_content {
     justify-content: space-between;
     height: 62vh;
@@ -106,7 +121,7 @@
     margin: 0 0 0 0;
   }
 
-  .header_text {;
+  .header_text {
     position: relative;
     text-align: right;
     top: 8%;
