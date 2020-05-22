@@ -4,7 +4,6 @@ import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import s from './HomepageContent.scss';
 import Link from '../utilityComponents/link';
 import Button from '../sitewideDisplayComponents/Button';
-import Splash from '../sitewideDisplayComponents/Splash/Splash';
 import AddressFormField from '../utilityComponents/addressFormField/AddressFormField';
 import HomepageImage from '../../../public/LevitationAspect.JPG';
 import ApplicationContext from '../ApplicationContext';
@@ -30,7 +29,7 @@ class HomepageContent extends React.Component {
   render() {
     return (
       <div className={s.homepage_content}>
-        <div>
+        <div className={s.fill}>
           <img className={s.homepage_splash} src={HomepageImage} />
           <div className={s.header_text}>
             <div className={s.header_one}>
@@ -43,7 +42,7 @@ class HomepageContent extends React.Component {
         <div className={s.action_content}>
           <div className={s.action_item}>
             <div className={s.explainer}>
-              Nearby bars selling takeout cocktails
+              See the takeout cocktail menu in your area
             </div>
             <AddressFormField
               placeholder="Enter Your Address"

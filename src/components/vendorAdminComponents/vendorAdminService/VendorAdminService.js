@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './VendorAdminService.scss';
+import ContentBox from '../../sitewideDisplayComponents/contentBox/ContentBox';
 import VendorConsole from '../vendorAdminConsole/VendorAdminConsole';
 import VendorServiceSettings from './ServiceSettings';
 import ApplicationContext from '../../ApplicationContext';
@@ -42,14 +43,12 @@ function VendorAdminGeneral(props) {
   }
 
   return (
-    <div className={s.container}>
-      <div className={s.vendor_admin_display}>
-        <VendorConsole vendor={vendor} active="service" />
-        <div className={s.vendor_setting_content}>
-          <VendorServiceSettings vendor={vendor} />
-        </div>
+    <ContentBox>
+      <VendorConsole vendor={vendor} active="service" />
+      <div className={s.vendor_setting_content}>
+        <VendorServiceSettings vendor={vendor} />
       </div>
-    </div>
+    </ContentBox>
   );
 }
 

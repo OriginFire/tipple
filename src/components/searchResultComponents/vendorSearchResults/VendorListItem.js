@@ -54,7 +54,7 @@ function VendorListItem(props) {
         <div className={s.access_details}>
           <div className={s.availability}>{availability(vendor)}</div>
           <div className={s.availability_time}>
-            Available Tomorrow - At 11 PM
+            <span className={s.availability_status}>Available Tomorrow</span> at 11 PM
           </div>
         </div>
         <div>

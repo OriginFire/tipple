@@ -3,7 +3,6 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './VendorCocktailSettings.scss';
 import Cocktail from './Cocktail';
 import ApplicationContext from '../../ApplicationContext';
-import Button from "../../sitewideDisplayComponents/Button";
 import {useMutation} from "graphql-hooks";
 
 const NEW_COCKTAIL = `

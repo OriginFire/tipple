@@ -2,10 +2,9 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './IndividualVendorDisplay.scss';
-import IndividualVendorCocktails from "./individualVendorCocktails/IndividualVendorCocktails";
-import history from "../../../history";
-import Button from '../../sitewideDisplayComponents/Button';
-import Link from '../../utilityComponents/link';
+import IndividualVendorCocktails from './individualVendorCocktails/IndividualVendorCocktails';
+import history from '../../../history';
+import ContentBox from '../../sitewideDisplayComponents/contentBox/ContentBox';
 
 const FIND_VENDOR = `
   query FindVendor($slug: String!) {
@@ -43,8 +42,8 @@ function IndividualVendorDisplay(props) {
 
   let availability;
 
-  let schedule = "Available Today";
-  let scheduleStatus = s.schedule_status;
+  const schedule = 'Available Today';
+  const scheduleStatus = s.schedule_status;
 
   if (data.findVendor) {
     if (vendor.doesDelivery === true && vendor.doesPickup === true) {
@@ -60,9 +59,9 @@ function IndividualVendorDisplay(props) {
   }
 
   return (
-    <div className={s.vendor_display_content}>
+    <div>
       {data.findVendor && (
-        <div className={s.vendor_display}>
+        <ContentBox>
           <div className={s.text}>
             <div className={s.vendor_name}>{vendor.dbaName}</div>
 
@@ -85,11 +84,13 @@ function IndividualVendorDisplay(props) {
             <div
               className={s.secondary_selector}
               onClick={e => history.push('/search-results')}
-            >Return To Search</div>
+            >
+              Return To Search
+            </div>
 
             <div className={s.primary_selector}>Order Cocktails</div>
           </div>
-        </div>
+        </ContentBox>
       )}
     </div>
   );

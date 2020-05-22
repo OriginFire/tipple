@@ -5,6 +5,7 @@ import s from './VendorAdminCocktails.scss';
 import CocktailSettingList from './CocktailSettingList';
 import ApplicationContext from '../../ApplicationContext';
 import VendorConsole from '../vendorAdminConsole/VendorAdminConsole';
+import ContentBox from '../../sitewideDisplayComponents/contentBox/ContentBox';
 
 const FIND_VENDOR = `
   query FindVendor($slug: String!, $JWT: String!) {
@@ -35,21 +36,23 @@ function VendorAdminCocktails(props) {
 
   let vendor;
 
-  if (loading) return 'Loading...';
+  if (loading) return (
+    <div>Test of loading return.</div>
+  );
   if (error) return 'Something Bad Happened';
   if (data) {
     vendor = data.protectedFindVendor;
   }
 
   return (
-    <div className={s.container}>
+    <div>
       {vendor && (
-        <div className={s.vendor_admin_display}>
+        <ContentBox>
           <VendorConsole vendor={vendor} active="cocktail" />
           <div className={s.vendor_setting_content}>
             <CocktailSettingList vendor={vendor} />
           </div>
-        </div>
+        </ContentBox>
       )}
     </div>
   );

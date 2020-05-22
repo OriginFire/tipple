@@ -67,8 +67,8 @@
 
   .form {
     position: absolute;
-    right: 5vw;
-    bottom: 20vh;
+    right: calc(20px);
+    top: calc(50px + 20vh);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -79,7 +79,7 @@
 
   .explainer,
   .redirect_explainer {
-    font-size: calc(16px + 0.6vh);
+    font-size: calc(16px + 0.8vh);
   }
 
   .signup_content {

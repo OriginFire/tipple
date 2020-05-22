@@ -1,14 +1,15 @@
 .homepage_content {
-  position: fixed;
+  position: static;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .action_content {
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: static;
   align-items: center;
   z-index: 10;
   text-align: center;
@@ -54,12 +55,14 @@
   .action_content {
     width: 100%;
     max-width: 500px;
+    height: auto;
+    overflow-y: auto;
     justify-content: space-around;
     margin: 4vh auto;
   }
 
   .header_text {
-    top: calc(2vh + 10vw - 25px);
+    top: calc(5vh + 14vw + 10px);
     font-size: calc(14px + 1vh + 4.1vw);
   }
 
@@ -74,24 +77,29 @@
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
   .homepage_splash {
-    max-width: 100%;
-    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 55px;
+    width: 100%;
+    height: calc(100% - 55px);
     object-fit: cover;
   }
 
   .action_content {
     justify-content: space-between;
-    height: 62vh;
-    width: 40vw;
-    margin: 10vh 0 0 55vw;
+    height: calc(150px + 10vh);
+    width: calc(250px);
+    margin: 14vh 0 0 calc(75vw - 120px);
   }
 
   .header_text {
     position: absolute;
-    top: 10vh;
-    left: -125%;
-    width: 85%;
-    font-size: 22px;
+    top: calc(30px + 30vh);
+    left: calc(20px + 2vw);
+    width: calc(200px + 10vw);
+    font-size: calc(16px + 1vw);
   }
 
   .header_one {
@@ -105,31 +113,45 @@
     right: inherit;
   }
 
+  .action_item {
+    width: 100%;
+  }
+
   .explainer {
-    font-size: 12px;
+    font-size: calc(12px + 1vh);
   }
 }
 
-@media only screen and (min-height: 600px) and (min-width: 768px) {
+@media only screen and (min-height: 500px) and (min-width: 768px) {
+  .homepage_splash {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 85px;
+    width: 100%;
+    height: calc(100% - 85px);
+    object-fit: cover;
+  }
+
   .action_content {
+    position: absolute;
     justify-content: flex-end;
-    height: auto;
-    width: calc(600px);
-    top: 25%;
-    bottom: 10%;
+    max-width: 500px;
+    width: 100%;
+    bottom: calc(20vh - 90px);
     right: 0;
     margin: 0 0 0 0;
   }
 
   .header_text {
-    position: relative;
+    position: absolute;
     text-align: right;
-    top: 8%;
-    left: -7vw;
-    right: 0;
-    margin-bottom: 6vh;
-    width: 90%;
-    font-size: calc(12px + 1.8vw + 1.9vh);
+    top: calc(45vh - 120px);
+    left: calc(55vw - 20vh);
+    right: 5vw;
+    width: auto;
+    font-size: calc(26px + 2.15vh + 1.15vw);
   }
 
   .header_one {
@@ -145,7 +167,8 @@
   }
 
   .action_item {
-    margin: 6vh 0 2vh 0;
+    margin: 4vh auto 2vh auto;
+    width: 100%;
   }
 
   .explainer {

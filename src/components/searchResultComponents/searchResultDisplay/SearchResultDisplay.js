@@ -3,6 +3,7 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSlidersH } from '@fortawesome/free-solid-svg-icons';
 import s from './SearchResultDisplay.scss';
+import ContentBox from '../../sitewideDisplayComponents/contentBox/ContentBox';
 import FilterSettings from '../filterSettings/FilterSettings';
 import VendorResultsList from '../vendorSearchResults/VendorResultsList';
 import CocktailResultsList from '../cocktailSearchResults/CocktailResultsList';
@@ -53,41 +54,39 @@ function SearchResultsDisplay() {
   }
 
   return (
-    <div className={s.search_result_content}>
+    <ContentBox>
       {filterSettingsOpen && (
         <FilterSettings
           settings={filterSettings}
           onClose={newSettings => updateFilterSettings(newSettings)}
         />
       )}
-      <div className={s.search_result_list_display}>
-        <div className={s.display_selectors}>
-          <FontAwesomeIcon
-            icon={faSlidersH}
-            className={s.filter_icon}
-            size="2x"
-            color="grey"
-            onClick={e => setFilterSettingsOpen(true)}
-          />
+      <div className={s.display_selectors}>
+        <FontAwesomeIcon
+          icon={faSlidersH}
+          className={s.filter_icon}
+          size="2x"
+          color="grey"
+          onClick={e => setFilterSettingsOpen(true)}
+        />
 
-          <div
-            className={cocktailStyle}
-            onClick={e => setDisplaySetting('cocktails')}
-          >
-            {cocktailButton}
-          </div>
-
-          <div
-            className={vendorStyle}
-            onClick={e => setDisplaySetting('vendors')}
-          >
-            {vendorButton}
-          </div>
+        <div
+          className={cocktailStyle}
+          onClick={e => setDisplaySetting('cocktails')}
+        >
+          {cocktailButton}
         </div>
 
-        <div className={s.list}>{resultsDisplay}</div>
+        <div
+          className={vendorStyle}
+          onClick={e => setDisplaySetting('vendors')}
+        >
+          {vendorButton}
+        </div>
       </div>
-    </div>
+
+      <div className={s.list}>{resultsDisplay}</div>
+    </ContentBox>
   );
 }
 

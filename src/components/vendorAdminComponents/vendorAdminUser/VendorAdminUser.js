@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './VendorAdminUser.scss';
-import VendorConsole from "../vendorAdminConsole/VendorAdminConsole";
-import UserSettings from "./UserSettings";
+import ContentBox from '../../sitewideDisplayComponents/contentBox/ContentBox';
+import VendorConsole from '../vendorAdminConsole/VendorAdminConsole';
+import UserSettings from './UserSettings';
 import ApplicationContext from '../../ApplicationContext';
 
 const FIND_VENDOR = `
@@ -38,19 +39,16 @@ function VendorAdminUser(props) {
   if (loading) return 'Loading...';
   if (error) return 'Something Bad Happened';
   if (data) {
-    console.log(data);
     vendor = data.protectedFindVendor;
   }
 
   return (
-    <div className={s.container}>
-      <div className={s.vendor_admin_display}>
-        <VendorConsole vendor={vendor} active={'user'} />
-        <div className={s.vendor_setting_content}>
-          <UserSettings vendorAccount={vendor} />
-        </div>
+    <ContentBox>
+      <VendorConsole vendor={vendor} active="user" />
+      <div className={s.vendor_setting_content}>
+        <UserSettings vendorAccount={vendor} />
       </div>
-    </div>
+    </ContentBox>
   );
 }
 

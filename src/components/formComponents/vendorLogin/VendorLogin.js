@@ -7,6 +7,7 @@ import FormField from '../../sitewideDisplayComponents/formField';
 import Button from '../../sitewideDisplayComponents/Button';
 import history from '../../../history';
 import ApplicationContext from '../../ApplicationContext';
+import ContentBox from "../../sitewideDisplayComponents/contentBox/ContentBox";
 
 const VENDOR_LOGIN_MUTATION = `
   mutation VendorLogin(
@@ -45,7 +46,7 @@ function VendorLogin() {
   };
 
   return (
-    <div className={s.page_wrapper}>
+    <ContentBox>
       <div className={s.form}>
         <div className={s.login_content}>
           <div className={s.explainer}>Log into your vendor account</div>
@@ -77,7 +78,7 @@ function VendorLogin() {
           />
         </div>
       </div>
-    </div>
+    </ContentBox>
   );
 }
 

@@ -5,6 +5,7 @@ import s from './VendorAdminGeneral.scss';
 import VendorConsole from '../vendorAdminConsole/VendorAdminConsole';
 import GeneralSettings from './GeneralSettings';
 import ApplicationContext from '../../ApplicationContext';
+import ContentBox from "../../sitewideDisplayComponents/contentBox/ContentBox";
 
 const FIND_VENDOR = `
   query FindVendor($slug: String!, $JWT: String!) {
@@ -49,14 +50,12 @@ function VendorAdminGeneral(props) {
   }
 
   return (
-    <div className={s.container}>
-      <div className={s.vendor_admin_display}>
+    <ContentBox>
         <VendorConsole vendor={vendor} active="general" />
         <div className={s.vendor_setting_content}>
           <GeneralSettings vendor={vendor} />
         </div>
-      </div>
-    </div>
+    </ContentBox>
   );
 }
 

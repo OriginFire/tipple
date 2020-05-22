@@ -78,13 +78,10 @@ class Header extends React.Component {
       <div className={s.container}>
         <Link className={s.brand} to="/">
           <img src={Logo} className={s.logo} alt="Tipple Supply Co" />
+          <div className={s.text_logo}>Tipple Supply Co.</div>
         </Link>
         <div className={s.menu_icon} onClick={this.menuClick}>
           <FontAwesomeIcon icon={faBars} size="lg" color="white" pull="right" />
-        </div>
-
-        <div className={s.menu_icon_large} onClick={this.menuClick}>
-          <FontAwesomeIcon icon={faBars} size="2x" color="white" pull="right" />
         </div>
         {this.menuVisibility()}
       </div>

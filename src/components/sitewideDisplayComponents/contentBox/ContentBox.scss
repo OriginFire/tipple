@@ -6,47 +6,6 @@
   overflow-x: hidden;
 }
 
-.display_selectors {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  font-family: 'Lato Regular', sans-serif;
-}
-
-.active,
-.inactive {
-  border: solid #434343 1px;
-  border-radius: 4px;
-  padding: 20px 15px;
-  width: 170px;
-  text-align: center;
-  transition: 0.2s;
-}
-
-.active {
-  background-color: #251e1f;
-}
-
-.inactive {
-  cursor: pointer;
-}
-
-.inactive:hover {
-  background-color: #616161;
-  color: white;
-}
-
-.filter_icon {
-  cursor: pointer;
-}
-
-.list {
-  position: absolute;
-  margin: 0 0 0 0;
-  width: 100%;
-  height: auto;
-}
-
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .search_result_content {
     position: absolute;
@@ -65,24 +24,6 @@
     margin: 0;
     padding: 0;
     opacity: 0.95;
-  }
-
-  .display_selectors {
-    font-size: 12px;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 20px 0 0 0;
-  }
-
-  .active,
-  .inactive {
-    padding: 12px 8px;
-    width: 100px;
-  }
-
-  .list {
-    top: 70px;
-    bottom: 10px;
   }
 }
 
@@ -104,34 +45,6 @@
     margin: 0;
     padding: 0;
     opacity: 0.95;
-  }
-
-  .display_selectors {
-    position: absolute;
-    flex-direction: column-reverse;
-    font-size: 12px;
-    top: calc(5px + 10vh);
-    left: calc(20vw - 80px);
-    height: calc(50px + 30vh);
-    justify-content: space-between;
-    align-items: center;
-    margin: 3vh 0 0 0;
-  }
-
-  .active,
-  .inactive {
-    padding: 12px 8px;
-    margin: 0 10px;
-    width: 100px;
-  }
-
-  .list {
-    top: 10px;
-    bottom: 0;
-    right: 0;
-    left: calc(50px + 20vw);
-    width: auto;
-    font-size: 0.6em;
   }
 }
 
@@ -161,32 +74,6 @@
     opacity: 0.95;
   }
 
-  .list {
-    top: 90px;
-    bottom: 10px;
-    left: initial;
-    width: 100%;
-    height: auto;
-  }
-
-  .display_selectors {
-    position: relative;
-    flex-direction: row;
-    height: initial;
-    top: 0;
-    left: initial;
-    font-size: 14px;
-    font-family: 'Lato Light', sans-serif;
-    justify-content: space-evenly;
-    margin: 4% 0 0 0;
-  }
-
-  .active,
-  .inactive {
-    padding: 14px 12px;
-    margin: 0 10px;
-    width: 120px;
-  }
 }
 
 @media only screen and (min-width: 1224px) {
@@ -213,24 +100,5 @@
     margin: 0;
     padding: 0;
     opacity: 0.95;
-  }
-
-  .display_selectors {
-    font-size: 14px;
-    justify-content: space-evenly;
-    margin: 30px 0 0 0;
-  }
-
-  .active,
-  .inactive {
-    padding: 18px 20px;
-    margin: 0 10px;
-    width: 120px;
-  }
-
-  .list {
-    top: 150px;
-    bottom: 130px;
-    height: auto;
   }
 }

@@ -1,17 +1,5 @@
 @import '../../variables.css';
 
-.container {
-  overflow: hidden;
-}
-
-.vendor_admin_display {
-  background-color: #121212;
-  opacity: 0.98;
-  z-index: 5;
-  overflow: hidden;
-  box-shadow: #252225 0 0 4px 1px;
-}
-
 .vendor_setting_content {
   position: absolute;
   margin: 0 0 0 0;
@@ -22,24 +10,6 @@
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
-  .container {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    top: 66px;
-    bottom: 0;
-  }
-
-  .vendor_admin_display {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: block;
-    float: right;
-    margin: 0;
-    opacity: 0.95;
-  }
-
   .vendor_setting_content {
     top: 160px;
     bottom: 15px;
@@ -48,25 +18,6 @@
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
-  .container {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    bottom: 0;
-    top: 66px;
-  }
-
-  .vendor_admin_display {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: block;
-    float: right;
-    margin: 0;
-    padding: 0;
-    opacity: 0.95;
-  }
-
   .vendor_setting_content {
     top: 0;
     bottom: 0;
@@ -78,31 +29,6 @@
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .container {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    top: 116px; /* This value is determined by the header */
-    bottom: 0;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-    background-image: url('../../../../public/LevitationAspect.JPG');
-    background-size: cover;
-    background-position: 50%, 0%;
-  }
-
-  .vendor_admin_display {
-    position: absolute;
-    width: 55%;
-    height: auto;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    opacity: 0.95;
-  }
-
   .vendor_setting_content {
     top: 200px;
     bottom: 65px;
@@ -112,28 +38,4 @@
 }
 
 @media only screen and (min-width: 1224px) {
-  .container {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    top: 116px; /* This value is determined by the header */
-    bottom: 0;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-    background-image: url('../../../../public/LevitationAspect.JPG');
-    background-size: cover;
-    background-position: 50%, 0%;
-  }
-
-  .vendor_admin_display {
-    position: absolute;
-    width: 55%;
-    height: auto;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    opacity: 0.95;
-  }
 }
