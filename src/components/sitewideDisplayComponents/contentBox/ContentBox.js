@@ -4,8 +4,8 @@ import s from './ContentBox.scss';
 
 function ContentBox(props) {
   return (
-    <div className={s.search_result_content}>
-      <div className={s.search_result_list_display}>
+    <div className={s.content}>
+      <div className={s.box}>
         {props.children}
       </div>
     </div>

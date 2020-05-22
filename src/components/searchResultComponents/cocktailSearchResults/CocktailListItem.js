@@ -36,6 +36,7 @@ function CocktailListItem(props) {
               />
               <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>
               <div className={s.availability}>Available Today</div>
+              <div className={s.availability}>Until 11 AM</div>
               <div className={s.order} onClick={e => history.push(`/vendor/${vendor.slug}`)}>Order {availability}</div>
             </div>
 
@@ -94,7 +95,7 @@ function CocktailListItem(props) {
     );
   }
 
-  return <div className={s.no_crash}>{DisplayContent()}</div>;
+  return <div className={s.pass_through}>{DisplayContent()}</div>;
 }
 
 export default withStyles(s)(CocktailListItem);

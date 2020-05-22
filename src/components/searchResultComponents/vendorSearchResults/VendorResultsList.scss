@@ -46,9 +46,10 @@
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .result_list {
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: nowrap;
     height: 100%;
+    width: 100%;
   }
 
   .results_message {
@@ -59,11 +60,19 @@
 }
 
 @media only screen and (min-width: 1224px) {
+
   .result_list {
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     height: 100%;
+    width: 100%;
+  }
+
+  .results_message {
+    font-size: 20px;
+    font-family: 'Lato Light', sans-serif;
+    width: 70%;
   }
 }
