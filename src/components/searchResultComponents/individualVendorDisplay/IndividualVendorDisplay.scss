@@ -92,10 +92,10 @@
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     width: 30%;
-    top: 0;
-    bottom: 0;
+    height: 80px;
+    top: calc(20px + 18vh);
     left: 5vw;
   }
 
@@ -104,6 +104,17 @@
     font-size: 28px;
     text-align: left;
   }
+
+  .schedule {
+    font-family: "Lato Light", sans-serif;
+    color: #a5a5a5;
+    margin: auto;
+    width: 100%;
+    text-align: left;
+    display: inline-block;
+    font-size: 14px;
+  }
+
 
   .address {
     position: relative;
@@ -119,8 +130,19 @@
     padding-bottom: 30px;
   }
 
-  .buttons {
-    display: none;
+  .selectors {
+    position: absolute;
+    flex-direction: column;
+    justify-content: flex-start;
+    bottom: 10px;
+    width: 30%;
+  }
+
+  .primary_selector, .secondary_selector {
+    font-size: 12px;
+    padding: 10px 5px;
+    margin: 4px auto;
+    width: calc(100px);
   }
 }
 

@@ -9,9 +9,41 @@
   object-fit: cover;
 }
 
+.profile {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  color: #919191;
+  font-family: "Lato Light", sans-serif;
+}
+
+.order {
+  border: solid #434343 1px;
+  color: #b9b9b9;
+  background-color: #251e1f;
+  border-radius: 4px;
+  padding: 8px 5px;
+  text-align: center;
+  transition: 0.2s;
+  cursor: pointer;
+  font-family: 'Lato Regular', sans-serif;
+}
+
+.order:hover {
+  background-color: #25191b;
+  color: white;
+}
+
+.result_text {
+  display: flex;
+  flex-direction: column;
+}
+
 .cocktail_name {
   font-family: 'Lato Regular', sans-serif;
   text-align: center;
+  color: #e1e1e1;
 }
 
 .price {
@@ -20,22 +52,22 @@
   text-align: center;
 }
 
-.result_text {
-  display: flex;
-  flex-direction: column;
-}
-
 .ingredients, .description {
-  color: #919191;
-  text-align: center;
+  color: #878787;
   font-family: 'Lato Light', sans-serif;
 }
 
 .ingredients {
   display: flex;
+  text-align: center;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+}
+
+.description {
+  text-align: left;
+  color: #737373;
 }
 
 .expand {
@@ -46,7 +78,74 @@
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .cocktail {
+    width: calc(100px + 65vw);
+    margin: 10px 0 30px 0;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
+
+  .cocktail_image {
+    width: 160px;
+    height: 90px;
+    padding: 0 0 2px 0;
+  }
+
+  .profile {
+    font-size: 11px;
+    width: 160px;
+  }
+
+  .icon {
+    padding: 0 10px 0 0;
+  }
+
+  .order {
+    font-size: 10px;
+    margin: 12px auto 0 auto;
+    width: 60%;
+  }
+
+  .result_text {
+    width: 48%;
+    min-height: 115px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 0 0 0;
+  }
+
+  .cocktail_name {
+    font-size: 17px;
     width: 100%;
+    padding: 0;
+  }
+
+  .price {
+    font-size: 11.5px;
+    padding: 0;
+  }
+
+  .ingredients {
+    font-size: 13px;
+    padding: 10px 0 10px 0;
+  }
+
+  .description {
+    font-size: 13px;
+    width: 100%;
+    padding: 6px 0;
+  }
+
+  .expand {
+    font-size: 12px;
+    color: #c3c3c3;
+    padding: 4px 0 0 0;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 320px) {
+  .cocktail {
+    width: calc(100px + 45vw);
     margin: 16px 0;
     justify-content: space-evenly;
   }
@@ -57,21 +156,19 @@
     padding: 0 0 2px 0;
   }
 
-  .vendor_name {
-    font-size: 12px;
+  .profile {
+    font-size: 11px;
+    width: 160px;
   }
 
-  .cocktail_name {
-    font-size: 14px;
-    text-align: center;
-    width: 100%;
-    padding: 0;
-    color: #e1e1e1;
+  .icon {
+    padding: 0 10px 0 0;
   }
 
-  .price {
-    font-size: 10.5px;
-    padding: 0 0 6px 0;
+  .order {
+    font-size: 10px;
+    margin: 12px auto 0 auto;
+    width: 60%;
   }
 
   .result_text {
@@ -81,6 +178,19 @@
     justify-content: flex-start;
     align-items: center;
     padding: 0 0 0 0;
+  }
+
+  .cocktail_name {
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+    padding: 0;
+    color: #e1e1e1;
+  }
+
+  .price {
+    font-size: 10.5px;
+    padding: 0 0 6px 0;
   }
 
   .ingredients {
@@ -101,52 +211,7 @@
   }
 }
 
-@media only screen and (orientation: landscape) and (min-width: 320px) {
-  .cocktails {
-    top: 0;
-    bottom: 0;
-    right: 0;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    flex: none;
-    width: 65%;
-    font-size: 12px;
-  }
-
-  .cocktail {
-    margin: 0 20px;
-  }
-
-  .cocktail_image {
-    position: relative;
-    width: 35vw;
-    height: 40vh;
-    object-fit: cover;
-  }
-
-  .cocktail_name {
-    font-size: 16px;
-    padding-bottom: 8px;
-  }
-}
-
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .cocktails {
-    top: 110px;
-    bottom: 120px;
-    right: 0;
-    left: 0;
-    height: auto;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: flex-start;
-    overflow: scroll;
-    width: 100%;
-    font-size: 12px;
-  }
-
   .cocktail {
     display: flex;
     flex-direction: row;

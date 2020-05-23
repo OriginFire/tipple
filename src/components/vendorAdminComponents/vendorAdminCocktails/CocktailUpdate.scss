@@ -2,6 +2,8 @@
 .active, .inactive {
   transition: 0.25s;
   width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .active {

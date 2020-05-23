@@ -2,33 +2,49 @@ import React, { useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faChevronUp,
-  faChevronDown,
   faGlassWhiskey,
   faWineBottle,
   faCocktail,
   faWineGlass,
 } from '@fortawesome/free-solid-svg-icons';
 import s from './VendorCocktail.scss';
+import history from "../../../../../history";
 
 function VendorCocktail(props) {
   const { cocktail } = props;
   const { index } = props;
   const [expanded, setExpanded] = useState(false);
-  let profile;
+  let profile = {
+    icon: null,
+    string: null,
+  };
 
   switch (cocktail.profile) {
     case 'stiff':
-      profile = faGlassWhiskey;
+      profile = {
+        icon: faGlassWhiskey,
+        string: 'This cocktail is stiff, like a Martini, Old Fashioned, etc.',
+      };
       break;
     case 'strong':
-      profile = faCocktail;
+      profile = {
+        icon: faCocktail,
+        string:
+          'This cocktail is mixed, like a Margarita, Daiquiri, etc.',
+      };
       break;
     case 'long':
-      profile = faWineGlass;
+      profile = {
+        icon: faWineGlass,
+        string:
+          'This cocktail has a non-alcoholic lengthener, like a Moscow Mule, Mojito, etc.',
+      };
       break;
     case 'lowABV':
-      profile = faWineBottle;
+      profile = {
+        icon: faWineBottle,
+        string: 'This cocktail is low alcohol, like a Wine Sprtizer.',
+      };
       break;
   }
 
@@ -40,16 +56,25 @@ function VendorCocktail(props) {
           src={cocktail.image}
           alt={`${cocktail.name} Image`}
         />
+        <div className={s.profile}>
+          <FontAwesomeIcon icon={profile.icon} size="lg" className={s.icon} />
+          <div>{profile.string}</div>
+        </div>
+        <div className={s.order} onClick={e => history.push(`${vendor.onlineStore}`)}>Order</div>
+      </div>
+
+      <div className={s.result_text}>
         <div className={s.cocktail_name}>{cocktail.name}</div>
         <div className={s.price}>
           ${cocktail.price} / {cocktail.servingSize} oz serving
         </div>
-      </div>
 
-      <div className={s.result_text}>
         <div className={s.ingredients}>
           {cocktail.ingredients} {cocktail.ingredients.length}
         </div>
+
+
+
         <div className={s.description}>
           {cocktail.description} {cocktail.description.length}
           {cocktail.description} {cocktail.description.length}
@@ -60,19 +85,3 @@ function VendorCocktail(props) {
 }
 
 export default withStyles(s)(VendorCocktail);
-
-/* {!expanded && (
-  <div className={s.expand} onClick={e => setExpanded(true)}>
-    More Details{` `}
-    <FontAwesomeIcon icon={faChevronDown} size="xs" />
-  </div>
-)}
-{expanded && (
-  <div>
-
-    <div className={s.expand} onClick={e => setExpanded(false)}>
-      More Details{` `}
-      <FontAwesomeIcon icon={faChevronUp} size="xs" />
-    </div>
-  </div>
-)} */

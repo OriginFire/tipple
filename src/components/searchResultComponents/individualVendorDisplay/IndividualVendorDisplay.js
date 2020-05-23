@@ -79,17 +79,6 @@ function IndividualVendorDisplay(props) {
             cocktails={vendor.cocktails}
             vendor={vendor}
           />
-
-          <div className={s.selectors}>
-            <div
-              className={s.secondary_selector}
-              onClick={e => history.push('/search-results')}
-            >
-              Return To Search
-            </div>
-
-            <div className={s.primary_selector}>Order Cocktails</div>
-          </div>
         </ContentBox>
       )}
     </div>
