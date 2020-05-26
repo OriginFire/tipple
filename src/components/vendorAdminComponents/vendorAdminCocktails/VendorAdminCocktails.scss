@@ -4,12 +4,13 @@
   position: absolute;
   margin: 0 0 0 0;
   width: 100%;  height: auto;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .vendor_setting_content {
-    top: 160px;
+    top: 110px;
     bottom: 0;
     font-size: 0.6em;
   }

@@ -9,8 +9,8 @@ import {
   faWineGlass,
 } from '@fortawesome/free-solid-svg-icons';
 import s from './CocktailUpdate.scss';
-import DynamicSetting from '../dynamicSetting/DynamicSetting';
-import ApplicationContext from '../../ApplicationContext';
+import DynamicSetting from '../../dynamicSetting/DynamicSetting';
+import ApplicationContext from '../../../ApplicationContext';
 
 const UPDATE_COCKTAIL = `
   mutation UpdateCocktail(
@@ -132,8 +132,8 @@ function CocktailUpdate(props) {
   }
 
   return (
-    <div className={s.active}>
-      <div key={key} className={s.list_item_open}>
+    <div className={s.edit_wrapper}>
+      <div key={key} className={s.update_content}>
         <div>
           <img
             className={s.cocktail_image}
@@ -238,11 +238,11 @@ function CocktailUpdate(props) {
         </div>
       </div>
 
-      <div>
-        <div className={s.order} onClick={e => saveCocktail()}>
+      <div className={s.buttons}>
+        <div className={s.action} onClick={e => saveCocktail()}>
           Save Changes
         </div>
-        <div className={s.order} onClick={e => cocktailToDelete(cocktail.id)}>
+        <div className={s.action} onClick={e => cocktailToDelete(cocktail.id)}>
           Delete Cocktail
         </div>
       </div>

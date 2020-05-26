@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import ApplicationContext from '../../ApplicationContext';
+import ApplicationContext from '../../../ApplicationContext';
 import s from './Cocktail.scss';
-import CocktailUpdate from './CocktailUpdate';
+import CocktailUpdate from '../cocktailUpdate/CocktailUpdate';
 
 function Cocktail(props) {
   const authenticationContext = useContext(ApplicationContext);
@@ -51,9 +51,9 @@ function Cocktail(props) {
       );
     }
     return (
-      <div className={s.inactive}>
-        <div key={key} className={s.list_item_open}>
-          <div>
+      <div className={s.wrapper}>
+        <div key={key} className={s.list_item}>
+          <div className={s.result_context}>
             <img
               className={s.cocktail_image}
               src={cocktailImage}
@@ -63,7 +63,7 @@ function Cocktail(props) {
               {cocktailName} is currently public. This is how it appears to
               users.
             </div>
-            <div className={s.order} onClick={e => setIsOpen(true)}>
+            <div className={s.edit} onClick={e => setIsOpen(true)}>
               Edit Details
             </div>
           </div>
@@ -86,7 +86,11 @@ function Cocktail(props) {
     );
   }
 
-  return <div className={s.no_crash}>{DisplayContent()}</div>;
+  return (
+    <div>
+    {DisplayContent()}
+    </div>
+  );
 }
 
 export default withStyles(s)(Cocktail);

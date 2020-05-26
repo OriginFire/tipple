@@ -24,7 +24,6 @@
   align-self: center;
 }
 
-
 .save {
   border: solid #434343 1px;
   color: #b9b9b9;
@@ -66,29 +65,83 @@
   }
 
   .setting_value {
-    width: 110px;
     align-self: center;
     font-size: 12px;
+    width: 110px;
   }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
+  .display_setting,
+  .input_setting {
+    font-size: 14px;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+  }
+
+  .display_setting {
+    padding: 13px 0;
+  }
+
+  .input {
+    width: 250px;
+    text-align: center;
+  }
+
+  .setting_field {
+    width: 110px;
+  }
+
   .setting {
     font-size: 13px;
     margin-top: 6px;
     margin-left: 5px;
   }
+
+  .setting_value {
+    align-self: center;
+    font-size: 12px;
+    width: 110px;
+  }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
+  .display_setting,
+  .input_setting {
+    font-size: 14px;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+  }
+
+  .display_setting {
+    padding: 15px 0;
+  }
+
+  .input {
+    width: calc(50px + 70%);
+    text-align: center;
+  }
+
+  .setting_field {
+    width: 110px;
+  }
+
   .setting {
-    margin-top: 0;
-    margin-left: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding: 13px 15px;
+    font-size: 14px;
+    margin-top: 6px;
+    margin-left: 5px;
+  }
+
+  .setting_value {
+    align-self: center;
+    font-size: 14px;
+    width: 110px;
+  }
+
+  .icon {
+    font-size: 16px;
   }
 }
 

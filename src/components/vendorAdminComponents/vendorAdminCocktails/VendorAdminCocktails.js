@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useMutation, useQuery } from 'graphql-hooks';
 import s from './VendorAdminCocktails.scss';
-import CocktailSettingList from './CocktailSettingList';
+import CocktailSettingList from './cocktailSettingList/CocktailSettingList';
 import ApplicationContext from '../../ApplicationContext';
 import VendorConsole from '../vendorAdminConsole/VendorAdminConsole';
 import ContentBox from '../../sitewideDisplayComponents/contentBox/ContentBox';

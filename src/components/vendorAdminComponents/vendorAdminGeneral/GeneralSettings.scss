@@ -1,6 +1,7 @@
 @import '../../variables.css';
 
 .settings_content {
+  position: absolute;
   width: 100%;
   text-align: center;
   display: block;
@@ -10,6 +11,10 @@
 .vendor_image {
   object-fit: cover;
   display: block;
+  margin: auto;
+}
+
+.image_upload {
   margin: auto;
 }
 
@@ -23,37 +28,71 @@
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
   .settings_content {
-    position: absolute;
     height: auto;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     flex-wrap: nowrap;
-    align-content: flex-end;
-    align-items: flex-start;
-    justify-content: flex-end;
-    overflow: scroll;
+    align-content: center;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    overflow-x: hidden;
     width: auto;
+    left: 0;
+    right: 0;
     z-index: 0;
   }
 
   .vendor_image {
-    width: 200px;
-    margin: 30px 20px 0 20px;
+    width: 160px;
+    height: 90px;
+    padding: 0 0 2px 0;
   }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .settings_content {
     position: absolute;
-    display: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
     width: 100%;
-    margin: 0;
+    margin: auto;
     padding: 0;
-    min-height: 200px;
     top: 0;
+  }
+
+  .vendor_image {
+    width: 200px;
+    height: 120px;
+    padding: 0 0 10px 0;
+  }
+
+  .image_upload {
+    padding: 0 0 20px 0;
   }
 }
 
 @media only screen and (min-width: 1224px) {
+  .settings_content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    width: calc(200px + 50%);
+    margin: auto;
+    padding: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 
+  .vendor_image {
+    width: 200px;
+    height: 120px;
+    padding: 0 0 10px 0;
+  }
 }

@@ -121,7 +121,7 @@ function GeneralSettings(props) {
       <VendorDataAlert vendor={vendor} />
 
       <DynamicSettingImage />
-      <input type="file" onChange={loadfile} />
+      <input className={s.image_upload} type="file" onChange={loadfile} />
 
       <DynamicSetting
         settingName="Business Name (D.B.A.)"

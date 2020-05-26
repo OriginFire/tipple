@@ -1,27 +1,46 @@
-import React from 'react';
+import React, {useState} from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './UserSettings.scss';
+import DynamicSetting from "../dynamicSetting/DynamicSetting";
 
 function UserSettings(props) {
   const vendor = props.vendorAccount;
+  const [name, setName] = useState(vendor.adminName);
+  const [phoneNumber, setPhoneNumber] = useState(vendor.adminPhone);
+  const [emailAddress, setEmailAddress] = useState(vendor.adminEmail);
+  const [password, setPassword] = useState(vendor.adminPassword);
+
   return (
     <div className={s.settings_content}>
-      <div className={s.setting}>
-        <div className={s.setting_field}>Name</div>
-        <div className={s.setting_value}>{vendor.adminName}</div>
-      </div>
-      <div className={s.setting}>
-        <div className={s.setting_field}>Phone Number</div>
-        <div className={s.setting_value}>{vendor.adminPhone}</div>
-      </div>
-      <div className={s.setting}>
-        <div className={s.setting_field}>Email Address</div>
-        <div className={s.setting_value}>{vendor.adminEmail}</div>
-      </div>
-      <div className={s.setting}>
-        <div className={s.setting_field}>Password</div>
-        <div className={s.setting_value}>{vendor.userPassword}</div>
-      </div>
+      <DynamicSetting
+        settingName="Name"
+        settingValue={name}
+        settingSave={newValue => {
+          setName(newValue);
+        }}
+      />
+
+      <DynamicSetting
+        settingName="Phone Number"
+        settingValue={phoneNumber}
+        settingSave={newValue => setPhoneNumber(newValue)}
+      />
+
+      <DynamicSetting
+        settingName="Email Address"
+        settingValue={emailAddress}
+        settingSave={newValue => {
+          setEmailAddress(newValue);
+        }}
+      />
+
+      <DynamicSetting
+        settingName="Passowrd"
+        settingValue={password}
+        settingSave={newValue => {
+          setPassword(newValue);
+        }}
+      />
     </div>
   );
 }

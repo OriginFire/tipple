@@ -34,11 +34,6 @@ function VendorAdminConsole(props) {
     <div className={s.context_control}>
       <div className={s.vendor_name}>{vendor.dbaName}</div>
 
-      <h2 className={s.result_explainer}>
-        Here you can manage {vendor.dbaName}'s account details (user info,
-        online service settings, cocktails, etc.)
-      </h2>
-
       <div className={s.display_selectors}>
         <div
           className={generalStatus}

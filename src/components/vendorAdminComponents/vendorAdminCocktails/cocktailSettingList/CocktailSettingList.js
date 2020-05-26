@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import s from './VendorCocktailSettings.scss';
-import Cocktail from './Cocktail';
-import ApplicationContext from '../../ApplicationContext';
+import s from './CocktailSettingList.scss';
+import Cocktail from '../cocktail/Cocktail';
+import ApplicationContext from '../../../ApplicationContext';
 import {useMutation} from "graphql-hooks";
 
 const NEW_COCKTAIL = `
