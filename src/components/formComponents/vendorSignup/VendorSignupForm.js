@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useMutation } from 'graphql-hooks';
 import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import s from './VendorSignupForm.scss';
+import ContentBox from "../../sitewideDisplayComponents/contentBox/ContentBox";
 import FormField from '../../sitewideDisplayComponents/formField/FormField';
 import AddressFormField from '../../utilityComponents/addressFormField/AddressFormField';
 import VendorFormStatus from "./VendorFormStatus";
@@ -112,7 +113,7 @@ function VendorSignupForm() {
 
   // TODO: reactor this
   return (
-    <div className={s.vendor_signup_content}>
+    <ContentBox>
       <div className={s.form_explainer}>
         List your cocktail delivery or takeout business on Tipple. {errorMsg}
       </div>
@@ -200,12 +201,9 @@ function VendorSignupForm() {
               );
           }
         })()}
-
-        <div className={s.buttons}>
-          <VendorFormButtons formStage={formStage} formStageChange={newStage => setFormStage(newStage)} submitForm={e => createNewVendor()} />
-        </div>
+        <VendorFormButtons formStage={formStage} formStageChange={newStage => setFormStage(newStage)} submitForm={e => createNewVendor()} />
       </div>
-    </div>
+    </ContentBox>
   );
 }
 

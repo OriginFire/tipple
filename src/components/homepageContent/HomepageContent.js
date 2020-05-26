@@ -2,7 +2,7 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import s from './HomepageContent.scss';
-import Link from '../utilityComponents/link';
+import history from '../../history';
 import Button from '../sitewideDisplayComponents/Button';
 import AddressFormField from '../utilityComponents/addressFormField/AddressFormField';
 import HomepageImage from '../../../public/LevitationAspect.JPG';
@@ -48,15 +48,19 @@ class HomepageContent extends React.Component {
               placeholder="Enter Your Address"
               onAddressSelection={this.addressSelection}
             />
-            <Link to="/search-results">
-              <Button type="Primary" text="Browse Cocktails" />
-            </Link>
+            <Button
+              type="Primary"
+              text="Browse Cocktails"
+              onClick={e => history.push('/search-results')}
+            />
           </div>
 
           <div className={s.action_item}>
-            <Link to="/vendor-create">
-              <Button type="Secondary" text="Become A Vendor" />
-            </Link>
+            <Button
+              type="Secondary"
+              text="Become A Vendor"
+              onClick={e => history.push('/vendor-create')}
+            />
           </div>
         </div>
       </div>

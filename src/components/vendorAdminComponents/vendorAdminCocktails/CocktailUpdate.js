@@ -15,7 +15,7 @@ import ApplicationContext from '../../ApplicationContext';
 const UPDATE_COCKTAIL = `
   mutation UpdateCocktail(
     $JWT: String!,
-    $slug: String!,
+    $id: String!,
     $name: String!,
     $ingredients: String,
     $price: Float,
@@ -26,7 +26,7 @@ const UPDATE_COCKTAIL = `
   ) {
     updateCocktail( cocktail: {
         JWT: $JWT,
-        slug: $slug,
+        id: $id,
         name: $name,
         ingredients: $ingredients,
         price: $price,
@@ -57,7 +57,7 @@ function CocktailUpdate(props) {
   const authenticationContext = useContext(ApplicationContext);
   const { cocktail } = props;
 
-  const { id } = cocktail.id;
+  const id = cocktail.id;
   const [cocktailName, setCocktailName] = useState(cocktail.name);
   const [cocktailImage, setCocktailImage] = useState(cocktail.image);
   const [cocktailIngredients, setCocktailIngredients] = useState(
@@ -79,7 +79,7 @@ function CocktailUpdate(props) {
     const update = await updateCocktail({
       variables: {
         JWT: authenticationContext.context.JWT,
-        slug,
+        id: id,
         name: cocktailName,
         ingredients: cocktailIngredients,
         price: parseFloat(cocktailPrice),

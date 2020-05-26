@@ -1,12 +1,3 @@
-.page_wrapper {
-  position: absolute;
-  height: auto;
-  top: 66px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 .form {
   height: 100%;
   margin: auto;
@@ -57,18 +48,11 @@
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .page_wrapper {
-    top: 85px;
-    background-image: url('../../../../public/OldFashioned.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50%, 0;
-  }
-
   .form {
     position: absolute;
-    right: calc(20px);
     top: calc(50px + 20vh);
+    left: 0;
+    right: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -88,11 +72,5 @@
 }
 
 @media only screen and (min-width: 1224px) {
-  .page_wrapper {
-    top: 114px;
-    background-image: url('../../../../public/OldFashioned.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50%, 0;
-  }
+
 }

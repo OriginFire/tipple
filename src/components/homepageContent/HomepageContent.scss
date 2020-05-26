@@ -90,7 +90,7 @@
   .action_content {
     justify-content: space-between;
     height: calc(150px + 10vh);
-    width: calc(250px);
+    width: calc(165px + 15vw);
     margin: 14vh 0 0 calc(75vw - 120px);
   }
 
@@ -137,11 +137,13 @@
   .action_content {
     position: absolute;
     justify-content: flex-end;
-    max-width: 500px;
-    width: 100%;
+    max-width: 450px;
+    width: 50vw;
     bottom: calc(20vh - 90px);
-    right: 0;
+    right: calc(10px + 3vw);
     margin: 0 0 0 0;
+    padding: 20px;
+    overflow-y: hidden;
   }
 
   .header_text {

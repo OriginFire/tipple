@@ -2,20 +2,22 @@ import React from 'react';
 import withStyles from "isomorphic-style-loader/withStyles";
 import s from './VendorSignupForm.scss';
 import Button from '../../sitewideDisplayComponents/Button/Button';
-import Link from '../../utilityComponents/link/Link';
+import history from "../../../history";
 
 function VendorFormButtons(props) {
   const { formStage } = props;
 
   return (
-    <div>
+    <div className={s.buttons}>
       {(() => {
         switch (formStage) {
           case 1:
             return (
-              <Link to="/">
-                <Button type="Secondary" text="Return Home" />
-              </Link>
+                <Button
+                  type="Secondary"
+                  text="Return Home"
+                  onClick={e => history.push('./')}
+                />
             );
           case 2:
             return (

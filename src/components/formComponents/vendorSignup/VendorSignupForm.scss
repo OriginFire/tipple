@@ -1,14 +1,4 @@
 @import '../../variables.css';
-
-.vendor_signup_content {
-  position: absolute;
-  height: auto;
-  width: 100%;
-  text-align: center;
-  top: 70px;
-  bottom: 0;
-}
-
 .form_explainer {
   text-align: center;
   font-family: "Plantin Bold", serif;
@@ -19,7 +9,6 @@
   top: 0;
   bottom: 0;
   height: auto;
-  width: 100%;
 }
 
 .form_status {
@@ -29,6 +18,7 @@
   align-items: flex-end;
   justify-items: flex-end;
   position: absolute;
+  text-align: center;
 }
 
 .status_item {
@@ -57,14 +47,11 @@
   position: absolute;
   left: 0;
   right: 0;
-  width: 80%;
-  margin: auto;
+  width: 100%;
 }
 
 .buttons {
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
   position: absolute;
 }
 
@@ -76,6 +63,7 @@
 
   .form {
     top: 70px;
+    width: 100%;
   }
 
   .form_status {
@@ -84,48 +72,48 @@
     left: 5vw;
   }
 
-  .status_indicator {
-    font-size: 0.75em;
-  }
-
   .partner_form_fields {
     top: 70px;
+    width: 80%;
+    margin: auto;
   }
 
   .buttons {
     bottom: 10px;
     width: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
   }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
-  .vendor_signup_content {
-    position: static;
-    margin: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-
   .form_explainer {
-    margin: 1% 8% 0 8%;
-    font-size: 1.2em;
+    margin: 5px 0;
+    top: 20px;
+    font-size: calc(18px + 1vh);
   }
 
   .form {
-    top: 110px;
+    top: 50px;
     bottom: 0;
-    width: 50%;
+    left: 5vw;
+    right: 10vw;
+    width: 80%;
+  }
+
+  .form_status {
+    left: calc(20px + 20vw);
+    right: calc(0);
+    font-size: 20px;
   }
 
   .partner_form_fields {
     top: 40px;
-  }
-
-  .form_status {
-    right: 20px;
-    left: 20px;
+    left: calc(20px + 25vw);
+    right: 0;
+    width: calc(200px + 15vw);
   }
 
   .status_indicator {
@@ -135,63 +123,45 @@
   .buttons {
     position: absolute;
     justify-content: space-evenly;
-    left: -120px;
-    top: calc(30px + 10vh);
+    left: 0;
+    top: calc(30px + 5vh);
     flex-direction: column;
     flex-wrap: nowrap;
     width: 120px;
-    height: 100px;
+    height: 150px;
   }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .vendor_signup_content {
-    position: absolute;
-    height: auto;
-    top: 85px;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: 0 0 0 0;
-    padding: 0;
-    background-image: url('../../../../public/OldFashioned.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50%, 0;
-  }
-
   .form_explainer {
     position: absolute;
-    font-family: "Plantin Bold", serif;
-    width: 57%;
-    margin: 0;
-    top: 12vh;
-    right: 2vw;
-    font-size: calc(12px + 2vh);
+    width: 80%;
+    margin: 0 auto;
+    top: calc(15px + 6vh);
+    left: 0;
+    right: 0;
+    font-size: calc(6px + 2vh + 1vw);
   }
 
   .form {
-    position: absolute;
-    width: 60%;
-    margin: 0 0 0 0;
-    padding: 0;
-    min-height: 200px;
-    top: calc(40vh - 120px);
-    right: 2vw;
-  }
-
-  .partner_form_fields {
-    top: 70px;
+    width: 80%;
+    top: calc(20px + 20vh);
+    left: 5vw;
+    right: 5vw;
   }
 
   .form_status {
     top: 0;
-    right: 2vw;
-    left: 2vw;
+    right: 0;
+    left: 0;
+    font-size: 16px;
   }
 
-  .status_indicator {
-    font-size: 1.1em;
+  .partner_form_fields {
+    top: 40px;
+    left: 0;
+    right: 0;
+    width: 100%;
   }
 
   .buttons {
@@ -202,21 +172,11 @@
     bottom: calc(30vh - 180px);
     margin: auto;
     width: 80%;
+    height: auto;
   }
 }
 
 @media only screen and (min-width: 1224px) {
-  .vendor_signup_content {
-    height: 91vh;
-    position: static;
-    top: 85px;
-    margin: 0 0 0 0;
-    background-image: url('../../../../public/LevitationAspect.JPG');
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: 50%, 0;
-  }
-
   .form_explainer {
     position: absolute;
     width: 57%;

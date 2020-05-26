@@ -1,5 +1,6 @@
 .field {
   position: relative;
+  width: 100%;
 }
 
 .input_field {
@@ -21,6 +22,8 @@
   top: 33%;
   transition: 0.1s linear;
   will-change: top, left, font-size;
+  width: 100%;
+  text-align: left;
 }
 
 .input_field:focus ~ .placeholder {
@@ -46,92 +49,26 @@
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
-  .field {
-    width: 100%;
-  }
-
   .input_field {
     margin: 5px 0 5px -8px;
     padding: 6px 0 0 8px;
     width: 100%;
-  }
-
-  .placeholder {
-    width: 100%;
-    text-align: left;
   }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
-  .field {
-    width: 100%;
-  }
 
   .input_field {
     margin: 5px 0 5px -8px;
     padding: 6px 0 0 8px;
     width: 100%;
   }
-
-  .placeholder {
-    width: 100%;
-    text-align: left;
-  }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .field {
+  .input_field {
+    margin: 5px 0 5px -8px;
+    padding: 6px 0 0 8px;
     width: 100%;
-    margin: 0 auto 2px auto;
-  }
-
-  .input_field:focus ~ .placeholder,
-  .input_field:valid ~ .placeholder {
-    top: 15%;
-    left: 10%;
-    font-size: 10px;
-    opacity: 1;
-  }
-
-  .input_field {
-    font-size: 1em;
-    margin: 8px;
-    padding: 6px 0 6px 8px;
-    width: 82%;
-    height: 28px;
-  }
-
-  .placeholder {
-    font-size: 14px;
-    color: #878787;
-    left: 9.5%;
-    top: 37%;
-    transition: 0.2s ease all;
-  }
-}
-
-@media only screen and (min-width: 1224px) {
-  .input_field:focus ~ .placeholder,
-  .input_field:valid ~ .placeholder {
-    top: 15%;
-    left: 10%;
-    font-size: 10px;
-    opacity: 1;
-  }
-
-  .input_field {
-    font-size: 1em;
-    margin: 8px;
-    padding: 8px 0 8px 10px;
-    width: 82%;
-    height: 28px;
-  }
-
-  .placeholder {
-    font-size: 14px;
-    color: #878787;
-    left: 10%;
-    top: 35%;
-    transition: 0.2s ease all;
   }
 }
