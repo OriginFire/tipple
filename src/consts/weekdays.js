@@ -1,5 +1,5 @@
 const weekdays = {
-  sunday: 'Sunady',
+  sunday: 'Sunday',
   monday: 'Monday',
   tuesday: 'Tuesday',
   wednesday: 'Wednesday',

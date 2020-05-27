@@ -6,12 +6,12 @@ import ShiftList from "../shiftList/ShiftList";
 function Availability(props) {
   const [availability, setAvailability] = useState(props.availability);
 
-  function updateAvailability(updatedShifts, day) {
+  function updateAvailability(updatedShifts, index) {
     let newAvailability = [];
     availability.forEach(day => {
       newAvailability.push(day);
     });
-    newAvailability[day].shifts = updatedShifts;
+    newAvailability[index].shifts = updatedShifts;
     props.setNewAvailability(newAvailability);
   }
 

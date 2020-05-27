@@ -30,7 +30,7 @@ function TimeSelectors(props) {
       "9 AM",
       "10 AM",
       "11 AM",
-      "12 AP",
+      "12 PM",
       "1 PM",
       "2 PM",
       "3 PM",
@@ -42,7 +42,9 @@ function TimeSelectors(props) {
       "9 PM",
       "10 PM",
       "11 PM",
-      "12 AM"
+      "12 AM",
+      "start",
+      "end",
     ];
     let start = converter[startHour];
     let end = converter[endHour + 1];
@@ -133,7 +135,7 @@ function TimeSelectors(props) {
             icon={faTrash}
             className={s.save}
             color="white"
-            onClick={e => updateTimes()}
+            onClick={e => props.deleteShift()}
           />
         </div>
       );

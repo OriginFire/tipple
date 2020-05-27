@@ -107,15 +107,17 @@ function reconstructQueryData(localState) {
   localState.map((day, index, days) => {
     let oneDay = {
       day: day.day,
-      hours: null,
+      hours: [],
     };
-    let hours = [];
     day.shifts.map((shift, index, shifts) => {
-
+      let hour;
+      for (hour = shift.start; hour <= shift.end; hour++) {
+        oneDay.hours.push(hour);
+      }
     });
     reconstructedData.push(oneDay);
   });
-  console.log(reconstructedData);
+  console.log(reconstructedData, "reconstruction complete");
   return reconstructedData;
 }
 
