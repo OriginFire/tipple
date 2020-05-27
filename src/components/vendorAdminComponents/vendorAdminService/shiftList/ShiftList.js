@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
@@ -21,6 +21,24 @@ function ShiftList(props) {
     props.updateShifts(shifts);
   }
 
+  function createShift() {
+    let newShifts = [];
+    shifts.map(shift => {
+      newShifts.push(shift);
+    });
+    newShifts.push({start: 25, end: 25});
+    setShifts(newShifts);
+  }
+
+  function deleteShift(index) {
+    let newShifts = [];
+    shifts.map(shift => {
+      newShifts.push(shift);
+    });
+    newShifts.splice(index, 1);
+    setShifts(newShifts);
+  }
+
   return (
     <div className={s.shift_list}>
       <div>
@@ -33,10 +51,14 @@ function ShiftList(props) {
               startHour={shift.start}
               endHour={shift.end}
               updatedShifts={times => updateShifts(times, shiftIndex)}
+              deleteShift={e => deleteShift(shiftIndex)}
               isOpen={daySelectorsOpen}
             />
           );
         })}
+        {daySelectorsOpen && (
+          <div className={s.add_shift} onClick={e => createShift()}><span className={s.plus}>+ </span> Add a shift</div>
+        )}
       </div>
       {!daySelectorsOpen && (
         <FontAwesomeIcon
