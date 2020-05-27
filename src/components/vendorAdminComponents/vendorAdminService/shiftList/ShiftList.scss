@@ -1,0 +1,146 @@
+.shift_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-self: flex-end;
+}
+
+.shift {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.hours, .add_shift {
+  font-family: "Lato Regular", sans-serif;
+  color: #555555;
+  text-align: center;
+}
+
+.add_shift {
+  font-family: "Lato Light", sans-serif;
+  color: #737373;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.save {
+  border: solid #434343 1px;
+  color: #b9b9b9;
+  background-color: #620004;
+  border-radius: 4px;
+  padding: 4px 8px;
+  text-align: center;
+  transition: 0.2s;
+  cursor: pointer;
+  font-family: 'Lato Regular', sans-serif;
+  align-self: center;
+}
+
+.save:hover {
+  background-color: #25191b;
+  color: white;
+}
+
+@media only screen and (orientation: portrait) and (min-width: 320px) {
+  .shift_list {
+    width: calc(140px + 30vw);
+    padding: 0 0 10px 0;
+  }
+
+  .shift {
+    padding: 4px 0;
+  }
+
+  .hours {
+    font-size: 12px;
+    width: 200px;
+  }
+
+  .add_shift {
+    font-size: 16px;
+    padding: 4px 0;
+    width: 190px;
+  }
+
+  .plus {
+    font-size: 22px;
+    padding: 0 8px;
+  }
+
+  .availability_selector_label {
+    font-size: 14px;
+    padding: 2px 8px;
+  }
+
+  .availability_selector {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 320px) {
+  .settings_content {
+    position: absolute;
+    height: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    align-content: flex-end;
+    align-items: flex-start;
+    justify-content: flex-end;
+    overflow: scroll;
+    width: auto;
+    z-index: 0;
+  }
+
+  .setting {
+    font-size: 13px;
+    margin-top: 6px;
+    margin-left: 5px;
+  }
+}
+
+@media only screen and (min-height: 500px) and (min-width: 768px) {
+  .settings_content {
+    position: absolute;
+    display: inherit;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 200px;
+    top: 0;
+  }
+
+  .setting {
+    margin-top: 0;
+    margin-left: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 13px 15px;
+  }
+
+  .setting_field {
+    width: 180px;
+  }
+
+  .setting_value {
+    width: 140px;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+
+}

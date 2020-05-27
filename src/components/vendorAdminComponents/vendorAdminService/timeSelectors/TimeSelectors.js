@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useContext } from 'react';
-import withStyles from 'isomorphic-style-loader/withStyles';
-import { useMutation } from 'graphql-hooks';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import s from './AvailabilityInput.scss';
+import React, {useState, useEffect} from 'react';
+import withStyles from "isomorphic-style-loader/withStyles";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import s from "./TimeSelectors.scss";
+
 
 function TimeSelectors(props) {
   const [startHour, setStartHour] = useState(props.startHour);
   const [endHour, setEndHour] = useState(props.endHour);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(props.isOpen);
 
-  function updateTimes() {
+
+  useEffect(() => {
     const times = [startHour, endHour];
-    props.updatedTimes(times);
-    setIsOpen(false);
-  }
+    props.updatedShifts(times);
+  }, [startHour, endHour]);
 
   function renderHours(startHour, endHour) {
     const converter = [
@@ -30,7 +30,7 @@ function TimeSelectors(props) {
       "9 AM",
       "10 AM",
       "11 AM",
-      "12 AP",
+      "12 PM",
       "1 PM",
       "2 PM",
       "3 PM",
@@ -42,15 +42,17 @@ function TimeSelectors(props) {
       "9 PM",
       "10 PM",
       "11 PM",
-      "12 AM"
+      "12 AM",
+      "start",
+      "end",
     ];
     let start = converter[startHour];
-    let end = converter[endHour];
+    let end = converter[endHour + 1];
     return (`${start} - ${end}`)
   }
 
   function selectorDisplay() {
-    if (isOpen) {
+    if (props.isOpen) {
       return (
         <div className={s.shift}>
           <div className={s.selection_row}>
@@ -95,8 +97,8 @@ function TimeSelectors(props) {
             <div className={s.selection}>
               <select
                 id="end"
-                value={endHour}
-                onChange={newHour => setEndHour(parseInt(newHour.target.value))}
+                value={endHour + 1}
+                onChange={newHour => setEndHour(parseInt(newHour.target.value) - 1)}
                 className={s.availability_selector}
               >
                 <option value={"end"}>End Time</option>
@@ -133,7 +135,7 @@ function TimeSelectors(props) {
             icon={faTrash}
             className={s.save}
             color="white"
-            onClick={e => updateTimes()}
+            onClick={e => props.deleteShift()}
           />
         </div>
       );
@@ -144,108 +146,7 @@ function TimeSelectors(props) {
       </div>
     );
   }
-
   return <div>{selectorDisplay()}</div>;
 }
 
-function AvailabilityInput(props) {
-  const [availability, setAvailability] = useState(props.availabilityType);
-  const [daySelectorsOpen, setDaySelectorsOpen] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
-  const individualShifts = [];
-
-  function newSelectorDisplayState(updatedSelectors) {
-    console.log(daySelectorsOpen);
-    const currentDisplay = daySelectorsOpen;
-    currentDisplay[updatedSelectors] = !currentDisplay[updatedSelectors];
-    setDaySelectorsOpen(currentDisplay);
-    console.log(daySelectorsOpen);
-  }
-
-  function parseHours(day) {
-    const shifts = [];
-    let currentSequence = [];
-    const hours = day.hours.sort((a, b) => a - b);
-    hours.map((hour, index, hours) => {
-      if (!currentSequence[0] && currentSequence[0] !== 0) {
-        currentSequence[0] = hour;
-      }
-      if (!currentSequence[1]) {
-        currentSequence[1] = hour;
-      }
-      if (hours[index - 1]) {
-        if (hour - hours[index - 1] === 1) {
-          currentSequence[1] = hour;
-        } else {
-          shifts.push(currentSequence);
-          currentSequence = [];
-        }
-      }
-      if (!hours[index + 1]) {
-        shifts.push(currentSequence);
-        currentSequence = [];
-      }
-    });
-    if (shifts !== []) {
-      individualShifts.push(shifts);
-    }
-    return shifts;
-  }
-
-  function updateShiftTimes(times, availabilityIndex, shiftIndex) {
-    console.log(individualShifts);
-    individualShifts[availabilityIndex][shiftIndex] = times;
-    console.log(individualShifts);
-  }
-
-  return (
-    <div className={s.day_list}>
-      {availability.map((day, availabilityIndex, days) => {
-        const shifts = parseHours(day);
-        return (
-          <div className={s.availability_day}>
-            <div className={s.day}>
-              <div className={s.day_indicator}>{day.day}</div>
-            </div>
-            <div className={s.shift_list}>
-              <div>
-                {(shifts.length === 0) && (
-                  <div className={s.hours}>No hours of operation for this day.</div>
-                )}
-                {shifts.map((shift, shiftIndex, shifts) => {
-                  return (
-                    <TimeSelectors
-                      startHour={shift[0]}
-                      endHour={shift[1]}
-                      updatedTimes={times =>
-                        updateShiftTimes(times, availabilityIndex, shiftIndex)
-                      }
-                      isOpen={daySelectorsOpen[availabilityIndex]}
-                    />
-                  );
-                })}
-              </div>
-              {!daySelectorsOpen[availabilityIndex] && (
-                <FontAwesomeIcon
-                  icon={faEdit}
-                  className={s.icon}
-                  color="#7d7d7d"
-                  onClick={e => newSelectorDisplayState(availabilityIndex)}
-                />
-              )}
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-export default withStyles(s)(AvailabilityInput);
+export default withStyles(s)(TimeSelectors);

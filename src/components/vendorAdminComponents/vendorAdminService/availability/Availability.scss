@@ -1,0 +1,122 @@
+.day_list {
+  padding: 10px 0;
+}
+
+.availability_day {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.day {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.day_indicator {
+  font-family: "Lato Light", sans-serif;
+  color: #9b9b9b;
+}
+
+@media only screen and (orientation: portrait) and (min-width: 320px) {
+  .day_list {
+    width: calc(60px + 85vw);
+  }
+
+  .day {
+    padding: calc(4px + 1vw) 0;
+  }
+
+  .availability_day {
+    width: 85%;
+    margin: auto;
+  }
+
+  .day_indicator {
+    font-size: 15px;
+  }
+
+  .shift_list {
+    width: 80%;
+    padding: 0 0 10px 0;
+  }
+
+  .shift {
+    padding: 4px 0;
+  }
+
+  .hours {
+    width: 200px;
+  }
+
+  .availability_selector_label {
+    font-size: 14px;
+    padding: 2px 8px;
+  }
+
+  .availability_selector {
+    font-size: 12px;
+  }
+
+  .save {
+    margin: 0 15px;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 320px) {
+  .settings_content {
+    position: absolute;
+    height: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    align-content: flex-end;
+    align-items: flex-start;
+    justify-content: flex-end;
+    overflow: scroll;
+    width: auto;
+    z-index: 0;
+  }
+
+  .setting {
+    font-size: 13px;
+    margin-top: 6px;
+    margin-left: 5px;
+  }
+}
+
+@media only screen and (min-height: 500px) and (min-width: 768px) {
+  .settings_content {
+    position: absolute;
+    display: inherit;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 200px;
+    top: 0;
+  }
+
+  .setting {
+    margin-top: 0;
+    margin-left: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 13px 15px;
+  }
+
+  .setting_field {
+    width: 180px;
+  }
+
+  .setting_value {
+    width: 140px;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+
+}
