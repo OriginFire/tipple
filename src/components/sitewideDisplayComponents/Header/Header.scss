@@ -12,12 +12,14 @@
 .logo {
   margin: 5px auto;
   height: 50px;
+  cursor: pointer;
 }
 
 .menu_icon {
   position: absolute;
   right: 22px;
   top: 22px;
+  cursor: pointer;
 }
 
 .shadow_background {
@@ -176,7 +178,7 @@
 
 @media only screen and (min-width: 1224px) {
   .container {
-    position: fixed;
+    position: relative;
     height: 70px;
     padding: 5px 0;
     margin: 2px auto;
@@ -202,12 +204,18 @@
   .dropdown_menu,
   .dropdown_menu_inactive {
     width: 250px;
+    top: 84px;
   }
 
-  .menu_icon {
+  .shadow_background {
+    top: 84px;
+  }
+
+  .menu_link {
     position: relative;
-    float: top;
-    z-index: 0;
-    margin: -75px 0 0 0;
+    margin: 30px;
+    display: block;
+    font-size: 20px;
+    font-family: 'Lato Light', sans-serif;
   }
 }

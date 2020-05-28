@@ -186,7 +186,7 @@ function ServiceSettings(props) {
   function DeliverySettings() {
     if (doesDelivery) {
       return (
-        <div>
+        <div className={s.settings_block}>
           <div className={s.setting_explainer}>
             How many miles away from your venue will you fill delivery orders?
           </div>
@@ -248,7 +248,7 @@ function ServiceSettings(props) {
   function PickupSettings() {
     if (doesPickup) {
       return (
-        <div>
+        <div className={s.settings_block}>
           <div className={s.setting}>
             <div className={s.setting_field}>
               Do you require customers to schedule pickups in advance (i.e. NO

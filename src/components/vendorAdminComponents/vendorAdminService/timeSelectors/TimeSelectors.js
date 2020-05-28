@@ -133,7 +133,7 @@ function TimeSelectors(props) {
 
           <FontAwesomeIcon
             icon={faTrash}
-            className={s.save}
+            className={s.trash}
             color="white"
             onClick={e => props.deleteShift()}
           />

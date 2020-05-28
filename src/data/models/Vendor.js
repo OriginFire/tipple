@@ -1,14 +1,4 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import DataType, { STRING, BOOLEAN, INTEGER } from 'sequelize';
-import Cocktail from './Cocktail';
 import Model from '../sequelize';
 import stringToSlug from "../../utils/stringToSlug";
 

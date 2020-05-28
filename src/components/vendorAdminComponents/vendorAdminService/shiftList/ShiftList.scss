@@ -6,14 +6,6 @@
   align-self: flex-end;
 }
 
-.shift {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-}
-
 .hours, .add_shift {
   font-family: "Lato Regular", sans-serif;
   color: #555555;
@@ -28,11 +20,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: row;
 }
 
 .save {
@@ -55,12 +42,33 @@
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .shift_list {
-    width: calc(140px + 30vw);
+    width: calc(200px + 20vw);
     padding: 0 0 10px 0;
+    font-size: 13px;
   }
 
-  .shift {
+  .hours {
+    font-size: 12px;
+    width: 220px;
+  }
+
+  .add_shift {
+    font-size: 16px;
     padding: 4px 0;
+    width: 190px;
+  }
+
+  .plus {
+    font-size: 22px;
+    padding: 0 8px;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 320px) {
+  .shift_list {
+    width: calc(120px + 28vw);
+    padding: 0 0 10px 0;
+    font-size: 14px;
   }
 
   .hours {
@@ -79,68 +87,64 @@
     padding: 0 8px;
   }
 
-  .availability_selector_label {
-    font-size: 14px;
-    padding: 2px 8px;
-  }
-
-  .availability_selector {
-    font-size: 12px;
-  }
-}
-
-@media only screen and (orientation: landscape) and (min-width: 320px) {
-  .settings_content {
-    position: absolute;
-    height: auto;
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: nowrap;
-    align-content: flex-end;
-    align-items: flex-start;
-    justify-content: flex-end;
-    overflow: scroll;
-    width: auto;
-    z-index: 0;
-  }
-
-  .setting {
-    font-size: 13px;
-    margin-top: 6px;
-    margin-left: 5px;
+  .icon {
+    font-size: 26px;
   }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .settings_content {
-    position: absolute;
-    display: inherit;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    min-height: 200px;
-    top: 0;
+  .shift_list {
+    width: calc(120px + 28vw);
+    padding: 0 0 10px 0;
+    font-size: 16px;
   }
 
-  .setting {
-    margin-top: 0;
-    margin-left: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding: 13px 15px;
+  .hours {
+    font-size: 14px;
+    width: 30vw;
   }
 
-  .setting_field {
-    width: 180px;
+  .add_shift {
+    font-size: 16px;
+    padding: 4px 0;
+    width: 190px;
   }
 
-  .setting_value {
-    width: 140px;
+  .plus {
+    font-size: 22px;
+    padding: 0 8px;
+  }
+
+  .icon {
+    font-size: 14px;
   }
 }
 
 @media only screen and (min-width: 1224px) {
+  .shift_list {
+    justify-content: flex-end;
+    width: calc(120px + 28vw);
+    padding: 0 0 10px 0;
+    font-size: 16px;
+  }
 
+  .hours {
+    font-size: 16px;
+    width: calc(60px + 25vw);
+  }
+
+  .add_shift {
+    font-size: 16px;
+    padding: 4px 0;
+    width: calc(60px + 25vw);
+  }
+
+  .plus {
+    font-size: 22px;
+    padding: 0 8px;
+  }
+
+  .icon {
+    font-size: 14px;
+  }
 }

@@ -37,86 +37,84 @@
   .day_indicator {
     font-size: 15px;
   }
-
-  .shift_list {
-    width: 80%;
-    padding: 0 0 10px 0;
-  }
-
-  .shift {
-    padding: 4px 0;
-  }
-
-  .hours {
-    width: 200px;
-  }
-
-  .availability_selector_label {
-    font-size: 14px;
-    padding: 2px 8px;
-  }
-
-  .availability_selector {
-    font-size: 12px;
-  }
-
-  .save {
-    margin: 0 15px;
-  }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 320px) {
-  .settings_content {
-    position: absolute;
-    height: auto;
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: nowrap;
-    align-content: flex-end;
-    align-items: flex-start;
-    justify-content: flex-end;
-    overflow: scroll;
-    width: auto;
-    z-index: 0;
+  .day_list {
+    width: calc(90% - 20px);
+    margin: 0 0 0 calc(10vw);
   }
 
-  .setting {
-    font-size: 13px;
-    margin-top: 6px;
-    margin-left: 5px;
+  .day {
+    padding: calc(4px + 1vw) 0;
+  }
+
+  .availability_day {
+    width: 90%;
+    margin: 0 0 0 5%;
+  }
+
+  .day_indicator {
+    font-size: 15px;
   }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
-  .settings_content {
-    position: absolute;
-    display: inherit;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    min-height: 200px;
-    top: 0;
+  .day_list {
+    width: calc(80% + 50px);
+    margin: 0 0 20px 8%;
   }
 
-  .setting {
-    margin-top: 0;
-    margin-left: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding: 13px 15px;
+  .day {
+    padding: calc(4px + 1vw) 0;
   }
 
-  .setting_field {
-    width: 180px;
+  .availability_day {
+    width: 90%;
+    margin: 0 0 0 5%;
   }
 
-  .setting_value {
-    width: 140px;
+  .day_indicator {
+    font-size: 16px;
   }
 }
 
 @media only screen and (min-width: 1224px) {
+  .day_list {
+    width: calc(90% - 20px);
+    margin: 0 0 0 0;
+  }
 
+  .day {
+    padding: calc(4px + 1vw) 0;
+  }
+
+  .availability_day {
+    width: 90%;
+    margin: 0 0 0 5%;
+  }
+
+  .day_indicator {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .day_list {
+    width: 70%;
+    margin: 0 0 20px 15%;
+  }
+
+  .day {
+    padding: calc(10px + 0.4vw) 0;
+  }
+
+  .availability_day {
+    width: 90%;
+    margin: 0 0 0 5%;
+  }
+
+  .day_indicator {
+    font-size: 18px;
+  }
 }

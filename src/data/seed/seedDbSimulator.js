@@ -6,7 +6,7 @@ import Cocktail from '../models/Cocktail';
 import Availability from '../models/Availability';
 import stringToSlug from '../../utils/stringToSlug';
 
-import AvailabilitySchedule from "../models/AvailabilitySchedule";
+import AvailabilitySchedule from '../models/AvailabilitySchedule';
 import weekdays from '../../consts/weekdays';
 
 const fs = require('fs');
@@ -15,7 +15,7 @@ function base64_encode(file) {
   // read binary data
   const bitmap = fs.readFileSync(file);
   // convert binary data to base64 encoded string
-  let bytes =new Buffer(bitmap).toString('base64');
+  const bytes = new Buffer(bitmap).toString('base64');
   return `data:image/jpg;base64,${bytes}`;
 }
 
@@ -38,27 +38,33 @@ function cocktailHash(vendor) {
   });
 }
 
-function scheduleHash(availabilityDaysAndTimes) {
-  return availabilityDaysAndTimes.map(schedule => {
-    return {
-      day: schedule.day,
-      hours: schedule.hours,
-    };
-  });
-}
-
 function availabilityHash(vendor) {
   if (!vendor.availability) {
     return "It's a trap!";
   }
-  return vendor.availability.map(availability => {
-    return {
-      availabilityType: availability.availabilityType,
-      availabilityDaysAndTimes: scheduleHash(
-        availability.availabilityDaysAndTimes,
-      ),
+  console.log('Rendering availability hash');
+  const availabilitySettings = [];
+  vendor.availability.map(type => {
+    const newAvailability = {
+      availabilityType: type.availabilityType,
+      availabilityDaysAndTimes: scheduleHash(type.availabilityDaysAndTimes),
     };
+    availabilitySettings.push(newAvailability);
   });
+  console.log(availabilitySettings);
+  return availabilitySettings;
+}
+
+function scheduleHash(availabilityDaysAndTimes) {
+  const daysAndTimes = [];
+  availabilityDaysAndTimes.map(schedule => {
+    const daySchedule = {
+      day: schedule.day,
+      hours: schedule.hours,
+    };
+    daysAndTimes.push(daySchedule);
+  });
+  return daysAndTimes;
 }
 
 function deleteExisting(existingVendors) {
@@ -92,7 +98,7 @@ function createNew(vendor) {
       onlineStore: vendor.onlineStore,
       vendorImage: base64_encode(vendorImageUrl),
       cocktails: cocktailHash(vendor),
-      availability: availabilityHash(vendor),
+      Availability: availabilityHash(vendor),
       Users: [
         {
           name: vendor.adminName,
@@ -103,7 +109,14 @@ function createNew(vendor) {
       ],
     },
     {
-      include: [{model: User}, { model: Cocktail, as: 'cocktails' }, Availability], // this is needed to make the Users initial entry work.
+      include: [
+        { model: User },
+        { model: Cocktail, as: 'cocktails' },
+        {
+          model: Availability,
+          include: [{ model: AvailabilitySchedule }],
+        },
+      ], // this is needed to make the Users initial entry work.
     },
   );
   console.log(`created vendor with ${v.id}`);

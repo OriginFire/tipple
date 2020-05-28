@@ -31,7 +31,6 @@
 }
 
 .setting_field {
-  width: 200px;
   color: #b4b4b4;
 }
 
@@ -83,45 +82,10 @@ input:checked + .slider {
   background-color: #63c363;
 }
 
-input:focus + .slider {
-  background-color: #63c363;
-}
-
 input:checked + .slider::before {
   -webkit-transform: translateX(24px);
   -ms-transform: translateX(24px);
   transform: translateX(24px);
-}
-
-.availability_day {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 15px 0;
-}
-
-.day_indicator {
-  font-family: "Lato Regular", sans-serif;
-  color: #b4b4b4;
-}
-
-.availability_selector_label {
-  font-family: "Lato Light", sans-serif;
-  font-size: 12px;
-}
-
-.availability_selector {
-  font-family: "Lato Regular", sans-serif;
-  color: white;
-  font-size: 13px;
-  background-color: #4b4b4b;
-  border-radius: 4px;
-}
-
-.shift {
-  display: flex;
-  flex-direction: row;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
@@ -132,8 +96,8 @@ input:checked + .slider::before {
 
   .setting_explainer {
     font-size: 13px;
-    width: 80%;
-    margin: 0 0 -4px 18px;
+    width: 90%;
+    margin: 0 auto -4px auto;
     padding: 10px 0 0 0;
   }
 
@@ -146,6 +110,7 @@ input:checked + .slider::before {
   }
 
   .setting_field {
+    width: 200px;
     align-self: center;
   }
 
@@ -173,53 +138,193 @@ input:checked + .slider::before {
     position: absolute;
     height: auto;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     flex-wrap: nowrap;
     align-content: flex-end;
     align-items: flex-start;
     justify-content: flex-end;
     overflow: scroll;
-    width: auto;
+    width: 100%;
     z-index: 0;
   }
 
-  .setting {
+  .section_heading {
+    font-size: 18px;
+    padding: 16px 0 8px 0;
+    width: 100%;
+  }
+
+  .settings_block {
+    width: 100%;
+  }
+
+  .setting_explainer {
     font-size: 13px;
-    margin-top: 6px;
-    margin-left: 5px;
+    width: 90%;
+    margin: 0 auto -4px auto;
+    padding: 10px 0 0 0;
+  }
+
+  .setting {
+    justify-content: space-between;
+    font-size: 13px;
+    margin: auto;
+    padding: 13px 0;
+    width: 90%;
+  }
+
+  .setting_field {
+    width: 200px;
+    align-self: center;
+  }
+
+  .availability_day {
+    width: 80%;
+  }
+
+  .day_indicator {
+    font-size: 14px;
+  }
+
+  .shift_list {}
+
+  .shift {
+    padding: 5px 0;
+  }
+
+  .availability_day {
+    padding: 10px 0;
   }
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
   .settings_content {
     position: absolute;
-    display: inherit;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-end;
+    align-items: flex-start;
+    justify-content: flex-end;
+    overflow: scroll;
     width: 100%;
-    margin: 0;
-    padding: 0;
-    min-height: 200px;
-    top: 0;
+    z-index: 0;
+  }
+
+  .section_heading {
+    font-family: "Lato Light", sans-serif;
+    font-size: 22px;
+    padding: 16px 0 8px 0;
+    width: 100%;
+  }
+
+  .settings_block {
+    width: 100%;
+  }
+
+  .setting_explainer {
+    font-size: 14px;
+    width: 90%;
+    margin: 0 auto -4px auto;
+    padding: 10px 0 0 0;
   }
 
   .setting {
-    margin-top: 0;
-    margin-left: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding: 13px 15px;
+    justify-content: space-between;
+    font-size: 14px;
+    margin: auto;
+    padding: 20px 0;
+    width: 90%;
   }
 
   .setting_field {
-    width: 180px;
+    width: calc(300px);
+    align-self: center;
   }
 
-  .setting_value {
-    width: 140px;
+  .availability_day {
+    width: 80%;
+  }
+
+  .day_indicator {
+    font-size: 14px;
+  }
+
+  .shift_list {}
+
+  .shift {
+    padding: 5px 0;
+  }
+
+  .availability_day {
+    padding: 10px 0;
   }
 }
 
 @media only screen and (min-width: 1224px) {
+  .settings_content {
+    position: absolute;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-end;
+    align-items: flex-start;
+    justify-content: flex-end;
+    overflow: scroll;
+    width: 80%;
+    left: 0;
+    right: 0;
+    z-index: 0;
+  }
 
+  .section_heading {
+    font-family: "Lato Light", sans-serif;
+    font-size: 24px;
+    padding: 16px 0 8px 0;
+    width: 100%;
+  }
+
+  .settings_block {
+    width: 100%;
+  }
+
+  .setting_explainer {
+    font-size: 16px;
+    width: 90%;
+    margin: 0 auto -4px auto;
+    padding: 20px 0 10px 0;
+  }
+
+  .setting {
+    justify-content: space-between;
+    font-size: 16px;
+    margin: auto;
+    padding: 20px 0;
+    width: 90%;
+  }
+
+  .setting_field {
+    width: 80%;
+    align-self: center;
+  }
+
+  .availability_day {
+    width: 80%;
+  }
+
+  .day_indicator {
+    font-size: 14px;
+  }
+
+  .shift_list {}
+
+  .shift {
+    padding: 5px 0;
+  }
+
+  .availability_day {
+    padding: 10px 0;
+  }
 }

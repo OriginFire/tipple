@@ -63,8 +63,8 @@ function ShiftList(props) {
       {!daySelectorsOpen && (
         <FontAwesomeIcon
           icon={faEdit}
-          className={s.icon}
           color="#7d7d7d"
+          className={s.icon}
           onClick={e => setDaySelectorsOpen(true)}
         />
       )}

@@ -146,5 +146,40 @@
 }
 
 @media only screen and (min-width: 1224px) {
+  .display_setting,
+  .input_setting {
+    font-size: 16px;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+  }
 
+  .display_setting {
+    padding: 15px 0;
+  }
+
+  .input {
+    width: calc(50px + 70%);
+    text-align: center;
+  }
+
+  .setting_field {
+    width: 200px;
+  }
+
+  .setting {
+    font-size: 14px;
+    margin-top: 6px;
+    margin-left: 5px;
+  }
+
+  .setting_value {
+    align-self: center;
+    font-size: 14px;
+    width: 110px;
+  }
+
+  .icon {
+    font-size: 16px;
+  }
 }

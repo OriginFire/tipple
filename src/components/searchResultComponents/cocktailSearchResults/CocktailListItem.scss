@@ -244,10 +244,6 @@
     margin: auto;
   }
 
-  .active {
-    background-color: none;
-  }
-
   .list_item {
     justify-content: space-evenly;
     align-items: flex-start;
@@ -329,8 +325,8 @@
     width: initial;
   }
 
-  .active, .inactive {
-
+  .active {
+    background-color: transparent;
   }
 
   .list_item, .list_item_open {

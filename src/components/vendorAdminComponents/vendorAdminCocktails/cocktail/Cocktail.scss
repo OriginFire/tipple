@@ -64,7 +64,7 @@
 
   .list_item {
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     padding: 2px 0 10px 0;
   }
@@ -180,57 +180,121 @@
 }
 
 @media only screen and (min-height: 500px) and (min-width: 768px) {
+  .wrapper {
+    padding: 12px 0;
+  }
+
+  .list_item {
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: calc(250px + 30vw);
+    padding: 2px 0 10px 0;
+  }
+
   .cocktail_image {
-    width: 225px;
-    height: 150px;
+    width: 200px;
+    height: 120px;
+    padding: 0 0 4px 0;
   }
 
-  .cocktail_text {
-    width: 45%;
-    margin: 0;
-  }
-
-  .cocktail_name {
-    font-size: 20px;
-    width: 100%;
-    padding: 0 0 2px 0;
-  }
-
-  .ingredients {
+  .availability {
     font-size: 12px;
-    text-align: center;
+    width: 200px;
   }
-}
 
-@media only screen and (min-width: 1224px) {
-  .cocktail_image {
-    width: 250px;
-    height: 150px;
+  .edit {
+    font-size: 10px;
+    width: 60%;
+  }
+
+  .result_text {
+    width: 50%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 0 0 0;
   }
 
   .cocktail_name {
     font-size: 18px;
+    text-align: center;
     width: 100%;
+    padding: 0;
+  }
+
+  .price {
+    font-size: 12.5px;
     padding: 0 0 8px 0;
   }
 
   .ingredients {
-    font-size: 10px;
-    text-align: center;
+    font-size: 13.5px;
+    padding: 0 0 4px 0;
   }
 
-  .sale_options {
-    margin: 10px 0;
-    font-size: 14px;
+  .description {
+    font-size: 13.5px;
+    width: 100%;
+    padding: 10px 0 6px 0;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .wrapper {
+    padding: 12px 0;
   }
 
-  .edit_link {
-    font-size: 0.8em;
-    text-align: center;
+  .list_item {
+    justify-content: space-between;
+    align-items: flex-start;
+    width: calc(400px + 5vw);
+    padding: 2px 30px 20px 30px;
+  }
+
+  .cocktail_image {
+    width: 200px;
+    height: 120px;
+    padding: 0 0 4px 0;
   }
 
   .availability {
-    font-size: 0.7em;
+    font-size: 12px;
+    width: 200px;
+  }
+
+  .edit {
+    font-size: 10px;
+    width: 60%;
+  }
+
+  .result_text {
+    width: 50%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 0 0 0;
+  }
+
+  .cocktail_name {
+    font-size: 18px;
     text-align: center;
+    width: 100%;
+    padding: 0;
+  }
+
+  .price {
+    font-size: 12.5px;
+    padding: 0 0 8px 0;
+  }
+
+  .ingredients {
+    font-size: 13.5px;
+    padding: 0 0 4px 0;
+  }
+
+  .description {
+    font-size: 13.5px;
+    width: 100%;
+    padding: 10px 0 6px 0;
   }
 }
