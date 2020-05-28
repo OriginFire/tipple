@@ -6,8 +6,8 @@ import CocktailListItem from './CocktailListItem';
 import ApplicationContext from '../../ApplicationContext';
 
 const SEARCH_COCKTAILS = `
-  query SearchCocktails($userLongitude: Float, $userLatitude: Float) {
-    searchVendors(parameters: {userLongitude: $userLongitude, userLatitude: $userLatitude}) {
+  query SearchCocktails($userLongitude: Float, $userLatitude: Float, $doesDelivery: Boolean) {
+    searchVendors(parameters: {userLongitude: $userLongitude, userLatitude: $userLatitude, doesDelivery: $doesDelivery}) {
       slug
       dbaName
       doesDelivery
@@ -34,13 +34,20 @@ function CocktailSearchResults(props) {
   const [userLongitude, setUserLongitude] = useState(
     customerLocation.context.userLongitude,
   );
+  const [filterSettings, setFilterSettings] = useState(props.filterSettings);
   const { loading, error, data } = useQuery(SEARCH_COCKTAILS, {
-    variables: { userLatitude: userLatitude, userLongitude: userLongitude },
+    variables: {
+      userLatitude,
+      userLongitude,
+      doesDelivery: filterSettings.doesDelivery,
+    },
   });
   let searchResults;
 
+  console.log(filterSettings);
+
   if (loading) return <div>Searching...</div>;
-  if (error) return <div>Something abd happened...</div>;
+  if (error) return <div>Something bad happened...</div>;
   if (data) searchResults = data.searchVendors;
 
   function ResultsMessage(resultsArray) {
@@ -53,7 +60,7 @@ function CocktailSearchResults(props) {
       });
     });
 
-    if (props.filterSettings.pickupRadius === 1) {
+    if (filterSettings.pickupRadius === 1) {
       miles = 'mile';
     } else {
       miles = 'miles';
