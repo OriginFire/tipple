@@ -1,4 +1,4 @@
-import DataType, { STRING, BOOLEAN, INTEGER } from 'sequelize';
+import DataType from 'sequelize';
 import Model from '../sequelize';
 import stringToSlug from "../../utils/stringToSlug";
 

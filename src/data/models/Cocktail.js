@@ -44,7 +44,7 @@ const Cocktail = Model.define(
     },
   },
   {
-    indexes: [{ fields: ['slug'] }],
+    indexes: [{ fields: ['id', 'slug'] }],
   },
 );
 

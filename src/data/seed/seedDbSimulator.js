@@ -4,9 +4,9 @@ import Vendor from '../models/Vendor';
 import User from '../models/User';
 import Cocktail from '../models/Cocktail';
 import Availability from '../models/Availability';
+import AvailabilitySchedule from '../models/AvailabilitySchedule';
 import stringToSlug from '../../utils/stringToSlug';
 
-import AvailabilitySchedule from '../models/AvailabilitySchedule';
 import weekdays from '../../consts/weekdays';
 
 const fs = require('fs');
@@ -40,14 +40,14 @@ function cocktailHash(vendor) {
 
 function availabilityHash(vendor) {
   if (!vendor.availability) {
-    return "It's a trap!";
+    console.log("It's a trap");
   }
   console.log('Rendering availability hash');
   const availabilitySettings = [];
   vendor.availability.map(type => {
     const newAvailability = {
       availabilityType: type.availabilityType,
-      availabilityDaysAndTimes: scheduleHash(type.availabilityDaysAndTimes),
+      AvailabilitySchedules: scheduleHash(type.availabilityDaysAndTimes),
     };
     availabilitySettings.push(newAvailability);
   });
@@ -98,7 +98,7 @@ function createNew(vendor) {
       onlineStore: vendor.onlineStore,
       vendorImage: base64_encode(vendorImageUrl),
       cocktails: cocktailHash(vendor),
-      Availability: availabilityHash(vendor),
+      Availabilities: availabilityHash(vendor),
       Users: [
         {
           name: vendor.adminName,
@@ -110,16 +110,14 @@ function createNew(vendor) {
     },
     {
       include: [
-        { model: User },
-        { model: Cocktail, as: 'cocktails' },
-        {
-          model: Availability,
+        { model: Availability,
           include: [{ model: AvailabilitySchedule }],
         },
+        { model: Cocktail, as: 'cocktails' },
+        { model: User },
       ], // this is needed to make the Users initial entry work.
     },
   );
-  console.log(`created vendor with ${v.id}`);
 }
 
 function seedData() {

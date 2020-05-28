@@ -1,4 +1,4 @@
-import DataType, { NUMBER } from 'sequelize';
+import DataType from 'sequelize';
 import Model from '../sequelize';
 
 const AvailabilitySchedule = Model.define(
