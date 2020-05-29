@@ -14,7 +14,7 @@ function SearchResultsDisplay() {
     doesDelivery: true,
     doesPickup: true,
     pickupRadius: 1,
-    showBoozy: true,
+    showStiff: true,
     showStrong: true,
     showLong: true,
     showLow: true,

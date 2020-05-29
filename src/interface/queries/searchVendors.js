@@ -8,11 +8,13 @@
  */
 
 import { GraphQLList as List } from 'graphql';
+import { Op } from 'sequelize';
 import VendorType from '../types/VendorType';
 import Vendor from '../../data/models/Vendor';
 import Cocktail from '../../data/models/Cocktail';
+import Availability from '../../data/models/Availability';
+import AvailabilitySchedule from '../../data/models/AvailabilitySchedule';
 import SearchVendorInputType from '../types/SearchVendorInputType';
-import { Op } from 'sequelize';
 
 const searchVendors = {
   type: List(VendorType),
@@ -20,26 +22,19 @@ const searchVendors = {
     parameters: { type: SearchVendorInputType },
   },
   async resolve(value, { parameters }) {
-
     const latToMiles = 69.0;
-    const defaultDeliveryRadius = 1;
-    const deliveryRadius = parameters.deliveryRadius || defaultDeliveryRadius;
+    const pickupRadius = parameters.pickupRadius;
 
-    let minLat = parameters.userLatitude - deliveryRadius/latToMiles;
-    let maxLat = parameters.userLatitude + deliveryRadius/latToMiles;
-    let minLong = parameters.userLongitude - deliveryRadius/latToMiles;
-    let maxLong = parameters.userLongitude + deliveryRadius/latToMiles;
+    const minLat = parameters.userLatitude - pickupRadius / latToMiles;
+    const maxLat = parameters.userLatitude + pickupRadius / latToMiles;
+    const minLong = parameters.userLongitude - pickupRadius / latToMiles;
+    const maxLong = parameters.userLongitude + pickupRadius / latToMiles;
 
-    let vendors = await Vendor.findAll({
-      where: {
-        latitude: {
-          [Op.between]: [minLat, maxLat]
-        },
-        longitude: {
-          [Op.between]: [minLong, maxLong]
-        },
-      },
-      include: [{ model: Cocktail, as: 'cocktails' }],
+    const vendors = await Vendor.findAll({
+      include: [
+        { model: Cocktail, as: 'cocktails' },
+        { model: Availability, include: [{ model: AvailabilitySchedule }] },
+      ],
     });
 
     vendors.forEach(v => {
@@ -53,3 +48,14 @@ const searchVendors = {
 };
 
 export default searchVendors;
+
+/*       where: {
+        latitude: {
+          [Op.between]: [minLat, maxLat],
+        },
+        longitude: {
+          [Op.between]: [minLong, maxLong],
+        },
+      },
+
+ */

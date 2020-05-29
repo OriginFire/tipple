@@ -24,9 +24,9 @@ function FilterSettings(props) {
   }
 
   let cocktailsMessage;
-  if (filterSettings.showBoozy && filterSettings.showStrong && filterSettings.showLong && filterSettings.showLow) {
+  if (filterSettings.showStiff && filterSettings.showStrong && filterSettings.showLong && filterSettings.showLow) {
     cocktailsMessage = 'Showing all types of cocktails in search results';
-  } else if (!filterSettings.showBoozy && !filterSettings.showStrong && !filterSettings.showLong && !filterSettings.showLow) {
+  } else if (!filterSettings.showStiff && !filterSettings.showStrong && !filterSettings.showLong && !filterSettings.showLow) {
     cocktailsMessage = 'You must select at least one type of cocktail to display in your search results';
   } else {
     cocktailsMessage = 'Only showing cocktails of the type(s) selected above';
@@ -119,11 +119,11 @@ function FilterSettings(props) {
               <div>
                 <div className={s.cocktail_button_label}>Stiff</div>
                 <div
-                  className={classNameResolve(filterSettings.showBoozy)}
+                  className={classNameResolve(filterSettings.showStiff)}
                   onClick={e =>
                     setFilterSettings({
                       ...filterSettings,
-                      showBoozy: !filterSettings.showBoozy,
+                      showStiff: !filterSettings.showStiff,
                     })
                   }
                 >

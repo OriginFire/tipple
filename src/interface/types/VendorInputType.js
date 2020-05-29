@@ -1,10 +1,7 @@
 import {
   GraphQLInputObjectType as ObjectType,
-  GraphQLID as ID,
   GraphQLString as StringType,
   GraphQLBoolean as BooleanType,
-  GraphQLInt as IntegerType,
-  GraphQLNonNull as NonNull,
   GraphQLFloat as FloatType,
 } from 'graphql';
 
@@ -23,8 +20,8 @@ const VendorInputType = new ObjectType({
     alcoholLicenseExpiration: { type: StringType },
     doesDelivery: { type: BooleanType },
     deliveryRadius: { type: FloatType },
-    doesPickup: {type: BooleanType},
-    onlineStore: {type: StringType},
+    doesPickup: { type: BooleanType },
+    onlineStore: { type: StringType },
     adminName: { type: StringType },
     adminEmail: { type: StringType },
     adminPhone: { type: StringType },

@@ -43,7 +43,7 @@ function availabilityHash(vendor) {
     console.log("It's a trap");
   }
   console.log('Rendering availability hash');
-  const availabilitySettings = [];
+  let availabilitySettings = [];
   vendor.availability.map(type => {
     const newAvailability = {
       availabilityType: type.availabilityType,
@@ -51,12 +51,12 @@ function availabilityHash(vendor) {
     };
     availabilitySettings.push(newAvailability);
   });
-  console.log(availabilitySettings);
+  console.log(availabilitySettings, "availability settings returned");
   return availabilitySettings;
 }
 
 function scheduleHash(availabilityDaysAndTimes) {
-  const daysAndTimes = [];
+  let daysAndTimes = [];
   availabilityDaysAndTimes.map(schedule => {
     const daySchedule = {
       day: schedule.day,
@@ -64,6 +64,7 @@ function scheduleHash(availabilityDaysAndTimes) {
     };
     daysAndTimes.push(daySchedule);
   });
+  console.log(daysAndTimes, "daysAndTimes returned");
   return daysAndTimes;
 }
 

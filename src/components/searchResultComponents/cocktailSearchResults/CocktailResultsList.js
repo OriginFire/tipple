@@ -6,8 +6,8 @@ import CocktailListItem from './CocktailListItem';
 import ApplicationContext from '../../ApplicationContext';
 
 const SEARCH_COCKTAILS = `
-  query SearchCocktails($userLongitude: Float, $userLatitude: Float, $doesDelivery: Boolean) {
-    searchVendors(parameters: {userLongitude: $userLongitude, userLatitude: $userLatitude, doesDelivery: $doesDelivery}) {
+  query SearchCocktails($userLongitude: Float, $userLatitude: Float, $pickupRadius: Float) {
+    searchVendors(parameters: {userLongitude: $userLongitude, userLatitude: $userLatitude, pickupRadius: $pickupRadius}) {
       slug
       dbaName
       doesDelivery
@@ -20,6 +20,13 @@ const SEARCH_COCKTAILS = `
         profile
         description
         image
+      }
+      availability {
+        availabilityType
+        availabilitySchedule {
+          day
+          hours
+        }
       }
     }
   }
@@ -34,20 +41,13 @@ function CocktailSearchResults(props) {
   const [userLongitude, setUserLongitude] = useState(
     customerLocation.context.userLongitude,
   );
-  const [filterSettings, setFilterSettings] = useState(props.filterSettings);
   const { loading, error, data } = useQuery(SEARCH_COCKTAILS, {
-    variables: {
-      userLatitude,
-      userLongitude,
-      doesDelivery: filterSettings.doesDelivery,
-    },
+    variables: { userLatitude, userLongitude, pickupRadius: parseFloat(props.filterSettings.pickupRadius) },
   });
   let searchResults;
 
-  console.log(filterSettings);
-
   if (loading) return <div>Searching...</div>;
-  if (error) return <div>Something bad happened...</div>;
+  if (error) return <div>Something abd happened...</div>;
   if (data) searchResults = data.searchVendors;
 
   function ResultsMessage(resultsArray) {
@@ -60,7 +60,7 @@ function CocktailSearchResults(props) {
       });
     });
 
-    if (filterSettings.pickupRadius === 1) {
+    if (props.filterSettings.pickupRadius === 1) {
       miles = 'mile';
     } else {
       miles = 'miles';
@@ -104,11 +104,21 @@ function CocktailSearchResults(props) {
   if (searchResults) {
     availableVendors = searchResults;
   }
+
+  const displayCocktails = [];
+  props.filterSettings.showStiff && displayCocktails.push('stiff');
+  props.filterSettings.showStrong && displayCocktails.push('strong');
+  props.filterSettings.showLong && displayCocktails.push('long');
+  props.filterSettings.showLow && displayCocktails.push('low');
+
+
+
   return (
     <div className={s.result_list}>
       {availableVendors && ResultsMessage(availableVendors)}
       {availableVendors &&
         availableVendors.map((vendor, index, matchingVendors) => {
+          console.log(vendor);
           let availability;
           if (vendor.doesDelivery && vendor.doesPickup) {
             availability = 'Delivery or Pickup';
@@ -128,6 +138,7 @@ function CocktailSearchResults(props) {
                 vendor={vendor}
                 cocktail={cocktail}
                 index={index}
+                displayCocktails={displayCocktails}
               />
             );
           });

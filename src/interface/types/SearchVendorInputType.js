@@ -11,6 +11,7 @@ const SearchVendorInputType = new ObjectType({
     userLongitude: { type: FloatType },
     doesDelivery: { type: BooleanType },
     doesPickup: { type: BooleanType },
+    pickupRadius: { type: FloatType },
   },
 });
 

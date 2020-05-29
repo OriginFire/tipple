@@ -15,7 +15,7 @@ const AvailabilitySchedule = Model.define(
     },
 
     hours: {
-      type: DataType.ARRAY(DataType.NUMBER),
+      type: DataType.ARRAY(DataType.INTEGER),
     },
   },
   {
