@@ -8,7 +8,7 @@ import {
   GraphQLList as List,
 } from 'graphql';
 import CocktailType from './CocktailType';
-import AvailabilityType from "./AvailabilityType";
+import AvailabilityType from './AvailabilityType';
 
 const VendorType = new ObjectType({
   name: 'Vendor',
@@ -35,7 +35,7 @@ const VendorType = new ObjectType({
     onlineStore: { type: StringType },
     vendorImage: { type: StringType },
     cocktails: { type: List(CocktailType) },
-    availability: { type: List(AvailabilityType) },
+    Availabilities: { type: List(AvailabilityType) },
   },
 });
 

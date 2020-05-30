@@ -12,7 +12,7 @@ const AvailabilityType = new ObjectType({
   fields: {
     id: { type: new NonNull(ID) },
     availabilityType: { type: StringType },
-    availabilitySchedule: { type: List(AvailabilityScheduleType) },
+//    availabilitySchedule: { type: List(AvailabilityScheduleType) },
   },
 });
 

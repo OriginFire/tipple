@@ -1,8 +1,8 @@
 import DataType from 'sequelize';
 import Model from '../sequelize';
 
-const AvailabilitySchedule = Model.define(
-  'AvailabilitySchedule',
+const ScheduleHour = Model.define(
+  'ScheduleHour',
   {
     id: {
       type: DataType.UUID,
@@ -10,8 +10,8 @@ const AvailabilitySchedule = Model.define(
       primaryKey: true,
     },
 
-    day: {
-      type: DataType.STRING(256),
+    hour: {
+      type: DataType.INTEGER,
     },
   },
   {
@@ -19,4 +19,4 @@ const AvailabilitySchedule = Model.define(
   },
 );
 
-export default AvailabilitySchedule;
+export default ScheduleHour;

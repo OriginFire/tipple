@@ -25,9 +25,9 @@ export default [
       'ABRA' /** Should standardize entries with a dropdown menu */,
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
-    doesDelivery: false,
-    doesPickup: false,
-    deliveryRadius: 0,
+    doesDelivery: true,
+    doesPickup: true,
+    deliveryRadius: 1,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Urbana.jpg',
     cocktails: [
@@ -196,7 +196,7 @@ export default [
       'ABRA' /** Should standardize entries with a dropdown menu */,
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
-    doesDelivery: false,
+    doesDelivery: true,
     doesPickup: false,
     deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
@@ -366,7 +366,7 @@ export default [
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
-    doesPickup: false,
+    doesPickup: true,
     deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../SL.jpeg',
@@ -533,8 +533,8 @@ export default [
       'ABRA' /** Should standardize entries with a dropdown menu */,
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
-    doesDelivery: false,
-    doesPickup: false,
+    doesDelivery: true,
+    doesPickup: true,
     deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Columbia.jpg',
@@ -703,7 +703,7 @@ export default [
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
-    doesPickup: false,
+    doesPickup: true,
     deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../LevitationAspect.JPG',
@@ -871,8 +871,8 @@ export default [
       'ABRA' /** Should standardize entries with a dropdown menu */,
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
-    doesDelivery: false,
-    doesPickup: false,
+    doesDelivery: true,
+    doesPickup: true,
     deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../SL.jpeg',
@@ -1041,7 +1041,7 @@ export default [
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
-    doesPickup: false,
+    doesPickup: true,
     deliveryRadius: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../OldFashioned.png',

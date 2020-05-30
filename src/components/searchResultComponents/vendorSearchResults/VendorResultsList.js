@@ -6,8 +6,8 @@ import ApplicationContext from '../../ApplicationContext';
 import VendorListItem from './VendorListItem';
 
 const SEARCH_VENDORS = `
-  query SearchVendors($userLatitude: Float!, $userLongitude: Float!, $doesDelivery: Boolean!) {
-    searchVendors(parameters: {userLatitude: $userLatitude, userLongitude: $userLongitude, doesDelivery: $doesDelivery}) {
+  query SearchVendors($userLatitude: Float!, $userLongitude: Float!, $pickupRadius: Float!, $doesDelivery: Boolean!, $doesPickup: Boolean!) {
+    searchVendors(parameters: {userLatitude: $userLatitude, userLongitude: $userLongitude, pickupRadius: $pickupRadius, doesDelivery: $doesDelivery, doesPickup: $doesPickup}) {
       slug
       dbaName
       physicalStreetAddress
@@ -40,6 +40,8 @@ function VendorResultsList(props) {
       userLatitude,
       userLongitude,
       doesDelivery: filterSettings.doesDelivery,
+      doesPickup: filterSettings.doesPickup,
+      pickupRadius: parseFloat(filterSettings.pickupRadius),
     },
   });
   let searchResults;

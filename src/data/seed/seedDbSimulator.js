@@ -5,6 +5,7 @@ import User from '../models/User';
 import Cocktail from '../models/Cocktail';
 import Availability from '../models/Availability';
 import AvailabilitySchedule from '../models/AvailabilitySchedule';
+import ScheduleHour from '../models/ScheduleHour';
 import stringToSlug from '../../utils/stringToSlug';
 
 import weekdays from '../../consts/weekdays';
@@ -43,7 +44,7 @@ function availabilityHash(vendor) {
     console.log("It's a trap");
   }
   console.log('Rendering availability hash');
-  let availabilitySettings = [];
+  const availabilitySettings = [];
   vendor.availability.map(type => {
     const newAvailability = {
       availabilityType: type.availabilityType,
@@ -51,26 +52,26 @@ function availabilityHash(vendor) {
     };
     availabilitySettings.push(newAvailability);
   });
-  console.log(availabilitySettings, "availability settings returned");
+  console.log(availabilitySettings, 'availability settings returned');
   return availabilitySettings;
 }
 
 function scheduleHash(availabilityDaysAndTimes) {
-  let daysAndTimes = [];
+  const daysAndTimes = [];
   availabilityDaysAndTimes.map(schedule => {
     const daySchedule = {
       day: schedule.day,
-      hours: schedule.hours,
+      ScheduleHours: schedule.hours,
     };
     daysAndTimes.push(daySchedule);
   });
-  console.log(daysAndTimes, "daysAndTimes returned");
+  console.log(daysAndTimes, 'daysAndTimes returned');
   return daysAndTimes;
 }
 
 function deleteExisting(existingVendors) {
   existingVendors.map(v => {
-    console.log(`Destoring vendor with ${v.id}`);
+    console.log(`Destroying vendor with ${v.id}`);
     Vendor.destroy({ where: { id: v.id } });
   });
 }
@@ -111,12 +112,17 @@ function createNew(vendor) {
     },
     {
       include: [
-        { model: Availability,
-          include: [{ model: AvailabilitySchedule }],
+        {
+          model: Availability,
+          include: [
+            { model: AvailabilitySchedule,
+              include: []
+            },
+          ],
         },
         { model: Cocktail, as: 'cocktails' },
         { model: User },
-      ], // this is needed to make the Users initial entry work.
+      ],
     },
   );
 }

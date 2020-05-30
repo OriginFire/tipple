@@ -22,19 +22,45 @@ const searchVendors = {
     parameters: { type: SearchVendorInputType },
   },
   async resolve(value, { parameters }) {
-    const latToMiles = 69.0;
-    const pickupRadius = parameters.pickupRadius;
+    const latToMiles = 69;
+    const { pickupRadius } = parameters;
 
     const minLat = parameters.userLatitude - pickupRadius / latToMiles;
     const maxLat = parameters.userLatitude + pickupRadius / latToMiles;
     const minLong = parameters.userLongitude - pickupRadius / latToMiles;
     const maxLong = parameters.userLongitude + pickupRadius / latToMiles;
 
+    let deliveryCheck = 'noise';
+    if (parameters.doesDelivery) deliveryCheck = true;
+
+    let pickupCheck = 'noise';
+    if (parameters.doesPickup) pickupCheck = true;
+
+    console.log(pickupCheck, deliveryCheck);
+
     const vendors = await Vendor.findAll({
-      include: [
-        { model: Cocktail, as: 'cocktails' },
-        { model: Availability, include: [{ model: AvailabilitySchedule }] },
-      ],
+      where: {
+        [Op.or]: [
+          {
+            [Op.and]: [
+              { doesDelivery: deliveryCheck },
+              {
+                deliveryRadius: {
+                  [Op.gte]: 0
+                },
+              },
+            ],
+          },
+          {
+            [Op.and]: [
+              { doesPickup: pickupCheck },
+              { latitude: {[Op.between]: [minLat, maxLat]}},
+              { longitude: {[Op.between]: [minLong, maxLong]}}
+            ]
+          }
+        ],
+      },
+      include: [{ model: Cocktail, as: 'cocktails' }, { model: Availability }],
     });
 
     vendors.forEach(v => {
@@ -48,14 +74,3 @@ const searchVendors = {
 };
 
 export default searchVendors;
-
-/*       where: {
-        latitude: {
-          [Op.between]: [minLat, maxLat],
-        },
-        longitude: {
-          [Op.between]: [minLong, maxLong],
-        },
-      },
-
- */

@@ -21,53 +21,10 @@ function CocktailListItem(props) {
   }
 
   function DisplayContent() {
-    if (props.displayCocktails.includes(cocktail.profile)) {
-      if (isOpen) {
-        return (
-          <div className={s.active}>
-            <div
-              index={index}
-              className={s.list_item_open}
-            >
-              <div>
-                <img
-                  className={s.cocktail_image}
-                  src={cocktail.image}
-                  alt={`${cocktail.name} Image`}
-                />
-                <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>
-                <div className={s.availability}>Available Today</div>
-                <div className={s.availability}>Until 11 AM</div>
-                <div className={s.order} onClick={e => history.push(`/vendor/${vendor.slug}`)}>Order {availability}</div>
-              </div>
-
-              <div className={s.result_text}>
-                <div className={s.cocktail_name}>{cocktail.name}</div>
-                <div className={s.price}>
-                  ${cocktail.price} / {cocktail.servingSize} oz serving
-                </div>
-                <div className={s.ingredients}>
-                  {cocktail.ingredients} {cocktail.ingredients.length}
-                </div>
-                <div className={s.description}>
-                  {cocktail.description} {cocktail.description.length}
-                  {cocktail.description} {cocktail.description.length}
-                </div>
-                <div className={s.expand} onClick={e => setIsOpen(false)}>
-                  Show Less{` `}
-                  <FontAwesomeIcon icon={faChevronUp} size="xs" />
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      }
+    if (isOpen) {
       return (
-        <div className={s.inactive}>
-          <div
-            index={index}
-            className={s.list_item}
-          >
+        <div className={s.active}>
+          <div index={index} className={s.list_item_open}>
             <div>
               <img
                 className={s.cocktail_image}
@@ -76,6 +33,13 @@ function CocktailListItem(props) {
               />
               <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>
               <div className={s.availability}>Available Today</div>
+              <div className={s.availability}>Until 11 AM</div>
+              <div
+                className={s.order}
+                onClick={e => history.push(`/vendor/${vendor.slug}`)}
+              >
+                Order {availability}
+              </div>
             </div>
 
             <div className={s.result_text}>
@@ -86,18 +50,51 @@ function CocktailListItem(props) {
               <div className={s.ingredients}>
                 {cocktail.ingredients} {cocktail.ingredients.length}
               </div>
-              <div className={s.expand} onClick={e => setIsOpen(true)}>
-                More Details{` `}
-                <FontAwesomeIcon icon={faChevronDown} size="xs" />
+              <div className={s.description}>
+                {cocktail.description} {cocktail.description.length}
+                {cocktail.description} {cocktail.description.length}
+              </div>
+              <div className={s.expand} onClick={e => setIsOpen(false)}>
+                Show Less{` `}
+                <FontAwesomeIcon icon={faChevronUp} size="xs" />
               </div>
             </div>
           </div>
         </div>
       );
     }
+    return (
+      <div className={s.inactive}>
+        <div index={index} className={s.list_item}>
+          <div>
+            <img
+              className={s.cocktail_image}
+              src={cocktail.image}
+              alt={`${cocktail.name} Image`}
+            />
+            <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>
+            <div className={s.availability}>Available Today</div>
+          </div>
+
+          <div className={s.result_text}>
+            <div className={s.cocktail_name}>{cocktail.name}</div>
+            <div className={s.price}>
+              ${cocktail.price} / {cocktail.servingSize} oz serving
+            </div>
+            <div className={s.ingredients}>
+              {cocktail.ingredients} {cocktail.ingredients.length}
+            </div>
+            <div className={s.expand} onClick={e => setIsOpen(true)}>
+              More Details{` `}
+              <FontAwesomeIcon icon={faChevronDown} size="xs" />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
-  return (<div className={s.pass_through}>{DisplayContent()}</div>);
+  return <div className={s.pass_through}>{DisplayContent()}</div>;
 }
 
 export default withStyles(s)(CocktailListItem);
