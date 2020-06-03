@@ -1,9 +1,6 @@
 import {
   GraphQLObjectType as ObjectType,
-  GraphQLID as ID,
   GraphQLString as StringType,
-  GraphQLFloat as FloatType,
-  GraphQLNonNull as NonNull,
 } from 'graphql';
 
 const AuthenticationType = new ObjectType({

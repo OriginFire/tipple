@@ -21,13 +21,18 @@
   object-fit: cover;
 }
 
-.availability,
+.availability_today,
 .vendor_name {
   color: #b9b9b9;
   text-align: center;
 }
 
-.availability {
+.availability_today {
+  color: #53874c;
+  font-family: "Lato Light", sans-serif;
+}
+
+.availability_tomorrow {
   color: #53874c;
   font-family: "Lato Light", sans-serif;
 }
@@ -108,7 +113,7 @@
     font-size: 12.5px;
   }
 
-  .availability {
+  .availability_today {
     font-size: 11.5px;
   }
 
@@ -185,7 +190,7 @@
     font-size: 12px;
   }
 
-  .availability {
+  .availability_today {
     font-size: 10px;
   }
 
@@ -264,7 +269,7 @@
     font-size: 14px;
   }
 
-  .availability {
+  .availability_today {
     font-size: 12px;
   }
 
@@ -345,7 +350,7 @@
     font-size: 14px;
   }
 
-  .availability {
+  .availability_today {
     font-size: 12px;
   }
 

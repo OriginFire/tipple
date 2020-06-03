@@ -12,8 +12,6 @@ const protectedUpdateVendor = {
   async resolve(value, { vendor }) {
     const vendorInput = vendor;
     const JWT = jwt.verify(vendor.JWT, config.auth.jwt.secret);
-    console.log('Hello');
-    console.log(vendor.deliveryRadius);
 
     if (JWT.vendorSlug !== vendor.slug) {
       return 'nope';
@@ -32,6 +30,10 @@ const protectedUpdateVendor = {
         deliveryRadius: vendorInput.deliveryRadius,
         doesPickup: vendorInput.doesPickup,
         onlineStore: vendorInput.onlineStore,
+        deliveryLngMax: vendorInput.longitude - vendor.deliveryRadius / 69,
+        deliveryLngMin: vendorInput.longitude - vendor.deliveryRadius / 69,
+        deliveryLatMax: vendorInput.latitude + vendor.deliveryRadius / 69,
+        deliveryLatMin: vendorInput.latitude - vendor.deliveryRadius / 69,
       },
       { where: { slug: vendor.slug } },
     );
@@ -39,11 +41,3 @@ const protectedUpdateVendor = {
 };
 
 export default protectedUpdateVendor;
-
-/* include: [{ model: Cocktail, as: 'cocktails' }, User],
-});
-displayVendor.vendorImage = displayVendor.vendorImage.toString();
-displayVendor.cocktails.forEach(c => {
-  c.image = c.image.toString();
-});
-return displayVendor; */

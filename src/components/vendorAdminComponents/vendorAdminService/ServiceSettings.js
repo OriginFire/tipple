@@ -14,6 +14,8 @@ const UPDATE_SERVICE_SETTINGS = `
     $doesDelivery: Boolean!,
     $deliveryRadius: Float!,
     $doesPickup: Boolean!
+    $longitude: Float!,
+    $latitude: Float!,
     ) {
     protectedUpdateVendor( vendor: {
       slug: $slug,
@@ -21,6 +23,8 @@ const UPDATE_SERVICE_SETTINGS = `
       doesDelivery: $doesDelivery,
       deliveryRadius: $deliveryRadius,
       doesPickup: $doesPickup,
+      longitude: $longitude,
+      latitude: $latitude,
     }) {
          id
       }
@@ -124,6 +128,8 @@ function reconstructQueryData(localState) {
 function ServiceSettings(props) {
   const { vendor } = props;
   const [slug, setSlug] = useState(vendor.slug);
+  const [longitude, setLongitude] = useState(vendor.longitude);
+  const [latitude, setLatitude] = useState(vendor.latitude);
   const [doesDelivery, setDoesDelivery] = useState(vendor.doesDelivery);
   const [deliveryRadius, setDeliveryRadius] = useState(vendor.deliveryRadius);
   const [scheduledDeliveryRequired, setScheduledDeliveryRequired] = useState(
@@ -164,6 +170,8 @@ function ServiceSettings(props) {
         doesDelivery,
         deliveryRadius,
         doesPickup,
+        longitude,
+        latitude,
       },
     });
     reconstructQueryData(deliveryAvailability);

@@ -1,6 +1,6 @@
 import DataType from 'sequelize';
 import Model from '../sequelize';
-import stringToSlug from "../../utils/stringToSlug";
+import stringToSlug from '../../utils/stringToSlug';
 
 const Vendor = Model.define(
   'Vendor',
@@ -67,12 +67,44 @@ const Vendor = Model.define(
       type: DataType.BOOLEAN,
     },
 
+    deliveryRadius: {
+      type: DataType.STRING(256),
+    },
+
+    scheduledDeliveryRequired: {
+      type: DataType.BOOLEAN,
+    },
+
+    minimumDeliveryFulfillment: {
+      type: DataType.DOUBLE,
+    },
+
     doesPickup: {
       type: DataType.BOOLEAN,
     },
 
-    deliveryRadius: {
-      type: DataType.STRING(256),
+    scheduledPickupRequired: {
+      type: DataType.BOOLEAN,
+    },
+
+    minimumPickupFilfillment: {
+      type: DataType.DOUBLE,
+    },
+
+    deliveryLngMax: {
+      type: DataType.DOUBLE,
+    },
+
+    deliveryLngMin: {
+      type: DataType.DOUBLE,
+    },
+
+    deliveryLatMax: {
+      type: DataType.DOUBLE,
+    },
+
+    deliveryLatMin: {
+      type: DataType.DOUBLE,
     },
 
     onlineStore: {
@@ -89,12 +121,12 @@ const Vendor = Model.define(
 );
 
 Vendor.beforeCreate(async (vendor, options) => {
-  vendor.slug=stringToSlug(vendor.dbaName);
+  vendor.slug = stringToSlug(vendor.dbaName);
 });
 
-Vendor.beforeUpdate(async (vendor, options) => {
-  vendor.slug=stringToSlug(vendor.dbaName);
-});
+Vendor.afterUpdate(async (vendor, options) => {
+  vendor.slug = stringToSlug(vendor.dbaName);
 
+});
 
 export default Vendor;

@@ -4,6 +4,7 @@ import { useQuery } from 'graphql-hooks';
 import s from './CocktailResultsList.scss';
 import CocktailListItem from './CocktailListItem';
 import ApplicationContext from '../../ApplicationContext';
+import db from '../../../data/dbSimulator/Vendors';
 
 const SEARCH_COCKTAILS = `
   query SearchCocktails($doesDelivery: Boolean, $doesPickup: Boolean, $userLongitude: Float, $userLatitude: Float, $pickupRadius: Float) {
@@ -11,7 +12,9 @@ const SEARCH_COCKTAILS = `
       slug
       dbaName
       doesDelivery
+      minimumDeliveryFulfillment
       doesPickup
+      minimumPickupFulfillment
       cocktails {
         name
         ingredients
@@ -130,6 +133,12 @@ function CocktailSearchResults(props) {
         availableVendors.map((vendor, index, matchingVendors) => {
           console.log(vendor);
           return vendor.cocktails.map((cocktail, index, cocktails) => {
+            let availability;
+            db.map(dbVendor => {
+              if (dbVendor.dbaName === vendor.dbaName) {
+                availability = dbVendor.availability;
+              }
+            })
             if (vendor.onlineStore === '') {
               onlineOrdering = 'No Online Store';
             } else {
@@ -143,6 +152,7 @@ function CocktailSearchResults(props) {
                   cocktail={cocktail}
                   index={index}
                   displayCocktails={displayCocktails}
+                  availability={availability}
                 />
               );
             }

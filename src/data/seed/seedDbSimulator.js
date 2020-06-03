@@ -95,8 +95,16 @@ function createNew(vendor) {
       alcoholLicenseIssuingAgency: vendor.alcoholLicenseIssuingAgency,
       alcoholLicenseExpiration: vendor.alcoholLicenseExpiration,
       doesDelivery: vendor.doesDelivery,
+      scheduledDeliveryRequired: vendor.scheduledDeliveryRequired,
+      minimumDeliveryFulfillment: vendor.minimumDeliveryFulfillment,
       doesPickup: vendor.doesPickup,
+      scheduledPickupRequired: vendor.scheduledPickupRequired,
+      minimumPickupFilfillment: vendor.minimumPickupFilfillment,
       deliveryRadius: vendor.deliveryRadius,
+      deliveryLngMax: vendor.longitude + vendor.deliveryRadius / 69,
+      deliveryLngMin: vendor.longitude - vendor.deliveryRadius / 69,
+      deliveryLatMax: vendor.latitude + vendor.deliveryRadius / 69,
+      deliveryLatMin: vendor.latitude - vendor.deliveryRadius / 69,
       onlineStore: vendor.onlineStore,
       vendorImage: base64_encode(vendorImageUrl),
       cocktails: cocktailHash(vendor),
@@ -114,11 +122,7 @@ function createNew(vendor) {
       include: [
         {
           model: Availability,
-          include: [
-            { model: AvailabilitySchedule,
-              include: []
-            },
-          ],
+          include: [{ model: AvailabilitySchedule, include: [] }],
         },
         { model: Cocktail, as: 'cocktails' },
         { model: User },

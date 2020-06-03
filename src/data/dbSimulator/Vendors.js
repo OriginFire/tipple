@@ -26,8 +26,12 @@ export default [
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: true,
-    doesPickup: true,
     deliveryRadius: 1,
+    scheduledDeliveryRequired: false,
+    minimumDeliveryFulfillment: 0,
+    doesPickup: true,
+    scheduledPickupRequired: false,
+    minimumPickupFilfillment: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Urbana.jpg',
     cocktails: [
@@ -197,8 +201,12 @@ export default [
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: true,
+    deliveryRadius: 3,
+    scheduledDeliveryRequired: false,
+    minimumDeliveryFulfillment: 2,
     doesPickup: false,
-    deliveryRadius: 0,
+    scheduledPickupRequired: false,
+    minimumPickupFilfillment: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Golden.jpg',
     cocktails: [
@@ -272,40 +280,6 @@ export default [
     ],
     availability: [
       {
-        availabilityType: 'pickup',
-        availabilityDaysAndTimes: [
-          {
-            day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
-          },
-          {
-            day: weekdays.monday,
-            hours: [],
-          },
-          {
-            day: weekdays.tuesday,
-            hours: [],
-          },
-          {
-            day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-          },
-          {
-            day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-          },
-          {
-            day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
-          },
-          {
-            day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
-          },
-        ],
-      },
-
-      {
         availabilityType: 'delivery',
         availabilityDaysAndTimes: [
           {
@@ -322,7 +296,7 @@ export default [
           },
           {
             day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+            hours: [18, 19, 20, 21, 22, 23, 24],
           },
           {
             day: weekdays.thursday,
@@ -366,8 +340,12 @@ export default [
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
-    doesPickup: true,
     deliveryRadius: 0,
+    scheduledDeliveryRequired: false,
+    minimumDeliveryFulfillment: 0,
+    doesPickup: true,
+    scheduledPickupRequired: false,
+    minimumPickupFilfillment: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../SL.jpeg',
     cocktails: [
@@ -473,40 +451,6 @@ export default [
           },
         ],
       },
-
-      {
-        availabilityType: 'delivery',
-        availabilityDaysAndTimes: [
-          {
-            day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
-          },
-          {
-            day: weekdays.monday,
-            hours: [],
-          },
-          {
-            day: weekdays.tuesday,
-            hours: [],
-          },
-          {
-            day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-          },
-          {
-            day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-          },
-          {
-            day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
-          },
-          {
-            day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
-          },
-        ],
-      },
     ],
   },
 
@@ -534,8 +478,12 @@ export default [
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: true,
+    deliveryRadius: 2,
+    scheduledDeliveryRequired: true,
+    minimumDeliveryFulfillment: 1,
     doesPickup: true,
-    deliveryRadius: 0,
+    scheduledPickupRequired: false,
+    minimumPickupFilfillment: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Columbia.jpg',
     cocktails: [
@@ -703,8 +651,12 @@ export default [
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
-    doesPickup: true,
     deliveryRadius: 0,
+    scheduledDeliveryRequired: false,
+    minimumDeliveryFulfillment: 0,
+    doesPickup: true,
+    scheduledPickupRequired: false,
+    minimumPickupFilfillment: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../LevitationAspect.JPG',
     cocktails: [
@@ -810,40 +762,6 @@ export default [
           },
         ],
       },
-
-      {
-        availabilityType: 'delivery',
-        availabilityDaysAndTimes: [
-          {
-            day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
-          },
-          {
-            day: weekdays.monday,
-            hours: [],
-          },
-          {
-            day: weekdays.tuesday,
-            hours: [],
-          },
-          {
-            day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-          },
-          {
-            day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-          },
-          {
-            day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
-          },
-          {
-            day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
-          },
-        ],
-      },
     ],
   },
 
@@ -872,8 +790,12 @@ export default [
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: true,
+    deliveryRadius: 4,
+    scheduledDeliveryRequired: false,
+    minimumDeliveryFulfillment: 2,
     doesPickup: true,
-    deliveryRadius: 0,
+    scheduledPickupRequired: false,
+    minimumPickupFilfillment: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../SL.jpeg',
     cocktails: [
@@ -1041,8 +963,12 @@ export default [
     alcoholLicenseExpiration:
       '04/03/2020' /** Format restrictions based on issuing agency */,
     doesDelivery: false,
-    doesPickup: true,
     deliveryRadius: 0,
+    scheduledDeliveryRequired: false,
+    minimumDeliveryFulfillment: 0,
+    doesPickup: true,
+    scheduledPickupRequired: true,
+    minimumPickupFilfillment: 1,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../OldFashioned.png',
     cocktails: [
@@ -1117,40 +1043,6 @@ export default [
     availability: [
       {
         availabilityType: 'pickup',
-        availabilityDaysAndTimes: [
-          {
-            day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
-          },
-          {
-            day: weekdays.monday,
-            hours: [],
-          },
-          {
-            day: weekdays.tuesday,
-            hours: [],
-          },
-          {
-            day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-          },
-          {
-            day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-          },
-          {
-            day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
-          },
-          {
-            day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
-          },
-        ],
-      },
-
-      {
-        availabilityType: 'delivery',
         availabilityDaysAndTimes: [
           {
             day: weekdays.sunday,

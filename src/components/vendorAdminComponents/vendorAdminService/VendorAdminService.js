@@ -12,18 +12,11 @@ const FIND_VENDOR = `
     protectedFindVendor(vendor: { slug: $slug, JWT: $JWT}) {
       slug
       dbaName
-      physicalStreetAddress
-      physicalCity
-      physicalState
-      physicalZipCode
-      alcoholLicenseNumber
-      alcoholLicenseIssuingAgency
-      alcoholLicenseExpiration
+      longitude
+      latitude
       doesDelivery
       doesPickup
       deliveryRadius
-      onlineStore
-      vendorImage
     }
   }
   `;
