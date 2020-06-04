@@ -3,6 +3,7 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './VendorResultsList.scss';
 import ApplicationContext from '../../ApplicationContext';
+import SearchContext from "../SearchContext";
 import VendorListItem from './VendorListItem';
 
 const SEARCH_VENDORS = `
@@ -27,6 +28,7 @@ const SEARCH_VENDORS = `
 
 function VendorResultsList(props) {
   const customerLocation = useContext(ApplicationContext);
+  const searchContext = useContext(SearchContext);
 
   const [userLatitude, setUserLatitude] = useState(
     customerLocation.context.userLatitude,
@@ -34,7 +36,7 @@ function VendorResultsList(props) {
   const [userLongitude, setUserLongitude] = useState(
     customerLocation.context.userLongitude,
   );
-  const [filterSettings, setFilterSettings] = useState(props.filterSettings)
+  const [filterSettings, setFilterSettings] = useState(searchContext.searchFilters)
   const { loading, error, data } = useQuery(SEARCH_VENDORS, {
     variables: {
       userLatitude,
@@ -74,7 +76,7 @@ function VendorResultsList(props) {
           <br />
           <div>
             We checked for vendors less than{' '}
-            {props.filterSettings.pickupRadius.toString()} {miles} away and
+            {filterSettings.pickupRadius.toString()} {miles} away and
             found none, but you can adjust the search radius by clicking the
             filter settings button below.
           </div>
@@ -85,7 +87,7 @@ function VendorResultsList(props) {
       <div className={s.results_message}>
         <div>
           {resultsArray.length} {vendorsText} deliver to your current address or
-          offer pickup within {props.filterSettings.pickupRadius.toString()}{' '}
+          offer pickup within {filterSettings.pickupRadius.toString()}{' '}
           {miles}
         </div>
       </div>

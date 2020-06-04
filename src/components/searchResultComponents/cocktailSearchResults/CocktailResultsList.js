@@ -3,12 +3,24 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './CocktailResultsList.scss';
 import CocktailListItem from './CocktailListItem';
+import ResultsMessage from './ResultsMessage';
 import ApplicationContext from '../../ApplicationContext';
+import SearchContext from '../SearchContext';
 import db from '../../../data/dbSimulator/Vendors';
 
 const SEARCH_COCKTAILS = `
-  query SearchCocktails($doesDelivery: Boolean, $doesPickup: Boolean, $userLongitude: Float, $userLatitude: Float, $pickupRadius: Float) {
-    searchVendors(parameters: {doesDelivery: $doesDelivery, doesPickup: $doesPickup, userLongitude: $userLongitude, userLatitude: $userLatitude, pickupRadius: $pickupRadius}) {
+  query SearchCocktails(
+  $doesDelivery: Boolean,
+  $doesPickup: Boolean,
+  $userLongitude: Float,
+  $userLatitude: Float,
+  $pickupRadius: Float) {
+    searchVendors(parameters: {
+    doesDelivery: $doesDelivery,
+    doesPickup: $doesPickup,
+    userLongitude: $userLongitude,
+    userLatitude: $userLatitude,
+    pickupRadius: $pickupRadius}) {
       slug
       dbaName
       doesDelivery
@@ -33,7 +45,16 @@ const SEARCH_COCKTAILS = `
 
 function CocktailSearchResults(props) {
   const customerLocation = useContext(ApplicationContext);
-
+  const searchContext = useContext(SearchContext);
+  const [filterSettings, setFilterSettings] = useState(
+    searchContext.searchFilters,
+  );
+  console.log(
+    searchContext.searchFilters,
+    'context list',
+    filterSettings,
+    'state list',
+  );
   const [userLatitude, setUserLatitude] = useState(
     customerLocation.context.userLatitude,
   );
@@ -47,9 +68,9 @@ function CocktailSearchResults(props) {
     variables: {
       userLatitude,
       userLongitude,
-      doesDelivery: props.filterSettings.doesDelivery,
-      doesPickup: props.filterSettings.doesPickup,
-      pickupRadius: parseFloat(props.filterSettings.pickupRadius),
+      doesDelivery: filterSettings.doesDelivery,
+      doesPickup: filterSettings.doesPickup,
+      pickupRadius: parseFloat(filterSettings.pickupRadius),
     },
   });
   let searchResults;
@@ -62,101 +83,62 @@ function CocktailSearchResults(props) {
 
   function incrementDisplayCounter() {
     displayCounter += 1;
-    console.log(displayCounter);
-  }
-
-  function ResultsMessage(resultsArray) {
-    let miles;
-    let cocktails;
-    let totalCocktails = 0;
-    resultsArray.forEach(vendor => {
-      vendor.cocktails.forEach(cocktail => {
-        totalCocktails++;
-      });
-    });
-
-    if (props.filterSettings.pickupRadius === 1) {
-      miles = 'mile';
-    } else {
-      miles = 'miles';
-    }
-
-    if (resultsArray.length === 1) {
-      cocktails = 'cocktail';
-    } else {
-      cocktails = 'cocktails';
-    }
-
-    if (totalCocktails === 0) {
-      return (
-        <div className={s.results_message}>
-          <div>
-            There are no cocktails available for delivery to your current
-            address, however nearby vendors may sell cocktails for pickup.
-          </div>
-          <br />
-          <div>
-            We checked for cocktails available for pickup within{` `}
-            {props.filterSettings.pickupRadius.toString()} {miles} and found
-            none, but you can adjust the search settings.
-          </div>
-        </div>
-      );
-    }
-    return (
-      <div className={s.results_message}>
-        <div style={{}}>
-          Showing {cocktailsDisplayed} out of {totalCocktails} {cocktails}{' '}
-          available for delivery to your current address or pickup within{' '}
-          {props.filterSettings.pickupRadius.toString()} {miles}
-        </div>
-      </div>
-    );
   }
 
   let availableVendors;
-  let onlineOrdering;
   if (searchResults) {
     availableVendors = searchResults;
   }
 
   const displayCocktails = [];
-  if (props.filterSettings.showStiff) displayCocktails.push('stiff');
-  if (props.filterSettings.showStrong) displayCocktails.push('strong');
-  if (props.filterSettings.showLong) displayCocktails.push('long');
-  if (props.filterSettings.showLow) displayCocktails.push('lowABV');
+  if (filterSettings.showStiff) displayCocktails.push('stiff');
+  if (filterSettings.showStrong) displayCocktails.push('strong');
+  if (filterSettings.showLong) displayCocktails.push('long');
+  if (filterSettings.showLow) displayCocktails.push('lowABV');
 
   return (
     <div className={s.result_list}>
-      {availableVendors && ResultsMessage(availableVendors)}
+      {availableVendors && (
+        <ResultsMessage
+          resultsArray={availableVendors}
+          cocktailsDisplayed={cocktailsDisplayed}
+          displayCounter={displayCounter}
+        />
+      )}
       {availableVendors &&
         availableVendors.map((vendor, index, matchingVendors) => {
-          console.log(vendor);
-          return vendor.cocktails.map((cocktail, index, cocktails) => {
-            let availability;
-            db.map(dbVendor => {
-              if (dbVendor.dbaName === vendor.dbaName) {
-                availability = dbVendor.availability;
+          let onDemandCheck = true;
+          if (filterSettings.onDemandOnly) {
+            if (vendor.minimumDeliveryFulfillment !== 0 && vendor.minimumPickupFilfillment !== 0) {
+              onDemandCheck = false;
+            } else if (!filterSettings.doesDelivery && (vendor.minimumPickupFilfillment !== 0)) {
+              onDemandCheck = false;
+            } else if (!filterSettings.doesPickup && (vendor.minimumDeliveryFulfillment !== 0)) {
+              onDemandCheck = false;
+            }
+          }
+          if (onDemandCheck) {
+            return vendor.cocktails.map((cocktail, index, cocktails) => {
+              let availability;
+              db.map(dbVendor => {
+                if (dbVendor.dbaName === vendor.dbaName) {
+                  availability = dbVendor.availability;
+                }
+              });
+              if (displayCocktails.includes(cocktail.profile)) {
+                incrementDisplayCounter();
+                return (
+                  <CocktailListItem
+                    vendor={vendor}
+                    cocktail={cocktail}
+                    index={index} //what do we substitute in place of map index?
+                    displayCocktails={displayCocktails}
+                    availability={availability}
+                  />
+                );
               }
-            })
-            if (vendor.onlineStore === '') {
-              onlineOrdering = 'No Online Store';
-            } else {
-              onlineOrdering = 'Order Online';
-            }
-            if (displayCocktails.includes(cocktail.profile)) {
-              incrementDisplayCounter();
-              return (
-                <CocktailListItem
-                  vendor={vendor}
-                  cocktail={cocktail}
-                  index={index}
-                  displayCocktails={displayCocktails}
-                  availability={availability}
-                />
-              );
-            }
-          });
+            });
+          }
         })}
     </div>
   );

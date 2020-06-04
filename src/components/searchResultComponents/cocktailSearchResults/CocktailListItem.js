@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import s from './CocktailListItem.scss';
+import SearchContext from "../SearchContext";
+import endTimeRendering from "../../../consts/endTimeRendering";
+import startTimeRendering from "../../../consts/startTimeRendering";
 import history from '../../../history';
 
 function daysToNumbers(day) {
@@ -36,6 +39,8 @@ function CocktailListItem(props) {
   const { cocktail } = props;
   const { index } = props;
   const { availability } = props;
+  const searchContext = useContext(SearchContext);
+  const [filterSettings, setFilterSettings] = useState(searchContext.searchFilters);
   const [isOpen, setIsOpen] = useState(false);
   let fulfillmentOptions;
 
@@ -48,12 +53,6 @@ function CocktailListItem(props) {
   }
 
   const currentDateTime = new Date();
-  console.log(
-    currentDateTime.getTime(),
-    currentDateTime.getDay(),
-    currentDateTime.getHours(),
-    currentDateTime.getMinutes(),
-  );
 
   let availabilityStatus = 'Not Available Today';
   let availabilityTime = 0;
@@ -61,11 +60,11 @@ function CocktailListItem(props) {
   availability.map(availabilityType => {
     let fulfillmentMinimum;
     let showAvailabilityCheck;
-    if (availabilityType.type === 'pickup') {
-      showAvailabilityCheck === vendor.doesPickup; // Change this to the filterSettings.doesPickup value
+    if (availabilityType.availabilityType === 'pickup') {
+      showAvailabilityCheck = filterSettings.doesPickup;
       fulfillmentMinimum = vendor.minimumPickupFulfillment;
     } else {
-      showAvailabilityCheck === vendor.doesDelivery; // Change this to the filterSettings.doesDelivery value
+      showAvailabilityCheck = filterSettings.doesDelivery;
       fulfillmentMinimum = vendor.minimumDeliveryFulfillment;
     }
     availabilityType.availabilityDaysAndTimes.map(daySchedule => {
@@ -80,8 +79,10 @@ function CocktailListItem(props) {
         ) {
           availabilityStatus = 'Available Today';
           if (availabilityTime < Math.max(...daySchedule.hours)) {
-            availabilityTime = Math.max(...daySchedule.hours);
+            availabilityTime = endTimeRendering(Math.max(...daySchedule.hours));
           }
+        } else {
+          // aggressive block finding the next availability day and rendering earliest available time
         }
       }
     });

@@ -10,18 +10,6 @@ import CocktailResultsList from '../cocktailSearchResults/CocktailResultsList';
 
 function SearchResultsDisplay() {
   const [displaySetting, setDisplaySetting] = useState('cocktails');
-  const [filterSettings, setFilterSettings] = useState({
-    doesDelivery: true,
-    doesPickup: true,
-    pickupRadius: 1,
-    showStiff: true,
-    showStrong: true,
-    showLong: true,
-    showLow: true,
-    availableTodayOnly: false,
-    onDemandOnly: false,
-    highPrice: null,
-  });
   const [filterSettingsOpen, setFilterSettingsOpen] = useState(false);
   let vendorStyle;
   let cocktailStyle;
@@ -32,7 +20,7 @@ function SearchResultsDisplay() {
   if (displaySetting === 'vendors') {
     vendorStyle = s.active;
     vendorButton = 'Showing Vendors';
-    resultsDisplay = <VendorResultsList filterSettings={filterSettings} />;
+    resultsDisplay = <VendorResultsList />;
   } else {
     vendorStyle = s.inactive;
     vendorButton = 'Show Vendors';
@@ -41,25 +29,21 @@ function SearchResultsDisplay() {
   if (displaySetting === 'cocktails') {
     cocktailStyle = s.active;
     cocktailButton = 'Showing Cocktails';
-    resultsDisplay = <CocktailResultsList filterSettings={filterSettings} />;
+    resultsDisplay = <CocktailResultsList />;
   } else {
     cocktailStyle = s.inactive;
     cocktailButton = 'Show Cocktails';
   }
 
-  function updateFilterSettings(newSettings) {
+  function updateFilterSettings() {
     setFilterSettingsOpen(false);
-    setFilterSettings(newSettings);
-    console.log(filterSettings);
+
   }
 
   return (
     <ContentBox>
       {filterSettingsOpen && (
-        <FilterSettings
-          settings={filterSettings}
-          onClose={newSettings => updateFilterSettings(newSettings)}
-        />
+        <FilterSettings onClose={e => updateFilterSettings()} />
       )}
       <div className={s.display_selectors}>
         <FontAwesomeIcon

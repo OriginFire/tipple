@@ -12,7 +12,9 @@ import PropTypes from 'prop-types';
 
 import StyleContext from 'isomorphic-style-loader/StyleContext';
 import ApplicationContext from './ApplicationContext';
+import SearchContext from "./searchResultComponents/SearchContext";
 import { ClientContext, GraphQLClient } from 'graphql-hooks';
+import searchFilters from "./searchResultComponents/SearchFilters";
 
 /**
  * The top-level React component setting context (global) variables
@@ -45,7 +47,9 @@ export default function App({ context, insertCss, children }) {
     <StyleContext.Provider value={{ insertCss }}>
       <ApplicationContext.Provider value={{ context }}>
         <ClientContext.Provider value={client}>
-          {React.Children.only(children)}
+          <SearchContext.Provider value={{ searchFilters }}>
+            {React.Children.only(children)}
+          </SearchContext.Provider>
         </ClientContext.Provider>
       </ApplicationContext.Provider>
     </StyleContext.Provider>

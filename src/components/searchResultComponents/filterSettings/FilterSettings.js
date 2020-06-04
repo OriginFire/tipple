@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faTimes,
   faShareSquare,
   faStore,
   faGlassWhiskey,
@@ -11,10 +10,17 @@ import {
   faWineGlass,
   faChevronCircleLeft,
 } from '@fortawesome/free-solid-svg-icons';
+import SearchContext from '../SearchContext';
 import s from './FilterSettings.scss';
 
 function FilterSettings(props) {
-  const [filterSettings, setFilterSettings] = useState(props.settings);
+  const searchContext = useContext(SearchContext);
+  const [filterSettings, setFilterSettings] = useState(
+    searchContext.searchFilters,
+  );
+
+  console.log(searchContext.searchFilters, "context filters");
+  console.log(filterSettings, "state filters");
 
   let miles;
   if (filterSettings.pickupRadius === 1) {
@@ -24,10 +30,21 @@ function FilterSettings(props) {
   }
 
   let cocktailsMessage;
-  if (filterSettings.showStiff && filterSettings.showStrong && filterSettings.showLong && filterSettings.showLow) {
+  if (
+    filterSettings.showStiff &&
+    filterSettings.showStrong &&
+    filterSettings.showLong &&
+    filterSettings.showLow
+  ) {
     cocktailsMessage = 'Showing all types of cocktails in search results';
-  } else if (!filterSettings.showStiff && !filterSettings.showStrong && !filterSettings.showLong && !filterSettings.showLow) {
-    cocktailsMessage = 'You must select at least one type of cocktail to display in your search results';
+  } else if (
+    !filterSettings.showStiff &&
+    !filterSettings.showStrong &&
+    !filterSettings.showLong &&
+    !filterSettings.showLow
+  ) {
+    cocktailsMessage =
+      'You must select at least one type of cocktail to display in your search results';
   } else {
     cocktailsMessage = 'Only showing cocktails of the type(s) selected above';
   }
@@ -109,6 +126,12 @@ function FilterSettings(props) {
     return s.icon_inactive;
   }
 
+  function saveChanges() {
+    searchContext.searchFilters = filterSettings;
+    console.log(searchContext.searchFilters, "Updated search context");
+    props.onClose();
+  }
+
   return (
     <div>
       <div className={s.filter_settings}>
@@ -181,14 +204,28 @@ function FilterSettings(props) {
               </div>
             </div>
             <div className={s.setting_status}>{cocktailsMessage}</div>
-            <div className={s.cocktails_tooltip}>How do I use this filter setting?
-              <div className={s.setting_explainer}>This setting filters cocktails in the individual cocktail list based on how prominent the alcoholic ingredients are, which loosely corresponds to alcohol by volume.
+            <div className={s.cocktails_tooltip}>
+              How do I use this filter setting?
+              <div className={s.setting_explainer}>
+                This setting filters cocktails in the individual cocktail list
+                based on how prominent the alcoholic ingredients are, which
+                loosely corresponds to alcohol by volume.
                 <br />
                 <br />
-                Select the cocktail types you WANT to appear in your search results. If you unselect a cocktail type, matching drinks will be blocked from your search results. For instance, un-selecting "Stiff" would remove all Old Fashioneds and any other all-or-mostly liquor drinks from your results. This is useful if you're browsing for drinks and have a specific booziness in mind ("I want a Margarita or something like it," etc).
+                Select the cocktail types you WANT to appear in your search
+                results. If you unselect a cocktail type, matching drinks will
+                be blocked from your search results. For instance, un-selecting
+                "Stiff" would remove all Old Fashioneds and any other
+                all-or-mostly liquor drinks from your results. This is useful if
+                you're browsing for drinks and have a specific booziness in mind
+                ("I want a Margarita or something like it," etc).
                 <br />
                 <br />
-                <span className={s.tooltip_note}>If you're browsing with no preference for booziness or are unsure what type of drinks are right for you, it's suggested you leave all drink types selected.</span>
+                <span className={s.tooltip_note}>
+                  If you're browsing with no preference for booziness or are
+                  unsure what type of drinks are right for you, it's suggested
+                  you leave all drink types selected.
+                </span>
               </div>
             </div>
           </div>
@@ -229,14 +266,25 @@ function FilterSettings(props) {
               <div>{inputField()}</div>
             </div>
             <div className={s.setting_status}>{fulfillmentMessage}</div>
-            <div className={s.fulfillment_tooltip}>How do I use this filter setting?
-              <div className={s.setting_explainer}>Select the order fulfillment methods (Delivery and/or Pickup) that you WANT to appear in your search results. You must select at least one.
+            <div className={s.fulfillment_tooltip}>
+              How do I use this filter setting?
+              <div className={s.setting_explainer}>
+                Select the order fulfillment methods (Delivery and/or Pickup)
+                that you WANT to appear in your search results. You must select
+                at least one.
                 <br />
                 <br />
-                If Delivery is selected, all cocktails available for delivery to your current address will be listed in cocktail results and all vendors that deliver to your current address will be listed in vendor results.
+                If Delivery is selected, all cocktails available for delivery to
+                your current address will be listed in cocktail results and all
+                vendors that deliver to your current address will be listed in
+                vendor results.
                 <br />
                 <br />
-                If Pickup is selected, you must also provide the distance from your current address (default 1 mile) in which to display matches. As with Delivery, the search will return individual cocktails / vendors available within the specified distance from your address.
+                If Pickup is selected, you must also provide the distance from
+                your current address (default 1 mile) in which to display
+                matches. As with Delivery, the search will return individual
+                cocktails / vendors available within the specified distance from
+                your address.
               </div>
             </div>
           </div>
@@ -244,7 +292,6 @@ function FilterSettings(props) {
           <div className={s.availability}>
             <div className={s.title}>Price and Availability Filters</div>
             <div className={s.availability_settings}>
-
               <input
                 className={s.price}
                 placeholder="Limit Price"
@@ -282,29 +329,39 @@ function FilterSettings(props) {
               </div>
             </div>
             <div className={s.setting_status}>{availabilityMessage}</div>
-            <div className={s.availability_tooltip}>How do I use this filter setting?
+            <div className={s.availability_tooltip}>
+              How do I use this filter setting?
               <div className={s.setting_explainer}>
-                This setting allows you to refine your search in two ways. First, you can set a price limit to display only cocktails, or vendors with at least one cocktail, below the specified price.
+                This setting allows you to refine your search in two ways.
+                First, you can set a price limit to display only cocktails, or
+                vendors with at least one cocktail, below the specified price.
                 <br />
                 <br />
-                Second, using availability filters, you can opt to limit results only to the offerings Available Today and/or On-Demand. Vendors have different days/hours of operation, as well as differing delays when fulfilling orders. Using availability filters, you can see what is more immediately available.
+                Second, using availability filters, you can opt to limit results
+                only to the offerings Available Today and/or On-Demand. Vendors
+                have different days/hours of operation, as well as differing
+                delays when fulfilling orders. Using availability filters, you
+                can see what is more immediately available.
                 <br />
                 <br />
-                The availability filters do not discern between delivery or pickup fulfillment. If you want to narrow your search, for example, to on-demand options and only from vendors that deliver, you would need to select the appropriate Availability AND Fulfillment filters.
+                The availability filters do not discern between delivery or
+                pickup fulfillment. If you want to narrow your search, for
+                example, to on-demand options and only from vendors that
+                deliver, you would need to select the appropriate Availability
+                AND Fulfillment filters.
               </div>
             </div>
           </div>
         </div>
 
-        <div className={s.close} onClick={e => props.onClose(filterSettings)}>
+        <div className={s.close} onClick={e => saveChanges()}>
           <FontAwesomeIcon
             icon={faChevronCircleLeft}
             size="lg"
-            style={{padding: "0 15px"}}
+            style={{ padding: '0 15px' }}
           />
           Apply changes and return to search
         </div>
-
       </div>
     </div>
   );
