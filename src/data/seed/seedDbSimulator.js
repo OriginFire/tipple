@@ -61,7 +61,7 @@ function scheduleHash(availabilityDaysAndTimes) {
   availabilityDaysAndTimes.map(schedule => {
     const daySchedule = {
       day: schedule.day,
-      ScheduleHours: schedule.hours,
+      ScheduleHours: schedule.hours.map(h => Object.create({hour: h})), //[0,4,5] [{hour: 0},{hour:3},{hour:5}]
     };
     daysAndTimes.push(daySchedule);
   });
@@ -122,7 +122,14 @@ function createNew(vendor) {
       include: [
         {
           model: Availability,
-          include: [{ model: AvailabilitySchedule, include: [] }],
+          include: [
+            {
+              model: AvailabilitySchedule,
+              include: [
+                {
+                  model: ScheduleHour
+              }]
+            }],
         },
         { model: Cocktail, as: 'cocktails' },
         { model: User },
