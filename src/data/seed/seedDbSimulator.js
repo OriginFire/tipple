@@ -61,9 +61,10 @@ function scheduleHash(availabilityDaysAndTimes) {
   availabilityDaysAndTimes.map(schedule => {
     const daySchedule = {
       day: schedule.day,
-      ScheduleHours: schedule.hours.map(h => Object.create({hour: h})), //[0,4,5] [{hour: 0},{hour:3},{hour:5}]
+      ScheduleHours: schedule.hours.map(h => Object.create({hour: h})), //[0,4,5] [{hour: 0}, {hour: 4}, {hour:5}]
     };
     daysAndTimes.push(daySchedule);
+    console.log(daySchedule);
   });
   console.log(daysAndTimes, 'daysAndTimes returned');
   return daysAndTimes;
@@ -99,7 +100,7 @@ function createNew(vendor) {
       minimumDeliveryFulfillment: vendor.minimumDeliveryFulfillment,
       doesPickup: vendor.doesPickup,
       scheduledPickupRequired: vendor.scheduledPickupRequired,
-      minimumPickupFilfillment: vendor.minimumPickupFilfillment,
+      minimumPickupFulfillment: vendor.minimumPickupFilfillment,
       deliveryRadius: vendor.deliveryRadius,
       deliveryLngMax: vendor.longitude + vendor.deliveryRadius / 69,
       deliveryLngMin: vendor.longitude - vendor.deliveryRadius / 69,
@@ -127,7 +128,7 @@ function createNew(vendor) {
               model: AvailabilitySchedule,
               include: [
                 {
-                  model: ScheduleHour
+                  model: ScheduleHour,
               }]
             }],
         },

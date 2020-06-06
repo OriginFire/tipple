@@ -87,7 +87,7 @@ const Vendor = Model.define(
       type: DataType.BOOLEAN,
     },
 
-    minimumPickupFilfillment: {
+    minimumPickupFulfillment: {
       type: DataType.DOUBLE,
     },
 

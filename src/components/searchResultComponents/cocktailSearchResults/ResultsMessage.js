@@ -6,7 +6,6 @@ import s from './CocktailResultsList.scss';
 function ResultsMessage(props) {
   const { resultsArray } = props;
   const { cocktailsDisplayed } = props;
-  const { displayCounter } = props;
   const searchContext = useContext(SearchContext);
   const [filterSettings, setFilterSettings] = useState(
     searchContext.searchFilters,

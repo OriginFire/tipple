@@ -11,10 +11,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import StyleContext from 'isomorphic-style-loader/StyleContext';
-import ApplicationContext from './ApplicationContext';
-import SearchContext from "./searchResultComponents/SearchContext";
 import { ClientContext, GraphQLClient } from 'graphql-hooks';
-import searchFilters from "./searchResultComponents/SearchFilters";
+import ApplicationContext from './ApplicationContext';
+import SearchContext from './searchResultComponents/SearchContext';
+import searchFilters from './searchResultComponents/SearchFilters';
 
 /**
  * The top-level React component setting context (global) variables
@@ -40,7 +40,7 @@ import searchFilters from "./searchResultComponents/SearchFilters";
  */
 
 export default function App({ context, insertCss, children }) {
-  const client = new GraphQLClient({ url: '/graphql', fetch: context.fetch })
+  const client = new GraphQLClient({ url: '/graphql', fetch: context.fetch });
   // NOTE: If you need to add or modify header, footer etc. of the app,
   // please do that inside the Layout component.
   return (

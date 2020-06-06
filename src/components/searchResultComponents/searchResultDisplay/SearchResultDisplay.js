@@ -35,15 +35,10 @@ function SearchResultsDisplay() {
     cocktailButton = 'Show Cocktails';
   }
 
-  function updateFilterSettings() {
-    setFilterSettingsOpen(false);
-
-  }
-
   return (
     <ContentBox>
       {filterSettingsOpen && (
-        <FilterSettings onClose={e => updateFilterSettings()} />
+        <FilterSettings onClose={e => setFilterSettingsOpen(false)} />
       )}
       <div className={s.display_selectors}>
         <FontAwesomeIcon

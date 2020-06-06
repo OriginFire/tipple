@@ -38,6 +38,12 @@ const SEARCH_COCKTAILS = `
       }
       Availabilities {
         availabilityType
+        AvailabilitySchedules {
+          day
+          ScheduleHours {
+            hour
+          }
+        }
       }
     }
   }
@@ -46,15 +52,7 @@ const SEARCH_COCKTAILS = `
 function CocktailSearchResults(props) {
   const customerLocation = useContext(ApplicationContext);
   const searchContext = useContext(SearchContext);
-  const [filterSettings, setFilterSettings] = useState(
-    searchContext.searchFilters,
-  );
-  console.log(
-    searchContext.searchFilters,
-    'context list',
-    filterSettings,
-    'state list',
-  );
+
   const [userLatitude, setUserLatitude] = useState(
     customerLocation.context.userLatitude,
   );
@@ -68,78 +66,89 @@ function CocktailSearchResults(props) {
     variables: {
       userLatitude,
       userLongitude,
-      doesDelivery: filterSettings.doesDelivery,
-      doesPickup: filterSettings.doesPickup,
-      pickupRadius: parseFloat(filterSettings.pickupRadius),
+      doesDelivery: searchContext.searchFilters.doesDelivery,
+      doesPickup: searchContext.searchFilters.doesPickup,
+      pickupRadius: parseFloat(searchContext.searchFilters.pickupRadius),
     },
   });
   let searchResults;
 
   if (loading) return <div>Searching...</div>;
-  if (error) return <div>Something abd happened...</div>;
+  if (error) return <div>Something bad happened...</div>;
   if (data) searchResults = data.searchVendors;
 
-  let displayCounter = 0;
-
-  function incrementDisplayCounter() {
-    displayCounter += 1;
-  }
-
-  let availableVendors;
+  const displayedVendors = [];
   if (searchResults) {
-    availableVendors = searchResults;
+    console.log(searchResults);
+    searchResults.map((vendor, index, matchingVendors) => {
+      let onDemandCheck = true;
+      if (searchContext.searchFilters.onDemandOnly) {
+        if (
+          vendor.minimumDeliveryFulfillment !== 0 &&
+          vendor.minimumPickupFulfillment !== 0
+        ) {
+          onDemandCheck = false;
+          console.log('On Demand Disqualified', vendor);
+        } else if (
+          !searchContext.searchFilters.doesDelivery &&
+          vendor.minimumPickupFulfillment !== 0
+        ) {
+          onDemandCheck = false;
+          console.log('Pickup Disqualified', vendor);
+        } else if (
+          !searchContext.searchFilters.doesPickup &&
+          vendor.minimumDeliveryFulfillment !== 0
+        ) {
+          onDemandCheck = false;
+          console.log('Delivery Disqualified', vendor);
+        }
+      }
+      if (onDemandCheck) displayedVendors.push(vendor);
+    });
   }
 
-  const displayCocktails = [];
-  if (filterSettings.showStiff) displayCocktails.push('stiff');
-  if (filterSettings.showStrong) displayCocktails.push('strong');
-  if (filterSettings.showLong) displayCocktails.push('long');
-  if (filterSettings.showLow) displayCocktails.push('lowABV');
+  function CocktailList() {
+    let cocktailsDisplayedCounter = 0;
+    console.log(displayedVendors);
+    return displayedVendors.map(vendor => {
+      return vendor.cocktails.map((cocktail, index, cocktails) => {
+        let availability;
+        const cocktailProfiles = {
+          stiff: 'showStiff',
+          strong: 'showStrong',
+          long: 'showLong',
+          lowABV: 'showLow',
+        };
+        db.map(dbVendor => {
+          if (dbVendor.dbaName === vendor.dbaName) {
+            availability = dbVendor.availability;
+          }
+        });
+        if (searchContext.searchFilters[cocktailProfiles[cocktail.profile]]) {
+          cocktailsDisplayedCounter += 1;
+          console.log(cocktailsDisplayedCounter);
+          return (
+            <CocktailListItem
+              vendor={vendor}
+              cocktail={cocktail}
+              index={index} // what do we substitute in place of map index?
+              availability={availability}
+            />
+          );
+        }
+      });
+    });
+  }
 
   return (
     <div className={s.result_list}>
-      {availableVendors && (
+      {searchResults && (
         <ResultsMessage
-          resultsArray={availableVendors}
+          resultsArray={searchResults}
           cocktailsDisplayed={cocktailsDisplayed}
-          displayCounter={displayCounter}
         />
       )}
-      {availableVendors &&
-        availableVendors.map((vendor, index, matchingVendors) => {
-          let onDemandCheck = true;
-          if (filterSettings.onDemandOnly) {
-            if (vendor.minimumDeliveryFulfillment !== 0 && vendor.minimumPickupFilfillment !== 0) {
-              onDemandCheck = false;
-            } else if (!filterSettings.doesDelivery && (vendor.minimumPickupFilfillment !== 0)) {
-              onDemandCheck = false;
-            } else if (!filterSettings.doesPickup && (vendor.minimumDeliveryFulfillment !== 0)) {
-              onDemandCheck = false;
-            }
-          }
-          if (onDemandCheck) {
-            return vendor.cocktails.map((cocktail, index, cocktails) => {
-              let availability;
-              db.map(dbVendor => {
-                if (dbVendor.dbaName === vendor.dbaName) {
-                  availability = dbVendor.availability;
-                }
-              });
-              if (displayCocktails.includes(cocktail.profile)) {
-                incrementDisplayCounter();
-                return (
-                  <CocktailListItem
-                    vendor={vendor}
-                    cocktail={cocktail}
-                    index={index} //what do we substitute in place of map index?
-                    displayCocktails={displayCocktails}
-                    availability={availability}
-                  />
-                );
-              }
-            });
-          }
-        })}
+      {searchResults && CocktailList()}
     </div>
   );
 }

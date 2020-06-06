@@ -1,14 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faChevronCircleLeft,
+  faCocktail,
+  faGlassWhiskey,
   faShareSquare,
   faStore,
-  faGlassWhiskey,
-  faCocktail,
   faWineBottle,
   faWineGlass,
-  faChevronCircleLeft,
 } from '@fortawesome/free-solid-svg-icons';
 import SearchContext from '../SearchContext';
 import s from './FilterSettings.scss';
@@ -18,9 +18,6 @@ function FilterSettings(props) {
   const [filterSettings, setFilterSettings] = useState(
     searchContext.searchFilters,
   );
-
-  console.log(searchContext.searchFilters, "context filters");
-  console.log(filterSettings, "state filters");
 
   let miles;
   if (filterSettings.pickupRadius === 1) {
@@ -127,8 +124,7 @@ function FilterSettings(props) {
   }
 
   function saveChanges() {
-    searchContext.searchFilters = filterSettings;
-    console.log(searchContext.searchFilters, "Updated search context");
+    searchContext.searchFilters = {...filterSettings};
     props.onClose();
   }
 
@@ -145,7 +141,7 @@ function FilterSettings(props) {
                   className={classNameResolve(filterSettings.showStiff)}
                   onClick={e =>
                     setFilterSettings({
-                      ...filterSettings,
+                      ...searchContext.searchFilters,
                       showStiff: !filterSettings.showStiff,
                     })
                   }
@@ -238,8 +234,8 @@ function FilterSettings(props) {
                   className={classNameResolve(filterSettings.doesDelivery)}
                   onClick={e =>
                     setFilterSettings({
-                      ...filterSettings,
-                      doesDelivery: !filterSettings.doesDelivery,
+                      ...searchContext.searchFilters,
+                      doesDelivery: !searchContext.searchFilters.doesDelivery,
                     })
                   }
                 >

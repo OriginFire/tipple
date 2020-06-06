@@ -7,10 +7,8 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import { GraphQLList as List } from 'graphql';
 import VendorType from '../types/VendorType';
 import Vendor from '../../data/models/Vendor';
-import Cocktail from '../../data/models/Cocktail';
 import FindVendorType from '../types/FindVendorType';
 
 const findVendor = {
@@ -20,8 +18,7 @@ const findVendor = {
   },
   async resolve(value, { vendor }) {
     const displayVendor = await Vendor.findOne({
-      where: { slug: vendor.slug },
-      include: [{ model: Cocktail, as: 'cocktails' }],
+      where: {slug: vendor.slug},
     });
 
     displayVendor.vendorImage = displayVendor.vendorImage.toString();
