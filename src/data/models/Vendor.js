@@ -111,6 +111,7 @@ const Vendor = Model.define(
       type: DataType.STRING(256),
     },
 
+    //imgme
     vendorImage: {
       type: DataType.BLOB('long'),
     },
