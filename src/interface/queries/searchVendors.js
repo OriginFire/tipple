@@ -16,6 +16,7 @@ import Availability from '../../data/models/Availability';
 import AvailabilitySchedule from '../../data/models/AvailabilitySchedule';
 import Shift from '../../data/models/Shift';
 import SearchVendorInputType from '../types/SearchVendorInputType';
+import { ScheduleHour } from '../../data/models';
 
 const searchVendors = {
   type: List(VendorType),
@@ -37,6 +38,7 @@ const searchVendors = {
     let pickupCheck = 'noise';
     if (parameters.doesPickup) pickupCheck = true;
 
+    var start = process.hrtime()
     console.log(pickupCheck, deliveryCheck);
 
     const vendors = await Vendor.findAll({
@@ -72,12 +74,17 @@ const searchVendors = {
       ],
     });
 
+    var end = process.hrtime(start);
+    console.log('query time: ' + end);
+    start = process.hrtime()
     vendors.forEach(v => {
       v.vendorImage = v.vendorImage.toString();
       v.cocktails.forEach(c => {
         c.image = c.image.toString();
       });
     });
+    end = process.hrtime(start);
+    console.log('Execution time: ' + end);
     return vendors;
   },
 };

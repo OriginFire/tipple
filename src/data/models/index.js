@@ -7,19 +7,19 @@ import AvailabilitySchedule from './AvailabilitySchedule';
 import Shift from './Shift';
 import seedData from '../seed/seedDbSimulator';
 
-Vendor.hasMany(User, { onDelete: 'cascade' });
+Vendor.hasMany(User, { onDelete: 'cascade', foreignKeyConstraint: true  });
 User.belongsTo(Vendor);
 
-Vendor.hasMany(Cocktail, { as: 'cocktails', onDelete: 'cascade' });
+Vendor.hasMany(Cocktail, { as: 'cocktails', onDelete: 'cascade', foreignKeyConstraint: true  });
 Cocktail.belongsTo(Vendor);
 
-Vendor.hasMany(Availability, { onDelete: 'cascade' });
+Vendor.hasMany(Availability, { onDelete: 'cascade', foreignKeyConstraint: true  });
 Availability.belongsTo(Vendor);
 
-Availability.hasMany(AvailabilitySchedule, { onDelete: 'cascade' });
+Availability.hasMany(AvailabilitySchedule, { onDelete: 'cascade', foreignKeyConstraint: true  });
 AvailabilitySchedule.belongsTo(Availability);
 
-AvailabilitySchedule.hasMany(Shift, { onDelete: 'cascade' });
+AvailabilitySchedule.hasMany(Shift, { onDelete: 'cascade', foreignKeyConstraint: true });
 Shift.belongsTo(AvailabilitySchedule);
 
 function sync(...args) {
