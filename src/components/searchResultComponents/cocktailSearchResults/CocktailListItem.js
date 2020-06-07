@@ -55,6 +55,7 @@ function CocktailListItem(props) {
   const currentDateTime = new Date();
 
   let availabilityStatus = 'Not Available Today';
+  let nextAvailability = 'Tuesday';
   let availabilityTime = 0;
 
   availability.map(availabilityType => {
@@ -72,6 +73,11 @@ function CocktailListItem(props) {
         daySchedule.hours.length !== 0 &&
         daysToNumbers(daySchedule.day) === currentDateTime.getDay()
       ) {
+        if (vendor.dbaName === "Urbana") console.log(
+          currentDateTime.getHours() + fulfillmentMinimum <
+          Math.max(...daySchedule.hours) &&
+          showAvailabilityCheck
+        );
         if (
           currentDateTime.getHours() + fulfillmentMinimum <
             Math.max(...daySchedule.hours) &&
@@ -100,10 +106,23 @@ function CocktailListItem(props) {
                 alt={`${cocktail.name} Image`}
               />
               <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>
-              <div className={s.availability_today}>{availabilityStatus}</div>
-              <div className={s.availability_today}>
-                Until {availabilityTime}
-              </div>
+              {(availabilityStatus === "Available Today") && (
+                <div>
+                  <div className={s.availability_today}>{availabilityStatus}</div>
+                  <div className={s.availability_today}>
+                    Until {availabilityTime}
+                  </div>
+                </div>
+              )}
+
+              {(availabilityStatus === "Not Available Today") && (
+                <div>
+                  <div className={s.availability_tomorrow}>Next Available on {nextAvailability}</div>
+                  <div className={s.availability_tomorrow}>
+                    At {availabilityTime}
+                  </div>
+                </div>
+              )}
               <div
                 className={s.order}
                 onClick={e => history.push(`/vendor/${vendor.slug}`)}
@@ -143,7 +162,13 @@ function CocktailListItem(props) {
               alt={`${cocktail.name} Image`}
             />
             <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>
-            <div className={s.availability_today}>{availabilityStatus}</div>
+            {(availabilityStatus === "Available Today") &&
+              <div className={s.availability_today}>{availabilityStatus}</div>
+            }
+
+            {(availabilityStatus === "Not Available Today") &&
+            <div className={s.availability_tomorrow}>Next Available on {nextAvailability}</div>
+            }
           </div>
 
           <div className={s.result_text}>

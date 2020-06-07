@@ -15,7 +15,7 @@ import Cocktail from '../../data/models/Cocktail';
 import Availability from '../../data/models/Availability';
 import AvailabilitySchedule from '../../data/models/AvailabilitySchedule';
 import SearchVendorInputType from '../types/SearchVendorInputType';
-import {ScheduleHour} from "../../data/models";
+import { ScheduleHour } from '../../data/models';
 
 const searchVendors = {
   type: List(VendorType),
@@ -47,7 +47,7 @@ const searchVendors = {
               { doesDelivery: deliveryCheck },
               {
                 deliveryRadius: {
-                  [Op.gte]: 0
+                  [Op.gte]: 0,
                 },
               },
             ],
@@ -55,25 +55,38 @@ const searchVendors = {
           {
             [Op.and]: [
               { doesPickup: pickupCheck },
-              { latitude: {[Op.between]: [minLat, maxLat]}},
-              { longitude: {[Op.between]: [minLong, maxLong]}}
-            ]
-          }
+              { latitude: { [Op.between]: [minLat, maxLat] } },
+              { longitude: { [Op.between]: [minLong, maxLong] } },
+            ],
+          },
         ],
       },
       include: [
         { model: Cocktail, as: 'cocktails' },
-        { model: Availability, include: [
-            { model: AvailabilitySchedule, include: [
-                { model: ScheduleHour },
-              ]},
-          ]}],
+        {
+          model: Availability,
+          include: [
+            { model: AvailabilitySchedule, include: [{ model: ScheduleHour }] },
+          ],
+        },
+      ],
     });
 
     vendors.forEach(v => {
       v.vendorImage = v.vendorImage.toString();
       v.cocktails.forEach(c => {
         c.image = c.image.toString();
+      });
+      v.Availabilities.map(availability => {
+        availability.AvailabilitySchedules.forEach(daySchedule => {
+          let hours = []
+          daySchedule.ScheduleHours.map(hour => {
+            hours.push(hour.hour);
+          });
+          console.log(hours);
+          return hours;
+        });
+        return availability;
       });
     });
     return vendors;

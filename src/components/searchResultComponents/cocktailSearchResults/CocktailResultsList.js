@@ -79,7 +79,6 @@ function CocktailSearchResults(props) {
 
   const displayedVendors = [];
   if (searchResults) {
-    console.log(searchResults);
     searchResults.map((vendor, index, matchingVendors) => {
       let onDemandCheck = true;
       if (searchContext.searchFilters.onDemandOnly) {
@@ -88,19 +87,16 @@ function CocktailSearchResults(props) {
           vendor.minimumPickupFulfillment !== 0
         ) {
           onDemandCheck = false;
-          console.log('On Demand Disqualified', vendor);
         } else if (
           !searchContext.searchFilters.doesDelivery &&
           vendor.minimumPickupFulfillment !== 0
         ) {
           onDemandCheck = false;
-          console.log('Pickup Disqualified', vendor);
         } else if (
           !searchContext.searchFilters.doesPickup &&
           vendor.minimumDeliveryFulfillment !== 0
         ) {
           onDemandCheck = false;
-          console.log('Delivery Disqualified', vendor);
         }
       }
       if (onDemandCheck) displayedVendors.push(vendor);
@@ -126,7 +122,6 @@ function CocktailSearchResults(props) {
         });
         if (searchContext.searchFilters[cocktailProfiles[cocktail.profile]]) {
           cocktailsDisplayedCounter += 1;
-          console.log(cocktailsDisplayedCounter);
           return (
             <CocktailListItem
               vendor={vendor}

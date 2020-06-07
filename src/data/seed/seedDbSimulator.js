@@ -47,9 +47,6 @@ function availabilityHash(vendor) {
       AvailabilitySchedules: scheduleHash(type.availabilityDaysAndTimes),
     };
     availabilitySettings.push(newAvailability);
-    console.log(newAvailability, "Availability Type");
-    console.log(newAvailability.AvailabilitySchedules, "AvailabilityScheduleType");
-    console.log(newAvailability.AvailabilitySchedules[0].ScheduleHours[0].hour, "ScheduleHoursType");
   });
   return availabilitySettings;
 }
