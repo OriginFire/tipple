@@ -10,6 +10,7 @@
 import VendorType from '../types/VendorType';
 import Vendor from '../../data/models/Vendor';
 import FindVendorType from '../types/FindVendorType';
+import CocktailType from "../types/CocktailType";
 
 const findVendor = {
   type: VendorType,
@@ -19,6 +20,7 @@ const findVendor = {
   async resolve(value, { vendor }) {
     const displayVendor = await Vendor.findOne({
       where: {slug: vendor.slug},
+      include: [{ model: CocktailType }],
     });
 
     displayVendor.vendorImage = displayVendor.vendorImage.toString();

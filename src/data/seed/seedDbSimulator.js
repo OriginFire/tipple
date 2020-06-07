@@ -40,10 +40,6 @@ function cocktailHash(vendor) {
 }
 
 function availabilityHash(vendor) {
-  if (!vendor.availability) {
-    console.log("It's a trap");
-  }
-  console.log('Rendering availability hash');
   const availabilitySettings = [];
   vendor.availability.map(type => {
     const newAvailability = {
@@ -51,8 +47,10 @@ function availabilityHash(vendor) {
       AvailabilitySchedules: scheduleHash(type.availabilityDaysAndTimes),
     };
     availabilitySettings.push(newAvailability);
+    console.log(newAvailability, "Availability Type");
+    console.log(newAvailability.AvailabilitySchedules, "AvailabilityScheduleType");
+    console.log(newAvailability.AvailabilitySchedules[0].ScheduleHours[0].hour, "ScheduleHoursType");
   });
-  console.log(availabilitySettings, 'availability settings returned');
   return availabilitySettings;
 }
 
@@ -61,12 +59,12 @@ function scheduleHash(availabilityDaysAndTimes) {
   availabilityDaysAndTimes.map(schedule => {
     const daySchedule = {
       day: schedule.day,
-      ScheduleHours: schedule.hours.map(h => Object.create({hour: h})), //[0,4,5] [{hour: 0}, {hour: 4}, {hour:5}]
+      ScheduleHours: schedule.hours.map(h => {
+        return { hour: h };
+      }), // [0,4,5] [{hour: 0}, {hour: 4}, {hour:5}]
     };
     daysAndTimes.push(daySchedule);
-    console.log(daySchedule);
   });
-  console.log(daysAndTimes, 'daysAndTimes returned');
   return daysAndTimes;
 }
 
@@ -129,8 +127,10 @@ function createNew(vendor) {
               include: [
                 {
                   model: ScheduleHour,
-              }]
-            }],
+                },
+              ],
+            },
+          ],
         },
         { model: Cocktail, as: 'cocktails' },
         { model: User },

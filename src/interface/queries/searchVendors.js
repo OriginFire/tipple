@@ -15,6 +15,7 @@ import Cocktail from '../../data/models/Cocktail';
 import Availability from '../../data/models/Availability';
 import AvailabilitySchedule from '../../data/models/AvailabilitySchedule';
 import SearchVendorInputType from '../types/SearchVendorInputType';
+import {ScheduleHour} from "../../data/models";
 
 const searchVendors = {
   type: List(VendorType),
@@ -60,7 +61,13 @@ const searchVendors = {
           }
         ],
       },
-      include: [{ model: Cocktail, as: 'cocktails' }, { model: Availability }],
+      include: [
+        { model: Cocktail, as: 'cocktails' },
+        { model: Availability, include: [
+            { model: AvailabilitySchedule, include: [
+                { model: ScheduleHour },
+              ]},
+          ]}],
     });
 
     vendors.forEach(v => {
