@@ -40,8 +40,9 @@ const SEARCH_COCKTAILS = `
         availabilityType
         AvailabilitySchedules {
           day
-          ScheduleHours {
-            hour
+          Shifts {
+            startHour
+            endHour
           }
         }
       }

@@ -61,12 +61,12 @@ function scheduleHash(availabilityDaysAndTimes) {
   availabilityDaysAndTimes.map(schedule => {
     const daySchedule = {
       day: schedule.day,
-      Shifts: schedule.shifts.map(shift =>
-        Object.create({
+      Shifts: schedule.shifts.map(shift => {
+        return ({
           startHour: shift.startHour,
           endHour: shift.endHour,
-        }),
-      ),
+        })
+      }),
     };
     console.log(daySchedule.Shifts[0]);
     daysAndTimes.push(daySchedule);
