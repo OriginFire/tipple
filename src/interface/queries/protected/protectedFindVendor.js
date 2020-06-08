@@ -14,6 +14,11 @@ import Cocktail from '../../../data/models/Cocktail';
 import User from '../../../data/models/User';
 import FindVendorType from '../../types/FindVendorType';
 import config from '../../../config';
+import {
+  Availability,
+  AvailabilitySchedule,
+  Shift,
+} from '../../../data/models';
 
 const findVendor = {
   type: VendorType,
@@ -28,14 +33,24 @@ const findVendor = {
       return 'nope';
     }
 
-    let displayVendor = await Vendor.findOne({
+    const displayVendor = await Vendor.findOne({
       where: { slug: vendor.slug },
-      include: [{ model: Cocktail, as: 'cocktails' }, User],
+      include: [
+        { model: Cocktail, as: 'cocktails' },
+        User,
+        {
+          model: Availability,
+          include: [
+            { model: AvailabilitySchedule, include: [{ model: Shift }] },
+          ],
+        },
+      ],
     });
     displayVendor.vendorImage = displayVendor.vendorImage.toString();
     displayVendor.cocktails.forEach(c => {
       c.image = c.image.toString();
     });
+    console.log(displayVendor.Availabilities[1].AvailabilitySchedules[0].Shifts[0]);
     return displayVendor;
   },
 };

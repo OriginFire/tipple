@@ -31,7 +31,7 @@ export default [
     minimumDeliveryFulfillment: 0,
     doesPickup: true,
     scheduledPickupRequired: false,
-    minimumPickupFilfillment: 0,
+    minimumPickupFulfillment: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Urbana.jpg',
     cocktails: [
@@ -108,7 +108,7 @@ export default [
     availability: [
       {
         availabilityType: 'pickup',
-        availabilityDaysAndTimes: [
+        availabilitySchedules: [
           {
             day: weekdays.sunday,
             shifts: [
@@ -183,7 +183,7 @@ export default [
 
       {
         availabilityType: 'delivery',
-        availabilityDaysAndTimes: [
+        availabilitySchedules: [
           {
             day: weekdays.sunday,
             shifts: [
@@ -288,7 +288,7 @@ export default [
     minimumDeliveryFulfillment: 2,
     doesPickup: false,
     scheduledPickupRequired: false,
-    minimumPickupFilfillment: 0,
+    minimumPickupFulfillment: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Golden.jpg',
     cocktails: [
@@ -362,8 +362,41 @@ export default [
     ],
     availability: [
       {
+        availabilityType: 'pickup',
+        availabilitySchedules: [
+          {
+            day: weekdays.sunday,
+            shifts: [],
+          },
+          {
+            day: weekdays.monday,
+            shifts: [],
+          },
+          {
+            day: weekdays.tuesday,
+            shifts: [],
+          },
+          {
+            day: weekdays.wednesday,
+            shifts: [],
+          },
+          {
+            day: weekdays.thursday,
+            shifts: [],
+          },
+          {
+            day: weekdays.friday,
+            shifts: [],
+          },
+          {
+            day: weekdays.saturday,
+            shifts: [],
+          },
+        ],
+      },
+      {
         availabilityType: 'delivery',
-        availabilityDaysAndTimes: [
+        availabilitySchedules: [
           {
             day: weekdays.sunday,
             shifts: [
@@ -468,7 +501,7 @@ export default [
     minimumDeliveryFulfillment: 0,
     doesPickup: true,
     scheduledPickupRequired: false,
-    minimumPickupFilfillment: 0,
+    minimumPickupFulfillment: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../SL.jpeg',
     cocktails: [
@@ -543,7 +576,7 @@ export default [
     availability: [
       {
         availabilityType: 'pickup',
-        availabilityDaysAndTimes: [
+        availabilitySchedules: [
           {
             day: weekdays.sunday,
             shifts: [
@@ -615,6 +648,39 @@ export default [
           },
         ],
       },
+      {
+        availabilityType: 'delivery',
+        availabilitySchedules: [
+          {
+            day: weekdays.sunday,
+            shifts: [],
+          },
+          {
+            day: weekdays.monday,
+            shifts: [],
+          },
+          {
+            day: weekdays.tuesday,
+            shifts: [],
+          },
+          {
+            day: weekdays.wednesday,
+            shifts: [],
+          },
+          {
+            day: weekdays.thursday,
+            shifts: [],
+          },
+          {
+            day: weekdays.friday,
+            shifts: [],
+          },
+          {
+            day: weekdays.saturday,
+            shifts: [],
+          },
+        ],
+      },
     ],
   },
 
@@ -647,7 +713,7 @@ export default [
     minimumDeliveryFulfillment: 1,
     doesPickup: true,
     scheduledPickupRequired: false,
-    minimumPickupFilfillment: 0,
+    minimumPickupFulfillment: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../Columbia.jpg',
     cocktails: [
@@ -722,7 +788,7 @@ export default [
     availability: [
       {
         availabilityType: 'pickup',
-        availabilityDaysAndTimes: [
+        availabilitySchedules: [
           {
             day: weekdays.sunday,
             shifts: [
@@ -797,7 +863,7 @@ export default [
 
       {
         availabilityType: 'delivery',
-        availabilityDaysAndTimes: [
+        availabilitySchedules: [
           {
             day: weekdays.sunday,
             shifts: [
@@ -902,7 +968,7 @@ export default [
     minimumDeliveryFulfillment: 0,
     doesPickup: true,
     scheduledPickupRequired: false,
-    minimumPickupFilfillment: 0,
+    minimumPickupFulfillment: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../LevitationAspect.JPG',
     cocktails: [
@@ -977,7 +1043,7 @@ export default [
     availability: [
       {
         availabilityType: 'pickup',
-        availabilityDaysAndTimes: [
+        availabilitySchedules: [
           {
             day: weekdays.sunday,
             shifts: [
@@ -1049,6 +1115,39 @@ export default [
           },
         ],
       },
+      {
+        availabilityType: 'delivery',
+        availabilitySchedules: [
+          {
+            day: weekdays.sunday,
+            shifts: [],
+          },
+          {
+            day: weekdays.monday,
+            shifts: [],
+          },
+          {
+            day: weekdays.tuesday,
+            shifts: [],
+          },
+          {
+            day: weekdays.wednesday,
+            shifts: [],
+          },
+          {
+            day: weekdays.thursday,
+            shifts: [],
+          },
+          {
+            day: weekdays.friday,
+            shifts: [],
+          },
+          {
+            day: weekdays.saturday,
+            shifts: [],
+          },
+        ],
+      },
     ],
   },
 
@@ -1082,7 +1181,7 @@ export default [
     minimumDeliveryFulfillment: 2,
     doesPickup: true,
     scheduledPickupRequired: false,
-    minimumPickupFilfillment: 0,
+    minimumPickupFulfillment: 0,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../SL.jpeg',
     cocktails: [
@@ -1157,7 +1256,7 @@ export default [
     availability: [
       {
         availabilityType: 'pickup',
-        availabilityDaysAndTimes: [
+        availabilitySchedules: [
           {
             day: weekdays.sunday,
             shifts: [
@@ -1232,7 +1331,7 @@ export default [
 
       {
         availabilityType: 'delivery',
-        availabilityDaysAndTimes: [
+        availabilitySchedules: [
           {
             day: weekdays.sunday,
             shifts: [
@@ -1337,7 +1436,7 @@ export default [
     minimumDeliveryFulfillment: 0,
     doesPickup: true,
     scheduledPickupRequired: true,
-    minimumPickupFilfillment: 1,
+    minimumPickupFulfillment: 1,
     onlineStore: 'www.nipplesupply.com',
     vendorImage: '../../../OldFashioned.png',
     cocktails: [
@@ -1412,7 +1511,7 @@ export default [
     availability: [
       {
         availabilityType: 'pickup',
-        availabilityDaysAndTimes: [
+        availabilitySchedules: [
           {
             day: weekdays.sunday,
             shifts: [
@@ -1424,11 +1523,21 @@ export default [
           },
           {
             day: weekdays.monday,
-            shifts: [],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.tuesday,
-            shifts: [],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.wednesday,
@@ -1481,6 +1590,39 @@ export default [
                 endHour: 23,
               },
             ],
+          },
+        ],
+      },
+      {
+        availabilityType: 'delivery',
+        availabilitySchedules: [
+          {
+            day: weekdays.sunday,
+            shifts: [],
+          },
+          {
+            day: weekdays.monday,
+            shifts: [],
+          },
+          {
+            day: weekdays.tuesday,
+            shifts: [],
+          },
+          {
+            day: weekdays.wednesday,
+            shifts: [],
+          },
+          {
+            day: weekdays.thursday,
+            shifts: [],
+          },
+          {
+            day: weekdays.friday,
+            shifts: [],
+          },
+          {
+            day: weekdays.saturday,
+            shifts: [],
           },
         ],
       },

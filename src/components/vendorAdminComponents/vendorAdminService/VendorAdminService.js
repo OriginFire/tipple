@@ -15,8 +15,22 @@ const FIND_VENDOR = `
       longitude
       latitude
       doesDelivery
-      doesPickup
       deliveryRadius
+      scheduledDeliveryRequired
+      minimumDeliveryFulfillment
+      doesPickup
+      scheduledPickupRequired
+      minimumPickupFulfillment
+      Availabilities {
+        availabilityType
+        AvailabilitySchedules {
+          day
+          Shifts {
+            startHour
+            endHour
+          }
+        }
+      }
     }
   }
   `;
@@ -33,6 +47,7 @@ function VendorAdminGeneral(props) {
   if (error) return 'Something Bad Happened';
   if (data) {
     vendor = data.protectedFindVendor;
+    console.log("hello!", data.protectedFindVendor);
   }
 
   return (

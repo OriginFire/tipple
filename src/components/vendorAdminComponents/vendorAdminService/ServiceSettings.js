@@ -6,6 +6,7 @@ import DynamicSetting from '../dynamicSetting/DynamicSetting';
 import ApplicationContext from '../../ApplicationContext';
 import weekdays from '../../../consts/weekdays';
 import Availability from './availability/Availability';
+import {vendor} from "postcss";
 
 const UPDATE_SERVICE_SETTINGS = `
   mutation UpdateSettings (
@@ -31,7 +32,7 @@ const UPDATE_SERVICE_SETTINGS = `
   }
 `;
 
-const data = [
+/* const data = [
   {
     day: weekdays.sunday,
     hours: [0, 1, 2],
@@ -123,6 +124,16 @@ function reconstructQueryData(localState) {
   });
   console.log(reconstructedData, "reconstruction complete");
   return reconstructedData;
+} */
+
+function resolveAvailabilityType(availability, stateAvailabilityType) {
+  let initialState;
+  availability.map(vendorAvailability => {
+    if (vendorAvailability.availabilityType === stateAvailabilityType) {
+      initialState = vendorAvailability.AvailabilitySchedules;
+    }
+  });
+  return initialState;
 }
 
 function ServiceSettings(props) {
@@ -132,19 +143,13 @@ function ServiceSettings(props) {
   const [latitude, setLatitude] = useState(vendor.latitude);
   const [doesDelivery, setDoesDelivery] = useState(vendor.doesDelivery);
   const [deliveryRadius, setDeliveryRadius] = useState(vendor.deliveryRadius);
-  const [scheduledDeliveryRequired, setScheduledDeliveryRequired] = useState(
-    false,
-  );
-  const [deliveryFulfillment, setDeliveryFulfillment] = useState(0);
-  const [deliveryAvailability, setDeliveryAvailability] = useState(
-    deconstructQueryData(data),
-  );
+  const [scheduledDeliveryRequired, setScheduledDeliveryRequired] = useState(vendor.scheduledDeliveryRequired);
+  const [deliveryFulfillment, setDeliveryFulfillment] = useState(vendor.minimumDeliveryFulfillment);
+  const [deliveryAvailability, setDeliveryAvailability] = useState(resolveAvailabilityType(vendor.Availabilities, 'delivery'));
   const [doesPickup, setDoesPickup] = useState(vendor.doesPickup);
-  const [scheduledPickupRequired, setScheduledPickupRequired] = useState(false);
-  const [pickupFulfillment, setPickupFulfillment] = useState(0);
-  const [pickupAvailability, setPickupAvailability] = useState(
-    deconstructQueryData(data),
-  );
+  const [scheduledPickupRequired, setScheduledPickupRequired] = useState(vendor.scheduledPickupRequired);
+  const [pickupFulfillment, setPickupFulfillment] = useState(vendor.minimumPickupFulfillment);
+  const [pickupAvailability, setPickupAvailability] = useState(resolveAvailabilityType(vendor.Availabilities, 'pickup'));
   const [updateVendor] = useMutation(UPDATE_SERVICE_SETTINGS);
   const authenticationContext = useContext(ApplicationContext);
   let miles;
@@ -174,7 +179,6 @@ function ServiceSettings(props) {
         latitude,
       },
     });
-    reconstructQueryData(deliveryAvailability);
   }
 
   useEffect(() => {

@@ -8,6 +8,7 @@ import TimeSelectors from "../timeSelectors/TimeSelectors";
 function ShiftList(props) {
   const [shifts, setShifts] = useState(props.shifts);
   const [daySelectorsOpen, setDaySelectorsOpen] = useState(false);
+  console.log(shifts);
 
   function updateShifts(newTimes, shiftArrayIndex) {
     let updatedShifts = shifts;
@@ -48,8 +49,8 @@ function ShiftList(props) {
         {shifts.map((shift, shiftIndex, shifts) => {
           return (
             <TimeSelectors
-              startHour={shift.start}
-              endHour={shift.end}
+              startHour={shift.startHour}
+              endHour={shift.endHour}
               updatedShifts={times => updateShifts(times, shiftIndex)}
               deleteShift={e => deleteShift(shiftIndex)}
               isOpen={daySelectorsOpen}

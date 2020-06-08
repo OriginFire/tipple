@@ -48,7 +48,7 @@ function availabilityHash(vendor) {
   vendor.availability.map(type => {
     const newAvailability = {
       availabilityType: type.availabilityType,
-      AvailabilitySchedules: scheduleHash(type.availabilityDaysAndTimes),
+      AvailabilitySchedules: scheduleHash(type.availabilitySchedules),
     };
     availabilitySettings.push(newAvailability);
   });
@@ -62,13 +62,17 @@ function scheduleHash(availabilityDaysAndTimes) {
     const daySchedule = {
       day: schedule.day,
       Shifts: schedule.shifts.map(shift => {
-        return ({
+        return {
           startHour: shift.startHour,
           endHour: shift.endHour,
-        })
+        };
       }),
     };
-    console.log(daySchedule.Shifts[0]);
+    console.log(
+      daySchedule.Shifts[0],
+      daySchedule.Shifts[1],
+      daySchedule.Shifts[3],
+    );
     daysAndTimes.push(daySchedule);
   });
   console.log(daysAndTimes, 'daysAndTimes returned');
@@ -105,7 +109,7 @@ function createNew(vendor) {
       minimumDeliveryFulfillment: vendor.minimumDeliveryFulfillment,
       doesPickup: vendor.doesPickup,
       scheduledPickupRequired: vendor.scheduledPickupRequired,
-      minimumPickupFilfillment: vendor.minimumPickupFilfillment,
+      minimumPickupFulfillment: vendor.minimumPickupFulfillment,
       deliveryRadius: vendor.deliveryRadius,
       deliveryLngMax: vendor.longitude + vendor.deliveryRadius / 69,
       deliveryLngMin: vendor.longitude - vendor.deliveryRadius / 69,

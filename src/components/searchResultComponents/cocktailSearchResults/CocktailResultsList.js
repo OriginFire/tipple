@@ -38,13 +38,6 @@ const SEARCH_COCKTAILS = `
       }
       Availabilities {
         availabilityType
-        AvailabilitySchedules {
-          day
-          Shifts {
-            startHour
-            endHour
-          }
-        }
       }
     }
   }
