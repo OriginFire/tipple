@@ -5,6 +5,7 @@ import User from './User';
 import Availability from './Availability';
 import AvailabilitySchedule from './AvailabilitySchedule';
 import Shift from './Shift';
+import Image from './Image';
 import seedData from '../seed/seedDbSimulator';
 
 Vendor.hasMany(User, { onDelete: 'cascade', foreignKeyConstraint: true  });
@@ -21,6 +22,10 @@ AvailabilitySchedule.belongsTo(Availability);
 
 AvailabilitySchedule.hasMany(Shift, { onDelete: 'cascade', foreignKeyConstraint: true });
 Shift.belongsTo(AvailabilitySchedule);
+
+// pictures - sqlize syntax is wack here.  should there be seperate VendorImage/CocktailImage?
+Image.hasOne(Vendor, { onDelete: 'cascade', foreignKeyConstraint: true  });
+Image.hasOne(Cocktail, { onDelete: 'cascade', foreignKeyConstraint: true  });
 
 function sync(...args) {
   return sequelize.sync(...args).then(() => {
