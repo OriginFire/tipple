@@ -111,31 +111,72 @@ export default [
         availabilityDaysAndTimes: [
           {
             day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+            ],
           },
           {
             day: weekdays.monday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.tuesday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
         ],
       },
@@ -145,31 +186,72 @@ export default [
         availabilityDaysAndTimes: [
           {
             day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+            ],
           },
           {
             day: weekdays.monday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.tuesday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
         ],
       },
@@ -191,8 +273,8 @@ export default [
     physicalCity: 'Washington, DC',
     physicalState: 'District of Columbia',
     physicalZipCode: '20009',
-    latitude: 38.909850,
-    longitude: -77.047420,
+    latitude: 38.90985,
+    longitude: -77.04742,
 
     alcoholLicenseNumber:
       '555555-555555' /** Format restrictions based on issuing agency */,
@@ -284,31 +366,72 @@ export default [
         availabilityDaysAndTimes: [
           {
             day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+            ],
           },
           {
             day: weekdays.monday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.tuesday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.wednesday,
-            hours: [18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
         ],
       },
@@ -330,8 +453,8 @@ export default [
     physicalCity: 'Washington, DC',
     physicalState: 'District of Columbia',
     physicalZipCode: '20009',
-    latitude: 38.923580,
-    longitude: -77.042190,
+    latitude: 38.92358,
+    longitude: -77.04219,
 
     alcoholLicenseNumber:
       '555555-555555' /** Format restrictions based on issuing agency */,
@@ -423,31 +546,72 @@ export default [
         availabilityDaysAndTimes: [
           {
             day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+            ],
           },
           {
             day: weekdays.monday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.tuesday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
         ],
       },
@@ -561,31 +725,72 @@ export default [
         availabilityDaysAndTimes: [
           {
             day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+            ],
           },
           {
             day: weekdays.monday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.tuesday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
         ],
       },
@@ -595,31 +800,72 @@ export default [
         availabilityDaysAndTimes: [
           {
             day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+            ],
           },
           {
             day: weekdays.monday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.tuesday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
         ],
       },
@@ -734,31 +980,72 @@ export default [
         availabilityDaysAndTimes: [
           {
             day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+            ],
           },
           {
             day: weekdays.monday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.tuesday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
         ],
       },
@@ -873,31 +1160,72 @@ export default [
         availabilityDaysAndTimes: [
           {
             day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+            ],
           },
           {
             day: weekdays.monday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.tuesday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
         ],
       },
@@ -907,31 +1235,72 @@ export default [
         availabilityDaysAndTimes: [
           {
             day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+            ],
           },
           {
             day: weekdays.monday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.tuesday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
         ],
       },
@@ -1046,31 +1415,72 @@ export default [
         availabilityDaysAndTimes: [
           {
             day: weekdays.sunday,
-            hours: [0, 1, 2, 3],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+            ],
           },
           {
             day: weekdays.monday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.tuesday,
-            hours: [],
+            shifts: [],
           },
           {
             day: weekdays.wednesday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.thursday,
-            hours: [16, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 15,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.friday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
           {
             day: weekdays.saturday,
-            hours: [12, 13, 0, 1, 2, 3, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+            shifts: [
+              {
+                startHour: 0,
+                endHour: 2,
+              },
+              {
+                startHour: 12,
+                endHour: 16,
+              },
+              {
+                startHour: 18,
+                endHour: 23,
+              },
+            ],
           },
         ],
       },

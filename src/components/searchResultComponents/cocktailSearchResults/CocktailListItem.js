@@ -12,25 +12,18 @@ function daysToNumbers(day) {
   switch (day) {
     case 'Sunday':
       return 0;
-      break;
     case 'Monday':
       return 1;
-      break;
     case 'Tuesday':
       return 2;
-      break;
     case 'Wednesday':
       return 3;
-      break;
     case 'Thursday':
       return 4;
-      break;
     case 'Friday':
       return 5;
-      break;
     case 'Saturday':
       return 6;
-      break;
   }
 }
 
@@ -70,17 +63,12 @@ function CocktailListItem(props) {
     }
     availabilityType.availabilityDaysAndTimes.map(daySchedule => {
       if (
-        daySchedule.hours.length !== 0 &&
+        daySchedule.shifts.length !== 0 &&
         daysToNumbers(daySchedule.day) === currentDateTime.getDay()
       ) {
-        if (vendor.dbaName === "Urbana") console.log(
-          currentDateTime.getHours() + fulfillmentMinimum <
-          Math.max(...daySchedule.hours) &&
-          showAvailabilityCheck
-        );
         if (
           currentDateTime.getHours() + fulfillmentMinimum <
-            Math.max(...daySchedule.hours) &&
+            latestHourOfOperation &&
           showAvailabilityCheck
         ) {
           availabilityStatus = 'Available Today';

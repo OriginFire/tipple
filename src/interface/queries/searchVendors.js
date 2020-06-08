@@ -14,8 +14,8 @@ import Vendor from '../../data/models/Vendor';
 import Cocktail from '../../data/models/Cocktail';
 import Availability from '../../data/models/Availability';
 import AvailabilitySchedule from '../../data/models/AvailabilitySchedule';
+import Shift from '../../data/models/Shift';
 import SearchVendorInputType from '../types/SearchVendorInputType';
-import { ScheduleHour } from '../../data/models';
 
 const searchVendors = {
   type: List(VendorType),
@@ -66,7 +66,7 @@ const searchVendors = {
         {
           model: Availability,
           include: [
-            { model: AvailabilitySchedule, include: [{ model: ScheduleHour }] },
+            { model: AvailabilitySchedule, include: [{ model: Shift }] },
           ],
         },
       ],
@@ -76,17 +76,6 @@ const searchVendors = {
       v.vendorImage = v.vendorImage.toString();
       v.cocktails.forEach(c => {
         c.image = c.image.toString();
-      });
-      v.Availabilities.map(availability => {
-        availability.AvailabilitySchedules.forEach(daySchedule => {
-          let hours = []
-          daySchedule.ScheduleHours.map(hour => {
-            hours.push(hour.hour);
-          });
-          console.log(hours);
-          return hours;
-        });
-        return availability;
       });
     });
     return vendors;
