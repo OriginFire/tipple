@@ -22,6 +22,9 @@ import findVendor from './queries/findVendor';
 import protectedFindVendor from './queries/protected/protectedFindVendor';
 import protectedUpdateVendor from './mutators/protected/protectedUpdateVendor';
 import protectedDeleteCocktail from './mutators/protected/protectedDeleteCocktail';
+import protectedNewShift from './mutators/protected/protectedNewShift';
+import protectedDeleteShift from "./mutators/protected/protectedDeleteShift";
+import protectedUpdateShift from "./mutators/protected/protectedUpdateShift";
 import vendorLogin from './mutators/vendorLogin';
 
 const schema = new Schema({
@@ -44,6 +47,9 @@ const schema = new Schema({
       vendorLogin,
       protectedUpdateVendor,
       protectedDeleteCocktail,
+      protectedNewShift,
+      protectedDeleteShift,
+      protectedUpdateShift,
     },
   }),
 });

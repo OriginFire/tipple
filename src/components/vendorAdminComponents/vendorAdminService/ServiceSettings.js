@@ -4,9 +4,7 @@ import { useMutation } from 'graphql-hooks';
 import s from './ServiceSettings.scss';
 import DynamicSetting from '../dynamicSetting/DynamicSetting';
 import ApplicationContext from '../../ApplicationContext';
-import weekdays from '../../../consts/weekdays';
 import Availability from './availability/Availability';
-import {vendor} from "postcss";
 
 const UPDATE_SERVICE_SETTINGS = `
   mutation UpdateSettings (
@@ -31,100 +29,6 @@ const UPDATE_SERVICE_SETTINGS = `
       }
   }
 `;
-
-/* const data = [
-  {
-    day: weekdays.sunday,
-    hours: [0, 1, 2],
-  },
-  {
-    day: weekdays.monday,
-    hours: [],
-  },
-  {
-    day: weekdays.tuesday,
-    hours: [],
-  },
-  {
-    day: weekdays.wednesday,
-    hours: [18, 19, 20, 21, 22, 23],
-  },
-  {
-    day: weekdays.thursday,
-    hours: [18, 19, 20, 21, 22, 23],
-  },
-  {
-    day: weekdays.friday,
-    hours: [12, 13, 14, 15, 18, 19, 20, 21, 22, 23],
-  },
-  {
-    day: weekdays.saturday,
-    hours: [12, 13, 0, 1, 2, 14, 15, 16, 18, 19, 20, 21, 22, 23],
-  },
-];
-
-function deconstructQueryData(availabilityObject) {
-  const localState = [];
-  availabilityObject.map(day => {
-    const operatingHours = day.hours.sort((a, b) => a - b);
-    const shifts = [];
-    let currentSequence = {
-      start: null,
-      end: null,
-    };
-    operatingHours.map((hour, index, hours) => {
-      if (currentSequence.start === null) {
-        currentSequence.start = hour;
-      }
-      if (currentSequence.end === null) {
-        currentSequence.end = hour;
-      }
-      if (hours[index - 1]) {
-        if (hour - hours[index - 1] === 1) {
-          currentSequence.end = hour;
-        } else {
-          shifts.push(currentSequence);
-          currentSequence = {
-            start: hour,
-            end: null,
-          };
-        }
-      }
-      if (!hours[index + 1]) {
-        shifts.push(currentSequence);
-        currentSequence = {
-          start: null,
-          end: null,
-        };
-      }
-    });
-    localState.push({
-      day: day.day,
-      shifts,
-    });
-  });
-  return localState;
-}
-
-function reconstructQueryData(localState) {
-  console.log(localState, "reconstruction commence");
-  const reconstructedData = [];
-  localState.map((day, index, days) => {
-    let oneDay = {
-      day: day.day,
-      hours: [],
-    };
-    day.shifts.map((shift, index, shifts) => {
-      let hour;
-      for (hour = shift.start; hour <= shift.end; hour++) {
-        oneDay.hours.push(hour);
-      }
-    });
-    reconstructedData.push(oneDay);
-  });
-  console.log(reconstructedData, "reconstruction complete");
-  return reconstructedData;
-} */
 
 function resolveAvailabilityType(availability, stateAvailabilityType) {
   let initialState;

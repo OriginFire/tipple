@@ -3,6 +3,7 @@ import Vendor from '../../../data/models/Vendor';
 import VendorType from '../../types/VendorType';
 import VendorInputType from '../../types/VendorInputType';
 import config from '../../../config';
+import AvailabilityScheduleType from "../../types/AvailabilityScheduleType";
 
 const protectedUpdateVendor = {
   type: VendorType,

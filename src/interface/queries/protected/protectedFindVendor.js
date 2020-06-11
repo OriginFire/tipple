@@ -20,7 +20,7 @@ import {
   Shift,
 } from '../../../data/models';
 
-const findVendor = {
+const protectedFindVendor = {
   type: VendorType,
   args: {
     vendor: { type: FindVendorType },
@@ -55,4 +55,4 @@ const findVendor = {
   },
 };
 
-export default findVendor;
+export default protectedFindVendor;

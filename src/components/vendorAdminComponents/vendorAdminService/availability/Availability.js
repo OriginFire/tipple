@@ -25,6 +25,7 @@ function Availability(props) {
               <div className={s.day_indicator}>{day.day}</div>
             </div>
             <ShiftList
+              scheduleId={day.id}
               shifts={day.Shifts}
               updateShifts={updatedShifts =>
                 updateAvailability(updatedShifts, index)

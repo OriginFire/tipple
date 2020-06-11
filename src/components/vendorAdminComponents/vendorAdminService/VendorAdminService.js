@@ -24,8 +24,10 @@ const FIND_VENDOR = `
       Availabilities {
         availabilityType
         AvailabilitySchedules {
+          id
           day
           Shifts {
+            id
             startHour
             endHour
           }
@@ -47,8 +49,9 @@ function VendorAdminGeneral(props) {
   if (error) return 'Something Bad Happened';
   if (data) {
     vendor = data.protectedFindVendor;
-    console.log("hello!", data.protectedFindVendor);
   }
+
+  authenticationContext.context.vendorAvailability = vendor.Availabilities;
 
   return (
     <ContentBox>
