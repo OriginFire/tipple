@@ -12,25 +12,18 @@ function daysToNumbers(day) {
   switch (day) {
     case 'Sunday':
       return 0;
-      break;
     case 'Monday':
       return 1;
-      break;
     case 'Tuesday':
       return 2;
-      break;
     case 'Wednesday':
       return 3;
-      break;
     case 'Thursday':
       return 4;
-      break;
     case 'Friday':
       return 5;
-      break;
     case 'Saturday':
       return 6;
-      break;
   }
 }
 
@@ -55,7 +48,6 @@ function CocktailListItem(props) {
   const currentDateTime = new Date();
 
   let availabilityStatus = 'Not Available Today';
-  let nextAvailability = 'Tuesday';
   let availabilityTime = 0;
 
   availability.map(availabilityType => {
@@ -68,24 +60,26 @@ function CocktailListItem(props) {
       showAvailabilityCheck = filterSettings.doesDelivery;
       fulfillmentMinimum = vendor.minimumDeliveryFulfillment;
     }
-    availabilityType.availabilityDaysAndTimes.map(daySchedule => {
+    availabilityType.availabilitySchedules.map(daySchedule => {
       if (
-        daySchedule.hours.length !== 0 &&
+        daySchedule.shifts.length !== 0 &&
         daysToNumbers(daySchedule.day) === currentDateTime.getDay()
       ) {
-        if (vendor.dbaName === "Urbana") console.log(
-          currentDateTime.getHours() + fulfillmentMinimum <
-          Math.max(...daySchedule.hours) &&
-          showAvailabilityCheck
-        );
+        let latestHourOfOperation = 0;
+        daySchedule.shifts.map(shift => {
+          if (shift.endHour > latestHourOfOperation) {
+            latestHourOfOperation = shift.endHour;
+          }
+        });
+        console.log(latestHourOfOperation);
         if (
           currentDateTime.getHours() + fulfillmentMinimum <
-            Math.max(...daySchedule.hours) &&
+            latestHourOfOperation &&
           showAvailabilityCheck
         ) {
           availabilityStatus = 'Available Today';
-          if (availabilityTime < Math.max(...daySchedule.hours)) {
-            availabilityTime = endTimeRendering(Math.max(...daySchedule.hours));
+          if (availabilityTime < latestHourOfOperation) {
+            availabilityTime = latestHourOfOperation;
           }
         } else {
           // aggressive block finding the next availability day and rendering earliest available time
@@ -106,23 +100,10 @@ function CocktailListItem(props) {
                 alt={`${cocktail.name} Image`}
               />
               <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>
-              {(availabilityStatus === "Available Today") && (
-                <div>
-                  <div className={s.availability_today}>{availabilityStatus}</div>
-                  <div className={s.availability_today}>
-                    Until {availabilityTime}
-                  </div>
-                </div>
-              )}
-
-              {(availabilityStatus === "Not Available Today") && (
-                <div>
-                  <div className={s.availability_tomorrow}>Next Available on {nextAvailability}</div>
-                  <div className={s.availability_tomorrow}>
-                    At {availabilityTime}
-                  </div>
-                </div>
-              )}
+              <div className={s.availability_today}>{availabilityStatus}</div>
+              <div className={s.availability_today}>
+                Until {endTimeRendering(availabilityTime)}
+              </div>
               <div
                 className={s.order}
                 onClick={e => history.push(`/vendor/${vendor.slug}`)}

@@ -1,8 +1,8 @@
 import DataType from 'sequelize';
 import Model from '../sequelize';
 
-const ScheduleHour = Model.define(
-  'ScheduleHour',
+const Shift = Model.define(
+  'Shift',
   {
     id: {
       type: DataType.UUID,
@@ -10,7 +10,11 @@ const ScheduleHour = Model.define(
       primaryKey: true,
     },
 
-    hour: {
+    startHour: {
+      type: DataType.INTEGER,
+    },
+
+    endHour: {
       type: DataType.INTEGER,
     },
   },
@@ -19,4 +23,4 @@ const ScheduleHour = Model.define(
   },
 );
 
-export default ScheduleHour;
+export default Shift;

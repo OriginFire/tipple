@@ -9,11 +9,9 @@
 
 import VendorType from '../types/VendorType';
 import Vendor from '../../data/models/Vendor';
-import FindVendorType from '../types/FindVendorType';
 import Cocktail from '../../data/models/Cocktail';
-import Availability from '../../data/models/Availability';
-import AvailabilitySchedule from '../../data/models/AvailabilitySchedule';
-import { ScheduleHour } from '../../data/models';
+import FindVendorType from '../types/FindVendorType';
+import { Availability, AvailabilitySchedule, Shift } from '../../data/models';
 
 const findVendor = {
   type: VendorType,
@@ -28,7 +26,7 @@ const findVendor = {
         {
           model: Availability,
           include: [
-            { model: AvailabilitySchedule, include: [{ model: ScheduleHour }] },
+            { model: AvailabilitySchedule, include: [{ model: Shift }] },
           ],
         },
       ],

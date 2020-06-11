@@ -5,14 +5,14 @@ import {
   GraphQLList as List,
   GraphQLNonNull as NonNull,
 } from 'graphql';
-import ScheduleHourType from './ScheduleHourType';
+import ShiftType from './ShiftType';
 
 const AvailabilityScheduleType = new ObjectType({
   name: 'AvailabilitySchedule',
   fields: {
     id: { type: new NonNull(ID) },
     day: { type: StringType },
-    ScheduleHours: { type: List(ScheduleHourType) },
+    Shifts: { type: List(ShiftType) },
   },
 });
 

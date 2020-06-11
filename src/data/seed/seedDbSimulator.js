@@ -5,7 +5,7 @@ import User from '../models/User';
 import Cocktail from '../models/Cocktail';
 import Availability from '../models/Availability';
 import AvailabilitySchedule from '../models/AvailabilitySchedule';
-import ScheduleHour from '../models/ScheduleHour';
+import Shift from '../models/Shift';
 import stringToSlug from '../../utils/stringToSlug';
 
 import weekdays from '../../consts/weekdays';
@@ -40,14 +40,19 @@ function cocktailHash(vendor) {
 }
 
 function availabilityHash(vendor) {
+  if (!vendor.availability) {
+    console.log("It's a trap");
+  }
+  console.log('Rendering availability hash');
   const availabilitySettings = [];
   vendor.availability.map(type => {
     const newAvailability = {
       availabilityType: type.availabilityType,
-      AvailabilitySchedules: scheduleHash(type.availabilityDaysAndTimes),
+      AvailabilitySchedules: scheduleHash(type.availabilitySchedules),
     };
     availabilitySettings.push(newAvailability);
   });
+  console.log(availabilitySettings, 'availability settings returned');
   return availabilitySettings;
 }
 
@@ -56,12 +61,21 @@ function scheduleHash(availabilityDaysAndTimes) {
   availabilityDaysAndTimes.map(schedule => {
     const daySchedule = {
       day: schedule.day,
-      ScheduleHours: schedule.hours.map(h => {
-        return { hour: h };
-      }), // [0,4,5] [{hour: 0}, {hour: 4}, {hour:5}]
+      Shifts: schedule.shifts.map(shift => {
+        return {
+          startHour: shift.startHour,
+          endHour: shift.endHour,
+        };
+      }),
     };
+    console.log(
+      daySchedule.Shifts[0],
+      daySchedule.Shifts[1],
+      daySchedule.Shifts[3],
+    );
     daysAndTimes.push(daySchedule);
   });
+  console.log(daysAndTimes, 'daysAndTimes returned');
   return daysAndTimes;
 }
 
@@ -95,7 +109,7 @@ function createNew(vendor) {
       minimumDeliveryFulfillment: vendor.minimumDeliveryFulfillment,
       doesPickup: vendor.doesPickup,
       scheduledPickupRequired: vendor.scheduledPickupRequired,
-      minimumPickupFulfillment: vendor.minimumPickupFilfillment,
+      minimumPickupFulfillment: vendor.minimumPickupFulfillment,
       deliveryRadius: vendor.deliveryRadius,
       deliveryLngMax: vendor.longitude + vendor.deliveryRadius / 69,
       deliveryLngMin: vendor.longitude - vendor.deliveryRadius / 69,
@@ -123,7 +137,7 @@ function createNew(vendor) {
               model: AvailabilitySchedule,
               include: [
                 {
-                  model: ScheduleHour,
+                  model: Shift,
                 },
               ],
             },

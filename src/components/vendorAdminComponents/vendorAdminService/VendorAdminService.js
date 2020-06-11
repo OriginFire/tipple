@@ -15,8 +15,24 @@ const FIND_VENDOR = `
       longitude
       latitude
       doesDelivery
-      doesPickup
       deliveryRadius
+      scheduledDeliveryRequired
+      minimumDeliveryFulfillment
+      doesPickup
+      scheduledPickupRequired
+      minimumPickupFulfillment
+      Availabilities {
+        availabilityType
+        AvailabilitySchedules {
+          id
+          day
+          Shifts {
+            id
+            startHour
+            endHour
+          }
+        }
+      }
     }
   }
   `;
@@ -34,6 +50,8 @@ function VendorAdminGeneral(props) {
   if (data) {
     vendor = data.protectedFindVendor;
   }
+
+  authenticationContext.context.vendorAvailability = vendor.Availabilities;
 
   return (
     <ContentBox>
