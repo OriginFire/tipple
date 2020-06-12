@@ -7,6 +7,7 @@ import ResultsMessage from './ResultsMessage';
 import ApplicationContext from '../../ApplicationContext';
 import SearchContext from '../SearchContext';
 import db from '../../../data/dbSimulator/Vendors';
+import CocktailAvailabilityData from "./cocktailAvailabilityData/CocktailAvailabilityData";
 
 const SEARCH_COCKTAILS = `
   query SearchCocktails(
@@ -114,14 +115,19 @@ function CocktailSearchResults(props) {
             availability = dbVendor.availability;
           }
         });
+        let cocktailData = new CocktailAvailabilityData(availability, searchContext.searchFilters, vendor);
+        let availabilityStatus = cocktailData.resolveAvailabilityStatus().status;
+        let availabilityTime = cocktailData.resolveAvailabilityStatus().time;
         if (searchContext.searchFilters[cocktailProfiles[cocktail.profile]]) {
           cocktailsDisplayedCounter += 1;
+          console.log("Displayed");
           return (
             <CocktailListItem
               vendor={vendor}
               cocktail={cocktail}
               index={index} // what do we substitute in place of map index?
-              availability={availability}
+              availabilityStatus={availabilityStatus}
+              availabilityTime={availabilityTime}
             />
           );
         }

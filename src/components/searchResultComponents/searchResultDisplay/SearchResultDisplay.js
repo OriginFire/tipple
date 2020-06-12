@@ -40,31 +40,35 @@ function SearchResultsDisplay() {
       {filterSettingsOpen && (
         <FilterSettings onClose={e => setFilterSettingsOpen(false)} />
       )}
-      <div className={s.display_selectors}>
-        <FontAwesomeIcon
-          icon={faSlidersH}
-          className={s.filter_icon}
-          size="2x"
-          color="grey"
-          onClick={e => setFilterSettingsOpen(true)}
-        />
 
-        <div
-          className={cocktailStyle}
-          onClick={e => setDisplaySetting('cocktails')}
-        >
-          {cocktailButton}
+      {!filterSettingsOpen && (
+        <div>
+          <div className={s.display_selectors}>
+            <FontAwesomeIcon
+              icon={faSlidersH}
+              className={s.filter_icon}
+              size="2x"
+              color="grey"
+              onClick={e => setFilterSettingsOpen(true)}
+            />
+
+            <div
+              className={cocktailStyle}
+              onClick={e => setDisplaySetting('cocktails')}
+            >
+              {cocktailButton}
+            </div>
+
+            <div
+              className={vendorStyle}
+              onClick={e => setDisplaySetting('vendors')}
+            >
+              {vendorButton}
+            </div>
+          </div>
+          <div className={s.list}>{resultsDisplay}</div>
         </div>
-
-        <div
-          className={vendorStyle}
-          onClick={e => setDisplaySetting('vendors')}
-        >
-          {vendorButton}
-        </div>
-      </div>
-
-      <div className={s.list}>{resultsDisplay}</div>
+      )}
     </ContentBox>
   );
 }

@@ -234,8 +234,8 @@ function FilterSettings(props) {
                   className={classNameResolve(filterSettings.doesDelivery)}
                   onClick={e =>
                     setFilterSettings({
-                      ...searchContext.searchFilters,
-                      doesDelivery: !searchContext.searchFilters.doesDelivery,
+                      ...filterSettings,
+                      doesDelivery: !filterSettings.doesDelivery,
                     })
                   }
                 >
