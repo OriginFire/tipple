@@ -22,6 +22,13 @@ const SEARCH_VENDORS = `
       cocktails {
         price
       }
+      Availabilities {
+        availabilityType
+        AvailabilitySchedules {
+          day
+          Shifts
+        }
+      }
     }
   }
 `;
@@ -99,7 +106,7 @@ function VendorResultsList(props) {
       {searchResults && resultsMessage(searchResults)}
       {searchResults &&
         searchResults.map((vendor, index, vendorResults) => {
-          return <VendorListItem vendor={vendor} index={index} />;
+          return <VendorListItem vendor={vendor} index={index}  />;
         })}
     </div>
   );

@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import s from './VendorListItem.scss';
 import history from '../../../history';
+import AvailabilityData from "../availabilityData/AvailabilityData";
+import SearchContext from "../SearchContext";
 
 function VendorListItem(props) {
   const { vendor } = props;
   const { index } = props;
+  const searchContext = useContext(SearchContext);
   let lowPrice;
   let highPrice;
 
@@ -32,6 +35,10 @@ function VendorListItem(props) {
     highPrice = Math.max.apply(null, prices).toFixed(2);
     return `$${lowPrice} - $${highPrice}`;
   }
+
+  let availabilityData = new AvailabilityData(vendor.availability, searchContext.searchFilters, vendor);
+  let availabilityStatus = availabilityData.resolveAvailabilityStatus().status;
+  let availabilityTime = availabilityData.resolveAvailabilityStatus().time;
 
   return (
     <div

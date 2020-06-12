@@ -436,16 +436,12 @@ export default [
             day: weekdays.friday,
             shifts: [
               {
-                startHour: 0,
-                endHour: 2,
-              },
-              {
                 startHour: 12,
                 endHour: 16,
               },
               {
                 startHour: 18,
-                endHour: 23,
+                endHour: 19,
               },
             ],
           },
@@ -453,11 +449,7 @@ export default [
             day: weekdays.saturday,
             shifts: [
               {
-                startHour: 0,
-                endHour: 2,
-              },
-              {
-                startHour: 12,
+                startHour: 14,
                 endHour: 16,
               },
               {
@@ -1561,26 +1553,14 @@ export default [
             day: weekdays.friday,
             shifts: [
               {
-                startHour: 0,
-                endHour: 2,
-              },
-              {
-                startHour: 12,
-                endHour: 16,
-              },
-              {
-                startHour: 18,
-                endHour: 23,
+                startHour: 14,
+                endHour: 18,
               },
             ],
           },
           {
             day: weekdays.saturday,
             shifts: [
-              {
-                startHour: 0,
-                endHour: 2,
-              },
               {
                 startHour: 12,
                 endHour: 16,
