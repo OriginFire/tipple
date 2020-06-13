@@ -1,11 +1,152 @@
 class AvailabilityData {
+  //constructors
   constructor(availability, filterSettings, vendor) {
     this.availability = availability;
     this.filterSettings = filterSettings;
     this.vendor = vendor;
-    this.availabilityStatus = 'Not Available Today';
     this.availabilityTime = 0;
     this.currentDateTime = new Date();
+    this.currentHour = this.currentDateTime.getHours();
+    this.currentDay = this.currentDateTime.getDay();
+
+    // consts
+    this.earliestTime = 23;
+    this.availabilityStatus = 'Not Available Today';
+
+    this.availableToday =  isAvailableToday();
+    this.availableNow =  isAvailableToday();
+    this.nextAvailableTime =  isAvailableToday();
+  }
+  // public methods
+  getAvailableToday() {
+    return this.availableToday;
+  }
+
+  getAvailableNow() {
+    return this.availableNow;
+  }
+
+  getNextAvailableTime() {
+    return this.nextAvailableTime;
+  }
+
+  // private methods
+
+  nextAvailabilePickup() {
+    return this.currentHour + this.vendor.minimumPickupFulfillment
+  }
+
+  nextAvailabileDelivery() {
+    return this.currentHour + this.vendor.minimumDeliveryFulfillment
+  }
+
+  nextAvailableTime() {
+    let isAvailable = false;
+    let nextTime = 30;  //use 30 because all hours < 30
+    this.availability.forEach(availabilityType => {
+        if (availabilityType.availabilityType === 'pickup' && this.filterSettings.doesPickup) {
+          if (nextTime > this.nextAvailabilePickup()) {
+            nextTime = this.nextAvailabilePickup();
+            isAvailable = true;
+          }
+        if (availabilityType.availabilityType === 'delivery' && this.filterSettings.doesDelivery) {
+          if (nextTime > this.nextAvailabileDelivery()) {
+            nextTime = this.nextAvailabileDelivery()
+            isAvailable = true;
+          }
+        }
+      }
+    });
+
+    if (!isAvailable) {
+      return -1;
+    }
+    return nextTime;
+  }
+
+  isCurrentDayAvailable() {
+    this.availability.forEach(availabilityType => {
+      availabilityType.availabilitySchedules.map(daySchedule => {
+        if (this.daysToNumbers(daySchedule.day) === this.currentDay && daySchedule.shifts.length !==0) {
+          if (this.currentHour <= this.nextAvailableTime()) {
+            return true;
+          }
+        }
+      })
+    });
+    return false;
+  }
+
+  isAvailableNow() {
+    if (!this.isAvailableToday()) {
+      return false;
+    }
+
+    return this.nextAvailableTime() === this.currentHour();
+  }
+
+  isCurrentHourAvailable() {
+    if (!this.isAvailableToday()) {
+      return false;
+    }
+    daySchedule.shifts.forEach(shift => {
+      if (shift.startTime < this.currentHour && shift.endTime > this.currentHour) {
+        return true;
+      }
+    });
+
+    return false;
+  }
+
+
+
+  isDeliveryPickupAvailable() {
+
+  }
+
+  isCurrentDayAvailable() {
+
+  }
+
+  //display functions
+
+  getAvailabilityStatus() {
+
+  }
+
+  getNextAvailability() {
+
+  }
+
+  getFirstHourOfOperation() {
+
+  }
+
+  getLastHourOfOperation() {
+
+  }
+
+  // helpers
+
+
+
+  getCurrentShiftStart() {
+    if (!isNowInAvailable()) {
+      return -1
+    }
+    daySchedule.shifts.map(shift => {
+      shift.startHour < this.currentDateTime;
+    });
+  }
+
+  getCurrentShiftEnd() {
+    if (!isNowInAvailable()) {
+      return -1
+    }
+
+    daySchedule.shifts.map(shift => {
+      shift.endHour > this.currentDateTime;
+    });
   }
 
   daysToNumbers(day) {
@@ -26,6 +167,9 @@ class AvailabilityData {
         return 6;
     }
   }
+
+  // others
+
 
   /*
     This function works in the following steps:
