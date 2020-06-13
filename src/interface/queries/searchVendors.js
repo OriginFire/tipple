@@ -82,6 +82,17 @@ const searchVendors = {
       v.cocktails.forEach(c => {
         c.image = c.image.toString();
       });
+      // v.Availabilities.map(availability => {
+      //   availability.AvailabilitySchedules.forEach(daySchedule => {
+      //     let hours = []
+      //     daySchedule.ScheduleHours.map(hour => {
+      //       hours.push(hour.hour);
+      //     });
+      //     // console.log(hours);
+      //     return hours;
+      //   });
+      //   return availability;
+      // });
     });
     end = process.hrtime(start);
     console.log('Execution time: ' + end);

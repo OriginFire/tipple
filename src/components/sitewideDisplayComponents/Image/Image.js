@@ -14,9 +14,9 @@ import React from 'react';
 
 const GET_IMAGE = `
   query GetImage(
-  $imgId: $String) {
-    getImg(parameters: {
-    imgId: $imgId
+  $ImageId: $String) {
+    getImage(parameters: {
+    ImageId: $ImageId
     }) {
      image
     }
