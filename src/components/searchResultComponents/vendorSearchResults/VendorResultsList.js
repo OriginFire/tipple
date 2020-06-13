@@ -26,7 +26,10 @@ const SEARCH_VENDORS = `
         availabilityType
         AvailabilitySchedules {
           day
-          Shifts
+          Shifts {
+            startHour
+            endHour
+          }
         }
       }
     }
