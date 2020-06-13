@@ -25,7 +25,9 @@ Shift.belongsTo(AvailabilitySchedule);
 
 // pictures - sqlize syntax is wack here.  should there be seperate VendorImage/CocktailImage?
 Image.hasOne(Vendor, { onDelete: 'cascade', foreignKeyConstraint: true  });
+Vendor.belongsTo(Image);
 Image.hasOne(Cocktail, { onDelete: 'cascade', foreignKeyConstraint: true  });
+Cocktail.belongsTo(Image);
 
 function sync(...args) {
   return sequelize.sync(...args).then(() => {

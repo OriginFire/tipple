@@ -110,11 +110,6 @@ const Vendor = Model.define(
     onlineStore: {
       type: DataType.STRING(256),
     },
-
-    //imgme
-    vendorImage: {
-      type: DataType.BLOB('long'),
-    },
   },
   {
     indexes: [{ fields: ['id', 'slug'] }],

@@ -3,6 +3,7 @@ import db from '../dbSimulator/Vendors';
 import Vendor from '../models/Vendor';
 import User from '../models/User';
 import Cocktail from '../models/Cocktail';
+import Image from '../models/Image';
 import Availability from '../models/Availability';
 import AvailabilitySchedule from '../models/AvailabilitySchedule';
 import Shift from '../models/Shift';
@@ -143,8 +144,9 @@ function createNew(vendor) {
             },
           ],
         },
-        { model: Cocktail, as: 'cocktails' },
+        { model: Cocktail, as: 'cocktails', include: [{model: Image}] },
         { model: User },
+        { model: Image },
       ],
     },
   );

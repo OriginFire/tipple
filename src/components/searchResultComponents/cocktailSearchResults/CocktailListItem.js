@@ -6,6 +6,7 @@ import s from './CocktailListItem.scss';
 import endTimeRendering from '../../../consts/endTimeRendering';
 import startTimeRendering from '../../../consts/startTimeRendering';
 import history from '../../../history';
+import Image from '../../sitewideDisplayComponents/Image'
 
 function CocktailListItem(props) {
   const { vendor } = props;
