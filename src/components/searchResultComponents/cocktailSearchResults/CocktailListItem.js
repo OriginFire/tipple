@@ -6,6 +6,7 @@ import s from './CocktailListItem.scss';
 import endTimeRendering from '../../../consts/endTimeRendering';
 import startTimeRendering from '../../../consts/startTimeRendering';
 import history from '../../../history';
+import Image from '../../sitewideDisplayComponents/Image'
 
 function CocktailListItem(props) {
   const { vendor } = props;
@@ -26,11 +27,12 @@ function CocktailListItem(props) {
     <div className={itemStatus}>
       <div index={cocktail.id} className={s.list_item_open}>
         <div>
-          <img
-            className={s.cocktail_image}
-            src={cocktail.image}
-            alt={`${cocktail.name} Image`}
-          />
+          <div className={s.cocktail_image}>
+            <Image
+              ImageId={cocktail.ImageId}
+              alt={`${cocktail.name} Image`}
+            />
+          </div>
           <div className={s.vendor_name}>Sold by {vendor.dbaName}</div>
           {availabilityStatus === 'Available Today' && (
             <div>

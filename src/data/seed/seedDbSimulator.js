@@ -3,6 +3,7 @@ import db from '../dbSimulator/Vendors';
 import Vendor from '../models/Vendor';
 import User from '../models/User';
 import Cocktail from '../models/Cocktail';
+import Image from '../models/Image';
 import Availability from '../models/Availability';
 import AvailabilitySchedule from '../models/AvailabilitySchedule';
 import Shift from '../models/Shift';
@@ -34,7 +35,7 @@ function cocktailHash(vendor) {
       servingSize: cocktail.servingSize,
       profile: cocktail.profile,
       description: cocktail.description,
-      image: base64_encode(cocktailImageUrl),
+      Image: { image: base64_encode(cocktailImageUrl) },
     };
   });
 }
@@ -116,7 +117,7 @@ function createNew(vendor) {
       deliveryLatMax: vendor.latitude + vendor.deliveryRadius / 69,
       deliveryLatMin: vendor.latitude - vendor.deliveryRadius / 69,
       onlineStore: vendor.onlineStore,
-      vendorImage: base64_encode(vendorImageUrl),
+      Image: { image: base64_encode(vendorImageUrl) },
       cocktails: cocktailHash(vendor),
       Availabilities: availabilityHash(vendor),
       Users: [
@@ -143,8 +144,9 @@ function createNew(vendor) {
             },
           ],
         },
-        { model: Cocktail, as: 'cocktails' },
+        { model: Cocktail, as: 'cocktails', include: [{ model: Image }] },
         { model: User },
+        { model: Image },
       ],
     },
   );

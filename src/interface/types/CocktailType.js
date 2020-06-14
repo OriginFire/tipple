@@ -18,7 +18,7 @@ const CocktailType = new ObjectType({
     servingSize: { type: FloatType },
     profile: { type: StringType },
     description: { type: StringType },
-    image: { type: StringType },
+    ImageId: { type: StringType },
   },
 });
 

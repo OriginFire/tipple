@@ -39,9 +39,6 @@ const Cocktail = Model.define(
       type: DataType.STRING(200),
     },
 
-    image: {
-      type: DataType.BLOB('long'),
-    },
   },
   {
     indexes: [{ fields: ['id', 'slug'] }],

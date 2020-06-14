@@ -35,7 +35,7 @@ const SEARCH_COCKTAILS = `
         servingSize
         profile
         description
-        image
+        ImageId
       }
       Availabilities {
         availabilityType
