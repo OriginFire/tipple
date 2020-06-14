@@ -400,6 +400,10 @@ export default [
           {
             day: weekdays.sunday,
             shifts: [
+              {
+                startHour: 12,
+                endHour: 23,
+              },
             ],
           },
           {

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './IndividualVendorDisplay.scss';
 import IndividualVendorCocktails from './individualVendorCocktails/IndividualVendorCocktails';
-import history from '../../../history';
 import ContentBox from '../../sitewideDisplayComponents/contentBox/ContentBox';
+import AvailabilityData from '../availabilityData/AvailabilityData';
+import startTimeRendering from '../../../consts/startTimeRendering';
+import endTimeRendering from '../../../consts/endTimeRendering';
+import SearchContext from '../SearchContext';
 
 const FIND_VENDOR = `
   query FindVendor($slug: String!) {
@@ -13,16 +16,29 @@ const FIND_VENDOR = `
       physicalCity
       dbaName
       doesDelivery
+      minimumDeliveryFulfillment
+      deliveryRadius
       doesPickup
+      minimumPickupFulfillment
       cocktails {
         slug
         name
         ingredients
-        image
+        ImageId
         price
         servingSize
         profile
         description
+      }
+      Availabilities {
+        availabilityType
+        AvailabilitySchedules {
+          day
+          Shifts {
+            startHour
+            endHour
+          }
+        }
       }
     }
   }
@@ -32,6 +48,7 @@ function IndividualVendorDisplay(props) {
   const { loading, error, data } = useQuery(FIND_VENDOR, {
     variables: { slug: props.slug },
   });
+  const searchContext = useContext(SearchContext);
   let vendor;
   if (loading) return 'Loading...';
   if (error) return 'Something Bad Happened';
@@ -41,8 +58,6 @@ function IndividualVendorDisplay(props) {
   }
 
   let availability;
-
-  const schedule = 'Available Today';
   const scheduleStatus = s.schedule_status;
 
   if (data.findVendor) {
@@ -58,18 +73,33 @@ function IndividualVendorDisplay(props) {
     }
   }
 
+  const availabilityData = new AvailabilityData(
+    vendor.Availabilities,
+    searchContext.searchFilters,
+    vendor,
+  );
+  const availabilityStatus = availabilityData.getAvailabilityStatus();
+  const availabilityTime = availabilityData.getAvailabilityTime();
+
   return (
     <div>
       {data.findVendor && (
         <ContentBox>
           <div className={s.text}>
             <div className={s.vendor_name}>{vendor.dbaName}</div>
+            {availabilityStatus === 'Available Today' && (
+              <span className={s.schedule}>
+                <span className={scheduleStatus}>{availabilityStatus} </span>
+                until {endTimeRendering(availabilityTime)}
+              </span>
+            )}
 
-            <span className={s.schedule}>
-              <span className={scheduleStatus}>{schedule} </span>
-              until 12 AM
-            </span>
-
+            {availabilityStatus !== 'Available Today' && (
+              <span className={s.schedule}>
+                <span className={scheduleStatus}>{availabilityStatus} </span>
+                at {startTimeRendering(availabilityTime)}
+              </span>
+            )}
             <div className={s.address}>
               {`${vendor.physicalStreetAddress}, ${vendor.physicalCity}`}
             </div>

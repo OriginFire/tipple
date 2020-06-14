@@ -24,7 +24,7 @@ function CocktailListItem(props) {
   }
 
   return (
-    <div className={itemStatus}>
+    <div className={itemStatus} key={props.key}>
       <div index={cocktail.id} className={s.list_item_open}>
         <div>
           <div className={s.cocktail_image}>

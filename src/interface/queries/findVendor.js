@@ -10,6 +10,7 @@
 import VendorType from '../types/VendorType';
 import Vendor from '../../data/models/Vendor';
 import Cocktail from '../../data/models/Cocktail';
+import Image from '../../data/models/Image';
 import FindVendorType from '../types/FindVendorType';
 import { Availability, AvailabilitySchedule, Shift } from '../../data/models';
 
@@ -19,24 +20,19 @@ const findVendor = {
     vendor: { type: FindVendorType },
   },
   async resolve(value, { vendor }) {
-    const displayVendor = await Vendor.findOne({
+    return Vendor.findOne({
       where: { slug: vendor.slug },
       include: [
-        { model: Cocktail, as: 'cocktails' },
+        { model: Cocktail, as: 'cocktails', include: [{ model: Image }] },
         {
           model: Availability,
           include: [
             { model: AvailabilitySchedule, include: [{ model: Shift }] },
           ],
         },
+        { model: Image },
       ],
     });
-
-    displayVendor.vendorImage = displayVendor.vendorImage.toString();
-    displayVendor.cocktails.forEach(c => {
-      c.image = c.image.toString();
-    });
-    return displayVendor;
   },
 };
 

@@ -9,6 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import s from './VendorCocktail.scss';
 import history from "../../../../../history";
+import Image from "../../../../sitewideDisplayComponents/Image";
 
 function VendorCocktail(props) {
   const { cocktail } = props;
@@ -51,11 +52,12 @@ function VendorCocktail(props) {
   return (
     <div key={index} className={s.cocktail}>
       <div>
-        <img
-          className={s.cocktail_image}
-          src={cocktail.image}
-          alt={`${cocktail.name} Image`}
-        />
+        <div className={s.cocktail_image}>
+          <Image
+            ImageId={cocktail.ImageId}
+            alt={`${cocktail.name} Image`}
+          />
+        </div>
         <div className={s.profile}>
           <FontAwesomeIcon icon={profile.icon} size="lg" className={s.icon} />
           <div>{profile.string}</div>

@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import s from './VendorListItem.scss';
 import history from '../../../history';
-import endTimeRendering from '../../../consts/endTimeRendering';
 import startTimeRendering from '../../../consts/startTimeRendering';
+import endTimeRendering from '../../../consts/endTimeRendering';
 import SearchContext from '../SearchContext';
+import Image from "../../sitewideDisplayComponents/Image";
 
 function VendorListItem(props) {
   const { vendor } = props;
@@ -41,13 +42,17 @@ function VendorListItem(props) {
 
   return (
     <div
-      key={index}
+      key={props.key}
       className={s.list_item}
-      // onClick={e => history.push(`/vendor/${vendor.slug}`)}
     >
       <div className={s.vendor_box}>
         <div className={s.bar_name}>{vendor.dbaName}</div>
-        <img className={s.bar_image} src={vendor.vendorImage} />
+        <div className={s.vendor_image}>
+          <Image
+            ImageId={vendor.ImageId}
+            alt={`${vendor.name} Image`}
+          />
+        </div>
         <div className={s.address}>
           {`${vendor.physicalStreetAddress}, ${vendor.physicalCity}`}
         </div>
@@ -59,12 +64,22 @@ function VendorListItem(props) {
 
           {availabilityStatus === 'Available Today' && (
             <div className={s.availability_time}>
-              <span className={s.availability_status}>
+              <span className={s.availability_today}>
+                {availabilityStatus}
+              </span>{' '}
+              until {endTimeRendering(availabilityTime)}
+            </div>
+          )}
+
+          {availabilityStatus !== 'Available Today' && (
+            <div className={s.availability_time}>
+              <span className={s.availability_tomorrow}>
                 {availabilityStatus}
               </span>{' '}
               at {startTimeRendering(availabilityTime)}
             </div>
           )}
+
         </div>
         <div>
           <div className={s.info}>

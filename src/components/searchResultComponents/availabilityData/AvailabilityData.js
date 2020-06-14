@@ -55,7 +55,7 @@ class AvailabilityData {
         this.filterSettings.doesPickup
       ) {
         if (
-          availabilityType.availabilitySchedules[this.currentDay].shifts
+          availabilityType.AvailabilitySchedules[this.currentDay].Shifts
             .length !== 0
         ) {
           service = true;
@@ -66,7 +66,7 @@ class AvailabilityData {
         this.filterSettings.doesDelivery
       ) {
         if (
-          availabilityType.availabilitySchedules[this.currentDay].shifts
+          availabilityType.AvailabilitySchedules[this.currentDay].Shifts
             .length !== 0
         ) {
           service = true;
@@ -106,7 +106,7 @@ class AvailabilityData {
         availabilityType.availabilityType === 'pickup' &&
         this.filterSettings.doesPickup
       ) {
-        availabilityType.availabilitySchedules[this.currentDay].shifts.map(
+        availabilityType.AvailabilitySchedules[this.currentDay].Shifts.map(
           shift => {
             if (lastAvailability < shift.endHour) {
               lastAvailability = shift.endHour;
@@ -118,7 +118,7 @@ class AvailabilityData {
         availabilityType.availabilityType === 'delivery' &&
         this.filterSettings.doesDelivery
       ) {
-        availabilityType.availabilitySchedules[this.currentDay].shifts.map(
+        availabilityType.AvailabilitySchedules[this.currentDay].Shifts.map(
           shift => {
             if (lastAvailability < shift.endHour) {
               lastAvailability = shift.endHour;
@@ -138,10 +138,10 @@ class AvailabilityData {
         availabilityType.availabilityType === 'pickup' &&
         this.filterSettings.doesPickup
       ) {
-        availabilityType.availabilitySchedules.map(day => {
+        availabilityType.AvailabilitySchedules.map(day => {
           if (
             this.daysToNumbers(day.day) !== this.currentDay &&
-            day.shifts.length !== 0
+            day.Shifts.length !== 0
           ) {
             if (!Number.isInteger(dayCount)) {
               nextDay = day.day;
@@ -163,10 +163,10 @@ class AvailabilityData {
         availabilityType.availabilityType === 'delivery' &&
         this.filterSettings.doesDelivery
       ) {
-        availabilityType.availabilitySchedules.map(day => {
+        availabilityType.AvailabilitySchedules.map(day => {
           if (
             this.daysToNumbers(day.day) !== this.currentDay &&
-            day.shifts.length !== 0
+            day.Shifts.length !== 0
           ) {
             if (!Number.isInteger(dayCount)) {
               nextDay = day.day;
@@ -201,25 +201,32 @@ class AvailabilityData {
 
   resolveTime() {
     let time;
-    if (this.serviceToday()&&
-      this.earliestFulfillment() < this.lastAvailabilityToday()) {
+    if (
+      this.serviceToday() &&
+      this.earliestFulfillment() < this.lastAvailabilityToday()
+    ) {
       this.availability.forEach(availabilityType => {
         if (
           availabilityType.availabilityType === 'pickup' &&
           this.filterSettings.doesPickup
         ) {
-          availabilityType.availabilitySchedules[this.currentDay].shifts.forEach(shift => {
+          availabilityType.AvailabilitySchedules[
+            this.currentDay
+          ].Shifts.forEach(shift => {
             if (!Number.isInteger(time)) {
               time = shift.endHour;
             } else if (shift.endHour > time) {
               time = shift.endHour;
             }
           });
-        } else if (
+        }
+        if (
           availabilityType.availabilityType === 'delivery' &&
-          this.filterSettings.doesPickup
+          this.filterSettings.doesDelivery
         ) {
-          availabilityType.availabilitySchedules[this.currentDay].shifts.forEach(shift => {
+          availabilityType.AvailabilitySchedules[
+            this.currentDay
+          ].Shifts.forEach(shift => {
             if (!Number.isInteger(time)) {
               time = shift.endHour;
             } else if (shift.endHour > time) {
@@ -235,18 +242,23 @@ class AvailabilityData {
           availabilityType.availabilityType === 'pickup' &&
           this.filterSettings.doesPickup
         ) {
-          availabilityType.availabilitySchedules[nextDay.dayCount].shifts.forEach(shift => {
+          availabilityType.AvailabilitySchedules[
+            nextDay.dayCount
+          ].Shifts.forEach(shift => {
             if (!Number.isInteger(time)) {
               time = shift.startHour;
             } else if (shift.startHour < time) {
               time = shift.startHour;
             }
           });
-        } else if (
+        }
+        if (
           availabilityType.availabilityType === 'delivery' &&
-          this.filterSettings.doesPickup
+          this.filterSettings.doesDelivery
         ) {
-          availabilityType.availabilitySchedules[nextDay.dayCount].shifts.forEach(shift => {
+          availabilityType.AvailabilitySchedules[
+            nextDay.dayCount
+          ].Shifts.forEach(shift => {
             if (!Number.isInteger(time)) {
               time = shift.startHour;
             } else if (shift.startHour < time) {
@@ -271,7 +283,7 @@ class AvailabilityData {
     if (!isNowInAvailable()) {
       return -1;
     }
-    daySchedule.shifts.map(shift => {
+    daySchedule.Shifts.map(shift => {
       shift.startHour < this.currentDateTime;
     });
   }
@@ -280,7 +292,7 @@ class AvailabilityData {
     if (!isNowInAvailable()) {
       return -1;
     }
-    daySchedule.shifts.map(shift => {
+    daySchedule.Shifts.map(shift => {
       shift.endHour > this.currentDateTime;
     });
   }

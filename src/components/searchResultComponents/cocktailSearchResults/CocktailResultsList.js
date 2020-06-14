@@ -7,7 +7,7 @@ import ResultsMessage from './ResultsMessage';
 import ApplicationContext from '../../ApplicationContext';
 import SearchContext from '../SearchContext';
 import db from '../../../data/dbSimulator/Vendors';
-import AvailabilityData from "../availabilityData/AvailabilityData";
+import AvailabilityData from '../availabilityData/AvailabilityData';
 
 const SEARCH_COCKTAILS = `
   query SearchCocktails(
@@ -39,6 +39,13 @@ const SEARCH_COCKTAILS = `
       }
       Availabilities {
         availabilityType
+        AvailabilitySchedules {
+          day
+          Shifts {
+            startHour
+            endHour
+          }
+        }
       }
     }
   }
@@ -74,7 +81,6 @@ function CocktailSearchResults(props) {
 
   const displayedVendors = [];
   if (searchResults) {
-    console.log(searchResults, userLatitude, userLongitude);
     searchResults.map((vendor, index, matchingVendors) => {
       let onDemandCheck = true;
       if (searchContext.searchFilters.onDemandOnly) {
@@ -103,29 +109,28 @@ function CocktailSearchResults(props) {
     let cocktailsDisplayedCounter = 0;
     console.log(displayedVendors);
     return displayedVendors.map(vendor => {
+      const cocktailData = new AvailabilityData(
+        vendor.Availabilities,
+        searchContext.searchFilters,
+        vendor,
+      );
+      const availabilityStatus = cocktailData.getAvailabilityStatus();
+      const availabilityTime = cocktailData.getAvailabilityTime();
       return vendor.cocktails.map((cocktail, index, cocktails) => {
-        let availability;
         const cocktailProfiles = {
           stiff: 'showStiff',
           strong: 'showStrong',
           long: 'showLong',
           lowABV: 'showLow',
         };
-        db.map(dbVendor => {
-          if (dbVendor.dbaName === vendor.dbaName) {
-            availability = dbVendor.availability;
-          }
-        });
-        let cocktailData = new AvailabilityData(availability, searchContext.searchFilters, vendor);
-        let availabilityStatus = cocktailData.getAvailabilityStatus();
-        let availabilityTime = cocktailData.getAvailabilityTime();
         if (searchContext.searchFilters[cocktailProfiles[cocktail.profile]]) {
           cocktailsDisplayedCounter += 1;
-          console.log("Displayed");
+          console.log('Displayed');
           return (
             <CocktailListItem
               vendor={vendor}
               cocktail={cocktail}
+              key={cocktail.id}
               availabilityStatus={availabilityStatus}
               availabilityTime={availabilityTime}
             />

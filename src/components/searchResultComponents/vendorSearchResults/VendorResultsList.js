@@ -16,9 +16,11 @@ const SEARCH_VENDORS = `
       physicalCity
       physicalState
       doesDelivery
-      doesPickup
+      minimumDeliveryFulfillment
       deliveryRadius
-      vendorImage
+      doesPickup
+      minimumPickupFulfillment
+      ImageId
       onlineStore
       cocktails {
         price
@@ -109,17 +111,17 @@ function VendorResultsList(props) {
       {searchResults && resultsMessage(searchResults)}
       {searchResults &&
         searchResults.map((vendor, index, vendorResults) => {
-          const cocktailData = new AvailabilityData(
+          const availabilityData = new AvailabilityData(
             vendor.Availabilities,
             searchContext.searchFilters,
             vendor,
           );
-          const availabilityStatus = cocktailData.getAvailabilityStatus();
-          const availabilityTime = cocktailData.getAvailabilityTime();
+          const availabilityStatus = availabilityData.getAvailabilityStatus();
+          const availabilityTime = availabilityData.getAvailabilityTime();
           return (
             <VendorListItem
               vendor={vendor}
-              index={vendor.id}
+              key={vendor.id}
               availabilityStatus={availabilityStatus}
               availabilityTime={availabilityTime}
             />

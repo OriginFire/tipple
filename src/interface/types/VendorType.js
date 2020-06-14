@@ -41,7 +41,7 @@ const VendorType = new ObjectType({
     deliveryLatMax: { type: FloatType },
     deliveryLatMin: { type: FloatType },
     onlineStore: { type: StringType },
-    vendorImage: { type: StringType },
+    ImageId: { type: StringType },
     cocktails: { type: List(CocktailType) },
     Availabilities: { type: List(AvailabilityType) },
   },
