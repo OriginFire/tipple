@@ -74,6 +74,7 @@ function CocktailSearchResults(props) {
 
   const displayedVendors = [];
   if (searchResults) {
+    console.log(searchResults, userLatitude, userLongitude);
     searchResults.map((vendor, index, matchingVendors) => {
       let onDemandCheck = true;
       if (searchContext.searchFilters.onDemandOnly) {
@@ -116,8 +117,8 @@ function CocktailSearchResults(props) {
           }
         });
         let cocktailData = new AvailabilityData(availability, searchContext.searchFilters, vendor);
-        let availabilityStatus = cocktailData.resolveAvailabilityStatus().status;
-        let availabilityTime = cocktailData.resolveAvailabilityStatus().time;
+        let availabilityStatus = cocktailData.getAvailabilityStatus();
+        let availabilityTime = cocktailData.getAvailabilityTime();
         if (searchContext.searchFilters[cocktailProfiles[cocktail.profile]]) {
           cocktailsDisplayedCounter += 1;
           console.log("Displayed");
