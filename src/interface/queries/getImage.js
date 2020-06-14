@@ -9,11 +9,17 @@
 
 import Image from '../../data/models/Image';
 import ImageType from '../types/ImageType';
+import ImageSType from '../types/ImageSType';
 
 const getImage = {
   type: ImageType,
-  async resolve(value, {image}) {
-    return Image.findOne({where: {id: image.ImageId}}).then(image => {image.toString()});
+  args: {
+    image: { type: ImageSType },
+  },
+  async resolve(value, { image }) {
+    let foundImage = await Image.findOne({ where: { id: image.ImageId } });
+    foundImage.image = foundImage.image.toString();
+    return foundImage;
   },
 };
 

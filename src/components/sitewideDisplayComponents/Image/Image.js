@@ -1,4 +1,6 @@
-import {useQuery} from "graphql-hooks";
+import { useQuery } from 'graphql-hooks';
+import withStyles from "isomorphic-style-loader/withStyles";
+import s from "./Image.scss";
 
 /**
  * React Starter Kit (https://www.reactstarterkit.com/)
@@ -11,35 +13,33 @@ import {useQuery} from "graphql-hooks";
 
 import React from 'react';
 
-
 const GET_IMAGE = `
-  query GetImage(
-  $ImageId: $String) {
-    getImage(parameters: {
-    ImageId: $ImageId
-    }) {
-     image
+  query GetImage($ImageId: String) {
+    getImage(image:
+      { ImageId: $ImageId }
+    ) {
+      image
     }
   }
 `;
 
-export default function Image(props) {
-
+function Image(props) {
   const { loading, error, data } = useQuery(GET_IMAGE, {
     variables: {
-      imgId: props.ImageId
+      ImageId: props.ImageId,
     },
   });
-
 
   if (loading) return <div>Searching...</div>;
   if (error) return <div>Something bad happened...</div>;
   if (data)
-  return (
-    <img
-      className={props.classNamePass}
-      src={data.image}
-      alt={`${props.cocktailName} Image`}
-  />
-  );
+    return (
+      <img
+        className={s.image}
+        src={data.getImage.image}
+        alt={`${props.cocktailName} Image`}
+      />
+    );
 }
+
+export default withStyles(s)(Image);

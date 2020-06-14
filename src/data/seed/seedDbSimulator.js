@@ -35,7 +35,7 @@ function cocktailHash(vendor) {
       servingSize: cocktail.servingSize,
       profile: cocktail.profile,
       description: cocktail.description,
-      Image: {image: base64_encode(cocktailImageUrl)},
+      Image: { image: base64_encode(cocktailImageUrl) },
     };
   });
 }
@@ -117,7 +117,7 @@ function createNew(vendor) {
       deliveryLatMax: vendor.latitude + vendor.deliveryRadius / 69,
       deliveryLatMin: vendor.latitude - vendor.deliveryRadius / 69,
       onlineStore: vendor.onlineStore,
-      Image: {image: base64_encode(vendorImageUrl)},
+      Image: { image: base64_encode(vendorImageUrl) },
       cocktails: cocktailHash(vendor),
       Availabilities: availabilityHash(vendor),
       Users: [
@@ -144,7 +144,7 @@ function createNew(vendor) {
             },
           ],
         },
-        { model: Cocktail, as: 'cocktails', include: [{model: Image}] },
+        { model: Cocktail, as: 'cocktails', include: [{ model: Image }] },
         { model: User },
         { model: Image },
       ],
