@@ -22,7 +22,7 @@ const FIND_VENDOR = `
         servingSize
         profile
         description
-        image
+        ImageId
       }
     }
   }

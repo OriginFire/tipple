@@ -3,6 +3,7 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import ApplicationContext from '../../../ApplicationContext';
 import s from './Cocktail.scss';
 import CocktailUpdate from '../cocktailUpdate/CocktailUpdate';
+import Image from '../../../sitewideDisplayComponents/Image';
 
 function Cocktail(props) {
   const authenticationContext = useContext(ApplicationContext);
@@ -10,7 +11,7 @@ function Cocktail(props) {
   const { cocktail } = props;
 
   const [cocktailName, setCocktailName] = useState(cocktail.name);
-  const [cocktailImage, setCocktailImage] = useState(cocktail.image);
+  const [cocktailImage, setCocktailImage] = useState(cocktail.ImageId);
   const [cocktailIngredients, setCocktailIngredients] = useState(
     cocktail.ingredients,
   );
@@ -51,14 +52,12 @@ function Cocktail(props) {
       );
     }
     return (
-      <div className={s.wrapper}>
+      <div className={s.wrapper} key={props.key}>
         <div key={key} className={s.list_item}>
           <div className={s.result_context}>
-            <img
-              className={s.cocktail_image}
-              src={cocktailImage}
-              alt={`${cocktailName} Image`}
-            />
+            <div className={s.cocktail_image}>
+              <Image ImageId={cocktailImage} alt={`${cocktailName} Image`} />
+            </div>
             <div className={s.availability}>
               {cocktailName} is currently public. This is how it appears to
               users.
@@ -86,11 +85,7 @@ function Cocktail(props) {
     );
   }
 
-  return (
-    <div>
-    {DisplayContent()}
-    </div>
-  );
+  return <div>{DisplayContent()}</div>;
 }
 
 export default withStyles(s)(Cocktail);

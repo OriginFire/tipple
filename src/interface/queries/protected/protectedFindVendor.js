@@ -12,6 +12,7 @@ import VendorType from '../../types/VendorType';
 import Vendor from '../../../data/models/Vendor';
 import Cocktail from '../../../data/models/Cocktail';
 import User from '../../../data/models/User';
+import Image from '../../../data/models/Image';
 import FindVendorType from '../../types/FindVendorType';
 import config from '../../../config';
 import {
@@ -27,16 +28,16 @@ const protectedFindVendor = {
   },
   async resolve(value, { vendor }) {
     const JWT = jwt.verify(vendor.JWT, config.auth.jwt.secret);
-    console.log(JWT);
 
     if (JWT.vendorSlug !== vendor.slug) {
       return 'nope';
     }
 
-    const displayVendor = await Vendor.findOne({
+    return Vendor.findOne({
       where: { slug: vendor.slug },
       include: [
-        { model: Cocktail, as: 'cocktails' },
+        { model: Cocktail, as: 'cocktails', include: [{ model: Image }] },
+        { model: Image },
         User,
         {
           model: Availability,
@@ -46,12 +47,6 @@ const protectedFindVendor = {
         },
       ],
     });
-    displayVendor.vendorImage = displayVendor.vendorImage.toString();
-    displayVendor.cocktails.forEach(c => {
-      c.image = c.image.toString();
-    });
-    console.log(displayVendor.Availabilities[1].AvailabilitySchedules[0].Shifts[0]);
-    return displayVendor;
   },
 };
 

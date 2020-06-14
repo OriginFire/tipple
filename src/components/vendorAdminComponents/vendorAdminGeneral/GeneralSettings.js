@@ -6,6 +6,7 @@ import DynamicSetting from '../dynamicSetting/DynamicSetting';
 import DynamicSettingAddress from '../dynamicSetting/DynamicSettingAddress';
 import VendorDataAlert from '../vendorDataAlert/VendorDataAlert';
 import ApplicationContext from '../../ApplicationContext';
+import Image from "../../sitewideDisplayComponents/Image";
 
 const UPDATE_VENDOR = `
   mutation UpdateVendor(
@@ -40,7 +41,7 @@ function GeneralSettings(props) {
   const [uploaded, setUploaded] = useState();
   const [slug, setSlug] = useState(vendor.slug);
   const [dbaName, setDbaName] = useState(vendor.dbaName);
-  const [vendorImage, setVendorImage] = useState(vendor.vendorImage);
+  const [vendorImage, setVendorImage] = useState(vendor.ImageId);
   const [physicalAddress, setPhysicalAddress] = useState(
     vendor.physicalAddress,
   );
@@ -92,11 +93,12 @@ function GeneralSettings(props) {
   function DynamicSettingImage() {
     if (vendorImage) {
       return (
-        <img
-          src={vendorImage}
-          alt={dbaName}
-          className={s.vendor_image}
-        />
+        <div className={s.vendor_image}>
+          <Image
+            ImageId={vendorImage}
+            alt={dbaName}
+          />
+        </div>
       );
     }
     return <div className={s.vendor_image} />;

@@ -80,7 +80,7 @@ function CocktailSettingList(props) {
       {vendor.cocktails.map((cocktail, index, cocktails) => {
         return (
           <Cocktail
-            key={index}
+            key={cocktail.id}
             vendor={vendor}
             cocktail={cocktail}
           />

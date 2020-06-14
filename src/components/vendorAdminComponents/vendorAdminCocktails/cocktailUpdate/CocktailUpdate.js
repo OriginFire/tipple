@@ -11,6 +11,7 @@ import {
 import s from './CocktailUpdate.scss';
 import DynamicSetting from '../../dynamicSetting/DynamicSetting';
 import ApplicationContext from '../../../ApplicationContext';
+import Image from "../../../sitewideDisplayComponents/Image";
 
 const UPDATE_COCKTAIL = `
   mutation UpdateCocktail(
@@ -59,7 +60,7 @@ function CocktailUpdate(props) {
 
   const id = cocktail.id;
   const [cocktailName, setCocktailName] = useState(cocktail.name);
-  const [cocktailImage, setCocktailImage] = useState(cocktail.image);
+  const [cocktailImage, setCocktailImage] = useState(cocktail.ImageId);
   const [cocktailIngredients, setCocktailIngredients] = useState(
     cocktail.ingredients,
   );
@@ -135,11 +136,12 @@ function CocktailUpdate(props) {
     <div className={s.edit_wrapper}>
       <div key={key} className={s.update_content}>
         <div>
-          <img
-            className={s.cocktail_image}
-            src={cocktailImage}
-            alt={`${cocktailName} Image`}
-          />
+          <div className={s.cocktail_image}>
+            <Image
+              ImageId={cocktailImage}
+              alt={`${cocktailName} Image`}
+            />
+          </div>
           <div className={s.availability}>
             {cocktailName} is currently public. This is how it appears to users.
           </div>

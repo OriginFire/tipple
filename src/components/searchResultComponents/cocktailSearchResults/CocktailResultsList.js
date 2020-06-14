@@ -6,7 +6,6 @@ import CocktailListItem from './CocktailListItem';
 import ResultsMessage from './ResultsMessage';
 import ApplicationContext from '../../ApplicationContext';
 import SearchContext from '../SearchContext';
-import db from '../../../data/dbSimulator/Vendors';
 import AvailabilityData from '../availabilityData/AvailabilityData';
 
 const SEARCH_COCKTAILS = `
@@ -123,7 +122,17 @@ function CocktailSearchResults(props) {
           long: 'showLong',
           lowABV: 'showLow',
         };
-        if (searchContext.searchFilters[cocktailProfiles[cocktail.profile]]) {
+        let availabilityCheck = true;
+        if (
+          searchContext.searchFilters.availableTodayOnly === true &&
+          availabilityStatus !== 'Available Today'
+        ) {
+          availabilityCheck = false;
+        }
+        if (
+          searchContext.searchFilters[cocktailProfiles[cocktail.profile]] &&
+          availabilityCheck
+        ) {
           cocktailsDisplayedCounter += 1;
           console.log('Displayed');
           return (

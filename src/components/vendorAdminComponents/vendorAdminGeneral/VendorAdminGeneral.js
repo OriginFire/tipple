@@ -26,7 +26,7 @@ const FIND_VENDOR = `
       doesPickup
       deliveryRadius
       onlineStore
-      vendorImage
+      ImageId
       cocktails {
         id
       }
