@@ -9,11 +9,8 @@ class AvailabilityData {
     this.currentDay = this.currentDateTime.getDay();
 
     // consts
-    this.earliestTime = 23;
-    this.initialAvailabilityStatus = 'Not Available Today';
-
     this.availabilityStatus = this.resolveStatus();
-    this.availabilityTime = 0;
+    this.availabilityTime = this.resolveTime();
   }
 
   // public methods
@@ -38,7 +35,15 @@ class AvailabilityData {
       return 'Available Today';
     }
     const nextDay = this.nextAvailabilityDay();
-    const status = `Available ${nextDay}`;
+    let status;
+    if (
+      nextDay.dayCount === this.currentDay + 1 ||
+      nextDay.dayCount === this.currentDay - 6
+    ) {
+      status = 'Available Tomorrow';
+    } else {
+      status = `Available ${nextDay.day}`;
+    }
     return status;
   }
 
@@ -55,16 +60,16 @@ class AvailabilityData {
         ) {
           service = true;
         }
+      }
+      if (
+        availabilityType.availabilityType === 'delivery' &&
+        this.filterSettings.doesDelivery
+      ) {
         if (
-          availabilityType.availabilityType === 'delivery' &&
-          this.filterSettings.doesDelivery
+          availabilityType.availabilitySchedules[this.currentDay].shifts
+            .length !== 0
         ) {
-          if (
-            availabilityType.availabilitySchedules[this.currentDay].shifts
-              .length !== 0
-          ) {
-            service = true;
-          }
+          service = true;
         }
       }
     });
@@ -95,11 +100,38 @@ class AvailabilityData {
   }
 
   lastAvailabilityToday() {
-    return 23;
+    let lastAvailability = -1;
+    this.availability.forEach(availabilityType => {
+      if (
+        availabilityType.availabilityType === 'pickup' &&
+        this.filterSettings.doesPickup
+      ) {
+        availabilityType.availabilitySchedules[this.currentDay].shifts.map(
+          shift => {
+            if (lastAvailability < shift.endHour) {
+              lastAvailability = shift.endHour;
+            }
+          },
+        );
+      }
+      if (
+        availabilityType.availabilityType === 'delivery' &&
+        this.filterSettings.doesDelivery
+      ) {
+        availabilityType.availabilitySchedules[this.currentDay].shifts.map(
+          shift => {
+            if (lastAvailability < shift.endHour) {
+              lastAvailability = shift.endHour;
+            }
+          },
+        );
+      }
+    });
+    return lastAvailability + 1;
   }
 
   nextAvailabilityDay() {
-    let nextDay = 'Saturday';
+    let nextDay;
     let dayCount;
     this.availability.forEach(availabilityType => {
       if (
@@ -107,11 +139,20 @@ class AvailabilityData {
         this.filterSettings.doesPickup
       ) {
         availabilityType.availabilitySchedules.map(day => {
-          if (this.daysToNumbers(day.day) !== this.currentDay && day.shifts.length !== 0) {
+          if (
+            this.daysToNumbers(day.day) !== this.currentDay &&
+            day.shifts.length !== 0
+          ) {
             if (!Number.isInteger(dayCount)) {
               nextDay = day.day;
               dayCount = this.daysToNumbers(day.day);
-            } else if (this.daysToNumbers(day.day) < dayCount || (this.daysToNumbers(day.day) > dayCount && dayCount < this.currentDay)) {
+            } else if (
+              (this.daysToNumbers(day.day) < dayCount &&
+                dayCount < this.currentDay) ||
+              (this.daysToNumbers(day.day) > dayCount &&
+                dayCount < this.currentDay &&
+                this.daysToNumbers(day.day) > this.currentDay)
+            ) {
               nextDay = day.day;
               dayCount = this.daysToNumbers(day.day);
             }
@@ -123,12 +164,20 @@ class AvailabilityData {
         this.filterSettings.doesDelivery
       ) {
         availabilityType.availabilitySchedules.map(day => {
-          if (this.daysToNumbers(day.day) !== this.currentDay && day.shifts.length !== 0) {
+          if (
+            this.daysToNumbers(day.day) !== this.currentDay &&
+            day.shifts.length !== 0
+          ) {
             if (!Number.isInteger(dayCount)) {
               nextDay = day.day;
               dayCount = this.daysToNumbers(day.day);
-            } else if (this.daysToNumbers(day.day) < dayCount ||
-              (this.daysToNumbers(day.day) > dayCount && dayCount < this.currentDay)) {
+            } else if (
+              (this.daysToNumbers(day.day) < dayCount &&
+                dayCount < this.currentDay) ||
+              (this.daysToNumbers(day.day) > dayCount &&
+                dayCount < this.currentDay &&
+                this.daysToNumbers(day.day) > this.currentDay)
+            ) {
               nextDay = day.day;
               dayCount = this.daysToNumbers(day.day);
             }
@@ -136,7 +185,10 @@ class AvailabilityData {
         });
       }
     });
-    return nextDay;
+    return {
+      dayCount,
+      day: nextDay,
+    };
   }
 
   nextAvailabilePickup() {
@@ -147,20 +199,67 @@ class AvailabilityData {
     return this.currentHour + this.vendor.minimumDeliveryFulfillment;
   }
 
-  isCurrentHourAvailable() {
-    if (!this.isAvailableToday()) {
-      return false;
+  resolveTime() {
+    let time;
+    if (this.serviceToday()&&
+      this.earliestFulfillment() < this.lastAvailabilityToday()) {
+      this.availability.forEach(availabilityType => {
+        if (
+          availabilityType.availabilityType === 'pickup' &&
+          this.filterSettings.doesPickup
+        ) {
+          availabilityType.availabilitySchedules[this.currentDay].shifts.forEach(shift => {
+            if (!Number.isInteger(time)) {
+              time = shift.endHour;
+            } else if (shift.endHour > time) {
+              time = shift.endHour;
+            }
+          });
+        } else if (
+          availabilityType.availabilityType === 'delivery' &&
+          this.filterSettings.doesPickup
+        ) {
+          availabilityType.availabilitySchedules[this.currentDay].shifts.forEach(shift => {
+            if (!Number.isInteger(time)) {
+              time = shift.endHour;
+            } else if (shift.endHour > time) {
+              time = shift.endHour;
+            }
+          });
+        }
+      });
+    } else {
+      const nextDay = this.nextAvailabilityDay();
+      this.availability.forEach(availabilityType => {
+        if (
+          availabilityType.availabilityType === 'pickup' &&
+          this.filterSettings.doesPickup
+        ) {
+          availabilityType.availabilitySchedules[nextDay.dayCount].shifts.forEach(shift => {
+            if (!Number.isInteger(time)) {
+              time = shift.startHour;
+            } else if (shift.startHour < time) {
+              time = shift.startHour;
+            }
+          });
+        } else if (
+          availabilityType.availabilityType === 'delivery' &&
+          this.filterSettings.doesPickup
+        ) {
+          availabilityType.availabilitySchedules[nextDay.dayCount].shifts.forEach(shift => {
+            if (!Number.isInteger(time)) {
+              time = shift.startHour;
+            } else if (shift.startHour < time) {
+              time = shift.startHour;
+            }
+          });
+        }
+      });
     }
-    daySchedule.shifts.forEach(shift => {
-      if (
-        shift.startTime < this.currentHour &&
-        shift.endTime > this.currentHour
-      ) {
-        return true;
-      }
-    });
-    return false;
+    return time;
   }
+
+  isCurrentHourAvailable() {}
 
   isDeliveryPickupAvailable() {}
 

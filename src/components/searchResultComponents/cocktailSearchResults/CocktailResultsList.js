@@ -74,6 +74,7 @@ function CocktailSearchResults(props) {
 
   const displayedVendors = [];
   if (searchResults) {
+    console.log(searchResults, userLatitude, userLongitude);
     searchResults.map((vendor, index, matchingVendors) => {
       let onDemandCheck = true;
       if (searchContext.searchFilters.onDemandOnly) {

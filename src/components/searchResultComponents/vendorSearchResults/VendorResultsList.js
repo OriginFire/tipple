@@ -3,8 +3,9 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './VendorResultsList.scss';
 import ApplicationContext from '../../ApplicationContext';
-import SearchContext from "../SearchContext";
+import SearchContext from '../SearchContext';
 import VendorListItem from './VendorListItem';
+import AvailabilityData from '../availabilityData/AvailabilityData';
 
 const SEARCH_VENDORS = `
   query SearchVendors($userLatitude: Float!, $userLongitude: Float!, $pickupRadius: Float!, $doesDelivery: Boolean!, $doesPickup: Boolean!) {
@@ -46,7 +47,9 @@ function VendorResultsList(props) {
   const [userLongitude, setUserLongitude] = useState(
     customerLocation.context.userLongitude,
   );
-  const [filterSettings, setFilterSettings] = useState(searchContext.searchFilters)
+  const [filterSettings, setFilterSettings] = useState(
+    searchContext.searchFilters,
+  );
   const { loading, error, data } = useQuery(SEARCH_VENDORS, {
     variables: {
       userLatitude,
@@ -66,9 +69,7 @@ function VendorResultsList(props) {
     let miles;
     let vendorsText;
 
-    filterSettings.pickupRadius === 1
-      ? (miles = 'mile')
-      : (miles = 'miles');
+    filterSettings.pickupRadius === 1 ? (miles = 'mile') : (miles = 'miles');
 
     if (resultsArray.length) {
       vendorsText = 'vendors';
@@ -86,9 +87,9 @@ function VendorResultsList(props) {
           <br />
           <div>
             We checked for vendors less than{' '}
-            {filterSettings.pickupRadius.toString()} {miles} away and
-            found none, but you can adjust the search radius by clicking the
-            filter settings button below.
+            {filterSettings.pickupRadius.toString()} {miles} away and found
+            none, but you can adjust the search radius by clicking the filter
+            settings button below.
           </div>
         </div>
       );
@@ -97,8 +98,7 @@ function VendorResultsList(props) {
       <div className={s.results_message}>
         <div>
           {resultsArray.length} {vendorsText} deliver to your current address or
-          offer pickup within {filterSettings.pickupRadius.toString()}{' '}
-          {miles}
+          offer pickup within {filterSettings.pickupRadius.toString()} {miles}
         </div>
       </div>
     );
@@ -109,7 +109,21 @@ function VendorResultsList(props) {
       {searchResults && resultsMessage(searchResults)}
       {searchResults &&
         searchResults.map((vendor, index, vendorResults) => {
-          return <VendorListItem vendor={vendor} index={index}  />;
+          const cocktailData = new AvailabilityData(
+            vendor.Availabilities,
+            searchContext.searchFilters,
+            vendor,
+          );
+          const availabilityStatus = cocktailData.getAvailabilityStatus();
+          const availabilityTime = cocktailData.getAvailabilityTime();
+          return (
+            <VendorListItem
+              vendor={vendor}
+              index={vendor.id}
+              availabilityStatus={availabilityStatus}
+              availabilityTime={availabilityTime}
+            />
+          );
         })}
     </div>
   );
