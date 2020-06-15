@@ -8,6 +8,9 @@ import Button from '../../sitewideDisplayComponents/Button';
 import history from '../../../history';
 import ApplicationContext from '../../ApplicationContext';
 import ContentBox from "../../sitewideDisplayComponents/contentBox/ContentBox";
+import Cookies from 'js-cookie';
+import { useCookies } from 'react-cookie';
+
 
 const VENDOR_LOGIN_MUTATION = `
   mutation VendorLogin(
@@ -26,6 +29,8 @@ const VENDOR_LOGIN_MUTATION = `
 
 function VendorLogin() {
   const authenticationContext = useContext(ApplicationContext);
+  const [cookies, setCookie] = useCookies(['jwt']);
+
 
   const [login] = useMutation(VENDOR_LOGIN_MUTATION);
 
@@ -37,6 +42,7 @@ function VendorLogin() {
       variables: { vendorAdminEmail, vendorAdminPassword },
     }).then(data => {
       authenticationContext.context.JWT = data.data.vendorLogin.JWT;
+      setCookie('jwt', data.data.vendorLogin.JWT);
       // place JWT and vendorSlug in a cookie
       const decoded = jwt.decode(data.data.vendorLogin.JWT);
       history.push(`/vendor-admin/${decoded.vendorSlug}`);

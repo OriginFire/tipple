@@ -6,6 +6,7 @@ import VendorConsole from '../vendorAdminConsole/VendorAdminConsole';
 import GeneralSettings from './GeneralSettings';
 import ApplicationContext from '../../ApplicationContext';
 import ContentBox from "../../sitewideDisplayComponents/contentBox/ContentBox";
+import { useCookies } from 'react-cookie';
 
 const FIND_VENDOR = `
   query FindVendor($slug: String!, $JWT: String!) {
@@ -35,11 +36,16 @@ const FIND_VENDOR = `
   `;
 
 function VendorAdminGeneral(props) {
+  const [cookies, setCookie] = useCookies(['jwt']);
+
   const authenticationContext = useContext(ApplicationContext);
   const [vendorDisplay, setVendorDisplay] = useState();
+  const JWT = cookies.JWT;
+  console.log(authenticationContext);
+  console.log(`JWT: ${JWT}`)
 
   const { loading, error, data } = useQuery(FIND_VENDOR, {
-    variables: { slug: props.pathId, JWT: authenticationContext.context.JWT },
+    variables: { slug: props.pathId, JWT: JWT },
   });
   let vendor;
 
