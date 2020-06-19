@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles from "isomorphic-style-loader/withStyles";
 import s from './VendorSignupForm.scss';
-import Button from '../../sitewideDisplayComponents/Button/Button';
+import Button from '../../sitewideDisplayComponents/Button';
 import history from "../../../history";
 
 function VendorFormButtons(props) {

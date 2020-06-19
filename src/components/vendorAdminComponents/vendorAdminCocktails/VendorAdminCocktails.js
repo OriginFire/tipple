@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useCookies } from "react-cookie";
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useMutation, useQuery } from 'graphql-hooks';
 import s from './VendorAdminCocktails.scss';
@@ -30,8 +31,9 @@ const FIND_VENDOR = `
 
 function VendorAdminCocktails(props) {
   const authenticationContext = useContext(ApplicationContext);
+  const [cookies, setCookies] = useCookies(['jwt']);
   const { loading, error, data } = useQuery(FIND_VENDOR, {
-    variables: { slug: props.slug, JWT: authenticationContext.context.JWT },
+    variables: { slug: props.slug, JWT: cookies.jwt },
   });
 
   let vendor;

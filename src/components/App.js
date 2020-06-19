@@ -15,6 +15,8 @@ import { ClientContext, GraphQLClient } from 'graphql-hooks';
 import ApplicationContext from './ApplicationContext';
 import SearchContext from './searchResultComponents/SearchContext';
 import searchFilters from './searchResultComponents/SearchFilters';
+import { CookiesProvider } from 'react-cookie';
+
 
 /**
  * The top-level React component setting context (global) variables
@@ -48,7 +50,9 @@ export default function App({ context, insertCss, children }) {
       <ApplicationContext.Provider value={{ context }}>
         <ClientContext.Provider value={client}>
           <SearchContext.Provider value={{ searchFilters }}>
-            {React.Children.only(children)}
+            <CookiesProvider>
+              {React.Children.only(children)}
+            </CookiesProvider>
           </SearchContext.Provider>
         </ClientContext.Provider>
       </ApplicationContext.Provider>

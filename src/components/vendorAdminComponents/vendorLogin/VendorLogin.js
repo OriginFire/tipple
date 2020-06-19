@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useMutation } from 'graphql-hooks';
 import jwt from 'jsonwebtoken';
@@ -7,7 +8,7 @@ import FormField from '../../sitewideDisplayComponents/formField';
 import Button from '../../sitewideDisplayComponents/Button';
 import history from '../../../history';
 import ApplicationContext from '../../ApplicationContext';
-import ContentBox from "../../sitewideDisplayComponents/contentBox/ContentBox";
+import ContentBox from '../../sitewideDisplayComponents/contentBox/ContentBox';
 
 const VENDOR_LOGIN_MUTATION = `
   mutation VendorLogin(
@@ -26,6 +27,7 @@ const VENDOR_LOGIN_MUTATION = `
 
 function VendorLogin() {
   const authenticationContext = useContext(ApplicationContext);
+  const [cookies, setCookie] = useCookies(['jwt']);
 
   const [login] = useMutation(VENDOR_LOGIN_MUTATION);
 
@@ -37,6 +39,7 @@ function VendorLogin() {
       variables: { vendorAdminEmail, vendorAdminPassword },
     }).then(data => {
       authenticationContext.context.JWT = data.data.vendorLogin.JWT;
+      setCookie('jwt', data.data.vendorLogin.JWT);
       // place JWT and vendorSlug in a cookie
       const decoded = jwt.decode(data.data.vendorLogin.JWT);
       history.push(`/vendor-admin/${decoded.vendorSlug}`);

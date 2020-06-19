@@ -38,6 +38,7 @@ const UPDATE_VENDOR = `
 function GeneralSettings(props) {
   const { vendor } = props;
   const authenticationContext = useContext(ApplicationContext);
+  console.log(authenticationContext);
   const [uploaded, setUploaded] = useState();
   const [slug, setSlug] = useState(vendor.slug);
   const [dbaName, setDbaName] = useState(vendor.dbaName);
