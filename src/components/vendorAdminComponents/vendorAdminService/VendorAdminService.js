@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useCookies } from "react-cookie";
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useQuery } from 'graphql-hooks';
 import s from './VendorAdminService.scss';
@@ -39,9 +40,10 @@ const FIND_VENDOR = `
 
 function VendorAdminGeneral(props) {
   const authenticationContext = useContext(ApplicationContext);
+  const [cookies, setCookies] = useCookies(['jwt']);
 
   const { loading, error, data } = useQuery(FIND_VENDOR, {
-    variables: { slug: props.pathId, JWT: authenticationContext.context.JWT },
+    variables: { slug: props.pathId, JWT: cookies.jwt },
   });
   let vendor;
 

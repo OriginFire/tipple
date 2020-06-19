@@ -4,7 +4,7 @@ import { useMutation } from 'graphql-hooks';
 import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import s from './VendorSignupForm.scss';
 import ContentBox from "../../sitewideDisplayComponents/contentBox/ContentBox";
-import FormField from '../../sitewideDisplayComponents/formField/FormField';
+import FormField from '../../sitewideDisplayComponents/formField';
 import AddressFormField from '../../utilityComponents/addressFormField/AddressFormField';
 import VendorFormStatus from "./VendorFormStatus";
 import VendorFormButtons from "./VendorFormButtons";

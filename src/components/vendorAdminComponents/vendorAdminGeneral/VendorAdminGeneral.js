@@ -40,9 +40,9 @@ function VendorAdminGeneral(props) {
 
   const authenticationContext = useContext(ApplicationContext);
   const [vendorDisplay, setVendorDisplay] = useState();
-  const JWT = cookies.JWT;
+  console.log(cookies);
+  const JWT = cookies.jwt;
   console.log(authenticationContext);
-  console.log(`JWT: ${JWT}`)
 
   const { loading, error, data } = useQuery(FIND_VENDOR, {
     variables: { slug: props.pathId, JWT: JWT },

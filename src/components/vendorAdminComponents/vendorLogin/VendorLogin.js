@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useCookies } from 'react-cookie';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { useMutation } from 'graphql-hooks';
 import jwt from 'jsonwebtoken';
@@ -7,10 +8,7 @@ import FormField from '../../sitewideDisplayComponents/formField';
 import Button from '../../sitewideDisplayComponents/Button';
 import history from '../../../history';
 import ApplicationContext from '../../ApplicationContext';
-import ContentBox from "../../sitewideDisplayComponents/contentBox/ContentBox";
-import Cookies from 'js-cookie';
-import { useCookies } from 'react-cookie';
-
+import ContentBox from '../../sitewideDisplayComponents/contentBox/ContentBox';
 
 const VENDOR_LOGIN_MUTATION = `
   mutation VendorLogin(
@@ -30,7 +28,6 @@ const VENDOR_LOGIN_MUTATION = `
 function VendorLogin() {
   const authenticationContext = useContext(ApplicationContext);
   const [cookies, setCookie] = useCookies(['jwt']);
-
 
   const [login] = useMutation(VENDOR_LOGIN_MUTATION);
 

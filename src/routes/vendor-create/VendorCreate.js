@@ -10,7 +10,7 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React from 'react';
 import s from './VendorCreate.scss';
-import VendorSignupForm from '../../components/formComponents/vendorSignup/VendorSignupForm';
+import VendorSignupForm from '../../components/vendorAdminComponents/vendorSignup/VendorSignupForm';
 
 class VendorCreate extends React.Component {
   render() {
