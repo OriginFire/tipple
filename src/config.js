@@ -33,7 +33,8 @@ module.exports = {
   },
 
   // Database
-   //databaseUrl: process.env.DATABASE_URL || 'sqlite:database.sqlite',
+   databaseUrl: process.env.DATABASE_URL,// || 'sqlite:database.sqlite',
+
 
   // Web analytics
   analytics: {
