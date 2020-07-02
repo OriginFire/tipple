@@ -1,18 +1,16 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './About.scss';
+import AboutPage from "../../components/aboutPage/AboutPage";
 
-class Finder extends React.Component {
+class About extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <h1>This will be the finder content</h1>
-          <p>...</p>
-        </div>
+        <AboutPage />
       </div>
     );
   }
 }
 
-export default withStyles(s)(Finder);
+export default withStyles(s)(About);

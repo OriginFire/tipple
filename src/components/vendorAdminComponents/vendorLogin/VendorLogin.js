@@ -38,22 +38,31 @@ function VendorLogin() {
     login({
       variables: { vendorAdminEmail, vendorAdminPassword },
     }).then(data => {
-      authenticationContext.context.JWT = data.data.vendorLogin.JWT;
-      setCookie('jwt', data.data.vendorLogin.JWT);
-      // place JWT and vendorSlug in a cookie
-      const decoded = jwt.decode(data.data.vendorLogin.JWT);
-      history.push(`/vendor-admin/${decoded.vendorSlug}`);
+      if (data.data.vendorLogin) {
+        authenticationContext.context.JWT = data.data.vendorLogin.JWT;
+        setCookie('jwt', data.data.vendorLogin.JWT);
+        const decoded = jwt.decode(data.data.vendorLogin.JWT);
+        history.push(`/vendor-admin/${decoded.vendorSlug}`);
+      } else {
+        console.log("We were unable to find an account with that email address and password.")
+      }
     });
+  };
+
+  const passwordKeyed = event => {
+    if (event.key === 'Enter') {
+      onClickLogin();
+    }
   };
 
   return (
     <ContentBox>
-      <div className={s.form}>
+      <div className={s.form} onKeyPress={e => passwordKeyed(e)}>
         <div className={s.login_content}>
           <div className={s.explainer}>Log into your vendor account</div>
           <FormField
             placeholder="User Email Address"
-            type="text"
+            type="email"
             value={vendorAdminEmail}
             onChange={e => {
               setVendorAdminEmail(e.target.value);

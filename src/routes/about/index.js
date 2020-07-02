@@ -9,7 +9,7 @@
 
 import React from 'react';
 import Layout from '../../components/sitewideDisplayComponents/Layout';
-import Finder from './About';
+import About from './About';
 
 function action() {
   return {
@@ -17,7 +17,7 @@ function action() {
     title: '',
     component: (
       <Layout>
-        <Finder />
+        <About />
       </Layout>
     ),
   };
