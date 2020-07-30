@@ -14,7 +14,6 @@ import bodyParser from 'body-parser';
 import expressJwt, { UnauthorizedError as Jwt401Error } from 'express-jwt';
 import { graphql } from 'graphql';
 import expressGraphQL from 'express-graphql';
-import jwt from 'jsonwebtoken';
 import nodeFetch from 'node-fetch';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
@@ -26,6 +25,7 @@ import errorPageStyle from './routes/error/ErrorPage.css';
 import createFetch from './createFetch';
 import router from './router';
 import models from './data/models';
+import seedData from "./data/seeders/seedDbSimulator";
 import schema from './interface/schema';
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
@@ -34,10 +34,6 @@ import config from './config';
 import passport from './passportConfig';
 import flash from 'connect-flash';
 import session from 'express-session';
-
-import bcrypt from 'bcrypt';
-
-import User from "./data/models/User";
 
 process.on('unhandledRejection', (reason, p) => {
   console.error('Unhandled Rejection at:', p, 'reason:', reason);
@@ -97,6 +93,14 @@ app.post('/login',
   function(req, res) {
 
   res.redirect(302, '/');
+});
+
+app.get('/seed',
+  function(req, res) {
+    if (req.query.seedPassword === config.seedPassword) {
+      seedData();
+    }
+    res.redirect(302, '/');
 });
 
 

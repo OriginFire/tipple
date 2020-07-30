@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import db from '../dbSimulator/Vendors';
+import db from './Vendors';
 import Vendor from '../models/Vendor';
 import User from '../models/User';
 import Cocktail from '../models/Cocktail';
@@ -8,18 +8,7 @@ import Availability from '../models/Availability';
 import AvailabilitySchedule from '../models/AvailabilitySchedule';
 import Shift from '../models/Shift';
 import stringToSlug from '../../utils/stringToSlug';
-
-import weekdays from '../../consts/weekdays';
-
-const fs = require('fs');
-
-function base64_encode(file) {
-  // read binary data
-  const bitmap = fs.readFileSync(file);
-  // convert binary data to base64 encoded string
-  const bytes = new Buffer(bitmap).toString('base64');
-  return `data:image/jpg;base64,${bytes}`;
-}
+import base64Encode from "../../utils/base64Encode";
 
 function cocktailHash(vendor) {
   return vendor.cocktails.map(cocktail => {
@@ -35,7 +24,7 @@ function cocktailHash(vendor) {
       servingSize: cocktail.servingSize,
       profile: cocktail.profile,
       description: cocktail.description,
-      Image: { image: base64_encode(cocktailImageUrl) },
+      Image: { image: base64Encode(cocktailImageUrl) },
     };
   });
 }
@@ -117,7 +106,7 @@ function createNew(vendor) {
       deliveryLatMax: vendor.latitude + vendor.deliveryRadius / 69,
       deliveryLatMin: vendor.latitude - vendor.deliveryRadius / 69,
       onlineStore: vendor.onlineStore,
-      Image: { image: base64_encode(vendorImageUrl) },
+      Image: { image: base64Encode(vendorImageUrl) },
       cocktails: cocktailHash(vendor),
       Availabilities: availabilityHash(vendor),
       Users: [

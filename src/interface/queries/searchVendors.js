@@ -12,12 +12,10 @@ import { Op } from 'sequelize';
 import VendorType from '../types/VendorType';
 import Vendor from '../../data/models/Vendor';
 import Cocktail from '../../data/models/Cocktail';
-import Image from '../../data/models/Image';
 import Availability from '../../data/models/Availability';
 import AvailabilitySchedule from '../../data/models/AvailabilitySchedule';
 import Shift from '../../data/models/Shift';
 import SearchVendorInputType from '../types/SearchVendorInputType';
-import { ScheduleHour } from '../../data/models';
 
 const searchVendors = {
   type: List(VendorType),
@@ -65,14 +63,13 @@ const searchVendors = {
         ],
       },
       include: [
-        { model: Cocktail, as: 'cocktails', include: [{ model: Image }] },
+        { model: Cocktail, as: 'cocktails' },
         {
           model: Availability,
           include: [
             { model: AvailabilitySchedule, include: [{ model: Shift }] },
           ],
         },
-        { model: Image },
       ],
     });
 
