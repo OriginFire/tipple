@@ -6,7 +6,7 @@ import Availability from './Availability';
 import AvailabilitySchedule from './AvailabilitySchedule';
 import Shift from './Shift';
 import Image from './Image';
-import seedData from '../seed/seedDbSimulator';
+import seedData from '../seeders/seedDbSimulator';
 
 Vendor.hasMany(User, { onDelete: 'cascade', foreignKeyConstraint: true  });
 User.belongsTo(Vendor);
@@ -29,13 +29,11 @@ Vendor.belongsTo(Image);
 Image.hasOne(Cocktail, { onDelete: 'cascade', foreignKeyConstraint: true  });
 Cocktail.belongsTo(Image);
 
-// function sync(...args) {
-//   return sequelize.sync(...args).then(() => {
-//     seedData();
-//   });
-// }
-//
-// export default { sync };
+function sync(...args) {
+  return sequelize.sync(...args);
+}
+
+export default { sync };
 export {
   Vendor,
   Cocktail,
