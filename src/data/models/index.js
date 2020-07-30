@@ -29,13 +29,13 @@ Vendor.belongsTo(Image);
 Image.hasOne(Cocktail, { onDelete: 'cascade', foreignKeyConstraint: true  });
 Cocktail.belongsTo(Image);
 
-function sync(...args) {
-  return sequelize.sync(...args).then(() => {
-    seedData();
-  });
-}
-
-export default { sync };
+// function sync(...args) {
+//   return sequelize.sync(...args).then(() => {
+//     seedData();
+//   });
+// }
+//
+// export default { sync };
 export {
   Vendor,
   Cocktail,
