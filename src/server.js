@@ -25,6 +25,7 @@ import errorPageStyle from './routes/error/ErrorPage.css';
 import createFetch from './createFetch';
 import router from './router';
 import models from './data/models';
+import seedData from "./data/seeders/seedDbSimulator";
 import schema from './interface/schema';
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
@@ -92,6 +93,14 @@ app.post('/login',
   function(req, res) {
 
   res.redirect(302, '/');
+});
+
+app.get('/seed',
+  function(req, res) {
+    if (req.query.seedPassword === config.seedPassword) {
+      seedData();
+    }
+    res.redirect(302, '/');
 });
 
 

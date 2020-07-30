@@ -35,6 +35,7 @@ module.exports = {
   // Database
    databaseUrl: process.env.DATABASE_URL || 'sqlite:database.sqlite',
 
+  seedPassword: process.env.SEED_PASSWORD || 'changeme',
 
   // Web analytics
   analytics: {
