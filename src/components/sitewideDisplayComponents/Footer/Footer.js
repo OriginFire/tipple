@@ -27,10 +27,6 @@ export default function Footer() {
         <Link className={s.link} to="/admin">
           Admin
         </Link>
-        <span className={s.spacer}>·</span>
-        <Link className={s.link} to="/privacy">
-          Privacy
-        </Link>
       </div>
     </div>
   );

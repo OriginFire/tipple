@@ -32,7 +32,6 @@ import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unr
 import config from './config';
 
 import passport from './passportConfig';
-import flash from 'connect-flash';
 import session from 'express-session';
 
 process.on('unhandledRejection', (reason, p) => {
@@ -71,7 +70,6 @@ app.set('trust proxy', config.trustProxy);
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(cookieParser('2894723498'));
 app.use(session({ cookie: { maxAge: 60000 }}));
-app.use(flash());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: '8mb' }));
 
@@ -227,6 +225,7 @@ app.use((err, req, res, next) => {
 // Launch the server
 // -----------------------------------------------------------------------------
 const promise = models.sync().catch(err => console.error(err.stack));
+
 if (!module.hot) {
   promise.then(() => {
     app.listen(config.port, () => {

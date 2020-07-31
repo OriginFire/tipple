@@ -2,3 +2,8 @@
 .cache
 node_modules
 build
+database.sqlite
+db.conn
+src/data/seeders/images
+Dockerfile
+Dockerfile.dev

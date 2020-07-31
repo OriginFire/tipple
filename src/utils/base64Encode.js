@@ -2,6 +2,10 @@ const fs = require('fs');
 
 function base64Encode(file) {
   // read binary data
+  if (!fs.existsSync(file)) {
+    file = './public/LevitationAspect.JPG';
+  }
+
   const bitmap = fs.readFileSync(file);
   // convert binary data to base64 encoded string
   const bytes = new Buffer(bitmap).toString('base64');

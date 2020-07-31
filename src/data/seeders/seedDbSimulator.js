@@ -12,8 +12,6 @@ import base64Encode from "../../utils/base64Encode";
 
 function cocktailHash(vendor) {
   return vendor.cocktails.map(cocktail => {
-    // ../../../LevitationAspect.JPG  => ./public/LevitationAspect.JPG
-    const cocktailImageUrl = cocktail.image.replace('../../../', './public/');
     const cocktailSlug = stringToSlug(`${vendor.dbaName}-${cocktail.name}`);
 
     return {
@@ -24,7 +22,7 @@ function cocktailHash(vendor) {
       servingSize: cocktail.servingSize,
       profile: cocktail.profile,
       description: cocktail.description,
-      Image: { image: base64Encode(cocktailImageUrl) },
+      Image: { image: base64Encode(cocktail.image) },
     };
   });
 }
