@@ -16,9 +16,6 @@ module.exports = {
     'airbnb',
     'plugin:flowtype/recommended',
     'plugin:css-modules/recommended',
-    'prettier',
-    'prettier/flowtype',
-    'prettier/react',
   ],
 
   plugins: ['flowtype', 'css-modules', 'prettier', 'jest'],

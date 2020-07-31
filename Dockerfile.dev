@@ -1,13 +1,22 @@
 FROM node:12.16.1-alpine3.9
 
+# Set a working directory
 WORKDIR /usr/src/app
-RUN yarn global add pg pg-hstore
-RUN yarn add pg pg-hstore
-COPY package.json .
-COPY yarn.lock .
-RUN yarn
+
+# Set permissions for "node" user
+RUN chown -R node:node /usr/src/app
+RUN chmod 755 /usr/src/app
+
+FROM BASE AS BUILD
+COPY ./package.json .
+COPY ./yarn.lock .
+
+# Set NODE_ENV env variable to "production" for faster expressjs
+ENV NODE_ENV production
+
 COPY . .
 
-EXPOSE 3000
-EXPOSE 3001
-CMD ["yarn", "run", "start"]
+# Run the container under "node" user by default
+USER node
+
+CMD [ "yarn", "start" ]

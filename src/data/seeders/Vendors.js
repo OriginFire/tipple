@@ -33,13 +33,13 @@ export default [
     scheduledPickupRequired: false,
     minimumPickupFulfillment: 0,
     onlineStore: 'www.nipplesupply.com',
-    vendorImage: '../../../Urbana.jpg',
+    vendorImage: './images/Urbana.jpg',
     cocktails: [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 5.5,
         servingSize: 3,
         description:
@@ -51,7 +51,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../GoldenDark.jpg',
+        image: './images/GoldenDark.jpg',
         price: 9,
         servingSize: 6,
         description:
@@ -62,7 +62,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../Tipple Bottles.jpg',
+        image: './images/Tipple Bottles.jpg',
         price: 5.5,
         servingSize: 3,
         description:
@@ -74,7 +74,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../Urbana.jpg',
+        image: './images/Urbana.jpg',
         price: 12,
         servingSize: 5,
         description:
@@ -85,7 +85,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 7,
         servingSize: 3,
         description:
@@ -97,7 +97,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../TomCat.jpg',
+        image: './images/TomCat.jpg',
         price: 5.5,
         servingSize: 2.25,
         description:
@@ -290,13 +290,13 @@ export default [
     scheduledPickupRequired: false,
     minimumPickupFulfillment: 0,
     onlineStore: 'www.nipplesupply.com',
-    vendorImage: '../../../Golden.jpg',
+    vendorImage: './images/Golden.jpg',
     cocktails: [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 8,
         servingSize: 3,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
@@ -307,7 +307,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../GoldenDark.jpg',
+        image: './images/GoldenDark.jpg',
         price: 6,
         servingSize: 6,
         description:
@@ -318,7 +318,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../Tipple Bottles.jpg',
+        image: './images/Tipple Bottles.jpg',
         price: 4.5,
         servingSize: 3,
         description:
@@ -330,7 +330,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../Urbana.jpg',
+        image: './images/Urbana.jpg',
         price: 15.5,
         servingSize: 5,
         description:
@@ -341,7 +341,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 12,
         servingSize: 3,
         description:
@@ -353,7 +353,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../TomCat.jpg',
+        image: './images/TomCat.jpg',
         price: 8,
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
@@ -486,13 +486,13 @@ export default [
     scheduledPickupRequired: false,
     minimumPickupFulfillment: 0,
     onlineStore: 'www.nipplesupply.com',
-    vendorImage: '../../../SL.jpeg',
+    vendorImage: './images/SL.jpeg',
     cocktails: [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 8,
         servingSize: 3,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
@@ -503,7 +503,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../GoldenDark.jpg',
+        image: './images/GoldenDark.jpg',
         price: 6,
         servingSize: 6,
         description:
@@ -514,7 +514,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../Tipple Bottles.jpg',
+        image: './images/Tipple Bottles.jpg',
         price: 4.5,
         servingSize: 3,
         description:
@@ -526,7 +526,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../Urbana.jpg',
+        image: './images/Urbana.jpg',
         price: 15.5,
         servingSize: 5,
         description:
@@ -537,7 +537,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 12,
         servingSize: 3,
         description:
@@ -549,7 +549,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../TomCat.jpg',
+        image: './images/TomCat.jpg',
         price: 8,
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
@@ -698,13 +698,13 @@ export default [
     scheduledPickupRequired: false,
     minimumPickupFulfillment: 0,
     onlineStore: 'www.nipplesupply.com',
-    vendorImage: '../../../Columbia.jpg',
+    vendorImage: './images/Columbia.jpg',
     cocktails: [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 8,
         servingSize: 3,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
@@ -715,7 +715,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../GoldenDark.jpg',
+        image: './images/GoldenDark.jpg',
         price: 6,
         servingSize: 6,
         description:
@@ -726,7 +726,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../Tipple Bottles.jpg',
+        image: './images/Tipple Bottles.jpg',
         price: 4.5,
         servingSize: 3,
         description:
@@ -738,7 +738,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../Urbana.jpg',
+        image: './images/Urbana.jpg',
         price: 15.5,
         servingSize: 5,
         description:
@@ -749,7 +749,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 12,
         servingSize: 3,
         description:
@@ -761,7 +761,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../TomCat.jpg',
+        image: './images/TomCat.jpg',
         price: 8,
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
@@ -953,13 +953,13 @@ export default [
     scheduledPickupRequired: false,
     minimumPickupFulfillment: 0,
     onlineStore: 'www.nipplesupply.com',
-    vendorImage: '../../../LevitationAspect.JPG',
+    vendorImage: './images/LevitationAspect.JPG',
     cocktails: [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 8,
         servingSize: 3,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
@@ -970,7 +970,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../GoldenDark.jpg',
+        image: './images/GoldenDark.jpg',
         price: 6,
         servingSize: 6,
         description:
@@ -981,7 +981,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../Tipple Bottles.jpg',
+        image: './images/Tipple Bottles.jpg',
         price: 4.5,
         servingSize: 3,
         description:
@@ -993,7 +993,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../Urbana.jpg',
+        image: './images/Urbana.jpg',
         price: 15.5,
         servingSize: 5,
         description:
@@ -1004,7 +1004,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 12,
         servingSize: 3,
         description:
@@ -1016,7 +1016,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../TomCat.jpg',
+        image: './images/TomCat.jpg',
         price: 8,
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
@@ -1166,13 +1166,13 @@ export default [
     scheduledPickupRequired: false,
     minimumPickupFulfillment: 0,
     onlineStore: 'www.nipplesupply.com',
-    vendorImage: '../../../SL.jpeg',
+    vendorImage: './images/SL.jpeg',
     cocktails: [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 8,
         servingSize: 3,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
@@ -1183,7 +1183,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../GoldenDark.jpg',
+        image: './images/GoldenDark.jpg',
         price: 6,
         servingSize: 6,
         description:
@@ -1194,7 +1194,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../Tipple Bottles.jpg',
+        image: './images/Tipple Bottles.jpg',
         price: 4.5,
         servingSize: 3,
         description:
@@ -1206,7 +1206,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../Urbana.jpg',
+        image: './images/Urbana.jpg',
         price: 15.5,
         servingSize: 5,
         description:
@@ -1217,7 +1217,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 12,
         servingSize: 3,
         description:
@@ -1229,7 +1229,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../TomCat.jpg',
+        image: './images/TomCat.jpg',
         price: 8,
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
@@ -1421,13 +1421,13 @@ export default [
     scheduledPickupRequired: true,
     minimumPickupFulfillment: 1,
     onlineStore: 'www.nipplesupply.com',
-    vendorImage: '../../../OldFashioned.png',
+    vendorImage: './images/OldFashioned.png',
     cocktails: [
       {
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 8,
         servingSize: 3,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',
@@ -1438,7 +1438,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../GoldenDark.jpg',
+        image: './images/GoldenDark.jpg',
         price: 6,
         servingSize: 6,
         description:
@@ -1449,7 +1449,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../Tipple Bottles.jpg',
+        image: './images/Tipple Bottles.jpg',
         price: 4.5,
         servingSize: 3,
         description:
@@ -1461,7 +1461,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../Urbana.jpg',
+        image: './images/Urbana.jpg',
         price: 15.5,
         servingSize: 5,
         description:
@@ -1472,7 +1472,7 @@ export default [
         id: 'gibsonoldfashioned',
         name: 'Old Fashioned',
         ingredients: 'Rye Whiskey, Simple Syrup, Old Fashioned Bitters',
-        image: '../../../LevitationAspect.JPG',
+        image: './images/LevitationAspect.JPG',
         price: 12,
         servingSize: 3,
         description:
@@ -1484,7 +1484,7 @@ export default [
         name: 'Vieux Carre',
         ingredients:
           'Rye Whiskey, Brandy, Benedictine, Sweet Vermouth, Angostura Bitters, Peychauds Bitters',
-        image: '../../../TomCat.jpg',
+        image: './images/TomCat.jpg',
         price: 8,
         servingSize: 2.25,
         description: 'A lengthy-ish bit of text explaining the flavor profile.',

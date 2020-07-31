@@ -68,7 +68,7 @@ const Vendor = Model.define(
     },
 
     deliveryRadius: {
-      type: DataType.STRING(256),
+      type: DataType.DOUBLE,
     },
 
     scheduledDeliveryRequired: {
