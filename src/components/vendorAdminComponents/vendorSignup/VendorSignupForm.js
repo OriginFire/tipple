@@ -1,13 +1,14 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
 import React, { useState } from 'react';
+import { useCookies } from 'react-cookie';
 import { useMutation } from 'graphql-hooks';
 import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import s from './VendorSignupForm.scss';
-import ContentBox from "../../sitewideDisplayComponents/contentBox/ContentBox";
+import ContentBox from '../../sitewideDisplayComponents/contentBox/ContentBox';
 import FormField from '../../sitewideDisplayComponents/formField';
 import AddressFormField from '../../utilityComponents/addressFormField/AddressFormField';
-import VendorFormStatus from "./VendorFormStatus";
-import VendorFormButtons from "./VendorFormButtons";
+import VendorFormStatus from './VendorFormStatus';
+import VendorFormButtons from './VendorFormButtons';
 import history from '../../../history';
 
 const CREATE_VENDOR_MUTATION = `
@@ -35,6 +36,7 @@ const CREATE_VENDOR_MUTATION = `
     alcoholLicenseNumber: $alcoholLicenseNumber,
     alcoholLicenseIssuingAgency: $alcoholLicenseIssuingAgency,
     alcoholLicenseExpiration: $alcoholLicenseExpiration}) {
+      JWT
       slug
     }
   }
@@ -61,6 +63,7 @@ function VendorSignupForm() {
   ] = useState('');
   const [alcoholLicenseExpiration, setAlcoholLicenseExpiration] = useState('');
   const [formStage, setFormStage] = useState(1);
+  const [cookies, setCookie] = useCookies(['jwt']);
   const [errorMsg, setErroMsg] = useState('');
 
   const [createVendor] = useMutation(CREATE_VENDOR_MUTATION);
@@ -76,17 +79,17 @@ function VendorSignupForm() {
   }
 
   function isVendorValid() {
-    //test phone
-    let valid = RegExp('([0-9]{3})-[0-9]{3}-[0-9]{4}').test(adminPhone);
+    // test phone
+    const valid = RegExp('([0-9]{3})-[0-9]{3}-[0-9]{4}').test(adminPhone);
 
     return valid;
   }
 
   async function createNewVendor() {
-    if (!isVendorValid()) {
-      setErroMsg("Formatting Error - Check Fields");
-      return;
-    }
+    // if (!isVendorValid()) {
+    //  setErroMsg("Formatting Error - Check Fields");
+    //  return;
+    // }
     const res = await createVendor({
       variables: {
         dbaName,
@@ -107,8 +110,8 @@ function VendorSignupForm() {
       },
     });
     console.log(res);
-
-    history.push(`/vendor/${res.data.newVendor.slug}`); // TODO: why is newVendor here?
+    setCookie('jwt', res.data.newVendor.JWT);
+    history.push(`/vendor-admin/${res.data.newVendor.slug}`); // TODO: why is newVendor here?
   }
 
   // TODO: reactor this
@@ -118,7 +121,10 @@ function VendorSignupForm() {
         List your cocktail delivery or takeout business on Tipple. {errorMsg}
       </div>
       <div className={s.form}>
-        <VendorFormStatus formStage={formStage} formStageChange={newStage => setFormStage(newStage)} />
+        <VendorFormStatus
+          formStage={formStage}
+          formStageChange={newStage => setFormStage(newStage)}
+        />
 
         {(() => {
           switch (formStage) {
@@ -148,7 +154,6 @@ function VendorSignupForm() {
                     onChange={e => setAdminPhone(e.target.value)}
                     type="tel"
                     value={adminPhone}
-                    pattern="([0-9]{3})-[0-9]{3}-[0-9]{4}"
                     maxlength="12"
                   />
                 </form>
@@ -201,7 +206,11 @@ function VendorSignupForm() {
               );
           }
         })()}
-        <VendorFormButtons formStage={formStage} formStageChange={newStage => setFormStage(newStage)} submitForm={e => createNewVendor()} />
+        <VendorFormButtons
+          formStage={formStage}
+          formStageChange={newStage => setFormStage(newStage)}
+          submitForm={e => createNewVendor()}
+        />
       </div>
     </ContentBox>
   );

@@ -7,7 +7,9 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
+import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import config from '../../config';
 import VendorType from '../types/VendorType';
 import Vendor from '../../data/models/Vendor';
 import VendorInputType from '../types/VendorInputType';
@@ -17,7 +19,7 @@ import Availability from '../../data/models/Availability';
 import AvailabilitySchedule from '../../data/models/AvailabilitySchedule';
 
 function isVendorValid(vendor) {
-  var valid = RegExp('([0-9]{3})-[0-9]{3}-[0-9]{4}').test(vendor.adminPhone);
+  const valid = RegExp('([0-9]{3})-[0-9]{3}-[0-9]{4}').test(vendor.adminPhone);
 
   return valid;
 }
@@ -28,9 +30,9 @@ const newVendor = {
     vendor: { type: VendorInputType },
   },
   resolve(value, { vendor }) {
-    if (!isVendorValid()) {
-      return 'You have died.';
-    }
+    // if (!isVendorValid()) {
+    //  return 'You have died.';
+    // }
 
     const vendorFormInput = vendor; // unsure why vendor needs to be exact name?
 

@@ -1,7 +1,8 @@
 @import '../../variables.css';
+
 .form_explainer {
   text-align: center;
-  font-family: "Plantin Bold", serif;
+  font-family: 'Plantin Bold', serif;
 }
 
 .form {
@@ -179,10 +180,11 @@
 @media only screen and (min-width: 1224px) {
   .form_explainer {
     position: absolute;
-    width: 57%;
-    margin: 0;
-    top: 32vh;
-    right: 1vw;
+    width: 80%;
+    margin: 0 auto;
+    top: calc(15px + 6vh);
+    right: 0;
+    left: 0;
     font-size: 2em;
   }
 
@@ -192,7 +194,10 @@
   }
 
   .form_status {
-    margin: 2vh auto 3vh auto;
+    top: 0;
+    right: 0;
+    left: 0;
+    font-size: 18px;
   }
 
   .status_indicator {

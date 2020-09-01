@@ -1,26 +1,36 @@
 .header {
-  font-family: "Plantin Bold", serif;
+  font-family: 'Plantin Bold', serif;
+}
+
+.explainer {
+  font-family: 'Lato Light', sans-serif;
+  color: #b9b9b9;
+  text-align: center;
 }
 
 .question {
-  font-family: "Lato Regular", sans-serif;
+  font-family: 'Lato Regular', sans-serif;
   color: #ebebeb;
 }
 
 .answer {
-  font-family: "Lato Light", sans-serif;
+  font-family: 'Lato Light', sans-serif;
   color: #b9b9b9;
 }
 
 @media only screen and (orientation: portrait) and (min-width: 320px) {
   .content {
-    padding: 0 20px;
+    padding: 0 30px 20px 30px;
   }
 
   .header {
     font-size: 34px;
-    padding: 0 20px;
+    padding: 30px 20px;
     text-align: center;
+  }
+
+  .explainer {
+    font-size: 18px;
   }
 
   .question {
@@ -31,7 +41,7 @@
   .answer {
     font-size: 15px;
     line-height: 22px;
-    letter-spacing: .2px;
+    letter-spacing: 0.2px;
   }
 }
 

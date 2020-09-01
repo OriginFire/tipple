@@ -15,7 +15,7 @@
   flex-wrap: nowrap;
   align-items: center;
   color: #919191;
-  font-family: "Lato Light", sans-serif;
+  font-family: 'Lato Light', sans-serif;
 }
 
 .order {
@@ -47,12 +47,13 @@
 }
 
 .price {
-  font-family: "Lato Light", sans-serif;
+  font-family: 'Lato Light', sans-serif;
   color: #b9b9b9;
   text-align: center;
 }
 
-.ingredients, .description {
+.ingredients,
+.description {
   color: #878787;
   font-family: 'Lato Light', sans-serif;
 }
@@ -71,7 +72,7 @@
 }
 
 .expand {
-  font-family: "Lato Regular", sans-serif;
+  font-family: 'Lato Regular', sans-serif;
   text-align: center;
   color: #e1e1e1;
 }
@@ -285,8 +286,9 @@
   .cocktail {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    margin: 25px 10px;
+    width: 400px;
+    margin: 0;
+    padding: 35px 12px;
     min-height: 120px;
   }
 

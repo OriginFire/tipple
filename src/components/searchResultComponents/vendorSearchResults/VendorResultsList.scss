@@ -60,13 +60,12 @@
 }
 
 @media only screen and (min-width: 1224px) {
-
   .result_list {
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
-    height: 100%;
+    height: auto;
     width: 100%;
   }
 
