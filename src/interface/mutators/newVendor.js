@@ -29,7 +29,7 @@ const newVendor = {
   args: {
     vendor: { type: VendorInputType },
   },
-  resolve(value, { vendor }) {
+  async resolve(value, { vendor }) {
     // if (!isVendorValid()) {
     //  return 'You have died.';
     // }
@@ -42,8 +42,7 @@ const newVendor = {
     const state = 'state from address';
     const zip = 'zip from address';
     const hash = bcrypt.hashSync(vendorFormInput.adminPassword, 10);
-
-    return Vendor.create(
+    const newVendor = await Vendor.create(
       {
         dbaName: vendorFormInput.dbaName,
         legalEntityName: vendorFormInput.legalEntityName,
@@ -78,6 +77,24 @@ const newVendor = {
         include: [User, { model: Cocktail, as: 'cocktails' }], // this is needed to make the Users initial entry work.
       },
     );
+
+    console.log(newVendor);
+
+    const payload = {
+      vendorId: newVendor.id,
+      vendorSlug: newVendor.slug,
+      userEmail: newVendor.email,
+    };
+
+    const JWT = jwt.sign(payload, config.auth.jwt.secret);
+
+    newVendor.JWT = JWT;
+
+    console.log(newVendor.JWT, "Stuff");
+
+    return {
+      ...newVendor,
+    };
   },
 };
 

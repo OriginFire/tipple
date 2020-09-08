@@ -44,6 +44,7 @@ const VendorType = new ObjectType({
     ImageId: { type: StringType },
     cocktails: { type: List(CocktailType) },
     Availabilities: { type: List(AvailabilityType) },
+    JWT: { type: StringType },
   },
 });
 

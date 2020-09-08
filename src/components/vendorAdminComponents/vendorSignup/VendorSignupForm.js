@@ -1,5 +1,5 @@
 import withStyles from 'isomorphic-style-loader/withStyles';
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import { useCookies } from 'react-cookie';
 import { useMutation } from 'graphql-hooks';
 import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
@@ -10,6 +10,8 @@ import AddressFormField from '../../utilityComponents/addressFormField/AddressFo
 import VendorFormStatus from './VendorFormStatus';
 import VendorFormButtons from './VendorFormButtons';
 import history from '../../../history';
+import jwt from "jsonwebtoken";
+import ApplicationContext from "../../ApplicationContext";
 
 const CREATE_VENDOR_MUTATION = `
   mutation CreateVendor($dbaName: String!,
@@ -36,8 +38,8 @@ const CREATE_VENDOR_MUTATION = `
     alcoholLicenseNumber: $alcoholLicenseNumber,
     alcoholLicenseIssuingAgency: $alcoholLicenseIssuingAgency,
     alcoholLicenseExpiration: $alcoholLicenseExpiration}) {
-      JWT
       slug
+      JWT
     }
   }
 `;
@@ -67,6 +69,7 @@ function VendorSignupForm() {
   const [errorMsg, setErroMsg] = useState('');
 
   const [createVendor] = useMutation(CREATE_VENDOR_MUTATION);
+  const authenticationContext = useContext(ApplicationContext);
 
   function addressSelection(address) {
     setPhysicalAddress(address);
@@ -110,8 +113,10 @@ function VendorSignupForm() {
       },
     });
     console.log(res);
+    authenticationContext.context.JWT = res.data.newVendor.JWT;
     setCookie('jwt', res.data.newVendor.JWT);
-    history.push(`/vendor-admin/${res.data.newVendor.slug}`); // TODO: why is newVendor here?
+    const decoded = jwt.decode(res.data.newVendor.JWT);
+    history.push(`/vendor-admin/${decoded.vendorSlug}`);
   }
 
   // TODO: reactor this
